@@ -1,12 +1,14 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/Include/Ishiko/Boost/Boost.bkl;
+ishikoenvironmentvariablespath = envvar("ISHIKO_ENVIRONMENTVARIABLES");
+import $(ishikoenvironmentvariablespath)/Include/Ishiko/EnvironmentVariables.bkl;
 
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/IshikoTestFrameworkCore.sln;
 vs2013.solutionfile = ../VC12/IshikoTestFrameworkCore.sln;
 
-library IshikoTestFrameworkCore : Boost
+library IshikoTestFrameworkCore : Boost, IshikoEnvironmentVariables
 {
     archs = x86 x86_64;
 
