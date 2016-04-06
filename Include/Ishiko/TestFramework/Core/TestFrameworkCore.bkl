@@ -1,0 +1,14 @@
+import ../../Boost/Boost.bkl;
+
+setting ISHIKO_ROOT
+{
+    help = "Path to the Ishiko installation";
+    default = '$(ISHIKO)';
+}
+
+template IshikoTestFrameworkCore : Boost
+{
+    includedirs += $(ISHIKO_ROOT)/Include;
+
+    libdirs += $(ISHIKO_ROOT)/Lib/$(arch);
+}
