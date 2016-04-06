@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core;..\..\..\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core;..\..\..\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core;..\..\..\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core;..\..\..\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -169,26 +169,26 @@
     <ClCompile Include="..\..\Source\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\FunctionBasedTest.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestFrameworkCore.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\Test.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestConfiguration.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestEnvironment.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestException.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestHarnessBase.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestInformation.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestObserver.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestObservers.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestResult.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestSequence.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownActions.h" />
-    <ClInclude Include="..\..\..\..\Include\Ishiko\TestFramework\Core\TopTestSequence.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FunctionBasedTest.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestFrameworkCore.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\Test.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestConfiguration.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestEnvironment.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestException.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarnessBase.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestInformation.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestObserver.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestObservers.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestResult.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSequence.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownActions.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TopTestSequence.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

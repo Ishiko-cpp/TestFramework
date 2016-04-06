@@ -11,8 +11,7 @@ library IshikoTestFrameworkCore : Boost
     archs = x86 x86_64;
 
     includedirs += ../../../Include/Ishiko/TestFramework/Core;
-    includedirs += ../../../Include;
-
+    
     outputdir = ../../../Lib/$(arch);
 
     if ($(config) == Debug)
@@ -22,26 +21,26 @@ library IshikoTestFrameworkCore : Boost
 
     headers
     {
-        ../../../../Include/Ishiko/TestFramework/Core/FileComparisonTest.h
-        ../../../../Include/Ishiko/TestFramework/Core/FunctionBasedTest.h
-        ../../../../Include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestFrameworkCore.h
-        ../../../../Include/Ishiko/TestFramework/Core/Test.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestApplicationReturnCodes.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestConfiguration.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestEnvironment.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestException.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestHarness.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestHarnessBase.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestInformation.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestNumber.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestObserver.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestObservers.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestProgressObserver.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestResult.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestSequence.h
-        ../../../../Include/Ishiko/TestFramework/Core/TestTeardownActions.h
-        ../../../../Include/Ishiko/TestFramework/Core/TopTestSequence.h
+        ../../../Include/Ishiko/TestFramework/Core/FileComparisonTest.h
+        ../../../Include/Ishiko/TestFramework/Core/FunctionBasedTest.h
+        ../../../Include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.h
+        ../../../Include/Ishiko/TestFramework/Core/TestFrameworkCore.h
+        ../../../Include/Ishiko/TestFramework/Core/Test.h
+        ../../../Include/Ishiko/TestFramework/Core/TestApplicationReturnCodes.h
+        ../../../Include/Ishiko/TestFramework/Core/TestConfiguration.h
+        ../../../Include/Ishiko/TestFramework/Core/TestEnvironment.h
+        ../../../Include/Ishiko/TestFramework/Core/TestException.h
+        ../../../Include/Ishiko/TestFramework/Core/TestHarness.h
+        ../../../Include/Ishiko/TestFramework/Core/TestHarnessBase.h
+        ../../../Include/Ishiko/TestFramework/Core/TestInformation.h
+        ../../../Include/Ishiko/TestFramework/Core/TestNumber.h
+        ../../../Include/Ishiko/TestFramework/Core/TestObserver.h
+        ../../../Include/Ishiko/TestFramework/Core/TestObservers.h
+        ../../../Include/Ishiko/TestFramework/Core/TestProgressObserver.h
+        ../../../Include/Ishiko/TestFramework/Core/TestResult.h
+        ../../../Include/Ishiko/TestFramework/Core/TestSequence.h
+        ../../../Include/Ishiko/TestFramework/Core/TestTeardownActions.h
+        ../../../Include/Ishiko/TestFramework/Core/TopTestSequence.h
     }
 
     sources
