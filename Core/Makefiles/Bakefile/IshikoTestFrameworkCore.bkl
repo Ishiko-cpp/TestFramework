@@ -1,0 +1,67 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/Include/Ishiko/Boost/Boost.bkl;
+
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/IshikoTestFrameworkCore.sln;
+vs2013.solutionfile = ../VC12/IshikoTestFrameworkCore.sln;
+
+library IshikoTestFrameworkCore : Boost
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../../../Include/Ishiko/TestFramework/Core;
+    includedirs += ../../../../Include;
+
+    outputdir = ../../../../Lib/$(arch);
+
+    if ($(config) == Debug)
+    {
+        basename = IshikoTestFrameworkCore-d;
+    }
+
+    headers
+    {
+        ../../../../Include/Ishiko/TestFramework/Core/FileComparisonTest.h
+        ../../../../Include/Ishiko/TestFramework/Core/FunctionBasedTest.h
+        ../../../../Include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestFrameworkCore.h
+        ../../../../Include/Ishiko/TestFramework/Core/Test.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestApplicationReturnCodes.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestConfiguration.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestEnvironment.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestException.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestHarness.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestHarnessBase.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestInformation.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestNumber.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestObserver.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestObservers.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestProgressObserver.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestResult.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestSequence.h
+        ../../../../Include/Ishiko/TestFramework/Core/TestTeardownActions.h
+        ../../../../Include/Ishiko/TestFramework/Core/TopTestSequence.h
+    }
+
+    sources
+    {
+        ../../Source/FileComparisonTest.cpp
+        ../../Source/FunctionBasedTest.cpp
+        ../../Source/HeapAllocationErrorsTest.cpp
+        ../../Source/Test.cpp
+        ../../Source/TestConfiguration.cpp
+        ../../Source/TestEnvironment.cpp
+        ../../Source/TestException.cpp
+        ../../Source/TestHarness.cpp
+        ../../Source/TestInformation.cpp
+        ../../Source/TestNumber.cpp
+        ../../Source/TestObserver.cpp
+        ../../Source/TestObservers.cpp
+        ../../Source/TestProgressObserver.cpp
+        ../../Source/TestResult.cpp
+        ../../Source/TestSequence.cpp
+        ../../Source/TestTeardownActions.cpp
+        ../../Source/TopTestSequence.cpp
+    }
+}
