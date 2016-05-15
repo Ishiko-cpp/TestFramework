@@ -41,7 +41,8 @@ library IshikoTestFrameworkCore : Boost, IshikoEnvironmentVariables
         ../../../Include/Ishiko/TestFramework/Core/TestProgressObserver.h
         ../../../Include/Ishiko/TestFramework/Core/TestResult.h
         ../../../Include/Ishiko/TestFramework/Core/TestSequence.h
-        ../../../Include/Ishiko/TestFramework/Core/TestTeardownActions.h
+        ../../../Include/Ishiko/TestFramework/Core/TestSetupAction.h
+        ../../../Include/Ishiko/TestFramework/Core/TestTeardownAction.h
         ../../../Include/Ishiko/TestFramework/Core/TopTestSequence.h
     }
 
@@ -62,7 +63,8 @@ library IshikoTestFrameworkCore : Boost, IshikoEnvironmentVariables
         ../../Source/TestProgressObserver.cpp
         ../../Source/TestResult.cpp
         ../../Source/TestSequence.cpp
-        ../../Source/TestTeardownActions.cpp
+        ../../Source/TestSetupAction.cpp
+        ../../Source/TestTeardownAction.cpp
         ../../Source/TopTestSequence.cpp
     }
 }

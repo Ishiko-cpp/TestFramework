@@ -71,7 +71,10 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownActions.h">
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSetupAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TopTestSequence.h">
@@ -124,7 +127,10 @@
     <ClCompile Include="..\..\Source\TestSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestTeardownActions.cpp">
+    <ClCompile Include="..\..\Source\TestSetupAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestTeardownAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TopTestSequence.cpp">

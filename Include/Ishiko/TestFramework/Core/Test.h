@@ -27,7 +27,7 @@
 #include "TestResult.h"
 #include "TestEnvironment.h"
 #include "TestObserver.h"
-#include "TestTeardownActions.h"
+#include "TestTeardownAction.h"
 #include <string>
 
 namespace Ishiko

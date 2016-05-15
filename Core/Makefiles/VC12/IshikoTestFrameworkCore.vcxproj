@@ -165,7 +165,8 @@
     <ClCompile Include="..\..\Source\TestProgressObserver.cpp" />
     <ClCompile Include="..\..\Source\TestResult.cpp" />
     <ClCompile Include="..\..\Source\TestSequence.cpp" />
-    <ClCompile Include="..\..\Source\TestTeardownActions.cpp" />
+    <ClCompile Include="..\..\Source\TestSetupAction.cpp" />
+    <ClCompile Include="..\..\Source\TestTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +188,8 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestResult.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSequence.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownActions.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSetupAction.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TopTestSequence.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
