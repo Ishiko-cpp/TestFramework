@@ -1,0 +1,44 @@
+ishikotestframeworkpath = envvar("ISHIKO_TESTFRAMEWORK");
+import $(ishikotestframeworkpath)/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/IshikoTestFrameworkCoreTests.sln;
+vs2013.solutionfile = ../VC12/IshikoTestFrameworkCoreTests.sln;
+
+
+program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
+{
+    archs = x86 x86_64;
+
+    headers
+    {
+        ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
+        ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.h
+        ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
+        ../../Source/TestClasses/SimpleTestClass1.h
+        ../../Source/TestEnvironmentTests/TestEnvironmentTests.h
+        ../../Source/TestInformationTests/TestInformationTests.h
+        ../../Source/TestSequenceTests/TestSequenceTests.h
+        ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.h
+        ../../Source/TestTeardownActionsTests/DirectoriesTeardownActionTests.h
+        ../../Source/TestTeardownActionsTests/FilesTeardownActionTests.h
+        ../../Source/TestTests/TestTests.h
+    }
+
+    sources
+    {
+        ../../Source/Main.cpp
+        ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp
+        ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.cpp
+        ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
+        ../../Source/TestClasses/SimpleTestClass1.cpp
+        ../../Source/TestEnvironmentTests/TestEnvironmentTests.cpp
+        ../../Source/TestInformationTests/TestInformationTests.cpp
+        ../../Source/TestSequenceTests/TestSequenceTests.cpp
+        ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.cpp
+        ../../Source/TestTeardownActionsTests/DirectoriesTeardownActionTests.cpp
+        ../../Source/TestTeardownActionsTests/FilesTeardownActionTests.cpp
+        ../../Source/TestTests/TestTests.cpp
+    }
+}
