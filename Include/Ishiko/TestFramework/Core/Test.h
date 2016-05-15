@@ -27,6 +27,7 @@
 #include "TestResult.h"
 #include "TestEnvironment.h"
 #include "TestObserver.h"
+#include "TestSetupAction.h"
 #include "TestTeardownAction.h"
 #include <string>
 
@@ -35,9 +36,15 @@ namespace Ishiko
 namespace TestFramework
 {
 
+/// This class represents a test.
+
+/// It is the abstract base class for the various test classes.
 class Test
 {
 public:
+    /// Constructor.
+    /// @param number The number of the test.
+    /// @param name The name of the test.
 	Test(const TestNumber& number, const std::string& name);
 	Test(const TestNumber& number, const std::string& name, 
 		const TestEnvironment& environment);
@@ -53,8 +60,8 @@ public:
 	virtual void run();
 	virtual void run(TestObserver::ptr& observer);
 
-	virtual void addTeardownAction(std::shared_ptr<TestTeardownAction>& action);
-	template<class ActionClass> void addTeardownAction(std::shared_ptr<ActionClass>& action);
+	virtual void addSetupAction(TestSetupAction::shared_ptr action);
+    virtual void addTeardownAction(TestTeardownAction::shared_ptr action);
 
 protected:
 	virtual void teardown();
@@ -66,14 +73,9 @@ private:
 	TestInformation m_information;
 	TestResult m_result;
 	const TestEnvironment& m_environment;
-	std::vector<std::shared_ptr<TestTeardownAction> > m_teardownActions;
+	std::vector<TestSetupAction::shared_ptr> m_setupActions;
+    std::vector<TestTeardownAction::shared_ptr> m_teardownActions;
 };
-
-template<class ActionClass>
-void Test::addTeardownAction(std::shared_ptr<ActionClass>& action)
-{
-	addTeardownAction((std::shared_ptr<TestTeardownAction>&)action);
-}
 
 }
 }

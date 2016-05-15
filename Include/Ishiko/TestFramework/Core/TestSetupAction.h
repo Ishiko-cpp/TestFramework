@@ -23,4 +23,30 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTSETUPACTION_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTSETUPACTION_H_
 
+#include <memory>
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+/// Base class that represents an action that needs to be performed before the test is run.
+
+/// This class does nothing. Derived classes can override the run() method to perform
+/// the required action.
+class TestSetupAction
+{
+public:
+    typedef std::shared_ptr<TestSetupAction> shared_ptr;
+
+    TestSetupAction();
+	virtual ~TestSetupAction();
+
+    /// This method is called to perform the setup action.
+	virtual void run();
+};
+
+}
+}
+
 #endif

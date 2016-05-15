@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2015-2016 Xavier Leclercq
+	Copyright (c) 2016 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -20,25 +20,25 @@
 	IN THE SOFTWARE.
 */
 
+#ifndef _ISHIKO_TESTFRAMEWORK_CORE_PROCESSACTION_H_
+#define _ISHIKO_TESTFRAMEWORK_CORE_PROCESSACTION_H_
+
 #include "TestSetupAction.h"
+#include "TestTeardownAction.h"
 
 namespace Ishiko
 {
 namespace TestFramework
 {
 
-TestSetupAction::TestSetupAction()
+class ProcessAction : public TestSetupAction, public TestTeardownAction
 {
-}
-
-TestSetupAction::~TestSetupAction()
-{
-}
-
-void TestSetupAction::run()
-{
-	// Default implementation does nothing
-}
+public:
+    ProcessAction();
+    ~ProcessAction() override;
+};
 
 }
 }
+
+#endif

@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2015-2016 Xavier Leclercq
+	Copyright (c) 2016 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -20,24 +20,19 @@
 	IN THE SOFTWARE.
 */
 
-#include "TestSetupAction.h"
+#include "ProcessAction.h"
 
 namespace Ishiko
 {
 namespace TestFramework
 {
 
-TestSetupAction::TestSetupAction()
+ProcessAction::ProcessAction()
 {
 }
 
-TestSetupAction::~TestSetupAction()
+ProcessAction::~ProcessAction()
 {
-}
-
-void TestSetupAction::run()
-{
-	// Default implementation does nothing
 }
 
 }

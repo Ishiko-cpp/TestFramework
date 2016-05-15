@@ -23,17 +23,26 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTTEARDOWNACTION_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTTEARDOWNACTION_H_
 
+#include <memory>
+
 namespace Ishiko
 {
 namespace TestFramework
 {
 
+/// Base class that represents an action that needs to be performed after the test has been run.
+
+/// This class does nothing. Derived classes can override the run() method to perform
+/// the required action.
 class TestTeardownAction
 {
 public:
+    typedef std::shared_ptr<TestTeardownAction> shared_ptr;
+
 	TestTeardownAction();
 	virtual ~TestTeardownAction();
 
+    /// This method is called to perform the teardown action.
 	virtual void run();
 };
 

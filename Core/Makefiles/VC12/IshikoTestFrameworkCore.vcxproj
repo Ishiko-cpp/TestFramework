@@ -155,6 +155,7 @@
     <ClCompile Include="..\..\Source\FilesTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\FunctionBasedTest.cpp" />
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp" />
+    <ClCompile Include="..\..\Source\ProcessAction.cpp" />
     <ClCompile Include="..\..\Source\Test.cpp" />
     <ClCompile Include="..\..\Source\TestConfiguration.cpp" />
     <ClCompile Include="..\..\Source\TestEnvironment.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FunctionBasedTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ProcessAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestFrameworkCore.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\Test.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
