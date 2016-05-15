@@ -23,7 +23,9 @@ library IshikoTestFrameworkCore : Boost, IshikoEnvironmentVariables
 
     headers
     {
+        ../../../Include/Ishiko/TestFramework/Core/DirectoriesTeardownAction.h
         ../../../Include/Ishiko/TestFramework/Core/FileComparisonTest.h
+        ../../../Include/Ishiko/TestFramework/Core/FilesTeardownAction.h
         ../../../Include/Ishiko/TestFramework/Core/FunctionBasedTest.h
         ../../../Include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.h
         ../../../Include/Ishiko/TestFramework/Core/TestFrameworkCore.h
@@ -48,7 +50,9 @@ library IshikoTestFrameworkCore : Boost, IshikoEnvironmentVariables
 
     sources
     {
+        ../../Source/DirectoriesTeardownAction.cpp
         ../../Source/FileComparisonTest.cpp
+        ../../Source/FilesTeardownAction.cpp
         ../../Source/FunctionBasedTest.cpp
         ../../Source/HeapAllocationErrorsTest.cpp
         ../../Source/Test.cpp

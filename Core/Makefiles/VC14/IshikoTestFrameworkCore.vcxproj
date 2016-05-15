@@ -150,7 +150,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\DirectoriesTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\FileComparisonTest.cpp" />
+    <ClCompile Include="..\..\Source\FilesTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\FunctionBasedTest.cpp" />
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp" />
     <ClCompile Include="..\..\Source\Test.cpp" />
@@ -170,7 +172,9 @@
     <ClCompile Include="..\..\Source\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FunctionBasedTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestFrameworkCore.h" />
