@@ -21,7 +21,6 @@
 */
 
 #include "TestTeardownAction.h"
-#include <boost/filesystem/operations.hpp>
 
 namespace Ishiko
 {
@@ -39,48 +38,6 @@ TestTeardownAction::~TestTeardownAction()
 void TestTeardownAction::run()
 {
 	// Default implementation does nothing
-}
-
-FilesTeardownAction::FilesTeardownAction()
-{
-}
-
-FilesTeardownAction::~FilesTeardownAction()
-{
-}
-
-void FilesTeardownAction::run()
-{
-	for (size_t i = 0; i < d_files.size(); ++i)
-	{
-		boost::filesystem::remove(d_files[i]);
-	}
-}
-
-void FilesTeardownAction::add(const boost::filesystem::path& path)
-{
-	d_files.push_back(path);
-}
-
-DirectoriesTeardownAction::DirectoriesTeardownAction()
-{
-}
-
-DirectoriesTeardownAction::~DirectoriesTeardownAction()
-{
-}
-
-void DirectoriesTeardownAction::run()
-{
-	for (size_t i = 0; i < d_directories.size(); ++i)
-	{
-		boost::filesystem::remove(d_directories[i]);
-	}
-}
-
-void DirectoriesTeardownAction::add(const boost::filesystem::path& path)
-{
-	d_directories.push_back(path);
 }
 
 }

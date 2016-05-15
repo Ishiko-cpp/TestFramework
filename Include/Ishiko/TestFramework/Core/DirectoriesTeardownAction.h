@@ -23,4 +23,30 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_DIRECTORIESTEARDOWNACTION_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_DIRECTORIESTEARDOWNACTION_H_
 
+#include "TestTeardownAction.h"
+#include <boost/filesystem/path.hpp>
+#include <vector>
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+class DirectoriesTeardownAction : public TestTeardownAction
+{
+public:
+	DirectoriesTeardownAction();
+	~DirectoriesTeardownAction() override;
+
+	void run() override;
+
+	void add(const boost::filesystem::path& path);
+
+private:
+	std::vector<boost::filesystem::path> d_directories;
+};
+
+}
+}
+
 #endif

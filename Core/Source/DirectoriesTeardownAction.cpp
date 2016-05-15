@@ -21,3 +21,33 @@
 */
 
 #include "DirectoriesTeardownAction.h"
+#include <boost/filesystem/operations.hpp>
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+DirectoriesTeardownAction::DirectoriesTeardownAction()
+{
+}
+
+DirectoriesTeardownAction::~DirectoriesTeardownAction()
+{
+}
+
+void DirectoriesTeardownAction::run()
+{
+	for (size_t i = 0; i < d_directories.size(); ++i)
+	{
+		boost::filesystem::remove(d_directories[i]);
+	}
+}
+
+void DirectoriesTeardownAction::add(const boost::filesystem::path& path)
+{
+	d_directories.push_back(path);
+}
+
+}
+}

@@ -28,6 +28,8 @@
 #include "HeapAllocationErrorsTest.h"
 #include "FileComparisonTest.h"
 #include "TestHarness.h"
+#include "DirectoriesTeardownAction.h"
+#include "FilesTeardownAction.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "IshikoTestFrameworkCore-d.lib")

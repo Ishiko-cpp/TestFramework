@@ -23,4 +23,30 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_FILESTEARDOWNACTION_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_FILESTEARDOWNACTION_H_
 
+#include "TestTeardownAction.h"
+#include <boost/filesystem/path.hpp>
+#include <vector>
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+class FilesTeardownAction : public TestTeardownAction
+{
+public:
+	FilesTeardownAction();
+	~FilesTeardownAction() override;
+
+	void run() override;
+
+	void add(const boost::filesystem::path& path);
+
+private:
+	std::vector<boost::filesystem::path> d_files;
+};
+
+}
+}
+
 #endif

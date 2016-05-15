@@ -23,9 +23,6 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTTEARDOWNACTION_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTTEARDOWNACTION_H_
 
-#include <boost/filesystem/path.hpp>
-#include <vector>
-
 namespace Ishiko
 {
 namespace TestFramework
@@ -38,34 +35,6 @@ public:
 	virtual ~TestTeardownAction();
 
 	virtual void run();
-};
-
-class FilesTeardownAction : public TestTeardownAction
-{
-public:
-	FilesTeardownAction();
-	virtual ~FilesTeardownAction();
-
-	virtual void run();
-
-	void add(const boost::filesystem::path& path);
-
-private:
-	std::vector<boost::filesystem::path> d_files;
-};
-
-class DirectoriesTeardownAction : public TestTeardownAction
-{
-public:
-	DirectoriesTeardownAction();
-	virtual ~DirectoriesTeardownAction();
-
-	virtual void run();
-
-	void add(const boost::filesystem::path& path);
-
-private:
-	std::vector<boost::filesystem::path> d_directories;
 };
 
 }
