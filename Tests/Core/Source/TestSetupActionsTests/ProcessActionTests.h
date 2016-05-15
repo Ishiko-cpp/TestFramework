@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2007-2015 Xavier Leclercq
+	Copyright (c) 2016 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -20,30 +20,13 @@
 	IN THE SOFTWARE.
 */
 
-#include "TestEnvironmentTests/TestEnvironmentTests.h"
-#include "TestInformationTests/TestInformationTests.h"
-#include "TestTests/TestTests.h"
-#include "TestSequenceTests/TestSequenceTests.h"
-#include "FunctionBasedTestTests/FunctionBasedTestTests.h"
-#include "FileComparisonTestTests/FileComparisonTestTests.h"
-#include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"
-#include "TestSetupActionsTests/TestSetupActionsTests.h"
-#include "TestTeardownActionsTests/TestTeardownActionsTests.h"
+#ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSETUPACTIONSTESTS_PROCESSACTIONTESTS_H_
+#define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSETUPACTIONSTESTS_PROCESSACTIONTESTS_H_
+
 #include "Ishiko/TestFramework/Core/TestFrameworkCore.h"
 
-int main(int argc, char* argv[])
-{
-	Ishiko::TestFramework::TestHarness theTestHarness("IshikoTestFrameworkCore");
+void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence);
 
-	AddTestEnvironmentTests(theTestHarness);
-	AddTestInformationTests(theTestHarness);
-	AddTestTests(theTestHarness);
-	AddTestSequenceTests(theTestHarness);
-	AddFunctionBasedTestTests(theTestHarness);
-	AddFileComparisonTestTests(theTestHarness);
-	AddHeapAllocationErrorsTestTests(theTestHarness);
-    AddTestSetupActionsTests(theTestHarness);
-	AddTestTeardownActionsTests(theTestHarness);
+Ishiko::TestFramework::TestResult::EOutcome ProcessActionCreationTest1();
 
-	return theTestHarness.run();
-}
+#endif

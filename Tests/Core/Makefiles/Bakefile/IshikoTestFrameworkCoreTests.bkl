@@ -20,6 +20,8 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.h
         ../../Source/TestInformationTests/TestInformationTests.h
         ../../Source/TestSequenceTests/TestSequenceTests.h
+        ../../Source/TestSetupActionsTests/ProcessActionTests.h
+        ../../Source/TestSetupActionsTests/TestSetupActionsTests.h
         ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.h
         ../../Source/TestTeardownActionsTests/DirectoriesTeardownActionTests.h
         ../../Source/TestTeardownActionsTests/FilesTeardownActionTests.h
@@ -36,6 +38,8 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.cpp
         ../../Source/TestInformationTests/TestInformationTests.cpp
         ../../Source/TestSequenceTests/TestSequenceTests.cpp
+        ../../Source/TestSetupActionsTests/ProcessActionTests.cpp
+        ../../Source/TestSetupActionsTests/TestSetupActionsTests.cpp
         ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.cpp
         ../../Source/TestTeardownActionsTests/DirectoriesTeardownActionTests.cpp
         ../../Source/TestTeardownActionsTests/FilesTeardownActionTests.cpp
