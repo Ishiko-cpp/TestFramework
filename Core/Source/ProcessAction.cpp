@@ -28,8 +28,10 @@ namespace Ishiko
 namespace TestFramework
 {
 
-ProcessAction::ProcessAction(const std::string& commandLine)
-    : m_commandLine(commandLine), m_processHandle(INVALID_HANDLE_VALUE)
+ProcessAction::ProcessAction(const std::string& commandLine, 
+                             EMode mode)
+    : m_commandLine(commandLine), m_processHandle(INVALID_HANDLE_VALUE),
+    m_mode(mode)
 {
 }
 
@@ -63,6 +65,11 @@ void ProcessAction::setup()
 
 void ProcessAction::teardown()
 {
+    if (m_mode == eTerminate)
+    {
+        TerminateProcess(m_processHandle, 0);
+    }
+
     WaitForSingleObject(m_processHandle, INFINITE);
 
     CloseHandle(m_processHandle);

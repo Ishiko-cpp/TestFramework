@@ -31,24 +31,43 @@ void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence)
 
     new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
         ProcessActionCreationTest1, *processActionTestSequence);
-    new Ishiko::TestFramework::FileComparisonTest("setup() test 1",
-        ProcessActionSetupTest1, *processActionTestSequence);
+    new Ishiko::TestFramework::FileComparisonTest("setup() (wait for exit) test 1",
+        ProcessActionSetupWaitForExitTest1, *processActionTestSequence);
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("setup() (terminate) test 2",
+        ProcessActionSetupTerminateTest1, *processActionTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome ProcessActionCreationTest1()
 {
-    Ishiko::TestFramework::ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe");
+    Ishiko::TestFramework::ProcessAction action(
+        "../../TestData/Binaries/WriteFileTestHelper.exe", 
+        Ishiko::TestFramework::ProcessAction::eWaitForExit
+        );
     return Ishiko::TestFramework::TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupTest1(Ishiko::TestFramework::FileComparisonTest& test)
+Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupWaitForExitTest1(Ishiko::TestFramework::FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
     test.setOutputFilePath(outputPath);
     boost::filesystem::create_directories(test.environment().getTestOutputDirectory() / "TestSetupActionsTests");
     test.setReferenceFilePath(test.environment().getReferenceDataDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
 
-    Ishiko::TestFramework::ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe " + outputPath.generic_string());
+    Ishiko::TestFramework::ProcessAction action(
+        "../../TestData/Binaries/WriteFileTestHelper.exe " + outputPath.generic_string(),
+        Ishiko::TestFramework::ProcessAction::eWaitForExit
+        );
+    action.setup();
+    action.teardown();
+    return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupTerminateTest1()
+{
+    Ishiko::TestFramework::ProcessAction action(
+        "../../TestData/Binaries/PermanentAppTestHelper.exe",
+        Ishiko::TestFramework::ProcessAction::eTerminate
+        );
     action.setup();
     action.teardown();
     return Ishiko::TestFramework::TestResult::ePassed;

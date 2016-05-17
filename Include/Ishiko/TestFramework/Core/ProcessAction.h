@@ -36,7 +36,13 @@ namespace TestFramework
 class ProcessAction : public TestSetupAction, public TestTeardownAction
 {
 public:
-    ProcessAction(const std::string& commandLine);
+    enum EMode
+    {
+        eWaitForExit,
+        eTerminate
+    };
+
+    ProcessAction(const std::string& commandLine, EMode mode);
     ~ProcessAction() override;
 
     void setup() override;
@@ -44,6 +50,7 @@ public:
 
 private:
     std::string m_commandLine;
+    EMode m_mode;
     HANDLE m_processHandle;
 };
 

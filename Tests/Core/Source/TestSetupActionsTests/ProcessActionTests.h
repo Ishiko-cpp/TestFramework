@@ -28,6 +28,7 @@
 void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence);
 
 Ishiko::TestFramework::TestResult::EOutcome ProcessActionCreationTest1();
-Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupTest1(Ishiko::TestFramework::FileComparisonTest& test);
+Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupWaitForExitTest1(Ishiko::TestFramework::FileComparisonTest& test);
+Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupTerminateTest1();
 
 #endif
