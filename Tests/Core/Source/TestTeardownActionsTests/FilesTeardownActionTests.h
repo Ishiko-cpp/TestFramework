@@ -28,6 +28,6 @@
 void AddFilesTeardownActionTests(Ishiko::TestFramework::TestSequence& testSequence);
 
 Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionCreationTest1();
-Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionRunTest1();
+Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionTeardownTest1();
 
 #endif

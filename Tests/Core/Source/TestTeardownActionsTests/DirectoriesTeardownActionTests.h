@@ -28,6 +28,6 @@
 void AddDirectoriesTeardownActionTests(Ishiko::TestFramework::TestSequence& testSequence);
 
 Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionCreationTest1();
-Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionRunTest1();
+Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionTeardownTest1();
 
 #endif

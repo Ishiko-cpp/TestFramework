@@ -22,6 +22,7 @@
 
 #include "ProcessActionTests.h"
 #include "Ishiko/TestFramework/Core/ProcessAction.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence)
 {
@@ -30,10 +31,25 @@ void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence)
 
     new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
         ProcessActionCreationTest1, *processActionTestSequence);
+    new Ishiko::TestFramework::FileComparisonTest("setup() test 1",
+        ProcessActionSetupTest1, *processActionTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome ProcessActionCreationTest1()
 {
-    Ishiko::TestFramework::ProcessAction action;
+    Ishiko::TestFramework::ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe");
+    return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupTest1(Ishiko::TestFramework::FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    test.setOutputFilePath(outputPath);
+    boost::filesystem::create_directories(test.environment().getTestOutputDirectory() / "TestSetupActionsTests");
+    test.setReferenceFilePath(test.environment().getReferenceDataDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+
+    Ishiko::TestFramework::ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe " + outputPath.generic_string());
+    action.setup();
+    action.teardown();
     return Ishiko::TestFramework::TestResult::ePassed;
 }

@@ -28,5 +28,6 @@
 void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence);
 
 Ishiko::TestFramework::TestResult::EOutcome ProcessActionCreationTest1();
+Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupTest1(Ishiko::TestFramework::FileComparisonTest& test);
 
 #endif

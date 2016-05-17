@@ -31,8 +31,8 @@ void AddFilesTeardownActionTests(Ishiko::TestFramework::TestSequence& testSequen
 	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
 		FilesTeardownActionCreationTest1, *filesTeardownTestSequence);
 
-	new Ishiko::TestFramework::HeapAllocationErrorsTest("run test 1",
-		FilesTeardownActionRunTest1, *filesTeardownTestSequence);
+	new Ishiko::TestFramework::HeapAllocationErrorsTest("teardown() test 1",
+		FilesTeardownActionTeardownTest1, *filesTeardownTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionCreationTest1()
@@ -41,9 +41,9 @@ Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionCreationTest1()
 	return Ishiko::TestFramework::TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionRunTest1Helper(Ishiko::TestFramework::Test& test)
+Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionTeardownTest1Helper(Ishiko::TestFramework::Test& test)
 {
-	const char* path = "../../TestOutput/TestTeardownActionsTests/FilesTeardownActionRunTest1";
+	const char* path = "../../TestOutput/TestTeardownActionsTests/FilesTeardownActionTeardownTest1";
 	std::shared_ptr<Ishiko::TestFramework::FilesTeardownAction> action =
 		std::make_shared<Ishiko::TestFramework::FilesTeardownAction>();
 	action->add(path);
@@ -62,12 +62,12 @@ Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionRunTest1Helper(Is
 	}
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionRunTest1()
+Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionTeardownTest1()
 {
-	const char* path = "../../TestOutput/TestTeardownActionsTests/FilesTeardownActionRunTest1";
+	const char* path = "../../TestOutput/TestTeardownActionsTests/FilesTeardownActionTeardownTest1";
 
 	Ishiko::TestFramework::FunctionBasedTest test(Ishiko::TestFramework::TestNumber(),
-		"FilesTeardownActionRunTest1", FilesTeardownActionRunTest1Helper);
+		"FilesTeardownActionTeardownTest1", FilesTeardownActionTeardownTest1Helper);
 	test.run();
 
 	if (!boost::filesystem::exists(path) && test.passed())

@@ -31,8 +31,8 @@ void AddDirectoriesTeardownActionTests(Ishiko::TestFramework::TestSequence& test
 	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
 		DirectoriesTeardownActionCreationTest1, *directoriesTeardownTestSequence);
 
-	new Ishiko::TestFramework::HeapAllocationErrorsTest("run test 1",
-		DirectoriesTeardownActionRunTest1, *directoriesTeardownTestSequence);
+	new Ishiko::TestFramework::HeapAllocationErrorsTest("teardown() test 1",
+		DirectoriesTeardownActionTeardownTest1, *directoriesTeardownTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionCreationTest1()
@@ -41,9 +41,9 @@ Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionCreationTes
 	return Ishiko::TestFramework::TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionRunTest1Helper(Ishiko::TestFramework::Test& test)
+Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionTeardownTest1Helper(Ishiko::TestFramework::Test& test)
 {
-	const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionRunTest1";
+	const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
 	std::shared_ptr<Ishiko::TestFramework::DirectoriesTeardownAction> action =
 		std::make_shared<Ishiko::TestFramework::DirectoriesTeardownAction>();
 	action->add(path);
@@ -59,12 +59,12 @@ Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionRunTest1Hel
 	}
 }
 
-Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionRunTest1()
+Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionTeardownTest1()
 {
-	const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionRunTest1";
+	const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
 
 	Ishiko::TestFramework::FunctionBasedTest test(Ishiko::TestFramework::TestNumber(),
-		"DirectoriesTeardownActionRunTest1", DirectoriesTeardownActionRunTest1Helper);
+		"DirectoriesTeardownActionTeardownTest1", DirectoriesTeardownActionTeardownTest1Helper);
 	test.run();
 
 	if (!boost::filesystem::exists(path) && test.passed())

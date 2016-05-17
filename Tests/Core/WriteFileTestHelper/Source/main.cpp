@@ -24,9 +24,20 @@
 
 int main(int argc, char* argv[])
 {
-    std::ofstream output("HelloWorld.txt", std::ios::binary);
-    output << "Hello World!";
-    output.close();
+    if (argc <= 1)
+    {
+        std::ofstream output("HelloWorld.txt", std::ios::binary);
+        output << "Hello World!";
+        output.close();
+    }
+    else
+    {
+        std::ofstream output(argv[1], std::ios::binary);
+        output << "Hello World!";
+        output.close();
+    }
+
+    _sleep(2000);
 
     return 0;
 }
