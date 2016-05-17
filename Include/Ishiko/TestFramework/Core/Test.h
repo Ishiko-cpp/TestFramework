@@ -64,6 +64,7 @@ public:
     virtual void addTeardownAction(TestTeardownAction::shared_ptr action);
 
 protected:
+    virtual void setup();
 	virtual void teardown();
 	virtual TestResult::EOutcome doRun(TestObserver::ptr& observer) = 0;
 	virtual void notify(TestObserver::EEventType type,

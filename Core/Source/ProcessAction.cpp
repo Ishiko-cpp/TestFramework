@@ -21,18 +21,52 @@
 */
 
 #include "ProcessAction.h"
+#include "TestException.h"
 
 namespace Ishiko
 {
 namespace TestFramework
 {
 
-ProcessAction::ProcessAction()
+ProcessAction::ProcessAction(const std::string& commandLine)
+    : m_commandLine(commandLine), m_processHandle(INVALID_HANDLE_VALUE)
 {
 }
 
 ProcessAction::~ProcessAction()
 {
+    if (m_processHandle != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(m_processHandle);
+    }
+}
+
+void ProcessAction::setup()
+{
+    STARTUPINFOA startupInfo;
+    ZeroMemory(&startupInfo, sizeof(startupInfo));
+    startupInfo.cb = sizeof(startupInfo);
+
+    PROCESS_INFORMATION processInfo;
+    ZeroMemory(&processInfo, sizeof(processInfo));
+
+    if (!CreateProcessA(NULL, const_cast<char*>(m_commandLine.c_str()),
+        NULL, NULL, FALSE, 0, NULL, NULL, &startupInfo, &processInfo))
+    {
+        throw TestException("ProcessAction::setup failed to execute: " + m_commandLine);
+    }
+
+    m_processHandle = processInfo.hProcess;
+
+    CloseHandle(processInfo.hThread);
+}
+
+void ProcessAction::teardown()
+{
+    WaitForSingleObject(m_processHandle, INFINITE);
+
+    CloseHandle(m_processHandle);
+    m_processHandle = INVALID_HANDLE_VALUE;
 }
 
 }

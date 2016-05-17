@@ -43,7 +43,7 @@ public:
 	virtual ~TestTeardownAction();
 
     /// This method is called to perform the teardown action.
-	virtual void run();
+	virtual void teardown();
 };
 
 }

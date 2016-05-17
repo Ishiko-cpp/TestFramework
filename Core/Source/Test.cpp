@@ -81,6 +81,8 @@ void Test::run(TestObserver::ptr& observer)
 {
 	notify(TestObserver::eTestStart, observer);
 
+    setup();
+
 	TestResult::EOutcome outcome = TestResult::eFailed;
 	try
 	{
@@ -108,11 +110,19 @@ void Test::addTeardownAction(TestTeardownAction::shared_ptr action)
 	m_teardownActions.push_back(action);
 }
 
+void Test::setup()
+{
+    for (size_t i = 0; i < m_setupActions.size(); ++i)
+    {
+        m_setupActions[i]->setup();
+    }
+}
+
 void Test::teardown()
 {
 	for (size_t i = 0; i < m_teardownActions.size(); ++i)
 	{
-		m_teardownActions[i]->run();
+		m_teardownActions[i]->teardown();
 	}
 }
 

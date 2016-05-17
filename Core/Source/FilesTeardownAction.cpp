@@ -36,7 +36,7 @@ FilesTeardownAction::~FilesTeardownAction()
 {
 }
 
-void FilesTeardownAction::run()
+void FilesTeardownAction::teardown()
 {
 	for (size_t i = 0; i < d_files.size(); ++i)
 	{

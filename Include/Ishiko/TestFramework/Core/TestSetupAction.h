@@ -43,7 +43,7 @@ public:
 	virtual ~TestSetupAction();
 
     /// This method is called to perform the setup action.
-	virtual void run();
+	virtual void setup();
 };
 
 }

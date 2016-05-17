@@ -35,7 +35,7 @@ TestTeardownAction::~TestTeardownAction()
 {
 }
 
-void TestTeardownAction::run()
+void TestTeardownAction::teardown()
 {
 	// Default implementation does nothing
 }

@@ -25,6 +25,8 @@
 
 #include "TestSetupAction.h"
 #include "TestTeardownAction.h"
+#include <windows.h>
+#include <string>
 
 namespace Ishiko
 {
@@ -34,8 +36,15 @@ namespace TestFramework
 class ProcessAction : public TestSetupAction, public TestTeardownAction
 {
 public:
-    ProcessAction();
+    ProcessAction(const std::string& commandLine);
     ~ProcessAction() override;
+
+    void setup() override;
+    void teardown() override;
+
+private:
+    std::string m_commandLine;
+    HANDLE m_processHandle;
 };
 
 }

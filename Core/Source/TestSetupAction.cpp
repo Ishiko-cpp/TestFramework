@@ -35,7 +35,7 @@ TestSetupAction::~TestSetupAction()
 {
 }
 
-void TestSetupAction::run()
+void TestSetupAction::setup()
 {
 	// Default implementation does nothing
 }
