@@ -30,6 +30,7 @@
 #include "TestHarness.h"
 #include "DirectoriesTeardownAction.h"
 #include "FilesTeardownAction.h"
+#include "ProcessAction.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "IshikoTestFrameworkCore-d.lib")

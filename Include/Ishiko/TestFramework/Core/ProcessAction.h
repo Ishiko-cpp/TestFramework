@@ -36,6 +36,8 @@ namespace TestFramework
 class ProcessAction : public TestSetupAction, public TestTeardownAction
 {
 public:
+    typedef std::shared_ptr<ProcessAction> shared_ptr;
+
     enum EMode
     {
         eWaitForExit,
