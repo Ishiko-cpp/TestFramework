@@ -6,3 +6,7 @@
 Debug/
 Release/
 Lib/
+Documentation/Doxygen/html
+Documentation/Doxygen/latex
+Tests/Core/TestData/Binaries
+Tests/Core/TestOutput
