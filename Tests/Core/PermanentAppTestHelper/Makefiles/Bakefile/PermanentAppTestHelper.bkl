@@ -1,0 +1,17 @@
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/PermanentAppTestHelper.sln;
+vs2013.solutionfile = ../VC12/PermanentAppTestHelper.sln;
+
+
+program PermanentAppTestHelper
+{
+    archs = x86 x86_64;
+
+    outputdir = ../../../TestData/Binaries;
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
