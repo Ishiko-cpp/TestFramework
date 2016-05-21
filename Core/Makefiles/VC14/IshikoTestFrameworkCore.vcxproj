@@ -173,13 +173,13 @@
     <ClCompile Include="..\..\Source\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\TestFrameworkCore.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FunctionBasedTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ProcessAction.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestFrameworkCore.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\Test.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestConfiguration.h" />

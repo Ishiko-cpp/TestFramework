@@ -22,13 +22,14 @@ library IshikoTestFrameworkCore : Boost, IshikoEnvironmentVariables
 
     headers
     {
+        ../../../Include/Ishiko/TestFramework/TestFrameworkCore.h
+
         ../../../Include/Ishiko/TestFramework/Core/DirectoriesTeardownAction.h
         ../../../Include/Ishiko/TestFramework/Core/FileComparisonTest.h
         ../../../Include/Ishiko/TestFramework/Core/FilesTeardownAction.h
         ../../../Include/Ishiko/TestFramework/Core/FunctionBasedTest.h
         ../../../Include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.h
         ../../../Include/Ishiko/TestFramework/Core/ProcessAction.h
-        ../../../Include/Ishiko/TestFramework/Core/TestFrameworkCore.h
         ../../../Include/Ishiko/TestFramework/Core/Test.h
         ../../../Include/Ishiko/TestFramework/Core/TestApplicationReturnCodes.h
         ../../../Include/Ishiko/TestFramework/Core/TestConfiguration.h

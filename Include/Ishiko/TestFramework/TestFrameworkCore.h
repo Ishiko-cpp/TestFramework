@@ -20,17 +20,17 @@
 	IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTFRAMEWORKCORE_H_
-#define _ISHIKO_TESTFRAMEWORK_CORE_TESTFRAMEWORKCORE_H_
+#ifndef _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
+#define _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
 
-#include "TestException.h"
-#include "FunctionBasedTest.h"
-#include "HeapAllocationErrorsTest.h"
-#include "FileComparisonTest.h"
-#include "TestHarness.h"
-#include "DirectoriesTeardownAction.h"
-#include "FilesTeardownAction.h"
-#include "ProcessAction.h"
+#include "Core/TestException.h"
+#include "Core/FunctionBasedTest.h"
+#include "Core/HeapAllocationErrorsTest.h"
+#include "Core/FileComparisonTest.h"
+#include "Core/TestHarness.h"
+#include "Core/DirectoriesTeardownAction.h"
+#include "Core/FilesTeardownAction.h"
+#include "Core/ProcessAction.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "IshikoTestFrameworkCore-d.lib")
