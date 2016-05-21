@@ -1,7 +1,6 @@
 ishikopath = envvar("ISHIKO");
-import $(ishikopath)/Include/Ishiko/Boost/Boost.bkl;
-ishikoenvironmentvariablespath = envvar("ISHIKO_ENVIRONMENTVARIABLES");
-import $(ishikoenvironmentvariablespath)/Include/Ishiko/EnvironmentVariables.bkl;
+import $(ishikopath)/Ishiko/Include/Ishiko/Boost/Boost.bkl;
+import $(ishikopath)/EnvironmentVariables/Include/Ishiko/EnvironmentVariables.bkl;
 
 toolsets = vs2015 vs2013;
 
