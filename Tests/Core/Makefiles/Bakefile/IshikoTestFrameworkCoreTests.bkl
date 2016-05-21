@@ -1,5 +1,5 @@
-ishikotestframeworkpath = envvar("ISHIKO_TESTFRAMEWORK");
-import $(ishikotestframeworkpath)/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 
 toolsets = vs2015 vs2013;
 
