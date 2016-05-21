@@ -23,7 +23,7 @@
 #ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTTEARDOWNACTIONSTESTS_TESTTEARDOWNACTIONSTESTS_H_
 #define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTTEARDOWNACTIONSTESTS_TESTTEARDOWNACTIONSTESTS_H_
 
-#include "Ishiko/TestFramework/Core/TestFrameworkCore.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 void AddTestTeardownActionsTests(Ishiko::TestFramework::TestHarness& theTestHarness);
 

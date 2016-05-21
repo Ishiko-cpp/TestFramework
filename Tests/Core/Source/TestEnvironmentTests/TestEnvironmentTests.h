@@ -23,7 +23,7 @@
 #ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
 #define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
 
-#include "Ishiko/TestFramework/Core/TestFrameworkCore.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 void AddTestEnvironmentTests(Ishiko::TestFramework::TestHarness& theTestHarness);
 

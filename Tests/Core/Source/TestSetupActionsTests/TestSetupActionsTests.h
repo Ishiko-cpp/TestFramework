@@ -23,7 +23,7 @@
 #ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSETUPACTIONSTESTS_TESTSETUPACTIONSTESTS_H_
 #define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSETUPACTIONSTESTS_TESTSETUPACTIONSTESTS_H_
 
-#include "Ishiko/TestFramework/Core/TestFrameworkCore.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 void AddTestSetupActionsTests(Ishiko::TestFramework::TestHarness& theTestHarness);
 

@@ -29,7 +29,7 @@
 #include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
-#include "Ishiko/TestFramework/Core/TestFrameworkCore.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
 int main(int argc, char* argv[])

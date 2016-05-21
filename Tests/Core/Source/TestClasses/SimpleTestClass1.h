@@ -23,7 +23,7 @@
 #ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTCLASSES_SIMPLETESTCLASS1_H_
 #define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTCLASSES_SIMPLETESTCLASS1_H_
 
-#include "Ishiko/TestFramework/Core/TestFrameworkCore.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 class SimpleTestClass1 : public Ishiko::TestFramework::Test
 {
