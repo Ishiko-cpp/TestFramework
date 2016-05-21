@@ -1,12 +1,11 @@
 ishikopath = envvar("ISHIKO");
-import $(ishikopath)/Include/Ishiko/Boost/Boost.bkl;
-ishikoenvironmentvariablespath = envvar("ISHIKO_ENVIRONMENTVARIABLES");
-import $(ishikoenvironmentvariablespath)/Include/Ishiko/EnvironmentVariables.bkl;
+import $(ishikopath)/Ishiko/Include/Ishiko/Boost/Boost.bkl;
+import $(ishikopath)/EnvironmentVariables/Include/Ishiko/EnvironmentVariables.bkl;
 
 setting ISHIKO_TESTFRAMEWORK_ROOT
 {
     help = "Path to the Ishiko TestFramework installation";
-    default = '$(ISHIKO_TESTFRAMEWORK)';
+    default = '$(ISHIKO)/TestFramework';
 }
 
 template IshikoTestFrameworkCore : Boost, IshikoEnvironmentVariables
