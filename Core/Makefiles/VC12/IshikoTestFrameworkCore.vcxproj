@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ConsoleApplicationTest.cpp" />
     <ClCompile Include="..\..\Source\DirectoriesTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\FileComparisonTest.cpp" />
     <ClCompile Include="..\..\Source\FilesTeardownAction.cpp" />
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\TestFrameworkCore.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ConsoleApplicationTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
