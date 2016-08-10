@@ -17,6 +17,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -59,6 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.cpp">

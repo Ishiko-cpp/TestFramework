@@ -27,6 +27,7 @@
 #include "Core/FunctionBasedTest.h"
 #include "Core/HeapAllocationErrorsTest.h"
 #include "Core/FileComparisonTest.h"
+#include "Core/ConsoleApplicationTest.h"
 #include "Core/TestHarness.h"
 #include "Core/DirectoriesTeardownAction.h"
 #include "Core/FilesTeardownAction.h"

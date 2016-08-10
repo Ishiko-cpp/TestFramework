@@ -20,27 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "ConsoleApplicationTest.h"
+#ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_CONSOLEAPPLICATIONTESTTESTS_CONSOLEAPPLICATIONTESTTESTS_H_
+#define _ISHIKO_TEST_TESTFRAMEWORK_CORE_CONSOLEAPPLICATIONTESTTESTS_CONSOLEAPPLICATIONTESTTESTS_H_
 
-namespace Ishiko
-{
-namespace TestFramework
-{
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number,
-                                               const std::string& name)
-    : Test(number, name)
-{
-}
+using namespace Ishiko::TestFramework;
 
-ConsoleApplicationTest::~ConsoleApplicationTest()
-{
-}
+void AddConsoleApplicationTestTests(TestHarness& theTestHarness);
 
-TestResult::EOutcome ConsoleApplicationTest::doRun(TestObserver::ptr& observer)
-{
-    return TestResult::eFailed;
-}
+TestResult::EOutcome ConsoleApplicationTestCreationTest1();
 
-}
-}
+#endif

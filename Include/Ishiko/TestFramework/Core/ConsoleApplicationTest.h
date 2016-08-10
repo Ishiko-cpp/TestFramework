@@ -20,7 +20,27 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_CORE_FILECOMPARISONTEST_H_
-#define _ISHIKO_TESTFRAMEWORK_CORE_FILECOMPARISONTEST_H_
+#ifndef _ISHIKO_TESTFRAMEWORK_CORE_CONSOLEAPPLICATIONTEST_H_
+#define _ISHIKO_TESTFRAMEWORK_CORE_CONSOLEAPPLICATIONTEST_H_
+
+#include "Test.h"
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+class ConsoleApplicationTest : public Test
+{
+public:
+    ConsoleApplicationTest(const TestNumber& number, const std::string& name);
+    virtual ~ConsoleApplicationTest();
+
+protected:
+    virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
+};
+
+}
+}
 
 #endif

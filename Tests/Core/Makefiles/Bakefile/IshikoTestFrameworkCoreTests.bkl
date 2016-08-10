@@ -13,6 +13,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     headers
     {
+        ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
         ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.h
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
@@ -31,6 +32,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     sources
     {
         ../../Source/Main.cpp
+        ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp
         ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.cpp
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp

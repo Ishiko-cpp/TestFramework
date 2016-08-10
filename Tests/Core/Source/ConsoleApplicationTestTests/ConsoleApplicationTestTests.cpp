@@ -20,27 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#include "ConsoleApplicationTest.h"
+#include "ConsoleApplicationTestTests.h"
 
-namespace Ishiko
+void AddConsoleApplicationTestTests(TestHarness& theTestHarness)
 {
-namespace TestFramework
-{
+    TestSequence& consoleApplicationTestTestSequence =
+        theTestHarness.appendTestSequence("ConsoleApplicationTest tests");
 
-ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number,
-                                               const std::string& name)
-    : Test(number, name)
-{
+    new HeapAllocationErrorsTest("Creation test 1",
+        ConsoleApplicationTestCreationTest1, consoleApplicationTestTestSequence);
 }
 
-ConsoleApplicationTest::~ConsoleApplicationTest()
+TestResult::EOutcome ConsoleApplicationTestCreationTest1()
 {
-}
-
-TestResult::EOutcome ConsoleApplicationTest::doRun(TestObserver::ptr& observer)
-{
-    return TestResult::eFailed;
-}
-
-}
+    ConsoleApplicationTest test(TestNumber(), "ConsoleApplicationTestCreationTest1");
+    return Ishiko::TestFramework::TestResult::ePassed;
 }

@@ -26,6 +26,7 @@
 #include "TestSequenceTests/TestSequenceTests.h"
 #include "FunctionBasedTestTests/FunctionBasedTestTests.h"
 #include "FileComparisonTestTests/FileComparisonTestTests.h"
+#include "ConsoleApplicationTestTests/ConsoleApplicationTestTests.h"
 #include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
@@ -45,7 +46,8 @@ int main(int argc, char* argv[])
 	AddTestTests(theTestHarness);
 	AddTestSequenceTests(theTestHarness);
 	AddFunctionBasedTestTests(theTestHarness);
-	AddFileComparisonTestTests(theTestHarness);
+    AddFileComparisonTestTests(theTestHarness);
+	AddConsoleApplicationTestTests(theTestHarness);
 	AddHeapAllocationErrorsTestTests(theTestHarness);
     AddTestSetupActionsTests(theTestHarness);
 	AddTestTeardownActionsTests(theTestHarness);
