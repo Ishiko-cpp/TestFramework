@@ -33,11 +33,15 @@ namespace TestFramework
 class ConsoleApplicationTest : public Test
 {
 public:
-    ConsoleApplicationTest(const TestNumber& number, const std::string& name);
+    ConsoleApplicationTest(const TestNumber& number, const std::string& name,
+        const std::string& commandLine, int expectedExitCode);
     virtual ~ConsoleApplicationTest();
 
 protected:
     virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
+
+private:
+    std::string m_commandLine;
 };
 
 }

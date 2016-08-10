@@ -29,6 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddConsoleApplicationTestTests(TestHarness& theTestHarness);
 
-TestResult::EOutcome ConsoleApplicationTestCreationTest1();
+TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test);
 
 #endif

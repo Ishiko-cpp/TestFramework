@@ -28,8 +28,10 @@ namespace TestFramework
 {
 
 ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number,
-                                               const std::string& name)
-    : Test(number, name)
+                                               const std::string& name,
+                                               const std::string& commandLine,
+                                               int expectedExitCode)
+    : Test(number, name), m_commandLine(commandLine)
 {
 }
 

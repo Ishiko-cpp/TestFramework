@@ -31,8 +31,12 @@ void AddConsoleApplicationTestTests(TestHarness& theTestHarness)
         ConsoleApplicationTestCreationTest1, consoleApplicationTestTestSequence);
 }
 
-TestResult::EOutcome ConsoleApplicationTestCreationTest1()
+TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test)
 {
-    ConsoleApplicationTest test(TestNumber(), "ConsoleApplicationTestCreationTest1");
+    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/WriteFileTestHelper.exe");
+
+    ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest1",
+        executablePath.string().c_str(), 0);
+
     return Ishiko::TestFramework::TestResult::ePassed;
 }
