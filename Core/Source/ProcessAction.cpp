@@ -22,6 +22,7 @@
 
 #include "ProcessAction.h"
 #include "TestException.h"
+#include "Ishiko/Process/ProcessCreator.h"
 
 namespace Ishiko
 {
@@ -30,50 +31,31 @@ namespace TestFramework
 
 ProcessAction::ProcessAction(const std::string& commandLine, 
                              EMode mode)
-    : m_commandLine(commandLine), m_processHandle(INVALID_HANDLE_VALUE),
-    m_mode(mode)
+    : m_commandLine(commandLine), m_mode(mode)
 {
 }
 
 ProcessAction::~ProcessAction()
 {
-    if (m_processHandle != INVALID_HANDLE_VALUE)
-    {
-        CloseHandle(m_processHandle);
-    }
 }
 
 void ProcessAction::setup()
 {
-    STARTUPINFOA startupInfo;
-    ZeroMemory(&startupInfo, sizeof(startupInfo));
-    startupInfo.cb = sizeof(startupInfo);
-
-    PROCESS_INFORMATION processInfo;
-    ZeroMemory(&processInfo, sizeof(processInfo));
-
-    if (!CreateProcessA(NULL, const_cast<char*>(m_commandLine.c_str()),
-        NULL, NULL, FALSE, 0, NULL, NULL, &startupInfo, &processInfo))
+    int err = Process::ProcessCreator::StartProcess(m_commandLine, m_processHandle);
+    if (err != 0)
     {
         throw TestException("ProcessAction::setup failed to execute: " + m_commandLine);
     }
-
-    m_processHandle = processInfo.hProcess;
-
-    CloseHandle(processInfo.hThread);
 }
 
 void ProcessAction::teardown()
 {
     if (m_mode == eTerminate)
     {
-        TerminateProcess(m_processHandle, 0);
+        m_processHandle.kill(0);
     }
 
-    WaitForSingleObject(m_processHandle, INFINITE);
-
-    CloseHandle(m_processHandle);
-    m_processHandle = INVALID_HANDLE_VALUE;
+    m_processHandle.waitForExit();
 }
 
 }

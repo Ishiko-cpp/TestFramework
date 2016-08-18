@@ -22,7 +22,7 @@
 
 #include "TestEnvironment.h"
 #include "TestException.h"
-#include "Ishiko/EnvironmentVariables.h"
+#include "Ishiko/Process/Environment.h"
 
 namespace Ishiko
 {
@@ -64,8 +64,8 @@ const boost::filesystem::path& TestEnvironment::getTestDataDirectory(const std::
 void TestEnvironment::setTestDataDirectory(const std::string& id, 
 	                                       const std::string& path)
 {
-	std::string expandedPath = EnvironmentVariables::Environment::expandVariablesInString(
-		path, EnvironmentVariables::Environment::eDollarAndParentheses);
+	std::string expandedPath = Process::Environment::expandVariablesInString(
+		path, Process::Environment::eDollarAndParentheses);
 
 	m_testDataDirectories[id] = expandedPath;
 }
@@ -82,8 +82,8 @@ const boost::filesystem::path& TestEnvironment::getReferenceDataDirectory() cons
 
 void TestEnvironment::setReferenceDataDirectory(const std::string& path)
 {
-	std::string expandedPath = EnvironmentVariables::Environment::expandVariablesInString(
-		path, EnvironmentVariables::Environment::eDollarAndParentheses);
+	std::string expandedPath = Process::Environment::expandVariablesInString(
+		path, Process::Environment::eDollarAndParentheses);
 
 	m_referenceDataDirectory = expandedPath;
 }
@@ -95,8 +95,8 @@ const boost::filesystem::path& TestEnvironment::getTestOutputDirectory() const
 
 void TestEnvironment::setTestOutputDirectory(const std::string& path)
 {
-	std::string expandedPath = EnvironmentVariables::Environment::expandVariablesInString(
-		path, EnvironmentVariables::Environment::eDollarAndParentheses);
+	std::string expandedPath = Process::Environment::expandVariablesInString(
+		path, Process::Environment::eDollarAndParentheses);
 
 	m_testOutputDirectory = expandedPath;
 }

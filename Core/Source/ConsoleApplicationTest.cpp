@@ -21,6 +21,7 @@
 */
 
 #include "ConsoleApplicationTest.h"
+#include "Ishiko/Process/ProcessCreator.h"
 
 namespace Ishiko
 {
@@ -31,7 +32,8 @@ ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number,
                                                const std::string& name,
                                                const std::string& commandLine,
                                                int expectedExitCode)
-    : Test(number, name), m_commandLine(commandLine)
+    : Test(number, name), m_commandLine(commandLine), m_checkExitCode(true),
+    m_expectedExitCode(expectedExitCode)
 {
 }
 
@@ -41,7 +43,23 @@ ConsoleApplicationTest::~ConsoleApplicationTest()
 
 TestResult::EOutcome ConsoleApplicationTest::doRun(TestObserver::ptr& observer)
 {
-    return TestResult::eFailed;
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    Ishiko::Process::ProcessCreator processCreator(m_commandLine);
+    Ishiko::Process::ProcessHandle processHandle;
+    if (processCreator.start(processHandle) == 0)
+    {
+        processHandle.waitForExit();
+        if (m_checkExitCode)
+        {
+            if (processHandle.exitCode() == m_expectedExitCode)
+            {
+                result = TestResult::ePassed;
+            }
+        }
+    }
+    
+    return result;
 }
 
 }
