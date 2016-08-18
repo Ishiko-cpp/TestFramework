@@ -21,7 +21,7 @@
 */
 
 #include "TestEnvironmentTests.h"
-#include "Ishiko/EnvironmentVariables.h"
+#include "Ishiko/Process/Environment.h"
 
 void AddTestEnvironmentTests(Ishiko::TestFramework::TestHarness& theTestHarness)
 {
@@ -76,7 +76,7 @@ Ishiko::TestFramework::TestResult::EOutcome TestEnvironmentGetTestDataDirectoryT
 
 Ishiko::TestFramework::TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest3()
 {
-	Ishiko::EnvironmentVariables::Environment::set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
+	Ishiko::Process::Environment::set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
 
 	Ishiko::TestFramework::TestEnvironment environment;
 	environment.setTestDataDirectory("id1", "$(TestEnvironmentGetTestDataDirectoryTest3)/path1");

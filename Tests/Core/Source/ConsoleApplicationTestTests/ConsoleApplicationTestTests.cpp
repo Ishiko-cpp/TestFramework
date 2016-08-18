@@ -29,6 +29,15 @@ void AddConsoleApplicationTestTests(TestHarness& theTestHarness)
 
     new HeapAllocationErrorsTest("Creation test 1",
         ConsoleApplicationTestCreationTest1, consoleApplicationTestTestSequence);
+    
+    new HeapAllocationErrorsTest("run success test 1",
+        ConsoleApplicationTestRunSuccessTest1, consoleApplicationTestTestSequence);
+    new HeapAllocationErrorsTest("run failure test 1",
+        ConsoleApplicationTestRunFailureTest1, consoleApplicationTestTestSequence);
+    new HeapAllocationErrorsTest("run success test 2",
+        ConsoleApplicationTestRunSuccessTest2, consoleApplicationTestTestSequence);
+    new HeapAllocationErrorsTest("run failure test 2",
+        ConsoleApplicationTestRunFailureTest2, consoleApplicationTestTestSequence);
 }
 
 TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test)
@@ -39,4 +48,50 @@ TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test)
         executablePath.string().c_str(), 0);
 
     return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Test& test)
+{
+    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExiCodeTestHelper.exe");
+
+    ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest1",
+        executablePath.string().c_str(), 0);
+    applicationTest.run();
+
+    if (applicationTest.result().passed())
+    {
+        return Ishiko::TestFramework::TestResult::ePassed;
+    }
+    else
+    {
+        return Ishiko::TestFramework::TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test)
+{
+    return Ishiko::TestFramework::TestResult::eFailed;
+}
+
+TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Test& test)
+{
+    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
+
+    ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest2",
+        executablePath.string().c_str(), 0);
+    applicationTest.run();
+
+    if (applicationTest.result().passed())
+    {
+        return Ishiko::TestFramework::TestResult::ePassed;
+    }
+    else
+    {
+        return Ishiko::TestFramework::TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Test& test)
+{
+    return Ishiko::TestFramework::TestResult::eFailed;
 }
