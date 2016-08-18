@@ -25,8 +25,7 @@
 
 #include "TestSetupAction.h"
 #include "TestTeardownAction.h"
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include "Ishiko/Process/ProcessHandle.h"
 #include <string>
 
 namespace Ishiko
@@ -54,7 +53,7 @@ public:
 private:
     std::string m_commandLine;
     EMode m_mode;
-    HANDLE m_processHandle;
+    Process::ProcessHandle m_processHandle;
 };
 
 }

@@ -42,6 +42,8 @@ protected:
 
 private:
     std::string m_commandLine;
+    bool m_checkExitCode;
+    int m_expectedExitCode;
 };
 
 }
