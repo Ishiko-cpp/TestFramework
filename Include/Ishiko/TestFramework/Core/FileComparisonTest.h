@@ -34,6 +34,8 @@ namespace TestFramework
 class FileComparisonTest : public Test
 {
 public:
+    FileComparisonTest(const TestNumber& number,
+        const std::string& name);
 	FileComparisonTest(const TestNumber& number,
 		const std::string& name,
 		TestResult::EOutcome (*runFct)(FileComparisonTest& test));
@@ -44,6 +46,9 @@ public:
 
 	void setOutputFilePath(const boost::filesystem::path& path);
 	void setReferenceFilePath(const boost::filesystem::path& path);
+
+    const boost::filesystem::path& getOutputFilePath() const;
+    const boost::filesystem::path& getReferenceFilePath() const;
 
 protected:
 	virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);

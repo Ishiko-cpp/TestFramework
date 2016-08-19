@@ -20,7 +20,16 @@
     IN THE SOFTWARE.
 */
 
+#include <cstdlib>
+
 int main(int argc, char* argv[])
 {
-    return 0;
+    int exitCode = 0;
+
+    if (argc > 1)
+    {
+        exitCode = atoi(argv[1]);
+    }
+
+    return exitCode;
 }

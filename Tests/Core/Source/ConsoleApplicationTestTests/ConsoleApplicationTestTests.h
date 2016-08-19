@@ -31,8 +31,9 @@ void AddConsoleApplicationTestTests(TestHarness& theTestHarness);
 
 TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test);
 TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Test& test);
-TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test);
 TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Test& test);
+TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test);
+TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Test& test);
 TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Test& test);
 
 #endif

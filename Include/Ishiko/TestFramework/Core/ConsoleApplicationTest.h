@@ -24,6 +24,7 @@
 #define _ISHIKO_TESTFRAMEWORK_CORE_CONSOLEAPPLICATIONTEST_H_
 
 #include "Test.h"
+#include "FileComparisonTest.h"
 
 namespace Ishiko
 {
@@ -37,6 +38,9 @@ public:
         const std::string& commandLine, int expectedExitCode);
     virtual ~ConsoleApplicationTest();
 
+    void setStandardOutputFilePath(const boost::filesystem::path& path);
+    void setStandardOutputReferenceFilePath(const boost::filesystem::path& path);
+
 protected:
     virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
 
@@ -44,6 +48,7 @@ private:
     std::string m_commandLine;
     bool m_checkExitCode;
     int m_expectedExitCode;
+    FileComparisonTest m_standardOutputTest;
 };
 
 }

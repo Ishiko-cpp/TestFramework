@@ -28,6 +28,12 @@ namespace TestFramework
 {
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number,
+                                       const std::string& name)
+    : Test(number, name), m_runFct(0)
+{
+}
+
+FileComparisonTest::FileComparisonTest(const TestNumber& number,
 									   const std::string& name,
 									   TestResult::EOutcome (*runFct)(FileComparisonTest& test))
 	: Test(number, name), m_runFct(runFct)
@@ -57,6 +63,16 @@ void FileComparisonTest::setReferenceFilePath(const boost::filesystem::path& pat
 	m_referenceFilePath = path;
 }
 
+const boost::filesystem::path& FileComparisonTest::getOutputFilePath() const
+{
+    return m_outputFilePath;
+}
+
+const boost::filesystem::path& FileComparisonTest::getReferenceFilePath() const
+{
+    return m_referenceFilePath;
+}
+
 TestResult::EOutcome FileComparisonTest::doRun(TestObserver::ptr& observer)
 {
 	TestResult::EOutcome result = TestResult::eFailed;
@@ -65,6 +81,10 @@ TestResult::EOutcome FileComparisonTest::doRun(TestObserver::ptr& observer)
 	{
 		result = m_runFct(*this);
 	}
+    else
+    {
+        result = TestResult::ePassed;
+    }
 
 	if (result == TestResult::ePassed)
 	{
