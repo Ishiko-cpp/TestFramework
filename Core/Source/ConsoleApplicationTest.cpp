@@ -41,7 +41,8 @@ ConsoleApplicationTest::ConsoleApplicationTest(const std::string& name,
                                                const std::string& commandLine,
                                                int expectedExitCode,
                                                TestSequence& parentSequence)
-    : Test(TestNumber(), name, parentSequence.environment()), m_checkExitCode(true),
+    : Test(TestNumber(), name, parentSequence.environment()), 
+    m_commandLine(commandLine), m_checkExitCode(true),
     m_expectedExitCode(expectedExitCode), m_standardOutputTest(TestNumber(), "Standard Output")
 {
     std::shared_ptr<Test> self(this);
