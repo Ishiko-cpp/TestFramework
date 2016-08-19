@@ -36,6 +36,9 @@ class ConsoleApplicationTest : public Test
 public:
     ConsoleApplicationTest(const TestNumber& number, const std::string& name,
         const std::string& commandLine, int expectedExitCode);
+    ConsoleApplicationTest(const std::string& name,
+        const std::string& commandLine, int expectedExitCode,
+        TestSequence& parentSequence);
     virtual ~ConsoleApplicationTest();
 
     void setStandardOutputFilePath(const boost::filesystem::path& path);
