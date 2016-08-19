@@ -24,6 +24,7 @@
 #define _ISHIKO_TESTFRAMEWORK_CORE_FUNCTIONBASEDTEST_H_
 
 #include "Test.h"
+#include "TestSequence.h"
 #include <string>
 
 namespace Ishiko
@@ -48,6 +49,9 @@ public:
 		const std::string& name,
 		TestResult::EOutcome (*runFct)(Test& test),
 		const TestEnvironment& environment);
+    FunctionBasedTest(const std::string& name,
+        TestResult::EOutcome(*runFct)(Test& test),
+        TestSequence& parentSequence);
 	virtual ~FunctionBasedTest() throw();
 
 protected:

@@ -57,6 +57,15 @@ FunctionBasedTest::FunctionBasedTest(const TestNumber& number,
 {
 }
 
+FunctionBasedTest::FunctionBasedTest(const std::string& name,
+                                     TestResult::EOutcome(*runFct)(Test& test),
+                                     TestSequence& parentSequence)
+    : Test(TestNumber(), name, parentSequence.environment()), m_runFctTest(runFct)
+{
+    std::shared_ptr<Test> self(this);
+    parentSequence.append(self);
+}
+
 FunctionBasedTest::~FunctionBasedTest() throw()
 {
 }
