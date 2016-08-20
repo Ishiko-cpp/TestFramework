@@ -1,5 +1,5 @@
 ishikopath = envvar("ISHIKO");
-import $(ishikopath)/Ishiko/Include/Ishiko/Boost/Boost.bkl;
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
 
 setting ISHIKO_TESTFRAMEWORK_ROOT
