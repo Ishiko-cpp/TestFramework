@@ -44,11 +44,11 @@ public:
 		TestSequence& parentSequence);
 	virtual ~FileComparisonTest();
 
-	void setOutputFilePath(const boost::filesystem::path& path);
-	void setReferenceFilePath(const boost::filesystem::path& path);
-
     const boost::filesystem::path& getOutputFilePath() const;
+	void setOutputFilePath(const boost::filesystem::path& path);
+
     const boost::filesystem::path& getReferenceFilePath() const;
+	void setReferenceFilePath(const boost::filesystem::path& path);
 
 protected:
 	virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
