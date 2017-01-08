@@ -15,6 +15,7 @@ template IshikoTestFrameworkCore : Boost, IshikoProcess
     if ($(toolset) == gnu)
     {
         libdirs += $(ISHIKO_TESTFRAMEWORK_ROOT)/Lib;
+        lib += IshikoTestFrameworkCore;
     }
 
     if ($(toolset) != gnu)
