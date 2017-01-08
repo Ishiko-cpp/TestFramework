@@ -24,6 +24,7 @@
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTNUMBER_H_
 
 #include <vector>
+#include <stdlib.h>
 
 namespace Ishiko
 {
