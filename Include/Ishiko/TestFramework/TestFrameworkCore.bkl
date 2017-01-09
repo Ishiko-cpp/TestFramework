@@ -8,14 +8,13 @@ setting ISHIKO_TESTFRAMEWORK_ROOT
     default = '$(ISHIKO)/TestFramework';
 }
 
-template IshikoTestFrameworkCore : Boost, IshikoProcess
+template IshikoTestFrameworkCore : IshikoProcess, Boost
 {
     includedirs += $(ISHIKO_TESTFRAMEWORK_ROOT)/Include;
 
     if ($(toolset) == gnu)
     {
         libdirs += $(ISHIKO_TESTFRAMEWORK_ROOT)/Lib;
-        libs += IshikoTestFrameworkCore;
     }
 
     if ($(toolset) != gnu)
