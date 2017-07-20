@@ -1,0 +1,38 @@
+toolsets = gnu vs2015 vs2013;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2015.solutionfile = ../VC14/IshikoTestFrameworkSQLiteTests.sln;
+vs2013.solutionfile = ../VC12/IshikoTestFrameworkSQLiteTests.sln;
+
+library IshikoTestFrameworkSQLiteTests
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../../Include/Ishiko/TestFramework/SQLiteTests;
+    
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        outputdir = ../../../Lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = IshikoTestFrameworkSQLiteTests-d;
+    }
+
+    headers
+    {
+        ../../../Include/Ishiko/TestFramework/SQLite/SQLiteDatabaseDumpComparisonTest.h
+    }
+
+    sources
+    {
+        ../../Source/SQLiteDatabaseDumpComparisonTest.cpp
+    }
+}
