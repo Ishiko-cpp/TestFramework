@@ -1,0 +1,18 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkSQLiteTests.bkl;
+
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/IshikoTestFrameworkSQLiteTestsTests.sln;
+vs2013.solutionfile = ../VC12/IshikoTestFrameworkSQLiteTestsTests.sln;
+
+
+program IshikoTestFrameworkSQLiteTestsTests : IshikoTestFrameworkCore, IshikoTestFrameworkSQLiteTests
+{
+    archs = x86 x86_64;
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}

@@ -1,0 +1,6 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+
+template IshikoTestFrameworkSQLiteTests : IshikoTestFrameworkCore
+{
+}
