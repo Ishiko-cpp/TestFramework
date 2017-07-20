@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2017 Xavier Leclercq
+    Copyright (c) 2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -16,27 +16,17 @@
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
     THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OROTHER DEALINGS
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
     IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
-#define _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
+#ifndef _ISHIKO_TEST_TESTFRAMEWORK_SQLITETESTS_SQLITEDATABASEDUMPCOMPARISONTESTTESTS_H_
+#define _ISHIKO_TEST_TESTFRAMEWORK_SQLITETESTS_SQLITEDATABASEDUMPCOMPARISONTESTTESTS_H_
 
-#include "Core/TestException.h"
-#include "Core/FunctionBasedTest.h"
-#include "Core/HeapAllocationErrorsTest.h"
-#include "Core/FileComparisonTest.h"
-#include "Core/ConsoleApplicationTest.h"
-#include "Core/TestHarness.h"
-#include "Core/DirectoriesTeardownAction.h"
-#include "Core/FilesTeardownAction.h"
-#include "Core/ProcessAction.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-#ifdef _DEBUG
-#pragma comment(lib, "IshikoTestFrameworkCore-d.lib")
-#else
-#pragma comment(lib, "IshikoTestFrameworkCore.lib")
-#endif
+void AddSQLiteDatabaseDumpComparisonTestTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCreationTest1();
 
 #endif

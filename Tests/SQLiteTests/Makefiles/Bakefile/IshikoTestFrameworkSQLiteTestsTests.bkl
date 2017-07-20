@@ -11,8 +11,14 @@ program IshikoTestFrameworkSQLiteTestsTests : IshikoTestFrameworkCore, IshikoTes
 {
     archs = x86 x86_64;
 
+    headers
+    {
+        ../../Source/SQLiteDatabaseDumpComparisonTestTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/SQLiteDatabaseDumpComparisonTestTests.cpp
     }
 }

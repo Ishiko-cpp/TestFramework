@@ -32,6 +32,7 @@ library IshikoTestFrameworkSQLiteTests : IshikoTestFrameworkCore
     headers
     {
         ../../../Include/Ishiko/TestFramework/SQLiteTests/SQLiteDatabaseDumpComparisonTest.h
+        ../../../Include/Ishiko/TestFramework/SQLiteTests/linkoptions.h
     }
 
     sources

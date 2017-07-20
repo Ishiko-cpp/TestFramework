@@ -21,3 +21,26 @@
 */
 
 #include "SQLiteDatabaseDumpComparisonTest.h"
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+SQLiteDatabaseDumpComparisonTest::SQLiteDatabaseDumpComparisonTest(const TestNumber& number, 
+                                                                   const std::string& name)
+    : Test(number, name)
+{
+}
+
+SQLiteDatabaseDumpComparisonTest::~SQLiteDatabaseDumpComparisonTest()
+{
+}
+
+TestResult::EOutcome SQLiteDatabaseDumpComparisonTest::doRun(TestObserver::ptr& observer)
+{
+    return TestResult::eFailed;
+}
+
+}
+}

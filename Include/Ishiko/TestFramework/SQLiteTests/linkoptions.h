@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2017 Xavier Leclercq
+    Copyright (c) 2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,23 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
-#define _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
-
-#include "Core/TestException.h"
-#include "Core/FunctionBasedTest.h"
-#include "Core/HeapAllocationErrorsTest.h"
-#include "Core/FileComparisonTest.h"
-#include "Core/ConsoleApplicationTest.h"
-#include "Core/TestHarness.h"
-#include "Core/DirectoriesTeardownAction.h"
-#include "Core/FilesTeardownAction.h"
-#include "Core/ProcessAction.h"
+#ifndef _ISHIKO_TESTFRAMEWORK_SQLITETESTS_LINKOPTIONS_H_
+#define _ISHIKO_TESTFRAMEWORK_SQLITETESTS_LINKOPTIONS_H_
 
 #ifdef _DEBUG
-#pragma comment(lib, "IshikoTestFrameworkCore-d.lib")
+#pragma comment(lib, "IshikoTestFrameworkSQLiteTests-d.lib")
 #else
-#pragma comment(lib, "IshikoTestFrameworkCore.lib")
+#pragma comment(lib, "IshikoTestFrameworkSQLiteTests.lib")
 #endif
 
 #endif

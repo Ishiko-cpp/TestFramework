@@ -32,9 +32,16 @@ namespace TestFramework
 
 class SQLiteDatabaseDumpComparisonTest : public Test
 {
+public:
+    SQLiteDatabaseDumpComparisonTest(const TestNumber& number, const std::string& name);
+    ~SQLiteDatabaseDumpComparisonTest() override;
+
+    TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
 };
 
 }
 }
+
+#include "linkoptions.h"
 
 #endif

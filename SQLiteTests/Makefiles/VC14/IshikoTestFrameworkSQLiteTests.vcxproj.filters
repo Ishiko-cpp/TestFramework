@@ -20,6 +20,9 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\SQLiteTests\SQLiteDatabaseDumpComparisonTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\SQLiteTests\linkoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\SQLiteDatabaseDumpComparisonTest.cpp">

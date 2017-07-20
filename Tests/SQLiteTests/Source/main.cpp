@@ -20,11 +20,14 @@
     IN THE SOFTWARE.
 */
 
+#include "SQLiteDatabaseDumpComparisonTestTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("IshikoTestFrameworkSQLiteTests");
+
+    AddSQLiteDatabaseDumpComparisonTestTests(theTestHarness);
 
     return theTestHarness.run();
 }

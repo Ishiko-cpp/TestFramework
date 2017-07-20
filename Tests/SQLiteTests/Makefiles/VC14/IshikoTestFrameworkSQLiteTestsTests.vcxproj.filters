@@ -17,7 +17,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SQLiteDatabaseDumpComparisonTestTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SQLiteDatabaseDumpComparisonTestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
