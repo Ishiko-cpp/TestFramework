@@ -22,6 +22,7 @@
 
 #include "SQLiteDatabaseDumpComparisonTestTests.h"
 #include "Ishiko/TestFramework/SQLiteTests/SQLiteDatabaseDumpComparisonTest.h"
+#include "Ishiko/SQLite/sqlite3.h"
 
 void AddSQLiteDatabaseDumpComparisonTestTests(Ishiko::TestFramework::TestHarness& theTestHarness)
 {
@@ -62,18 +63,22 @@ Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCrea
 
 Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest1Helper(Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest& test)
 {
+    sqlite3* db = 0;
+    sqlite3_open(test.databaseFilePath().string().c_str(), &db);
+    sqlite3_close(db);
     return Ishiko::TestFramework::TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest1()
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest1(Ishiko::TestFramework::Test& test)
 {
-    Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest test(
+    Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest dbtest(
         Ishiko::TestFramework::TestNumber(), "SQLiteDatabaseDumpComparisonTestRunSuccessTest1",
         SQLiteDatabaseDumpComparisonTestRunSuccessTest1Helper);
 
-    test.run();
+    dbtest.setDatabaseFilePath(test.environment().getTestOutputDirectory() / "SQLiteDatabaseDumpComparisonTestRunSuccessTest1.db");
+    dbtest.run();
 
-    return test.result().outcome();
+    return dbtest.result().outcome();
 }
 
 Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunFailureTest1Helper(Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest& test)

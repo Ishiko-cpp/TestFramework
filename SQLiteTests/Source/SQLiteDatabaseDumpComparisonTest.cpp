@@ -44,6 +44,16 @@ SQLiteDatabaseDumpComparisonTest::~SQLiteDatabaseDumpComparisonTest()
 {
 }
 
+const boost::filesystem::path& SQLiteDatabaseDumpComparisonTest::databaseFilePath() const
+{
+    return m_databaseFilePath;
+}
+
+void SQLiteDatabaseDumpComparisonTest::setDatabaseFilePath(const boost::filesystem::path& path)
+{
+    m_databaseFilePath = path;
+}
+
 TestResult::EOutcome SQLiteDatabaseDumpComparisonTest::doRun(TestObserver::ptr& observer)
 {
     TestResult::EOutcome result = TestResult::eFailed;

@@ -39,6 +39,9 @@ public:
         TestResult::EOutcome (*runFct)(SQLiteDatabaseDumpComparisonTest& test));
     ~SQLiteDatabaseDumpComparisonTest() override;
 
+    const boost::filesystem::path& databaseFilePath() const;
+    void setDatabaseFilePath(const boost::filesystem::path& path);
+
 protected:
     TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
 
