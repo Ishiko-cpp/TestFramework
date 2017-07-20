@@ -33,6 +33,13 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      BOOST_ROOT                 Path to the Boost installation
+#      ISHIKO_PROCESS_ROOT        Path to the Ishiko Process installation
+#      ISHIKO_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -54,6 +61,20 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the Boost installation
+BOOST_ROOT ?= $(BOOST)
+# Path to the Ishiko Process installation
+ISHIKO_PROCESS_ROOT ?= $(ISHIKO)/Process
+# Path to the Ishiko TestFramework installation
+ISHIKO_TESTFRAMEWORK_ROOT ?= $(ISHIKO)/TestFramework
+
+# ------------
+
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFrameworkSQLiteTests-d,IshikoTestFrameworkSQLiteTests).a
 
 ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFrameworkSQLiteTests-d,IshikoTestFrameworkSQLiteTests).a: $(_builddir)IshikoTestFrameworkSQLiteTests_SQLiteDatabaseDumpComparisonTest.o
@@ -61,7 +82,7 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoTestF
 	$(RANLIB) $@
 
 $(_builddir)IshikoTestFrameworkSQLiteTests_SQLiteDatabaseDumpComparisonTest.o: ../../Source/SQLiteDatabaseDumpComparisonTest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/Ishiko/TestFramework/SQLiteTests -std=c++11 ../../Source/SQLiteDatabaseDumpComparisonTest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -I../../../Include/Ishiko/TestFramework/SQLiteTests -std=c++11 ../../Source/SQLiteDatabaseDumpComparisonTest.cpp
 
 clean:
 	rm -f $(_builddir)*.o

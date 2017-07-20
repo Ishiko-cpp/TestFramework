@@ -23,4 +23,18 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_SQLITETESTS_SQLITEDATABASEDUMPCOMPARISONTEST_H_
 #define _ISHIKO_TESTFRAMEWORK_SQLITETESTS_SQLITEDATABASEDUMPCOMPARISONTEST_H_
 
+#include "Ishiko/TestFramework/Core/Test.h"
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+class SQLiteDatabaseDumpComparisonTest : public Test
+{
+};
+
+}
+}
+
 #endif
