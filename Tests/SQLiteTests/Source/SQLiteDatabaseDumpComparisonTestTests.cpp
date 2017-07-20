@@ -30,6 +30,14 @@ void AddSQLiteDatabaseDumpComparisonTestTests(Ishiko::TestFramework::TestHarness
 
     new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
         SQLiteDatabaseDumpComparisonTestCreationTest1, comparisonTestSequence);
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 2",
+        SQLiteDatabaseDumpComparisonTestCreationTest2, comparisonTestSequence);
+
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("run success test 1",
+        SQLiteDatabaseDumpComparisonTestRunSuccessTest1, comparisonTestSequence);
+
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("run failure test 1",
+        SQLiteDatabaseDumpComparisonTestRunFailureTest1, comparisonTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCreationTest1()
@@ -37,4 +45,56 @@ Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCrea
     Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest test(
         Ishiko::TestFramework::TestNumber(), "SQLiteDatabaseDumpComparisonTestCreationTest1");
     return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCreationTest2Helper(Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest& test)
+{
+    return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCreationTest2()
+{
+    Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest test(
+        Ishiko::TestFramework::TestNumber(), "SQLiteDatabaseDumpComparisonTestCreationTest2", 
+        SQLiteDatabaseDumpComparisonTestCreationTest2Helper);
+    return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest1Helper(Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest& test)
+{
+    return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest1()
+{
+    Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest test(
+        Ishiko::TestFramework::TestNumber(), "SQLiteDatabaseDumpComparisonTestRunSuccessTest1",
+        SQLiteDatabaseDumpComparisonTestRunSuccessTest1Helper);
+
+    test.run();
+
+    return test.result().outcome();
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunFailureTest1Helper(Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest& test)
+{
+    return Ishiko::TestFramework::TestResult::eFailed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunFailureTest1()
+{
+    Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest test(
+        Ishiko::TestFramework::TestNumber(), "SQLiteDatabaseDumpComparisonTestRunFailureTest1",
+        SQLiteDatabaseDumpComparisonTestRunSuccessTest1Helper);
+
+    test.run();
+
+    if (test.result().outcome() == Ishiko::TestFramework::TestResult::eFailed)
+    {
+        return Ishiko::TestFramework::TestResult::ePassed;
+    }
+    else
+    {
+        return Ishiko::TestFramework::TestResult::eFailed;
+    }
 }

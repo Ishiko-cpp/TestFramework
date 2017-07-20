@@ -29,7 +29,14 @@ namespace TestFramework
 
 SQLiteDatabaseDumpComparisonTest::SQLiteDatabaseDumpComparisonTest(const TestNumber& number, 
                                                                    const std::string& name)
-    : Test(number, name)
+    : Test(number, name), m_runFct(0), m_comparisonTest(TestNumber(), "Comparison")
+{
+}
+
+SQLiteDatabaseDumpComparisonTest::SQLiteDatabaseDumpComparisonTest(const TestNumber& number,
+                                                                   const std::string& name,
+                                                                   TestResult::EOutcome (*runFct)(SQLiteDatabaseDumpComparisonTest& test))
+    : Test(number, name), m_runFct(runFct), m_comparisonTest(TestNumber(), "Comparison")
 {
 }
 
@@ -39,7 +46,24 @@ SQLiteDatabaseDumpComparisonTest::~SQLiteDatabaseDumpComparisonTest()
 
 TestResult::EOutcome SQLiteDatabaseDumpComparisonTest::doRun(TestObserver::ptr& observer)
 {
-    return TestResult::eFailed;
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    if (m_runFct)
+    {
+        result = m_runFct(*this);
+    }
+    else
+    {
+        result = TestResult::ePassed;
+    }
+
+    if (result == TestResult::ePassed)
+    {
+        m_comparisonTest.run();
+        result = m_comparisonTest.result().outcome();
+    }
+
+    return result;
 }
 
 }

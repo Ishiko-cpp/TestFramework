@@ -24,6 +24,7 @@
 #define _ISHIKO_TESTFRAMEWORK_SQLITETESTS_SQLITEDATABASEDUMPCOMPARISONTEST_H_
 
 #include "Ishiko/TestFramework/Core/Test.h"
+#include "Ishiko/TestFramework/Core/FileComparisonTest.h"
 
 namespace Ishiko
 {
@@ -34,9 +35,17 @@ class SQLiteDatabaseDumpComparisonTest : public Test
 {
 public:
     SQLiteDatabaseDumpComparisonTest(const TestNumber& number, const std::string& name);
+    SQLiteDatabaseDumpComparisonTest(const TestNumber& number, const std::string& name,
+        TestResult::EOutcome (*runFct)(SQLiteDatabaseDumpComparisonTest& test));
     ~SQLiteDatabaseDumpComparisonTest() override;
 
+protected:
     TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
+
+private:
+    TestResult::EOutcome (*m_runFct)(SQLiteDatabaseDumpComparisonTest& test);
+    boost::filesystem::path m_databaseFilePath;
+    FileComparisonTest m_comparisonTest;
 };
 
 }
