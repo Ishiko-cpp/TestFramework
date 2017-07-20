@@ -17,7 +17,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\SQLite\SQLiteDatabaseDumpComparisonTest.h">
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\SQLiteTests\SQLiteDatabaseDumpComparisonTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
