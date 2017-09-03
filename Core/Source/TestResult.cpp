@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2005-2015 Xavier Leclercq
+	Copyright (c) 2005-2017 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -21,14 +21,16 @@
 */
 
 #include "TestResult.h"
+#include "Test.h"
+#include "TestSequence.h"
 
 namespace Ishiko
 {
 namespace TestFramework
 {
 
-TestResult::TestResult()
-	: m_outcome(eUnknown)
+TestResult::TestResult(const Test& test)
+	: m_test(test), m_outcome(eUnknown)
 {
 }
 
@@ -49,6 +51,40 @@ bool TestResult::passed() const
 void TestResult::setOutcome(EOutcome outcome)
 {
 	m_outcome = outcome;
+}
+
+void TestResult::getPassRate(size_t& passed, size_t& failed, size_t& total) const
+{
+    const TestSequence* sequence = dynamic_cast<const TestSequence*>(&m_test);
+    if (sequence)
+    {
+        std::vector<std::shared_ptr<const Test> > results = sequence->tests();
+        for (size_t i = 0; i < results.size(); ++i)
+        {
+            size_t p = 0;
+            size_t f = 0;
+            size_t t = 0;
+            results[i]->result().getPassRate(p, f, t);
+            passed += p;
+            failed += f;
+            total += t;
+        }
+    }
+    else
+    {
+        passed = 0;
+        failed = 0;
+        total = 1;
+        switch (m_outcome) {
+            case EOutcome::ePassed:
+                passed = 1;
+                break;
+
+            case EOutcome::eFailed:
+                failed = 1;
+                break;
+        }
+    }
 }
 
 }

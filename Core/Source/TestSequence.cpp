@@ -52,6 +52,16 @@ TestSequence::~TestSequence() throw()
 {
 }
 
+std::vector<std::shared_ptr<const Test> > TestSequence::tests() const
+{
+    std::vector<std::shared_ptr<const Test> > result;
+    for (size_t i = 0; i < m_tests.size(); ++i)
+    {
+        result.push_back(m_tests[i]);
+    }
+    return result;
+}
+
 void TestSequence::append(std::shared_ptr<Test>& test)
 {
 	// We need to update the number of the test

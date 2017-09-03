@@ -29,7 +29,7 @@ namespace TestFramework
 
 Test::Test(const TestNumber& number, 
 	       const std::string& name)
-	: m_information(number, name), 
+	: m_information(number, name), m_result(*this),
 	m_environment(TestEnvironment::defaultTestEnvironment())
 {
 }
@@ -37,7 +37,7 @@ Test::Test(const TestNumber& number,
 Test::Test(const TestNumber& number,
 	const std::string& name,
 	const TestEnvironment& environment)
-	: m_information(number, name),
+	: m_information(number, name), m_result(*this),
 	m_environment(environment)
 {
 }
