@@ -1,11 +1,11 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 
-toolsets = vs2015 vs2013;
+toolsets = gnu vs2015 vs2013;
 
+gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2015.solutionfile = ../VC14/IshikoTestFrameworkCoreTests.sln;
 vs2013.solutionfile = ../VC12/IshikoTestFrameworkCoreTests.sln;
-
 
 program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 {
