@@ -23,6 +23,8 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTRESULT_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTRESULT_H_
 
+#include <cstddef>
+
 namespace Ishiko
 {
 namespace TestFramework
