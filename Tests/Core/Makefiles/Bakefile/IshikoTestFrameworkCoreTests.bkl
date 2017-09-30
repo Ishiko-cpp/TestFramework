@@ -11,6 +11,11 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+    }
+
     headers
     {
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
