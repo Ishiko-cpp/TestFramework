@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2005-2015 Xavier Leclercq
+	Copyright (c) 2005-2017 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -28,6 +28,8 @@ namespace Ishiko
 namespace TestFramework
 {
 
+class Test;
+
 class TestResult
 {
 public:
@@ -40,14 +42,17 @@ public:
 	};
 
 public:
-	TestResult();
+	TestResult(const Test& test);
 	virtual ~TestResult() throw();
 
 	EOutcome outcome() const;
 	bool passed() const;
 	void setOutcome(EOutcome outcome);
 
+    void getPassRate(size_t& passed, size_t& failed, size_t& total) const;
+
 private:
+    const Test& m_test;
 	EOutcome m_outcome;
 };
 

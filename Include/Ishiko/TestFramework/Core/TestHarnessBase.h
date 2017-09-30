@@ -101,14 +101,24 @@ int TestHarnessBase<TestConfigurationClass, TopSequenceClass>::runTests()
 		m_topSequence.run(progressObserver);
 		std::cout << std::endl;
 
+        size_t passed = 0;
+        size_t failed = 0;
+        size_t total = 0;
+        m_topSequence.result().getPassRate(passed, failed, total);
 		if (!m_topSequence.passed())
 		{
-			std::cout << "Test Suite FAILED!!!" << std::endl;
+			std::cout << "Test Suite FAILED!!!" << " (" 
+                << passed << " passed, "
+                << failed << " failed, "
+                << total << " total)" << std::endl;
 			return eTestFailure;
 		}
 		else
 		{
-			std::cout << "Test Suite passed" << std::endl;
+			std::cout << "Test Suite passed" << " ("
+                << passed << " passed, "
+                << failed << " failed, "
+                << total << " total)" << std::endl;
 			return eOk;
 		}
 	}

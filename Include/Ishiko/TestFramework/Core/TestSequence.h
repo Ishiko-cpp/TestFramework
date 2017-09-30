@@ -42,6 +42,8 @@ public:
 	TestSequence(const std::string& name, TestSequence& parentSequence);
 	virtual ~TestSequence() throw();
 
+    std::vector<std::shared_ptr<const Test> > tests() const;
+
 	virtual void append(std::shared_ptr<Test>& test);
 	
 protected:
