@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run:
           name: Build
-          command: make
+          command: cd Core/Makefiles/GNUmakefile && make
