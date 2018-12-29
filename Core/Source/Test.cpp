@@ -100,12 +100,12 @@ void Test::run(TestObserver::ptr& observer)
 	notify(TestObserver::eTestEnd, observer);
 }
 
-void Test::addSetupAction(TestSetupAction::shared_ptr action)
+void Test::addSetupAction(std::shared_ptr<TestSetupAction> action)
 {
     m_setupActions.push_back(action);
 }
 
-void Test::addTeardownAction(TestTeardownAction::shared_ptr action)
+void Test::addTeardownAction(std::shared_ptr<TestTeardownAction> action)
 {
 	m_teardownActions.push_back(action);
 }

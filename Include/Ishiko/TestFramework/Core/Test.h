@@ -46,8 +46,7 @@ public:
     /// @param number The number of the test.
     /// @param name The name of the test.
     Test(const TestNumber& number, const std::string& name);
-    Test(const TestNumber& number, const std::string& name, 
-        const TestEnvironment& environment);
+    Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
     virtual ~Test() throw();
     
     const TestNumber& number() const;
@@ -60,8 +59,8 @@ public:
     virtual void run();
     virtual void run(TestObserver::ptr& observer);
 
-    virtual void addSetupAction(TestSetupAction::shared_ptr action);
-    virtual void addTeardownAction(TestTeardownAction::shared_ptr action);
+    virtual void addSetupAction(std::shared_ptr<TestSetupAction> action);
+    virtual void addTeardownAction(std::shared_ptr<TestTeardownAction> action);
 
 protected:
     virtual void setup();
@@ -74,8 +73,8 @@ private:
     TestInformation m_information;
     TestResult m_result;
     const TestEnvironment& m_environment;
-    std::vector<TestSetupAction::shared_ptr> m_setupActions;
-    std::vector<TestTeardownAction::shared_ptr> m_teardownActions;
+    std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
+    std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
 };
 
 }
