@@ -58,13 +58,12 @@ void TestResult::getPassRate(size_t& passed, size_t& failed, size_t& total) cons
     const TestSequence* sequence = dynamic_cast<const TestSequence*>(&m_test);
     if (sequence)
     {
-        std::vector<std::shared_ptr<const Test> > results = sequence->tests();
-        for (size_t i = 0; i < results.size(); ++i)
+        for (size_t i = 0; i < sequence->size(); ++i)
         {
             size_t p = 0;
             size_t f = 0;
             size_t t = 0;
-            results[i]->result().getPassRate(p, f, t);
+            (*sequence)[i].result().getPassRate(p, f, t);
             passed += p;
             failed += f;
             total += t;

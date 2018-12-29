@@ -42,9 +42,11 @@ public:
     TestSequence(const std::string& name, TestSequence& parentSequence);
     virtual ~TestSequence() throw();
 
-    std::vector<std::shared_ptr<const Test> > tests() const;
+    const Test& operator[](size_t pos) const;
 
-    virtual void append(std::shared_ptr<Test>& test);
+    size_t size() const noexcept;
+
+    void append(std::shared_ptr<Test>& test);
     
 protected:
     virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);

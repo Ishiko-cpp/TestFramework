@@ -52,14 +52,14 @@ TestSequence::~TestSequence() throw()
 {
 }
 
-std::vector<std::shared_ptr<const Test> > TestSequence::tests() const
+const Test& TestSequence::operator[](size_t pos) const
 {
-    std::vector<std::shared_ptr<const Test> > result;
-    for (size_t i = 0; i < m_tests.size(); ++i)
-    {
-        result.push_back(m_tests[i]);
-    }
-    return result;
+    return *(m_tests[pos]);
+}
+
+size_t TestSequence::size() const noexcept
+{
+    return m_tests.size();
 }
 
 void TestSequence::append(std::shared_ptr<Test>& test)

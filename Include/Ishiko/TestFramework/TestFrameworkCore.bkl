@@ -1,7 +1,6 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
-import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
 
 setting ISHIKO_TESTFRAMEWORK_ROOT
 {
@@ -9,7 +8,7 @@ setting ISHIKO_TESTFRAMEWORK_ROOT
     default = '$(ISHIKO)/TestFramework';
 }
 
-template IshikoTestFrameworkCore : IshikoCollections, IshikoProcess, Boost
+template IshikoTestFrameworkCore : IshikoProcess, Boost
 {
     includedirs += $(ISHIKO_TESTFRAMEWORK_ROOT)/Include;
 
