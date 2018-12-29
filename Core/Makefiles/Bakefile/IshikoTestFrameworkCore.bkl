@@ -1,6 +1,7 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
+import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -9,7 +10,7 @@ vs2017.solutionfile = ../VC15/IshikoTestFrameworkCore.sln;
 vs2015.solutionfile = ../VC14/IshikoTestFrameworkCore.sln;
 vs2013.solutionfile = ../VC12/IshikoTestFrameworkCore.sln;
 
-library IshikoTestFrameworkCore : Boost, IshikoProcess
+library IshikoTestFrameworkCore : Boost, IshikoProcess, IshikoCollections
 {
     archs = x86 x86_64;
 

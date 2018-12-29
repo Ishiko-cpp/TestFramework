@@ -21,6 +21,7 @@
 */
 
 #include "TestSequenceTests.h"
+#include "../TestClasses/SimpleTestClass1.h"
 
 void TestSequenceTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarness)
 {
@@ -28,10 +29,35 @@ void TestSequenceTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarn
         theTestHarness.appendTestSequence("TestSequence tests");
 
 	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1", CreationTest1, testSequenceTestSequence);
+
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("append test 1", AppendTest1, testSequenceTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::CreationTest1()
 {
 	Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
 	return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::AppendTest1()
+{
+    // Creating test sequence
+    Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
+
+    // Creating test
+    std::shared_ptr<Ishiko::TestFramework::Test> test = std::make_shared<SimpleTestClass1>(
+        Ishiko::TestFramework::TestNumber(1), "Test", Ishiko::TestFramework::TestResult::ePassed);
+
+    // Append test to sequence
+    seq.append(test);
+
+    // Check the test count
+    if (seq.size() == 1)
+    {
+        return Ishiko::TestFramework::TestResult::ePassed;
+    }
+    else
+    {
+        return Ishiko::TestFramework::TestResult::eFailed;
+    }
 }
