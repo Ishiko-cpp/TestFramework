@@ -33,6 +33,9 @@ public:
 private:
     static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
     static Ishiko::TestFramework::TestResult::EOutcome AppendTest1();
+    static Ishiko::TestFramework::TestResult::EOutcome GetResultTest1();
+    static Ishiko::TestFramework::TestResult::EOutcome GetResultTest2();
+    static Ishiko::TestFramework::TestResult::EOutcome GetResultTest3();
 };
 
 #endif
