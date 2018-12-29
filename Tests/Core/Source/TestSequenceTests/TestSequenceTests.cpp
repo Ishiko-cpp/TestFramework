@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2007-2015 Xavier Leclercq
+	Copyright (c) 2007-2018 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -22,16 +22,15 @@
 
 #include "TestSequenceTests.h"
 
-void AddTestSequenceTests(Ishiko::TestFramework::TestHarness& theTestHarness)
+void TestSequenceTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarness)
 {
 	Ishiko::TestFramework::TestSequence& testSequenceTestSequence =
-		theTestHarness.appendTestSequence("TestSequence tests");
+        theTestHarness.appendTestSequence("TestSequence tests");
 
-	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
-		TestSequenceCreationTest1, testSequenceTestSequence);
+	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1", CreationTest1, testSequenceTestSequence);
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestSequenceCreationTest1()
+Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::CreationTest1()
 {
 	Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
 	return Ishiko::TestFramework::TestResult::ePassed;
