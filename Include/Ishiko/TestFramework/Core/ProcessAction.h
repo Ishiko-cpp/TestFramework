@@ -27,6 +27,7 @@
 #include "TestTeardownAction.h"
 #include "Ishiko/Process/ProcessHandle.h"
 #include <string>
+#include <memory>
 
 namespace Ishiko
 {
