@@ -30,6 +30,7 @@
 #include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
+#include "TestHarnessTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
@@ -52,6 +53,7 @@ int main(int argc, char* argv[])
     AddHeapAllocationErrorsTestTests(theTestHarness);
     AddTestSetupActionsTests(theTestHarness);
     AddTestTeardownActionsTests(theTestHarness);
+    TestHarnessTests::AddTests(theTestHarness);
 
     return theTestHarness.run();
 }
