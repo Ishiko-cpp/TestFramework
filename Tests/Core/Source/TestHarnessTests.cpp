@@ -21,10 +21,18 @@
 */
 
 #include "TestHarnessTests.h"
+#include "Ishiko/TestFramework/Core/TestHarness.h"
 
-using namespace Ishiko::TestFramework;
-
-void TestHarnessTests::AddTests(TestHarness& theTestHarness)
+void TestHarnessTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarness)
 {
-    TestSequence& testHarnessTestSequence = theTestHarness.appendTestSequence("TestHarness tests");
+    Ishiko::TestFramework::TestSequence& testHarnessTestSequence =
+        theTestHarness.appendTestSequence("TestHarness tests");
+
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1", CreationTest1, testHarnessTestSequence);
+}
+
+Ishiko::TestFramework::TestResult::EOutcome TestHarnessTests::CreationTest1()
+{
+    Ishiko::TestFramework::TestHarness theTestHarness("TestHarnessTests_CreationTest1");
+    return Ishiko::TestFramework::TestResult::ePassed;
 }
