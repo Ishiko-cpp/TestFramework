@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2005-2015 Xavier Leclercq
+	Copyright (c) 2005-2019 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -30,7 +30,7 @@ namespace TestFramework
 
 enum ETestApplicationReturnCodes
 {
-	eOk = 0,
+	eOK = 0,
 	eConfigurationProblem = -1,
 	eException = -3,
 	eTestFailure = -4

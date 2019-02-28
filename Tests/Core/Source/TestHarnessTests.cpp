@@ -29,10 +29,25 @@ void TestHarnessTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarne
         theTestHarness.appendTestSequence("TestHarness tests");
 
     new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1", CreationTest1, testHarnessTestSequence);
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("run test 1", RunTest1, testHarnessTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome TestHarnessTests::CreationTest1()
 {
     Ishiko::TestFramework::TestHarness theTestHarness("TestHarnessTests_CreationTest1");
     return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome TestHarnessTests::RunTest1()
+{
+    Ishiko::TestFramework::TestResult::EOutcome result = Ishiko::TestFramework::TestResult::eFailed;
+
+    Ishiko::TestFramework::TestHarness theTestHarness("TestHarnessTests_RunTest1");
+    int returnCode = theTestHarness.run();
+    if (returnCode == Ishiko::TestFramework::eTestFailure)
+    {
+        result = Ishiko::TestFramework::TestResult::ePassed;
+    }
+
+    return result;
 }
