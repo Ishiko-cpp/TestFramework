@@ -152,7 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Main.cpp" />
+    <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp" />
     <ClCompile Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.cpp" />
     <ClCompile Include="..\..\Source\FunctionBasedTestTests\FunctionBasedTestTests.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="..\..\Source\TestTests\TestTests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TestHarnessTests.h" />
     <ClInclude Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
     <ClInclude Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.h" />
     <ClInclude Include="..\..\Source\FunctionBasedTestTests\FunctionBasedTestTests.h" />

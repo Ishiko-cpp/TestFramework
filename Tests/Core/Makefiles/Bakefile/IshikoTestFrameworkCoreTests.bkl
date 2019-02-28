@@ -20,6 +20,8 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     headers
     {
+        ../../Source/TestHarnessTests.h
+
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
         ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.h
@@ -38,7 +40,9 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     sources
     {
-        ../../Source/Main.cpp
+        ../../Source/main.cpp
+        ../../Source/TestHarnessTests.cpp
+
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp
         ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.cpp
