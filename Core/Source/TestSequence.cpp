@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2018 Xavier Leclercq
+    Copyright (c) 2005-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -27,28 +27,17 @@ namespace Ishiko
 namespace TestFramework
 {
 
-TestSequence::TestSequence(const TestNumber& number, 
-                           const std::string& name)
+TestSequence::TestSequence(const TestNumber& number, const std::string& name)
     : Test(number, name)
 {
 }
 
-TestSequence::TestSequence(const TestNumber& number,
-                           const std::string& name,
-                           const TestEnvironment& environment)
+TestSequence::TestSequence(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
     : Test(number, name, environment)
 {
 }
 
-TestSequence::TestSequence(const std::string& name,
-    TestSequence& parentSequence)
-    : Test(TestNumber(), name, parentSequence.environment())
-{
-    std::shared_ptr<Test> self(this);
-    parentSequence.append(self);
-}
-
-TestSequence::~TestSequence() throw()
+TestSequence::~TestSequence() noexcept
 {
 }
 
@@ -62,7 +51,7 @@ size_t TestSequence::size() const noexcept
     return m_tests.size();
 }
 
-void TestSequence::append(std::shared_ptr<Test>& test)
+void TestSequence::append(std::shared_ptr<Test> test)
 {
     // We need to update the number of the test
     if (m_tests.size() == 0)

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2018 Xavier Leclercq
+    Copyright (c) 2005-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -34,19 +34,18 @@ namespace TestFramework
 class TestSequence : public Test
 {
 public:
-    TestSequence(const TestNumber& number, 
-        const std::string& name);
-    TestSequence(const TestNumber& number,
-        const std::string& name, 
-        const TestEnvironment& environment);
-    TestSequence(const std::string& name, TestSequence& parentSequence);
-    virtual ~TestSequence() throw();
+    TestSequence(const TestNumber& number, const std::string& name);
+    TestSequence(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
+    ~TestSequence() noexcept override;
 
     const Test& operator[](size_t pos) const;
 
     size_t size() const noexcept;
 
-    void append(std::shared_ptr<Test>& test);
+    void append(std::shared_ptr<Test> test);
+
+    template <class TestClass, typename... Args>
+    void append(Args&&... args);
     
 protected:
     virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
@@ -54,6 +53,13 @@ protected:
 private:
     std::vector<std::shared_ptr<Test> > m_tests;
 };
+
+template <class TestClass, typename... Args>
+void TestSequence::append(Args&&... args)
+{
+    // The test number is a dummy that will be replaced immediately by the append function
+    append(std::make_shared<TestClass>(TestNumber(1), std::forward<Args>(args)...));
+}
 
 }
 }
