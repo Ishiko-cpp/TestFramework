@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -28,28 +28,23 @@ namespace Ishiko
 namespace TestFramework
 {
 
-ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number,
-                                               const std::string& name,
-                                               const std::string& commandLine,
-                                               int expectedExitCode)
-    : Test(number, name), m_commandLine(commandLine), m_checkExitCode(true),
-    m_expectedExitCode(expectedExitCode), m_standardOutputTest(TestNumber(), "Standard Output")
+ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const std::string& name,
+    const std::string& commandLine, int expectedExitCode)
+    : Test(number, name), m_commandLine(commandLine), m_checkExitCode(true), m_expectedExitCode(expectedExitCode),
+    m_standardOutputTest(TestNumber(), "Standard Output")
 {
 }
 
-ConsoleApplicationTest::ConsoleApplicationTest(const std::string& name,
-                                               const std::string& commandLine,
-                                               int expectedExitCode,
-                                               TestSequence& parentSequence)
-    : Test(TestNumber(), name, parentSequence.environment()), 
-    m_commandLine(commandLine), m_checkExitCode(true),
+ConsoleApplicationTest::ConsoleApplicationTest(const std::string& name, const std::string& commandLine,
+    int expectedExitCode, TestSequence& parentSequence)
+    : Test(TestNumber(), name, parentSequence.environment()), m_commandLine(commandLine), m_checkExitCode(true),
     m_expectedExitCode(expectedExitCode), m_standardOutputTest(TestNumber(), "Standard Output")
 {
     std::shared_ptr<Test> self(this);
     parentSequence.append(self);
 }
 
-ConsoleApplicationTest::~ConsoleApplicationTest()
+ConsoleApplicationTest::~ConsoleApplicationTest() noexcept
 {
 }
 

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,6 +25,7 @@
 
 #include "Test.h"
 #include "FileComparisonTest.h"
+#include <string>
 
 namespace Ishiko
 {
@@ -34,18 +35,17 @@ namespace TestFramework
 class ConsoleApplicationTest : public Test
 {
 public:
-    ConsoleApplicationTest(const TestNumber& number, const std::string& name,
-        const std::string& commandLine, int expectedExitCode);
-    ConsoleApplicationTest(const std::string& name,
-        const std::string& commandLine, int expectedExitCode,
+    ConsoleApplicationTest(const TestNumber& number, const std::string& name, const std::string& commandLine,
+        int expectedExitCode);
+    ConsoleApplicationTest(const std::string& name, const std::string& commandLine, int expectedExitCode,
         TestSequence& parentSequence);
-    virtual ~ConsoleApplicationTest();
+    ~ConsoleApplicationTest() noexcept override;
 
     void setStandardOutputFilePath(const boost::filesystem::path& path);
     void setStandardOutputReferenceFilePath(const boost::filesystem::path& path);
 
 protected:
-    virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
+    TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
 
 private:
     std::string m_commandLine;
