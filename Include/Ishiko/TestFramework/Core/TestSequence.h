@@ -45,7 +45,7 @@ public:
     void append(std::shared_ptr<Test> test);
 
     template <class TestClass, typename... Args>
-    void append(Args&&... args);
+    TestClass& append(Args&&... args);
     
 protected:
     virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
@@ -55,10 +55,12 @@ private:
 };
 
 template <class TestClass, typename... Args>
-void TestSequence::append(Args&&... args)
+TestClass& TestSequence::append(Args&&... args)
 {
     // The test number is a dummy that will be replaced immediately by the append function
-    append(std::make_shared<TestClass>(TestNumber(1), std::forward<Args>(args)...));
+    std::shared_ptr<TestClass> newTest = std::make_shared<TestClass>(TestNumber(1), std::forward<Args>(args)..., environment());
+    append(newTest);
+    return *newTest;
 }
 
 }

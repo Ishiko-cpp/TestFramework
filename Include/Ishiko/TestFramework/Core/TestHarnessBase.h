@@ -87,8 +87,7 @@ TestEnvironment& TestHarnessBase<TestConfigurationClass, TopSequenceClass>::envi
 template<class TestConfigurationClass, class TopSequenceClass>
 TestSequence& TestHarnessBase<TestConfigurationClass, TopSequenceClass>::appendTestSequence(const std::string& name)
 {
-	// m_topSequence takes ownership
-	return *(new TestSequence(name, m_topSequence));
+    return m_topSequence.append<TestSequence>(name);
 }
 
 template<class TestConfigurationClass, class TopSequenceClass>
