@@ -1,44 +1,44 @@
 /*
-	Copyright (c) 2007-2015 Xavier Leclercq
+    Copyright (c) 2007-2019 Xavier Leclercq
 
-	Permission is hereby granted, free of charge, to any person obtaining a
-	copy of this software and associated documentation files (the "Software"),
-	to deal in the Software without restriction, including without limitation
-	the rights to use, copy, modify, merge, publish, distribute, sublicense,
-	and/or sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following conditions:
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the "Software"),
+    to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    and/or sell copies of the Software, and to permit persons to whom the
+    Software is furnished to do so, subject to the following conditions:
 
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-	THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-	IN THE SOFTWARE.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+    IN THE SOFTWARE.
 */
 
 #include "HeapAllocationErrorsTestTests.h"
 
-void AddHeapAllocationErrorsTestTests(Ishiko::TestFramework::TestHarness& theTestHarness)
-{
-	Ishiko::TestFramework::TestSequence& heapTestSequence =
-		theTestHarness.appendTestSequence("HeapAllocationErrorsTest tests");
+using namespace Ishiko::TestFramework;
 
-	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
-		HeapAllocationErrorsTestCreationTest1, heapTestSequence);
+void AddHeapAllocationErrorsTestTests(TestHarness& theTestHarness)
+{
+    TestSequence& testSequence = theTestHarness.appendTestSequence("HeapAllocationErrorsTest tests");
+
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", HeapAllocationErrorsTestCreationTest1);
 }
 
-Ishiko::TestFramework::TestResult::EOutcome HeapAllocationErrorsTestCreationTest1Helper()
+TestResult::EOutcome HeapAllocationErrorsTestCreationTest1Helper()
 {
-	return Ishiko::TestFramework::TestResult::ePassed;
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome HeapAllocationErrorsTestCreationTest1()
+TestResult::EOutcome HeapAllocationErrorsTestCreationTest1()
 {
-	Ishiko::TestFramework::HeapAllocationErrorsTest test(Ishiko::TestFramework::TestNumber(),
-		"HeapAllocationErrorsTestCreationTest1", HeapAllocationErrorsTestCreationTest1Helper);
-	return Ishiko::TestFramework::TestResult::ePassed;
+    HeapAllocationErrorsTest test(TestNumber(), "HeapAllocationErrorsTestCreationTest1",
+        HeapAllocationErrorsTestCreationTest1Helper);
+    return TestResult::ePassed;
 }
