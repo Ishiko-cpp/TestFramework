@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,39 +23,34 @@
 #include "ConsoleApplicationTestTests.h"
 #include <boost/filesystem/operations.hpp>
 
+using namespace Ishiko::TestFramework;
+using namespace boost::filesystem;
+
 void AddConsoleApplicationTestTests(TestHarness& theTestHarness)
 {
-    TestSequence& consoleApplicationTestTestSequence =
-        theTestHarness.appendTestSequence("ConsoleApplicationTest tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("ConsoleApplicationTest tests");
 
-    new HeapAllocationErrorsTest("Creation test 1",
-        ConsoleApplicationTestCreationTest1, consoleApplicationTestTestSequence);
-    
-    new HeapAllocationErrorsTest("run success test 1",
-        ConsoleApplicationTestRunSuccessTest1, consoleApplicationTestTestSequence);
-    new HeapAllocationErrorsTest("run success test 2",
-        ConsoleApplicationTestRunSuccessTest2, consoleApplicationTestTestSequence);
-    new HeapAllocationErrorsTest("run failure test 1",
-        ConsoleApplicationTestRunFailureTest1, consoleApplicationTestTestSequence);
-    new HeapAllocationErrorsTest("run success test 3",
-        ConsoleApplicationTestRunSuccessTest3, consoleApplicationTestTestSequence);
-    new HeapAllocationErrorsTest("run failure test 2",
-        ConsoleApplicationTestRunFailureTest2, consoleApplicationTestTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ConsoleApplicationTestCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run success test 1", ConsoleApplicationTestRunSuccessTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run success test 2", ConsoleApplicationTestRunSuccessTest2);
+    testSequence.append<HeapAllocationErrorsTest>("run failure test 1", ConsoleApplicationTestRunFailureTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run success test 3", ConsoleApplicationTestRunSuccessTest3);
+    testSequence.append<HeapAllocationErrorsTest>("run failure test 2", ConsoleApplicationTestRunFailureTest2);
 }
 
 TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test)
 {
-    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/WriteFileTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Binaries/WriteFileTestHelper.exe");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest1",
         executablePath.string().c_str(), 0);
 
-    return Ishiko::TestFramework::TestResult::ePassed;
+    return TestResult::ePassed;
 }
 
 TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Test& test)
 {
-    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest1",
         executablePath.string(), 0);
@@ -63,36 +58,35 @@ TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Test& test)
 
     if (applicationTest.result().passed())
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
 
 TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Test& test)
 {
-    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
     std::string commandLine = executablePath.string() + " 3";
-    ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest2",
-        commandLine, 3);
+    ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest2", commandLine, 3);
     applicationTest.run();
 
     if (applicationTest.result().passed())
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
 
 TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test)
 {
-    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest1",
         executablePath.string(), 3);
@@ -100,22 +94,24 @@ TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test)
 
     if (applicationTest.result().passed())
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
 }
 
 TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Test& test)
 {
-    boost::filesystem::create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
+    create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
 
-    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
+    path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
+    path outputPath(test.environment().getTestOutputDirectory()
+        / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
+    remove(outputPath);
+    path referencePath(test.environment().getReferenceDataDirectory()
+        / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest3",
         executablePath.string().c_str(), 0);
@@ -125,20 +121,22 @@ TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Test& test)
 
     if (applicationTest.result().passed())
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
 
 TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Test& test)
 {
-    boost::filesystem::path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt");
+    path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
+    path outputPath(test.environment().getTestOutputDirectory()
+        / "ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt");
+    remove(outputPath);
+    path referencePath(test.environment().getReferenceDataDirectory()
+        / "ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest2",
         executablePath.string().c_str(), 0);
@@ -148,10 +146,10 @@ TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Test& test)
 
     if (applicationTest.result().passed())
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
 }

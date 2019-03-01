@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,15 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+void AddConsoleApplicationTestTests(Ishiko::TestFramework::TestHarness& theTestHarness);
 
-void AddConsoleApplicationTestTests(TestHarness& theTestHarness);
-
-TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test);
-TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Test& test);
-TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Test& test);
-TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test);
-TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Test& test);
-TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Test& test);
+Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestCreationTest1(Ishiko::TestFramework::Test& test);
+Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Ishiko::TestFramework::Test& test);
+Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Ishiko::TestFramework::Test& test);
+Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Ishiko::TestFramework::Test& test);
+Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Ishiko::TestFramework::Test& test);
+Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Ishiko::TestFramework::Test& test);
 
 #endif
