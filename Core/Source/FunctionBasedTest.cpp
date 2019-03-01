@@ -27,46 +27,27 @@ namespace Ishiko
 namespace TestFramework
 {
 
-FunctionBasedTest::FunctionBasedTest(const TestNumber& number, 
-                                     const std::string& name,
-                                     TestResult::EOutcome (*runFct)())
+FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome (*runFct)())
     : Test(number, name), m_runFctVoid(runFct), m_runFctTest(0)
 {
 }
 
-FunctionBasedTest::FunctionBasedTest(const TestNumber& number,
-                                     const std::string& name,
-                                     TestResult::EOutcome (*runFct)(),
-                                     const TestEnvironment& environment)
+FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome (*runFct)(), const TestEnvironment& environment)
     : Test(number, name, environment), m_runFctVoid(runFct), m_runFctTest(0)
 {
 }
 
-FunctionBasedTest::FunctionBasedTest(const TestNumber& number,
-                                     const std::string& name,
-                                     TestResult::EOutcome(*runFct)(Test& test))
+FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome(*runFct)(Test& test))
     : Test(number, name), m_runFctVoid(0), m_runFctTest(runFct)
 {
 }
 
-FunctionBasedTest::FunctionBasedTest(const TestNumber& number,
-                                     const std::string& name,
-                                     TestResult::EOutcome (*runFct)(Test& test),
-                                     const TestEnvironment& environment)
+FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome (*runFct)(Test& test), const TestEnvironment& environment)
     : Test(number, name, environment), m_runFctVoid(0), m_runFctTest(runFct)
-{
-}
-
-FunctionBasedTest::FunctionBasedTest(const std::string& name,
-                                     TestResult::EOutcome(*runFct)(Test& test),
-                                     TestSequence& parentSequence)
-    : Test(TestNumber(), name, parentSequence.environment()), m_runFctTest(runFct)
-{
-    std::shared_ptr<Test> self(this);
-    parentSequence.append(self);
-}
-
-FunctionBasedTest::~FunctionBasedTest() throw()
 {
 }
 

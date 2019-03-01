@@ -35,27 +35,15 @@ namespace TestFramework
 class FunctionBasedTest : public Test
 {
 public:
-    FunctionBasedTest(const TestNumber& number, 
-        const std::string& name,
-        TestResult::EOutcome (*runFct)());
-    FunctionBasedTest(const TestNumber& number,
-        const std::string& name,
-        TestResult::EOutcome (*runFct)(),
+    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult::EOutcome (*runFct)());
+    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult::EOutcome (*runFct)(),
         const TestEnvironment& environment);
-    FunctionBasedTest(const TestNumber& number,
-        const std::string& name,
-        TestResult::EOutcome (*runFct)(Test& test));
-    FunctionBasedTest(const TestNumber& number,
-        const std::string& name,
-        TestResult::EOutcome (*runFct)(Test& test),
+    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult::EOutcome (*runFct)(Test& test));
+    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult::EOutcome (*runFct)(Test& test),
         const TestEnvironment& environment);
-    FunctionBasedTest(const std::string& name,
-        TestResult::EOutcome(*runFct)(Test& test),
-        TestSequence& parentSequence);
-    virtual ~FunctionBasedTest() throw();
 
 protected:
-    virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
+    TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
 
 private:
     TestResult::EOutcome (*m_runFctVoid)();
