@@ -24,51 +24,43 @@
 #include "Ishiko/TestFramework/Core/ProcessAction.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence)
-{
-    Ishiko::TestFramework::TestSequence& processActionTestSequence = 
-        testSequence.append<Ishiko::TestFramework::TestSequence>("ProcessAction tests");
+using namespace Ishiko::TestFramework;
+using namespace boost::filesystem;
 
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
-        ProcessActionCreationTest1, processActionTestSequence);
-    processActionTestSequence.append<Ishiko::TestFramework::FileComparisonTest>("setup() (wait for exit) test 1",
-        ProcessActionSetupWaitForExitTest1);
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("setup() (terminate) test 2",
-        ProcessActionSetupTerminateTest1, processActionTestSequence);
+void AddProcessActionTests(Ishiko::TestFramework::TestSequence& parentTestSequence)
+{
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProcessAction tests");
+
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ProcessActionCreationTest1);
+    testSequence.append<FileComparisonTest>("setup() (wait for exit) test 1", ProcessActionSetupWaitForExitTest1);
+    testSequence.append<HeapAllocationErrorsTest>("setup() (terminate) test 2", ProcessActionSetupTerminateTest1);
 }
 
-Ishiko::TestFramework::TestResult::EOutcome ProcessActionCreationTest1()
+TestResult::EOutcome ProcessActionCreationTest1()
 {
-    Ishiko::TestFramework::ProcessAction action(
-        "../../TestData/Binaries/WriteFileTestHelper.exe", 
-        Ishiko::TestFramework::ProcessAction::eWaitForExit
-        );
-    return Ishiko::TestFramework::TestResult::ePassed;
+    ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe", ProcessAction::eWaitForExit);
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupWaitForExitTest1(Ishiko::TestFramework::FileComparisonTest& test)
+TestResult::EOutcome ProcessActionSetupWaitForExitTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
     test.setOutputFilePath(outputPath);
-    boost::filesystem::create_directories(test.environment().getTestOutputDirectory() / "TestSetupActionsTests");
-    test.setReferenceFilePath(test.environment().getReferenceDataDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    create_directories(test.environment().getTestOutputDirectory() / "TestSetupActionsTests");
+    test.setReferenceFilePath(test.environment().getReferenceDataDirectory()
+        / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
 
-    Ishiko::TestFramework::ProcessAction action(
-        "../../TestData/Binaries/WriteFileTestHelper.exe " + outputPath.generic_string(),
-        Ishiko::TestFramework::ProcessAction::eWaitForExit
-        );
+    ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe " + outputPath.generic_string(),
+        ProcessAction::eWaitForExit);
     action.setup();
     action.teardown();
-    return Ishiko::TestFramework::TestResult::ePassed;
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome ProcessActionSetupTerminateTest1()
+TestResult::EOutcome ProcessActionSetupTerminateTest1()
 {
-    Ishiko::TestFramework::ProcessAction action(
-        "../../TestData/Binaries/PermanentAppTestHelper.exe",
-        Ishiko::TestFramework::ProcessAction::eTerminate
-        );
+    ProcessAction action("../../TestData/Binaries/PermanentAppTestHelper.exe", ProcessAction::eTerminate);
     action.setup();
     action.teardown();
-    return Ishiko::TestFramework::TestResult::ePassed;
+    return TestResult::ePassed;
 }
