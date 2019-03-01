@@ -28,40 +28,32 @@ namespace Ishiko
 namespace TestFramework
 {
 
-HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number,
-                                                   const std::string& name,
-                                                   TestResult::EOutcome (*runFct)())
+HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome (*runFct)())
     : Test(number, name)
 {
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct);
 }
 
-HeapAllocationErrorsTest::HeapAllocationErrorsTest(const std::string& name,
-                                                   TestResult::EOutcome (*runFct)(),
-                                                   TestSequence& parentSequence)
-    : Test(TestNumber(), name, parentSequence.environment())
+HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome(*runFct)(), const TestEnvironment& environment)
+    : Test(number, name, environment)
 {
-    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name,
-        runFct, parentSequence.environment());
-
-    std::shared_ptr<Test> self(this);
-    parentSequence.append(self);
+    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);
 }
 
-HeapAllocationErrorsTest::HeapAllocationErrorsTest(const std::string& name,
-                                                   TestResult::EOutcome (*runFct)(Test& test),
-                                                   TestSequence& parentSequence)
-    : Test(TestNumber(), name, parentSequence.environment())
+HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome (*runFct)(Test& test))
+    : Test(TestNumber(), name)
 {
-    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name,
-        runFct, parentSequence.environment());
-
-    std::shared_ptr<Test> self(this);
-    parentSequence.append(self);
+    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct);
 }
 
-HeapAllocationErrorsTest::~HeapAllocationErrorsTest() throw()
+HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
+    TestResult::EOutcome(*runFct)(Test& test), const TestEnvironment& environment)
+    : Test(TestNumber(), name, environment)
 {
+    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);
 }
 
 TestResult::EOutcome HeapAllocationErrorsTest::doRun(TestObserver::ptr& observer)

@@ -34,19 +34,16 @@ namespace TestFramework
 class HeapAllocationErrorsTest : public Test
 {
 public:
-    HeapAllocationErrorsTest(const TestNumber& number,
-        const std::string& name,
-        TestResult::EOutcome (*runFct)());
-    HeapAllocationErrorsTest(const std::string& name,
-        TestResult::EOutcome (*runFct)(),
-        TestSequence& parentSequence);
-    HeapAllocationErrorsTest(const std::string& name,
-        TestResult::EOutcome (*runFct)(Test& test),
-        TestSequence& parentSequence);
-    virtual ~HeapAllocationErrorsTest() throw();
+    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult::EOutcome (*runFct)());
+    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult::EOutcome(*runFct)(),
+        const TestEnvironment& environment);
+    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
+        TestResult::EOutcome(*runFct)(Test& test));
+    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
+        TestResult::EOutcome(*runFct)(Test& test), const TestEnvironment& environment);
 
 protected:
-    virtual TestResult::EOutcome doRun(TestObserver::ptr& observer);
+    TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
 
 private:
     std::shared_ptr<Test> m_test;
