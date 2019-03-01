@@ -28,14 +28,6 @@ namespace Ishiko
 namespace TestFramework
 {
 
-DirectoriesTeardownAction::DirectoriesTeardownAction()
-{
-}
-
-DirectoriesTeardownAction::~DirectoriesTeardownAction() noexcept
-{
-}
-
 void DirectoriesTeardownAction::teardown()
 {
     for (size_t i = 0; i < d_directories.size(); ++i)

@@ -35,9 +35,6 @@ namespace TestFramework
 class DirectoriesTeardownAction : public TestTeardownAction
 {
 public:
-    DirectoriesTeardownAction();
-    ~DirectoriesTeardownAction() noexcept override;
-
     void teardown() override;
 
     void add(const boost::filesystem::path& path);
