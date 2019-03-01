@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2017 Xavier Leclercq
+    Copyright (c) 2007-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,45 +22,38 @@
 
 #include "FileComparisonTestTests.h"
 
-void AddFileComparisonTestTests(Ishiko::TestFramework::TestHarness& theTestHarness)
+using namespace Ishiko::TestFramework;
+
+void AddFileComparisonTestTests(TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestSequence& fileComparisonTestSequence =
-        theTestHarness.appendTestSequence("FileComparisonTest tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("FileComparisonTest tests");
 
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
-        FileComparisonTestCreationTest1, fileComparisonTestSequence);
-
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("run success test 1",
-        FileComparisonTestRunSuccessTest1, fileComparisonTestSequence);
-
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("run failure test 1",
-        FileComparisonTestRunFailureTest1, fileComparisonTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FileComparisonTestCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run success test 1", FileComparisonTestRunSuccessTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run failure test 1", FileComparisonTestRunFailureTest1);
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestCreationTest1Helper(Ishiko::TestFramework::FileComparisonTest& test)
+TestResult::EOutcome FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
 {
-    return Ishiko::TestFramework::TestResult::ePassed;
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestCreationTest1()
+TestResult::EOutcome FileComparisonTestCreationTest1()
 {
-    Ishiko::TestFramework::FileComparisonTest test(
-        Ishiko::TestFramework::TestNumber(), "FileComparisonTestCreationTest1",
-        FileComparisonTestCreationTest1Helper);
-    return Ishiko::TestFramework::TestResult::ePassed;
+    FileComparisonTest test(TestNumber(), "FileComparisonTestCreationTest1", FileComparisonTestCreationTest1Helper);
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestRunSuccessTest1Helper(Ishiko::TestFramework::FileComparisonTest& test)
+TestResult::EOutcome FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
 {
     test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../TestData/ComparisonTestFiles/Hello2.txt");
-    return Ishiko::TestFramework::TestResult::ePassed;
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestRunSuccessTest1()
+TestResult::EOutcome FileComparisonTestRunSuccessTest1()
 {
-    Ishiko::TestFramework::FileComparisonTest test(
-        Ishiko::TestFramework::TestNumber(), "FileComparisonTestRunSuccessTest1",
+    FileComparisonTest test(TestNumber(), "FileComparisonTestRunSuccessTest1",
         FileComparisonTestRunSuccessTest1Helper);
     
     test.run();
@@ -68,27 +61,26 @@ Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestRunSuccessTest1()
     return test.result().outcome();
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestRunFailureTest1Helper(Ishiko::TestFramework::FileComparisonTest& test)
+TestResult::EOutcome FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
 {
     test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../TestData/ComparisonTestFiles/NotHello.txt");
-    return Ishiko::TestFramework::TestResult::ePassed;
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestRunFailureTest1()
+TestResult::EOutcome FileComparisonTestRunFailureTest1()
 {
-    Ishiko::TestFramework::FileComparisonTest test(
-        Ishiko::TestFramework::TestNumber(), "FileComparisonTestRunFailureTest1",
+    FileComparisonTest test(TestNumber(), "FileComparisonTestRunFailureTest1",
         FileComparisonTestRunFailureTest1Helper);
 
     test.run();
     
-    if (test.result().outcome() == Ishiko::TestFramework::TestResult::eFailed)
+    if (test.result().outcome() == TestResult::eFailed)
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
