@@ -35,11 +35,11 @@ class FileComparisonTest : public Test
 {
 public:
     FileComparisonTest(const TestNumber& number, const std::string& name);
+    FileComparisonTest(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
     FileComparisonTest(const TestNumber& number, const std::string& name,
         TestResult::EOutcome (*runFct)(FileComparisonTest& test));
     FileComparisonTest(const TestNumber& number, const std::string& name,
         TestResult::EOutcome(*runFct)(FileComparisonTest& test), const TestEnvironment& environment);
-    ~FileComparisonTest() noexcept override;
 
     const boost::filesystem::path& getOutputFilePath() const;
     void setOutputFilePath(const boost::filesystem::path& path);

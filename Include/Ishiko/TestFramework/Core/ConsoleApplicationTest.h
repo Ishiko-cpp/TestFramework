@@ -37,8 +37,9 @@ class ConsoleApplicationTest : public Test
 public:
     ConsoleApplicationTest(const TestNumber& number, const std::string& name, const std::string& commandLine,
         int expectedExitCode);
-    ~ConsoleApplicationTest() noexcept override;
-
+    ConsoleApplicationTest(const TestNumber& number, const std::string& name, const std::string& commandLine,
+        int expectedExitCode, const TestEnvironment& environment);
+    
     void setStandardOutputFilePath(const boost::filesystem::path& path);
     void setStandardOutputReferenceFilePath(const boost::filesystem::path& path);
 
