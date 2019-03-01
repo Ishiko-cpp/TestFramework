@@ -25,14 +25,14 @@
 
 void AddFilesTeardownActionTests(Ishiko::TestFramework::TestSequence& testSequence)
 {
-	Ishiko::TestFramework::TestSequence* filesTeardownTestSequence =
-		new Ishiko::TestFramework::TestSequence("FileesTeardownAction tests", testSequence);
+    Ishiko::TestFramework::TestSequence& filesTeardownTestSequence =
+        testSequence.append<Ishiko::TestFramework::TestSequence>("FilesTeardownAction tests");
 
 	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
-		FilesTeardownActionCreationTest1, *filesTeardownTestSequence);
+		FilesTeardownActionCreationTest1, filesTeardownTestSequence);
 
 	new Ishiko::TestFramework::HeapAllocationErrorsTest("teardown() test 1",
-		FilesTeardownActionTeardownTest1, *filesTeardownTestSequence);
+		FilesTeardownActionTeardownTest1, filesTeardownTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome FilesTeardownActionCreationTest1()

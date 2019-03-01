@@ -25,14 +25,14 @@
 
 void AddDirectoriesTeardownActionTests(Ishiko::TestFramework::TestSequence& testSequence)
 {
-	Ishiko::TestFramework::TestSequence* directoriesTeardownTestSequence = 
-		new Ishiko::TestFramework::TestSequence("DirectoriesTeardownAction tests", testSequence);
+    Ishiko::TestFramework::TestSequence& directoriesTeardownTestSequence =
+        testSequence.append<Ishiko::TestFramework::TestSequence>("DirectoriesTeardownAction tests");
 
 	new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
-		DirectoriesTeardownActionCreationTest1, *directoriesTeardownTestSequence);
+		DirectoriesTeardownActionCreationTest1, directoriesTeardownTestSequence);
 
 	new Ishiko::TestFramework::HeapAllocationErrorsTest("teardown() test 1",
-		DirectoriesTeardownActionTeardownTest1, *directoriesTeardownTestSequence);
+		DirectoriesTeardownActionTeardownTest1, directoriesTeardownTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionCreationTest1()

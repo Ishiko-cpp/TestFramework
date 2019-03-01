@@ -26,15 +26,15 @@
 
 void AddProcessActionTests(Ishiko::TestFramework::TestSequence& testSequence)
 {
-    Ishiko::TestFramework::TestSequence* processActionTestSequence =
-        new Ishiko::TestFramework::TestSequence("ProcessAction tests", testSequence);
+    Ishiko::TestFramework::TestSequence& processActionTestSequence = 
+        testSequence.append<Ishiko::TestFramework::TestSequence>("ProcessAction tests");
 
     new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1",
-        ProcessActionCreationTest1, *processActionTestSequence);
+        ProcessActionCreationTest1, processActionTestSequence);
     new Ishiko::TestFramework::FileComparisonTest("setup() (wait for exit) test 1",
-        ProcessActionSetupWaitForExitTest1, *processActionTestSequence);
+        ProcessActionSetupWaitForExitTest1, processActionTestSequence);
     new Ishiko::TestFramework::HeapAllocationErrorsTest("setup() (terminate) test 2",
-        ProcessActionSetupTerminateTest1, *processActionTestSequence);
+        ProcessActionSetupTerminateTest1, processActionTestSequence);
 }
 
 Ishiko::TestFramework::TestResult::EOutcome ProcessActionCreationTest1()
