@@ -21,3 +21,33 @@
 */
 
 #include "HeapStatus.h"
+#if (defined(_WIN32) && defined(_DEBUG))
+#include <crtdbg.h>
+#endif
+
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+HeapStatus::HeapStatus()
+{
+    update();
+}
+
+void HeapStatus::update()
+{
+#if (defined(_WIN32) && defined(_DEBUG))
+    _CrtMemState heapState;
+    _CrtMemCheckpoint(&heapState);
+    m_allocatedSize = heapState.lSizes[_NORMAL_BLOCK];
+#endif
+}
+
+size_t HeapStatus::allocatedSize() const
+{
+    return m_allocatedSize;
+}
+
+}
+}

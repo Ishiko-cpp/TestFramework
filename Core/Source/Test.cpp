@@ -21,28 +21,21 @@
 */
 
 #include "Test.h"
+#include "HeapStatus.h"
 
 namespace Ishiko
 {
 namespace TestFramework
 {
 
-Test::Test(const TestNumber& number, 
-	       const std::string& name)
-	: m_information(number, name), m_result(*this),
-	m_environment(TestEnvironment::defaultTestEnvironment())
+Test::Test(const TestNumber& number, const std::string& name)
+	: m_information(number, name), m_result(*this), m_environment(TestEnvironment::defaultTestEnvironment()),
+    m_memoryLeakCheck(true)
 {
 }
 
-Test::Test(const TestNumber& number,
-	const std::string& name,
-	const TestEnvironment& environment)
-	: m_information(number, name), m_result(*this),
-	m_environment(environment)
-{
-}
-
-Test::~Test() throw()
+Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
+	: m_information(number, name), m_result(*this), m_environment(environment), m_memoryLeakCheck(true)
 {
 }
 
@@ -83,6 +76,8 @@ void Test::run(TestObserver::ptr& observer)
 
     setup();
 
+    HeapStatus heapStatusBefore;
+
 	TestResult::EOutcome outcome = TestResult::eFailed;
 	try
 	{
@@ -93,7 +88,17 @@ void Test::run(TestObserver::ptr& observer)
 		outcome = TestResult::eException;
 	}
 
-	m_result.setOutcome(outcome);
+    HeapStatus heapStatusAfter;
+
+    if (m_memoryLeakCheck && (heapStatusBefore.allocatedSize() != heapStatusAfter.allocatedSize())
+        && (outcome == TestResult::ePassed))
+    {
+        m_result.setOutcome(TestResult::ePassedButMemoryLeaks);
+    }
+    else
+    {
+        m_result.setOutcome(outcome);
+    }
 
 	teardown();
 

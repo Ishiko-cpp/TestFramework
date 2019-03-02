@@ -47,7 +47,7 @@ public:
     /// @param name The name of the test.
     Test(const TestNumber& number, const std::string& name);
     Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
-    virtual ~Test() throw();
+    virtual ~Test() noexcept = default;
     
     const TestNumber& number() const;
     const std::string& name() const;
@@ -73,6 +73,7 @@ private:
     TestInformation m_information;
     TestResult m_result;
     const TestEnvironment& m_environment;
+    bool m_memoryLeakCheck;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
 };

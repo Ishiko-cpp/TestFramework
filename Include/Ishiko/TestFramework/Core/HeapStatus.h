@@ -23,4 +23,25 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_HEAPSTATUS_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_HEAPSTATUS_H_
 
+namespace Ishiko
+{
+namespace TestFramework
+{
+
+class HeapStatus
+{
+public:
+    HeapStatus();
+
+    void update();
+
+    size_t allocatedSize() const;
+
+private:
+    size_t m_allocatedSize;
+};
+
+}
+}
+
 #endif
