@@ -31,17 +31,29 @@ namespace TestFramework
 class DebugHeap
 {
 public:
-    class State
+    class HeapState
     {
     public:
-        State();
-
-        void update();
+        HeapState();
 
         size_t allocatedSize() const;
 
     private:
         size_t m_allocatedSize;
+    };
+
+    class TrackingState
+    {
+    public:
+        TrackingState();
+
+        void disableTracking();
+        void restore();
+
+#if (defined(_WIN32) && defined(_DEBUG))
+    private:
+        int m_flags;
+#endif
     };
 };
 
