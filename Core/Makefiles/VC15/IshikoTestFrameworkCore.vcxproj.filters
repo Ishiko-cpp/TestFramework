@@ -38,7 +38,7 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapStatus.h">
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DebugHeap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ProcessAction.h">
@@ -115,7 +115,7 @@
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\HeapStatus.cpp">
+    <ClCompile Include="..\..\Source\DebugHeap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProcessAction.cpp">

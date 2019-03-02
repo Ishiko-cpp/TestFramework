@@ -21,7 +21,7 @@
 */
 
 #include "Test.h"
-#include "HeapStatus.h"
+#include "DebugHeap.h"
 
 namespace Ishiko
 {

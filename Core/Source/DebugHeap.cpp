@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "HeapStatus.h"
+#include "DebugHeap.h"
 #if (defined(_WIN32) && defined(_DEBUG))
 #include <crtdbg.h>
 #endif
