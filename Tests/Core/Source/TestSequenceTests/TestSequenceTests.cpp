@@ -23,33 +23,33 @@
 #include "TestSequenceTests.h"
 #include "../TestClasses/SimpleTestClass1.h"
 
-void TestSequenceTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarness)
-{
-    Ishiko::TestFramework::TestSequence& testSequenceTestSequence =
-        theTestHarness.appendTestSequence("TestSequence tests");
+using namespace Ishiko::TestFramework;
 
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1", CreationTest1, testSequenceTestSequence);
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("append test 1", AppendTest1, testSequenceTestSequence);
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("append test 2", AppendTest2, testSequenceTestSequence);
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("getResult test 1", GetResultTest1, testSequenceTestSequence);
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("getResult test 2", GetResultTest2, testSequenceTestSequence);
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("getResult test 3", GetResultTest3, testSequenceTestSequence);
+void TestSequenceTests::AddTests(TestHarness& theTestHarness)
+{
+    TestSequence& testSequence = theTestHarness.appendTestSequence("TestSequence tests");
+
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("append test 1", AppendTest1);
+    testSequence.append<HeapAllocationErrorsTest>("append test 2", AppendTest2);
+    testSequence.append<HeapAllocationErrorsTest>("getResult test 1", GetResultTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getResult test 2", GetResultTest2);
+    testSequence.append<HeapAllocationErrorsTest>("getResult test 3", GetResultTest3);
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::CreationTest1()
+TestResult::EOutcome TestSequenceTests::CreationTest1()
 {
-    Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
-    return Ishiko::TestFramework::TestResult::ePassed;
+    TestSequence seq(TestNumber(1), "Sequence");
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::AppendTest1()
+TestResult::EOutcome TestSequenceTests::AppendTest1()
 {
     // Creating test sequence
-    Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
+    TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Ishiko::TestFramework::Test> test = std::make_shared<SimpleTestClass1>(
-        Ishiko::TestFramework::TestNumber(1), "Test", Ishiko::TestFramework::TestResult::ePassed);
+    std::shared_ptr<Test> test = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
 
     // Append test to sequence
     seq.append(test);
@@ -57,55 +57,54 @@ Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::AppendTest1()
     // Check the test count
     if (seq.size() == 1)
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::AppendTest2()
+TestResult::EOutcome TestSequenceTests::AppendTest2()
 {
     // Creating test sequence
-    Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
+    TestSequence seq(TestNumber(1), "Sequence");
 
     // Create and append a test to the sequence in one go using the templated append function
-    seq.append<SimpleTestClass1>("Test", Ishiko::TestFramework::TestResult::ePassed);
+    seq.append<SimpleTestClass1>("Test", TestResult::ePassed);
 
     // Check the test count
     if (seq.size() == 1)
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::GetResultTest1()
+TestResult::EOutcome TestSequenceTests::GetResultTest1()
 {
-    Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
+    TestSequence seq(TestNumber(1), "Sequence");
 
-    if (seq.result().outcome() == Ishiko::TestFramework::TestResult::eUnknown)
+    if (seq.result().outcome() == TestResult::eUnknown)
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::GetResultTest2()
+TestResult::EOutcome TestSequenceTests::GetResultTest2()
 {
     // Creating test sequence
-    Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
+    TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Ishiko::TestFramework::Test> test = std::make_shared<SimpleTestClass1>(
-        Ishiko::TestFramework::TestNumber(1), "Test", Ishiko::TestFramework::TestResult::ePassed);
+    std::shared_ptr<Test> test = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
 
     // Append test to sequence
     seq.append(test);
@@ -113,40 +112,38 @@ Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::GetResultTest2()
     // Run the sequence to update the test result
     seq.run();
 
-    if (seq.result().outcome() == Ishiko::TestFramework::TestResult::ePassed)
+    if (seq.result().outcome() == TestResult::ePassed)
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestSequenceTests::GetResultTest3()
+TestResult::EOutcome TestSequenceTests::GetResultTest3()
 {
     // Creating test sequence
-    Ishiko::TestFramework::TestSequence seq(Ishiko::TestFramework::TestNumber(1), "Sequence");
+    TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating first test (passes)
-    std::shared_ptr<Ishiko::TestFramework::Test> test1 = std::make_shared<SimpleTestClass1>(
-        Ishiko::TestFramework::TestNumber(1), "Test", Ishiko::TestFramework::TestResult::ePassed);
+    std::shared_ptr<Test> test1 = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
     seq.append(test1);
 
     // Creating second test (fails)
-    std::shared_ptr<Ishiko::TestFramework::Test> test2 = std::make_shared<SimpleTestClass1>(
-        Ishiko::TestFramework::TestNumber(1), "Test", Ishiko::TestFramework::TestResult::eFailed);
+    std::shared_ptr<Test> test2 = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::eFailed);
     seq.append(test2);
 
     // Run the sequence to update the test result
     seq.run();
 
-    if (seq.result().outcome() == Ishiko::TestFramework::TestResult::eFailed)
+    if (seq.result().outcome() == TestResult::eFailed)
     {
-        return Ishiko::TestFramework::TestResult::ePassed;
+        return TestResult::ePassed;
     }
     else
     {
-        return Ishiko::TestFramework::TestResult::eFailed;
+        return TestResult::eFailed;
     }
 }
