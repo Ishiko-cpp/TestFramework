@@ -21,6 +21,7 @@
 */
 
 #include "DirectoriesTeardownActionTests.h"
+#include "Ishiko/TestFramework/Core/DebugHeap.h"
 #include <boost/filesystem.hpp>
 
 using namespace Ishiko::TestFramework;
@@ -42,10 +43,15 @@ TestResult::EOutcome DirectoriesTeardownActionCreationTest1()
 
 TestResult::EOutcome DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 {
+    DebugHeap::TrackingState tracking;
+    tracking.disableTracking();
+
     const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
     std::shared_ptr<DirectoriesTeardownAction> action = std::make_shared<DirectoriesTeardownAction>();
     action->add(path);
     test.addTeardownAction(action);
+
+    tracking.restore();
 
     if (create_directories(path))
     {
