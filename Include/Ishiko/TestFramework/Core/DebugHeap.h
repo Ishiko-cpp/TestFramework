@@ -28,17 +28,21 @@ namespace Ishiko
 namespace TestFramework
 {
 
-class HeapStatus
+class DebugHeap
 {
 public:
-    HeapStatus();
+    class State
+    {
+    public:
+        State();
 
-    void update();
+        void update();
 
-    size_t allocatedSize() const;
+        size_t allocatedSize() const;
 
-private:
-    size_t m_allocatedSize;
+    private:
+        size_t m_allocatedSize;
+    };
 };
 
 }

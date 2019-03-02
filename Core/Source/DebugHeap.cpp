@@ -30,12 +30,12 @@ namespace Ishiko
 namespace TestFramework
 {
 
-HeapStatus::HeapStatus()
+DebugHeap::State::State()
 {
     update();
 }
 
-void HeapStatus::update()
+void DebugHeap::State::update()
 {
 #if (defined(_WIN32) && defined(_DEBUG))
     _CrtMemState heapState;
@@ -44,7 +44,7 @@ void HeapStatus::update()
 #endif
 }
 
-size_t HeapStatus::allocatedSize() const
+size_t DebugHeap::State::allocatedSize() const
 {
     return m_allocatedSize;
 }

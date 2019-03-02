@@ -76,7 +76,7 @@ void Test::run(TestObserver::ptr& observer)
 
     setup();
 
-    HeapStatus heapStatusBefore;
+    DebugHeap::State heapStateBefore;
 
     TestResult::EOutcome outcome = TestResult::eFailed;
     try
@@ -88,9 +88,9 @@ void Test::run(TestObserver::ptr& observer)
         outcome = TestResult::eException;
     }
 
-    HeapStatus heapStatusAfter;
+    DebugHeap::State heapStateAfter;
 
-    if (m_memoryLeakCheck && (heapStatusBefore.allocatedSize() != heapStatusAfter.allocatedSize())
+    if (m_memoryLeakCheck && (heapStateBefore.allocatedSize() != heapStateAfter.allocatedSize())
         && (outcome == TestResult::ePassed))
     {
         m_result.setOutcome(TestResult::ePassedButMemoryLeaks);
