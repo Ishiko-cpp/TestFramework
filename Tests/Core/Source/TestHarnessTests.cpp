@@ -23,30 +23,31 @@
 #include "TestHarnessTests.h"
 #include "Ishiko/TestFramework/Core/TestHarness.h"
 
+using namespace Ishiko::TestFramework;
+
 void TestHarnessTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestSequence& testHarnessTestSequence =
-        theTestHarness.appendTestSequence("TestHarness tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("TestHarness tests");
 
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("Creation test 1", CreationTest1, testHarnessTestSequence);
-    new Ishiko::TestFramework::HeapAllocationErrorsTest("run test 1", RunTest1, testHarnessTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run test 1", RunTest1);
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestHarnessTests::CreationTest1()
+TestResult::EOutcome TestHarnessTests::CreationTest1()
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("TestHarnessTests_CreationTest1");
-    return Ishiko::TestFramework::TestResult::ePassed;
+    TestHarness theTestHarness("TestHarnessTests_CreationTest1");
+    return TestResult::ePassed;
 }
 
-Ishiko::TestFramework::TestResult::EOutcome TestHarnessTests::RunTest1()
+TestResult::EOutcome TestHarnessTests::RunTest1()
 {
-    Ishiko::TestFramework::TestResult::EOutcome result = Ishiko::TestFramework::TestResult::eFailed;
+    TestResult::EOutcome result = TestResult::eFailed;
 
-    Ishiko::TestFramework::TestHarness theTestHarness("TestHarnessTests_RunTest1");
+    TestHarness theTestHarness("TestHarnessTests_RunTest1");
     int returnCode = theTestHarness.run();
-    if (returnCode == Ishiko::TestFramework::eTestFailure)
+    if (returnCode == eTestFailure)
     {
-        result = Ishiko::TestFramework::TestResult::ePassed;
+        result = TestResult::ePassed;
     }
 
     return result;
