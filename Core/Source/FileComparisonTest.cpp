@@ -21,6 +21,7 @@
 */
 
 #include "FileComparisonTest.h"
+#include "DebugHeap.h"
 
 namespace Ishiko
 {
@@ -52,12 +53,22 @@ FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::stri
 
 void FileComparisonTest::setOutputFilePath(const boost::filesystem::path& path)
 {
+    DebugHeap::TrackingState trackingState;
+    trackingState.disableTracking();
+
     m_outputFilePath = path;
+
+    trackingState.restore();
 }
 
 void FileComparisonTest::setReferenceFilePath(const boost::filesystem::path& path)
 {
+    DebugHeap::TrackingState trackingState;
+    trackingState.disableTracking();
+
     m_referenceFilePath = path;
+
+    trackingState.restore();
 }
 
 const boost::filesystem::path& FileComparisonTest::getOutputFilePath() const
