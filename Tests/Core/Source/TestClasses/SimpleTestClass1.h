@@ -33,7 +33,6 @@ public:
     SimpleTestClass1(const Ishiko::TestFramework::TestNumber& number, const std::string& name,
         Ishiko::TestFramework::TestResult::EOutcome outcome,
         const Ishiko::TestFramework::TestEnvironment& environment);
-    ~SimpleTestClass1() noexcept override;
 
 protected:
     Ishiko::TestFramework::TestResult::EOutcome doRun(Ishiko::TestFramework::TestObserver::ptr& observer) override;

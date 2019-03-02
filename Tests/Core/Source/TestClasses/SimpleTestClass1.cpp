@@ -22,23 +22,20 @@
 
 #include "SimpleTestClass1.h"
 
-SimpleTestClass1::SimpleTestClass1(const Ishiko::TestFramework::TestNumber& number, const std::string& name,
-    Ishiko::TestFramework::TestResult::EOutcome outcome)
-    : Ishiko::TestFramework::Test(number, name), m_outcome(outcome)
+using namespace Ishiko::TestFramework;
+
+SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& name, TestResult::EOutcome outcome)
+    : Test(number, name), m_outcome(outcome)
 {
 }
 
-SimpleTestClass1::SimpleTestClass1(const Ishiko::TestFramework::TestNumber& number, const std::string& name,
-    Ishiko::TestFramework::TestResult::EOutcome outcome, const Ishiko::TestFramework::TestEnvironment& environment)
-    : Ishiko::TestFramework::Test(number, name, environment), m_outcome(outcome)
+SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& name, TestResult::EOutcome outcome,
+    const TestEnvironment& environment)
+    : Test(number, name, environment), m_outcome(outcome)
 {
 }
 
-SimpleTestClass1::~SimpleTestClass1() noexcept
-{
-}
-
-Ishiko::TestFramework::TestResult::EOutcome SimpleTestClass1::doRun(Ishiko::TestFramework::TestObserver::ptr& observer)
+TestResult::EOutcome SimpleTestClass1::doRun(TestObserver::ptr& observer)
 {
     return m_outcome;
 }
