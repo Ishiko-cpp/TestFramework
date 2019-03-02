@@ -104,6 +104,16 @@ TestResult::EOutcome TestSequence::doRun(TestObserver::ptr& observer)
             // depending on the outcome of the result we are adding.
             result = outcome;
         }
+        else if (result == TestResult::ePassedButMemoryLeaks)
+        {
+            // It can only stay at this state if the test is passed or ePassedButMemoryLeaks.
+            if ((outcome == TestResult::eFailed) ||
+                (outcome == TestResult::eException) ||
+                (outcome == TestResult::eUnknown))
+            {
+                result = outcome;
+            }
+        }
         else if (result == TestResult::eException)
         {
             // It can only get worse. This happens only if the outcome is 'failed'
