@@ -53,30 +53,66 @@ void TestResult::setOutcome(EOutcome outcome)
     m_outcome = outcome;
 }
 
-void TestResult::getPassRate(size_t& passed, size_t& failed, size_t& total) const
+void TestResult::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
+    size_t& failed, size_t& total) const
 {
     const TestSequence* sequence = dynamic_cast<const TestSequence*>(&m_test);
     if (sequence)
     {
-        for (size_t i = 0; i < sequence->size(); ++i)
+        if (sequence->size() == 0)
         {
-            size_t p = 0;
-            size_t f = 0;
-            size_t t = 0;
-            (*sequence)[i].result().getPassRate(p, f, t);
-            passed += p;
-            failed += f;
-            total += t;
+            // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't do
+            // that this case would go unnoticed in the returned values.
+            unknown = 1;
+            passed = 0;
+            passedButMemoryLeaks = 0;
+            exception = 0;
+            failed = 0;
+            total = 1;
+        }
+        else
+        {
+            for (size_t i = 0; i < sequence->size(); ++i)
+            {
+                size_t u = 0;
+                size_t p = 0;
+                size_t pbml = 0;
+                size_t e = 0;
+                size_t f = 0;
+                size_t t = 0;
+                (*sequence)[i].result().getPassRate(u, p, pbml, e, f, t);
+                unknown += u;
+                passed += p;
+                passedButMemoryLeaks += pbml;
+                exception += e;
+                failed += f;
+                total += t;
+            }
         }
     }
     else
     {
+        unknown = 0;
         passed = 0;
+        passedButMemoryLeaks = 0;
+        exception = 0;
         failed = 0;
         total = 1;
         switch (m_outcome) {
+            case EOutcome::eUnknown:
+                unknown = 1;
+                break;
+
             case EOutcome::ePassed:
                 passed = 1;
+                break;
+
+            case EOutcome::ePassedButMemoryLeaks:
+                passedButMemoryLeaks = 1;
+                break;
+
+            case EOutcome::eException:
+                exception = 1;
                 break;
 
             case EOutcome::eFailed:
