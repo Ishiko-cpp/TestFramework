@@ -25,18 +25,19 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class TestSequenceTests
+class TestSequenceTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+    TestSequenceTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome AppendTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome AppendTest2();
-    static Ishiko::TestFramework::TestResult::EOutcome GetResultTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome GetResultTest2();
-    static Ishiko::TestFramework::TestResult::EOutcome GetResultTest3();
+    static Ishiko::Tests::TestResult CreationTest1();
+    static Ishiko::Tests::TestResult AppendTest1();
+    static Ishiko::Tests::TestResult AppendTest2();
+    static Ishiko::Tests::TestResult GetResultTest1();
+    static Ishiko::Tests::TestResult GetResultTest2();
+    static Ishiko::Tests::TestResult GetResultTest3();
 };
 
 #endif

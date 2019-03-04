@@ -24,9 +24,9 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddHeapAllocationErrorsTestTests(TestHarness& theTestHarness)
+void AddHeapAllocationErrorsTestTests(TestSequence& parentTestSequence)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("HeapAllocationErrorsTest tests");
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("HeapAllocationErrorsTest tests");
 
     testSequence.append<HeapAllocationErrorsTest>("Creation test 1", HeapAllocationErrorsTestCreationTest1);
 }

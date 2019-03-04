@@ -25,7 +25,7 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddHeapAllocationErrorsTestTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+void AddHeapAllocationErrorsTestTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
 
 Ishiko::TestFramework::TestResult::EOutcome HeapAllocationErrorsTestCreationTest1();
 

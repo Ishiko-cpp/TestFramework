@@ -25,16 +25,15 @@
 
 using namespace Ishiko::TestFramework;
 
-void TestSequenceTests::AddTests(TestHarness& theTestHarness)
+TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "TestSequence tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("TestSequence tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("append test 1", AppendTest1);
-    testSequence.append<HeapAllocationErrorsTest>("append test 2", AppendTest2);
-    testSequence.append<HeapAllocationErrorsTest>("getResult test 1", GetResultTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getResult test 2", GetResultTest2);
-    testSequence.append<HeapAllocationErrorsTest>("getResult test 3", GetResultTest3);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("append test 1", AppendTest1);
+    append<HeapAllocationErrorsTest>("append test 2", AppendTest2);
+    append<HeapAllocationErrorsTest>("getResult test 1", GetResultTest1);
+    append<HeapAllocationErrorsTest>("getResult test 2", GetResultTest2);
+    append<HeapAllocationErrorsTest>("getResult test 3", GetResultTest3);
 }
 
 TestResult::EOutcome TestSequenceTests::CreationTest1()

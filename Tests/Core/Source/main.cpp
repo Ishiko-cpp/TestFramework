@@ -46,14 +46,15 @@ int main(int argc, char* argv[])
     create_directories("../../TestOutput");
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
+    TestSequence& theTests = theTestHarness.tests();
     AddTestEnvironmentTests(theTestHarness);
     AddTestInformationTests(theTestHarness);
     AddTestTests(theTestHarness);
-    TestSequenceTests::AddTests(theTestHarness);
+    theTests.append<TestSequenceTests>();
     AddFunctionBasedTestTests(theTestHarness);
     AddFileComparisonTestTests(theTestHarness);
     AddConsoleApplicationTestTests(theTestHarness);
-    AddHeapAllocationErrorsTestTests(theTestHarness);
+    AddHeapAllocationErrorsTestTests(theTestHarness.tests());
     AddTestSetupActionsTests(theTestHarness);
     AddTestTeardownActionsTests(theTestHarness);
     TestHarnessTests::AddTests(theTestHarness);
