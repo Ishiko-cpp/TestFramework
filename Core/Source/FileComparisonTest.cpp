@@ -25,7 +25,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name)

@@ -25,7 +25,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 void FilesTeardownAction::teardown()

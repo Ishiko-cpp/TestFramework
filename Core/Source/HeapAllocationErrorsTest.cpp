@@ -25,7 +25,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,

@@ -24,7 +24,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,

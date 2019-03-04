@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2006-2015 Xavier Leclercq
+    Copyright (c) 2006-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,7 +25,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 Test::Test(const TestNumber& number, const std::string& name)
