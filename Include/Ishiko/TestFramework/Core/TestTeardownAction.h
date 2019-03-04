@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2018 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,7 +25,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 /// Base class that represents an action that needs to be performed after the test has been run.

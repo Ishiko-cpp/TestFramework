@@ -30,7 +30,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 class TestProgressObserver : public TestObserver
