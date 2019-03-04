@@ -29,7 +29,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 class FunctionBasedTest : public Test

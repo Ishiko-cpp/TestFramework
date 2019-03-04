@@ -28,7 +28,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 class HeapAllocationErrorsTest : public Test

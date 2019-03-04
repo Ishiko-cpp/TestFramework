@@ -28,7 +28,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 class FileComparisonTest : public Test

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2017 Xavier Leclercq
+    Copyright (c) 2005-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -33,7 +33,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 /// This class represents a test.
