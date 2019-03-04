@@ -33,7 +33,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 template<class TestConfigurationClass, class TopSequenceClass>
@@ -47,7 +47,7 @@ public:
 
 	TestEnvironment& environment();
 
-	TestSequence& appendTestSequence(const std::string& name);
+	TestSequence& tests();
 
 protected:
 	int runTests();
@@ -86,9 +86,9 @@ TestEnvironment& TestHarnessBase<TestConfigurationClass, TopSequenceClass>::envi
 }
 
 template<class TestConfigurationClass, class TopSequenceClass>
-TestSequence& TestHarnessBase<TestConfigurationClass, TopSequenceClass>::appendTestSequence(const std::string& name)
+TestSequence& TestHarnessBase<TestConfigurationClass, TopSequenceClass>::tests()
 {
-    return m_topSequence.append<TestSequence>(name);
+    return m_topSequence;
 }
 
 template<class TestConfigurationClass, class TopSequenceClass>
