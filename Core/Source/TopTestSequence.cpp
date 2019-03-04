@@ -24,7 +24,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 TopTestSequence::TopTestSequence(const std::string& name)

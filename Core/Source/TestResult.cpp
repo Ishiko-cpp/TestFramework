@@ -26,7 +26,7 @@
 
 namespace Ishiko
 {
-namespace TestFramework
+namespace Tests
 {
 
 TestResult::TestResult(const Test& test)
