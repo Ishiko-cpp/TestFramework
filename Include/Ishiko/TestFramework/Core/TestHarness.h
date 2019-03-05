@@ -25,6 +25,7 @@
 
 #include "TestApplicationReturnCodes.h"
 #include "TestSequence.h"
+#include "TopTestSequence.h"
 #include "TestProgressObserver.h"
 #include <string>
 #include <iostream>
@@ -36,7 +37,7 @@ namespace Ishiko
 namespace Tests
 {
 
-template<class TestConfigurationClass, class TopSequenceClass>
+template<class TestConfigurationClass>
 class TestHarnessBase
 {
 public:
@@ -54,22 +55,22 @@ protected:
 
 private:
 	TestEnvironment m_environment;
-	TopSequenceClass m_topSequence;
+    TopTestSequence m_topSequence;
 };
 
-template<class TestConfigurationClass, class TopSequenceClass>
-TestHarnessBase<TestConfigurationClass, TopSequenceClass>::TestHarnessBase(const std::string& title)
+template<class TestConfigurationClass>
+TestHarnessBase<TestConfigurationClass>::TestHarnessBase(const std::string& title)
 	: m_environment(TestEnvironment::defaultTestEnvironment()), m_topSequence(title, m_environment)
 {
 }
 
-template<class TestConfigurationClass, class TopSequenceClass>
-TestHarnessBase<TestConfigurationClass, TopSequenceClass>::~TestHarnessBase()
+template<class TestConfigurationClass>
+TestHarnessBase<TestConfigurationClass>::~TestHarnessBase()
 {
 }
 
-template<class TestConfigurationClass, class TopSequenceClass>
-int TestHarnessBase<TestConfigurationClass, TopSequenceClass>::run()
+template<class TestConfigurationClass>
+int TestHarnessBase<TestConfigurationClass>::run()
 {
 	std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
 
@@ -79,20 +80,20 @@ int TestHarnessBase<TestConfigurationClass, TopSequenceClass>::run()
 	return result;
 }
 
-template<class TestConfigurationClass, class TopSequenceClass>
-TestEnvironment& TestHarnessBase<TestConfigurationClass, TopSequenceClass>::environment()
+template<class TestConfigurationClass>
+TestEnvironment& TestHarnessBase<TestConfigurationClass>::environment()
 {
 	return m_environment;
 }
 
-template<class TestConfigurationClass, class TopSequenceClass>
-TestSequence& TestHarnessBase<TestConfigurationClass, TopSequenceClass>::tests()
+template<class TestConfigurationClass>
+TestSequence& TestHarnessBase<TestConfigurationClass>::tests()
 {
     return m_topSequence;
 }
 
-template<class TestConfigurationClass, class TopSequenceClass>
-int TestHarnessBase<TestConfigurationClass, TopSequenceClass>::runTests()
+template<class TestConfigurationClass>
+int TestHarnessBase<TestConfigurationClass>::runTests()
 {
 	try
 	{
@@ -148,14 +149,13 @@ int TestHarnessBase<TestConfigurationClass, TopSequenceClass>::runTests()
 }
 
 #include "TestConfiguration.h"
-#include "TopTestSequence.h"
 
 namespace Ishiko
 {
 namespace Tests
 {
 
-typedef TestHarnessBase<TestConfiguration, TopTestSequence> TestHarness;
+typedef TestHarnessBase<TestConfiguration> TestHarness;
 
 }
 }
