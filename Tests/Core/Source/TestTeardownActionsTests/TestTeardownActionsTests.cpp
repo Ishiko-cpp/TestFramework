@@ -24,12 +24,11 @@
 #include "DirectoriesTeardownActionTests.h"
 #include "FilesTeardownActionTests.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void AddTestTeardownActionsTests(TestHarness& theTestHarness)
+TestTeardownActionsTests::TestTeardownActionsTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "TestTeardownAction tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("TestTeardownAction classes tests");
-
-    AddDirectoriesTeardownActionTests(testSequence);
-    AddFilesTeardownActionTests(testSequence);
+    append<DirectoriesTeardownActionTests>();
+    append<FilesTeardownActionTests>();
 }

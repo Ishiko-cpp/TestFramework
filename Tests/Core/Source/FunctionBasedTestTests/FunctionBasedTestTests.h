@@ -25,13 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddFunctionBasedTestTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+class FunctionBasedTestTests : public Ishiko::Tests::TestSequence
+{
+public:
+    FunctionBasedTestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-Ishiko::TestFramework::TestResult::EOutcome FunctionBasedTestCreationTest1();
-Ishiko::TestFramework::TestResult::EOutcome FunctionBasedTestCreationTest2();
-Ishiko::TestFramework::TestResult::EOutcome FunctionBasedTestRunSuccessTest1();
-Ishiko::TestFramework::TestResult::EOutcome FunctionBasedTestRunSuccessTest2();
-Ishiko::TestFramework::TestResult::EOutcome FunctionBasedTestRunFailureTest1();
-Ishiko::TestFramework::TestResult::EOutcome FunctionBasedTestRunFailureTest2();
+private:
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+    static Ishiko::Tests::TestResult::EOutcome CreationTest2();
+    static Ishiko::Tests::TestResult::EOutcome RunSuccessTest1();
+    static Ishiko::Tests::TestResult::EOutcome RunSuccessTest2();
+    static Ishiko::Tests::TestResult::EOutcome RunFailureTest1();
+    static Ishiko::Tests::TestResult::EOutcome RunFailureTest2();
+};
 
 #endif

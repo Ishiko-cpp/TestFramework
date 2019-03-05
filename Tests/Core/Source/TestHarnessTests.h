@@ -28,11 +28,11 @@
 class TestHarnessTests
 {
 public:
-    static void AddTests(Ishiko::Tests::TestHarness& theTestHarness);
+    TestHarnessTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
-    static Ishiko::Tests::TestResult::EOutcome RunTest1();
+    static Ishiko::Tests::Tests::EOutcome CreationTest1();
+    static Ishiko::Tests::Tests::EOutcome RunTest1();
 };
 
 #endif

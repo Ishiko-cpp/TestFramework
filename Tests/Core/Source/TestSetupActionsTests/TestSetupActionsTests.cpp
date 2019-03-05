@@ -23,11 +23,10 @@
 #include "TestSetupActionsTests.h"
 #include "ProcessActionTests.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void AddTestSetupActionsTests(TestHarness& theTestHarness)
+TestSetupActionsTests::TestSetupActionsTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "TestSetupAction tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("TestSetupAction classes tests");
-
     AddProcessActionTests(testSequence);
 }

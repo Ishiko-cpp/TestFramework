@@ -40,7 +40,7 @@ TestResult::EOutcome DirectoriesTeardownActionTests::CreationTest1()
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome DirectoriesTeardownActionTestsTeardownTest1Helper(Test& test)
+TestResult::EOutcome DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 {
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();

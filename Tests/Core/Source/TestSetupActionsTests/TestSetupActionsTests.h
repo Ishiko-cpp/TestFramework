@@ -25,6 +25,10 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddTestSetupActionsTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+class TestSetupActionsTests : public Ishiko::Tests::TestSequence
+{
+public:
+    TestSetupActionsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+};
 
 #endif

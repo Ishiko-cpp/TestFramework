@@ -22,18 +22,17 @@
 
 #include "FunctionBasedTestTests.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void AddFunctionBasedTestTests(TestHarness& theTestHarness)
+FunctionBasedTestTests::FunctionBasedTestTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "FunctionBasedTest tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("FunctionBasedTest tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FunctionBasedTestCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", FunctionBasedTestCreationTest2);
-    testSequence.append<HeapAllocationErrorsTest>("run success test 1", FunctionBasedTestRunSuccessTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run success test 2", FunctionBasedTestRunSuccessTest2);
-    testSequence.append<HeapAllocationErrorsTest>("run failure test 1", FunctionBasedTestRunFailureTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run failure test 2", FunctionBasedTestRunFailureTest2);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("run success test 1", RunSuccessTest1);
+    append<HeapAllocationErrorsTest>("run success test 2", RunSuccessTest2);
+    append<HeapAllocationErrorsTest>("run failure test 1", RunFailureTest1);
+    append<HeapAllocationErrorsTest>("run failure test 2", RunFailureTest2);
 }
 
 TestResult::EOutcome FunctionBasedTestCreationTest1Helper()
@@ -41,7 +40,7 @@ TestResult::EOutcome FunctionBasedTestCreationTest1Helper()
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestCreationTest1()
+TestResult::EOutcome FunctionBasedTestTests::CreationTest1()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestCreationTest1", FunctionBasedTestCreationTest1Helper);
     return TestResult::ePassed;
@@ -52,7 +51,7 @@ TestResult::EOutcome FunctionBasedTestCreationTest2Helper(Test& test)
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestCreationTest2()
+TestResult::EOutcome FunctionBasedTestTests::CreationTest2()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestCreationTest2", FunctionBasedTestCreationTest2Helper);
     return TestResult::ePassed;
@@ -63,7 +62,7 @@ TestResult::EOutcome FunctionBasedTestRunSuccessTest1Helper()
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestRunSuccessTest1()
+TestResult::EOutcome FunctionBasedTestTests::RunSuccessTest1()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunSuccessTest1", FunctionBasedTestRunSuccessTest1Helper);
     test.run();
@@ -90,7 +89,7 @@ TestResult::EOutcome FunctionBasedTestRunSuccessTest2Helper(Test& test)
     }
 }
 
-TestResult::EOutcome FunctionBasedTestRunSuccessTest2()
+TestResult::EOutcome FunctionBasedTestTests::RunSuccessTest2()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunSuccessTest2", FunctionBasedTestRunSuccessTest2Helper);
     test.run();
@@ -110,7 +109,7 @@ TestResult::EOutcome FunctionBasedTestRunFailureTest1Helper()
     return TestResult::eFailed;
 }
 
-TestResult::EOutcome FunctionBasedTestRunFailureTest1()
+TestResult::EOutcome FunctionBasedTestTests::RunFailureTest1()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunFailureTest1", FunctionBasedTestRunFailureTest1Helper);
     test.run();
@@ -137,7 +136,7 @@ TestResult::EOutcome FunctionBasedTestRunFailureTest2Helper(Test& test)
     }
 }
 
-TestResult::EOutcome FunctionBasedTestRunFailureTest2()
+TestResult::EOutcome FunctionBasedTestTests::RunFailureTest2()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunFailureTest2", FunctionBasedTestRunFailureTest2Helper);
     test.run();

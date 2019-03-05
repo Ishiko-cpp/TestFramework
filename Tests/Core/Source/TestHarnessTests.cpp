@@ -25,12 +25,11 @@
 
 using namespace Ishiko::Tests;
 
-void TestHarnessTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarness)
+TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "TestHarness tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("TestHarness tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run test 1", RunTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("run test 1", RunTest1);
 }
 
 TestResult::EOutcome TestHarnessTests::CreationTest1()
