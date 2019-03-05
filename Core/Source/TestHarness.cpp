@@ -75,7 +75,7 @@ int TestHarness::runTests()
         size_t exception = 0;
         size_t failed = 0;
         size_t total = 0;
-        m_topSequence.result().getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, total);
+        m_topSequence.getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, total);
         if (!m_topSequence.passed())
         {
             std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)

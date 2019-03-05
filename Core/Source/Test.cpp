@@ -21,6 +21,7 @@
 */
 
 #include "Test.h"
+#include "TestSequence.h"
 #include "DebugHeap.h"
 
 namespace Ishiko
@@ -29,13 +30,13 @@ namespace Tests
 {
 
 Test::Test(const TestNumber& number, const std::string& name)
-    : m_number(number), m_name(name), m_result(*this), m_environment(TestEnvironment::defaultTestEnvironment()),
+    : m_number(number), m_name(name), m_environment(TestEnvironment::defaultTestEnvironment()),
     m_memoryLeakCheck(true)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(*this), m_environment(environment), m_memoryLeakCheck(true)
+    : m_number(number), m_name(name), m_environment(environment), m_memoryLeakCheck(true)
 {
 }
 
@@ -62,6 +63,80 @@ const TestResult& Test::result() const
 bool Test::passed() const
 {
     return m_result.passed();
+}
+
+void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
+    size_t& failed, size_t& total) const
+{
+    const TestSequence* sequence = dynamic_cast<const TestSequence*>(this);
+    if (sequence)
+    {
+        if (sequence->size() == 0)
+        {
+            // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't do
+            // that this case would go unnoticed in the returned values.
+            unknown = 1;
+            passed = 0;
+            passedButMemoryLeaks = 0;
+            exception = 0;
+            failed = 0;
+            total = 1;
+        }
+        else
+        {
+            for (size_t i = 0; i < sequence->size(); ++i)
+            {
+                size_t u = 0;
+                size_t p = 0;
+                size_t pbml = 0;
+                size_t e = 0;
+                size_t f = 0;
+                size_t t = 0;
+                (*sequence)[i].getPassRate(u, p, pbml, e, f, t);
+                unknown += u;
+                passed += p;
+                passedButMemoryLeaks += pbml;
+                exception += e;
+                failed += f;
+                total += t;
+            }
+        }
+    }
+    else
+    {
+        unknown = 0;
+        passed = 0;
+        passedButMemoryLeaks = 0;
+        exception = 0;
+        failed = 0;
+        total = 1;
+        switch (m_result.outcome())
+        {
+            case TestResult::EOutcome::eUnknown:
+                unknown = 1;
+                break;
+
+            case TestResult::EOutcome::ePassed:
+                passed = 1;
+                break;
+
+            case TestResult::EOutcome::ePassedButMemoryLeaks:
+                passedButMemoryLeaks = 1;
+                break;
+
+            case TestResult::EOutcome::eException:
+                exception = 1;
+                break;
+
+            case TestResult::EOutcome::eFailed:
+                failed = 1;
+                break;
+        }
+    }
+}
+void Test::fail(const char* file, int line)
+{
+    m_result.setOutcome(TestResult::eFailed);
 }
 
 void Test::run()

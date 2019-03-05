@@ -48,12 +48,17 @@ public:
     Test(const TestNumber& number, const std::string& name);
     Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
     virtual ~Test() noexcept = default;
-    
+
     const TestNumber& number() const;
     void setNumber(const TestNumber& number);
     const std::string& name() const;
+
     const TestResult& result() const;
     bool passed() const;
+    void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
+        size_t& total) const;
+    void fail(const char* file, int line);
+
     const TestEnvironment& environment() const;
     
     virtual void run();

@@ -30,8 +30,6 @@ namespace Ishiko
 namespace Tests
 {
 
-class Test;
-
 class TestResult
 {
 public:
@@ -45,18 +43,13 @@ public:
     };
 
 public:
-    TestResult(const Test& test);
-    virtual ~TestResult() throw();
+    TestResult();
 
     EOutcome outcome() const;
     bool passed() const;
     void setOutcome(EOutcome outcome);
 
-    void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
-        size_t& total) const;
-
 private:
-    const Test& m_test;
     EOutcome m_outcome;
 };
 
