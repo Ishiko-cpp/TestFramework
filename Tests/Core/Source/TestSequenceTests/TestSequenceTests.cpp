@@ -36,13 +36,13 @@ TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnviron
     append<HeapAllocationErrorsTest>("getResult test 3", GetResultTest3);
 }
 
-TestResult::EOutcome TestSequenceTests::CreationTest1()
+TestResult TestSequenceTests::CreationTest1()
 {
     TestSequence seq(TestNumber(1), "Sequence");
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome TestSequenceTests::AppendTest1()
+TestResult TestSequenceTests::AppendTest1()
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
@@ -64,7 +64,7 @@ TestResult::EOutcome TestSequenceTests::AppendTest1()
     }
 }
 
-TestResult::EOutcome TestSequenceTests::AppendTest2()
+TestResult TestSequenceTests::AppendTest2()
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
@@ -83,11 +83,11 @@ TestResult::EOutcome TestSequenceTests::AppendTest2()
     }
 }
 
-TestResult::EOutcome TestSequenceTests::GetResultTest1()
+TestResult TestSequenceTests::GetResultTest1()
 {
     TestSequence seq(TestNumber(1), "Sequence");
 
-    if (seq.result().outcome() == TestResult::eUnknown)
+    if (seq.result() == TestResult::eUnknown)
     {
         return TestResult::ePassed;
     }
@@ -97,7 +97,7 @@ TestResult::EOutcome TestSequenceTests::GetResultTest1()
     }
 }
 
-TestResult::EOutcome TestSequenceTests::GetResultTest2()
+TestResult TestSequenceTests::GetResultTest2()
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
@@ -111,7 +111,7 @@ TestResult::EOutcome TestSequenceTests::GetResultTest2()
     // Run the sequence to update the test result
     seq.run();
 
-    if (seq.result().outcome() == TestResult::ePassed)
+    if (seq.result() == TestResult::ePassed)
     {
         return TestResult::ePassed;
     }
@@ -121,7 +121,7 @@ TestResult::EOutcome TestSequenceTests::GetResultTest2()
     }
 }
 
-TestResult::EOutcome TestSequenceTests::GetResultTest3()
+TestResult TestSequenceTests::GetResultTest3()
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
@@ -137,7 +137,7 @@ TestResult::EOutcome TestSequenceTests::GetResultTest3()
     // Run the sequence to update the test result
     seq.run();
 
-    if (seq.result().outcome() == TestResult::eFailed)
+    if (seq.result() == TestResult::eFailed)
     {
         return TestResult::ePassed;
     }
