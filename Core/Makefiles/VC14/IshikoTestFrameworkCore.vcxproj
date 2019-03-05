@@ -163,7 +163,6 @@
     <ClCompile Include="..\..\Source\TestEnvironment.cpp" />
     <ClCompile Include="..\..\Source\TestException.cpp" />
     <ClCompile Include="..\..\Source\TestHarness.cpp" />
-    <ClCompile Include="..\..\Source\TestInformation.cpp" />
     <ClCompile Include="..\..\Source\TestNumber.cpp" />
     <ClCompile Include="..\..\Source\TestObserver.cpp" />
     <ClCompile Include="..\..\Source\TestObservers.cpp" />
@@ -190,7 +189,6 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestEnvironment.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestException.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestInformation.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestObserver.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestObservers.h" />

@@ -23,7 +23,7 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TEST_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_TEST_H_
 
-#include "TestInformation.h"
+#include "TestNumber.h"
 #include "TestResult.h"
 #include "TestEnvironment.h"
 #include "TestObserver.h"
@@ -50,8 +50,8 @@ public:
     virtual ~Test() noexcept = default;
     
     const TestNumber& number() const;
+    void setNumber(const TestNumber& number);
     const std::string& name() const;
-    TestInformation& information();
     const TestResult& result() const;
     bool passed() const;
     const TestEnvironment& environment() const;
@@ -70,7 +70,8 @@ protected:
         TestObserver::ptr& observer);
     
 private:
-    TestInformation m_information;
+    TestNumber m_number;
+    std::string m_name;
     TestResult m_result;
     const TestEnvironment& m_environment;
     bool m_memoryLeakCheck;

@@ -57,12 +57,12 @@ void TestSequence::append(std::shared_ptr<Test> test)
     if (m_tests.size() == 0)
     {
         TestNumber newNumber = number();
-        test->information().setNumber(newNumber.deeperNumber());
+        test->setNumber(newNumber.deeperNumber());
     }
     else
     {
         TestNumber newNumber = m_tests.back()->number();
-        test->information().setNumber(++newNumber);
+        test->setNumber(++newNumber);
     }
 
     m_tests.push_back(test);

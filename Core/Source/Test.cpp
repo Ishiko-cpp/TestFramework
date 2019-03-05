@@ -29,29 +29,29 @@ namespace Tests
 {
 
 Test::Test(const TestNumber& number, const std::string& name)
-    : m_information(number, name), m_result(*this), m_environment(TestEnvironment::defaultTestEnvironment()),
+    : m_number(number), m_name(name), m_result(*this), m_environment(TestEnvironment::defaultTestEnvironment()),
     m_memoryLeakCheck(true)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : m_information(number, name), m_result(*this), m_environment(environment), m_memoryLeakCheck(true)
+    : m_number(number), m_name(name), m_result(*this), m_environment(environment), m_memoryLeakCheck(true)
 {
 }
 
 const TestNumber& Test::number() const
 {
-    return m_information.number();
+    return m_number;
+}
+
+void Test::setNumber(const TestNumber& number)
+{
+    m_number = number;
 }
 
 const std::string& Test::name() const
 {
-    return m_information.name();
-}
-
-TestInformation& Test::information()
-{
-    return m_information;
+    return m_name;
 }
 
 const TestResult& Test::result() const
