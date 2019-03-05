@@ -167,7 +167,6 @@
     <ClCompile Include="..\..\Source\TestObserver.cpp" />
     <ClCompile Include="..\..\Source\TestObservers.cpp" />
     <ClCompile Include="..\..\Source\TestProgressObserver.cpp" />
-    <ClCompile Include="..\..\Source\TestResult.cpp" />
     <ClCompile Include="..\..\Source\TestSequence.cpp" />
     <ClCompile Include="..\..\Source\TestSetupAction.cpp" />
     <ClCompile Include="..\..\Source\TestTeardownAction.cpp" />
