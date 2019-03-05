@@ -24,18 +24,17 @@
 #include "Ishiko/TestFramework/Core/DebugHeap.h"
 #include <boost/filesystem.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-void AddFilesTeardownActionTests(TestSequence& parentTestSequence)
+FilesTeardownActionTests::FilesTeardownActionTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "FilesTeardownAction tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("FilesTeardownAction tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FilesTeardownActionCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("teardown() test 1", FilesTeardownActionTeardownTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("teardown() test 1", TeardownTest1);
 }
 
-TestResult::EOutcome FilesTeardownActionCreationTest1()
+TestResult::EOutcome FilesTeardownActionTests::CreationTest1()
 {
     FilesTeardownAction action;
     return TestResult::ePassed;
@@ -66,7 +65,7 @@ TestResult::EOutcome FilesTeardownActionTeardownTest1Helper(Test& test)
     }
 }
 
-TestResult::EOutcome FilesTeardownActionTeardownTest1()
+TestResult::EOutcome FilesTeardownActionTests::TeardownTest1()
 {
     const char* path = "../../TestOutput/TestTeardownActionsTests/FilesTeardownActionTeardownTest1";
 

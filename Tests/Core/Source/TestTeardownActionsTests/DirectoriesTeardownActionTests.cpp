@@ -24,24 +24,23 @@
 #include "Ishiko/TestFramework/Core/DebugHeap.h"
 #include <boost/filesystem.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-void AddDirectoriesTeardownActionTests(TestSequence& parentTestSequence)
+DirectoriesTeardownActionTests::DirectoriesTeardownActionTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "DirectoriesTeardownAction tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("DirectoriesTeardownAction tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", DirectoriesTeardownActionCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("teardown() test 1", DirectoriesTeardownActionTeardownTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("teardown() test 1", TeardownTest1);
 }
 
-TestResult::EOutcome DirectoriesTeardownActionCreationTest1()
+TestResult::EOutcome DirectoriesTeardownActionTests::CreationTest1()
 {
     DirectoriesTeardownAction action;
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome DirectoriesTeardownActionTeardownTest1Helper(Test& test)
+TestResult::EOutcome DirectoriesTeardownActionTestsTeardownTest1Helper(Test& test)
 {
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();
@@ -63,7 +62,7 @@ TestResult::EOutcome DirectoriesTeardownActionTeardownTest1Helper(Test& test)
     }
 }
 
-TestResult::EOutcome DirectoriesTeardownActionTeardownTest1()
+TestResult::EOutcome DirectoriesTeardownActionTests::TeardownTest1()
 {
     const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
 

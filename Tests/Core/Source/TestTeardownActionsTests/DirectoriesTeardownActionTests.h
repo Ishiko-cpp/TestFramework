@@ -25,9 +25,15 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddDirectoriesTeardownActionTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+class DirectoriesTeardownActionTests : public Ishiko::Tests::TestSequence
+{
+public:
+    DirectoriesTeardownActionTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
-Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionCreationTest1();
-Ishiko::TestFramework::TestResult::EOutcome DirectoriesTeardownActionTeardownTest1();
+private:
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+    static Ishiko::Tests::TestResult::EOutcome TeardownTest1();
+};
 
 #endif
