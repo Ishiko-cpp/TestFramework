@@ -24,20 +24,17 @@
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTHARNESS_H_
 
 #include "TestApplicationReturnCodes.h"
+#include "TestConfiguration.h"
 #include "TestSequence.h"
 #include "TopTestSequence.h"
 #include "TestProgressObserver.h"
 #include <string>
-#include <iostream>
-#include <iomanip>
-#include <memory>
 
 namespace Ishiko
 {
 namespace Tests
 {
 
-template<class TestConfigurationClass>
 class TestHarnessBase
 {
 public:
@@ -58,104 +55,15 @@ private:
     TopTestSequence m_topSequence;
 };
 
-template<class TestConfigurationClass>
-TestHarnessBase<TestConfigurationClass>::TestHarnessBase(const std::string& title)
-	: m_environment(TestEnvironment::defaultTestEnvironment()), m_topSequence(title, m_environment)
-{
-}
-
-template<class TestConfigurationClass>
-TestHarnessBase<TestConfigurationClass>::~TestHarnessBase()
-{
-}
-
-template<class TestConfigurationClass>
-int TestHarnessBase<TestConfigurationClass>::run()
-{
-	std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
-
-	// Run the tests
-	int result = runTests();
-
-	return result;
-}
-
-template<class TestConfigurationClass>
-TestEnvironment& TestHarnessBase<TestConfigurationClass>::environment()
-{
-	return m_environment;
-}
-
-template<class TestConfigurationClass>
-TestSequence& TestHarnessBase<TestConfigurationClass>::tests()
-{
-    return m_topSequence;
-}
-
-template<class TestConfigurationClass>
-int TestHarnessBase<TestConfigurationClass>::runTests()
-{
-	try
-	{
-		TestProgressObserver::ptr progressObserver = std::make_shared<TestProgressObserver>();
-		std::cout << std::endl;
-		m_topSequence.run(progressObserver);
-		std::cout << std::endl;
-
-        size_t unknown = 0;
-        size_t passed = 0;
-        size_t passedButMemoryLeaks = 0;
-        size_t exception = 0;
-        size_t failed = 0;
-        size_t total = 0;
-        m_topSequence.result().getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, total);
-		if (!m_topSequence.passed())
-		{
-            std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)
-                << "% (" << unknown << " unknown, "
-                << passed << " passed, "
-                << passedButMemoryLeaks << " passed but with memory leaks, "
-                << exception << " threw exceptions, "
-                << failed << " failed, "
-                << total << " total)" << std::endl;
-            std::cout << std::endl;
-            std::cout << "Test Suite FAILED!!!" << std::endl;
-
-			return eTestFailure;
-		}
-		else
-		{
-            std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)
-                << "% (" << unknown << " unknown, "
-                << passed << " passed, "
-                << passedButMemoryLeaks << " passed but with memory leaks, "
-                << exception << " threw exceptions, "
-                << failed << " failed, "
-                << total << " total)" << std::endl;
-
-            std::cout << std::endl;
-            std::cout << "Test Suite passed" << std::endl;
-
-			return eOK;
-		}
-	}
-	catch (...)
-	{
-		return eException;
-	}
-}
-
 }
 }
-
-#include "TestConfiguration.h"
 
 namespace Ishiko
 {
 namespace Tests
 {
 
-typedef TestHarnessBase<TestConfiguration> TestHarness;
+typedef TestHarnessBase TestHarness;
 
 }
 }
