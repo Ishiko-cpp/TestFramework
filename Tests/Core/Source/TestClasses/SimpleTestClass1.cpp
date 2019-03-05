@@ -22,7 +22,7 @@
 
 #include "SimpleTestClass1.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
 SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& name, TestResult::EOutcome outcome)
     : Test(number, name), m_outcome(outcome)

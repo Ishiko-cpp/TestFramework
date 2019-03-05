@@ -25,14 +25,13 @@
 
 using namespace Ishiko::Tests;
 
-void AddTestTests(TestHarness& theTestHarness)
+TestTests::TestTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Test tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("Test tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", TestCreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome TestCreationTest1()
+TestResult::EOutcome TestTests::CreationTest1()
 {
     SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
     return TestResult::ePassed;

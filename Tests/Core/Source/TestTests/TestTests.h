@@ -25,8 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddTestTests(Ishiko::Tests::TestHarness& theTestHarness);
+class TestTests : public Ishiko::Tests::TestSequence
+{
+public:
+    TestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-Ishiko::Tests::TestResult::EOutcome TestCreationTest1();
+private:
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+};
 
 #endif
