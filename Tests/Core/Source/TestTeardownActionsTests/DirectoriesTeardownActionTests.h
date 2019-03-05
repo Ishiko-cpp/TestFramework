@@ -32,8 +32,8 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
-    static Ishiko::Tests::TestResult::EOutcome TeardownTest1();
+    static Ishiko::Tests::TestResult CreationTest1();
+    static Ishiko::Tests::TestResult TeardownTest1();
 };
 
 #endif

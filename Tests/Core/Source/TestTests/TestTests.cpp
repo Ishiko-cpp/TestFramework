@@ -31,7 +31,7 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome TestTests::CreationTest1()
+TestResult TestTests::CreationTest1()
 {
     SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
     return TestResult::ePassed;

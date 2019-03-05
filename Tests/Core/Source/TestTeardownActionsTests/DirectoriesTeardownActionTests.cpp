@@ -35,13 +35,13 @@ DirectoriesTeardownActionTests::DirectoriesTeardownActionTests(const TestNumber&
     append<HeapAllocationErrorsTest>("teardown() test 1", TeardownTest1);
 }
 
-TestResult::EOutcome DirectoriesTeardownActionTests::CreationTest1()
+TestResult DirectoriesTeardownActionTests::CreationTest1()
 {
     DirectoriesTeardownAction action;
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome DirectoriesTeardownActionTeardownTest1Helper(Test& test)
+TestResult DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 {
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();
@@ -63,7 +63,7 @@ TestResult::EOutcome DirectoriesTeardownActionTeardownTest1Helper(Test& test)
     }
 }
 
-TestResult::EOutcome DirectoriesTeardownActionTests::TeardownTest1()
+TestResult DirectoriesTeardownActionTests::TeardownTest1()
 {
     const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
 
