@@ -26,19 +26,19 @@
 using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-void AddConsoleApplicationTestTests(TestHarness& theTestHarness)
+ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& number,
+    const TestEnvironment& environment)
+    : TestSequence(number, "ConsoleApplicationTest tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("ConsoleApplicationTest tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ConsoleApplicationTestCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run success test 1", ConsoleApplicationTestRunSuccessTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run success test 2", ConsoleApplicationTestRunSuccessTest2);
-    testSequence.append<HeapAllocationErrorsTest>("run failure test 1", ConsoleApplicationTestRunFailureTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run success test 3", ConsoleApplicationTestRunSuccessTest3);
-    testSequence.append<HeapAllocationErrorsTest>("run failure test 2", ConsoleApplicationTestRunFailureTest2);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("run success test 1", RunSuccessTest1);
+    append<HeapAllocationErrorsTest>("run success test 2", RunSuccessTest2);
+    append<HeapAllocationErrorsTest>("run failure test 1", RunFailureTest1);
+    append<HeapAllocationErrorsTest>("run success test 3", RunSuccessTest3);
+    append<HeapAllocationErrorsTest>("run failure test 2", RunFailureTest2);
 }
 
-TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test)
+TestResult::EOutcome ConsoleApplicationTestTests::CreationTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/WriteFileTestHelper.exe");
 
@@ -48,7 +48,7 @@ TestResult::EOutcome ConsoleApplicationTestCreationTest1(Test& test)
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Test& test)
+TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -66,7 +66,7 @@ TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Test& test)
+TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -84,7 +84,7 @@ TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test)
+TestResult::EOutcome ConsoleApplicationTestTests::RunFailureTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -102,7 +102,7 @@ TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Test& test)
+TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
 {
     create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
 
@@ -129,7 +129,7 @@ TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Test& test)
+TestResult::EOutcome ConsoleApplicationTestTests::RunFailureTest2(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
     path outputPath(test.environment().getTestOutputDirectory()

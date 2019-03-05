@@ -25,26 +25,23 @@
 
 using namespace Ishiko::Tests;
 
-void AddTestEnvironmentTests(TestHarness& theTestHarness)
+TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
+    const TestEnvironment& environment)
+    : TestSequence(number, "TestEnvironment tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("TestEnvironment tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", TestEnvironmentCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getTestDataDirectory test 1",
-        TestEnvironmentGetTestDataDirectoryTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getTestDataDirectory test 2",
-        TestEnvironmentGetTestDataDirectoryTest2);
-    testSequence.append<HeapAllocationErrorsTest>("getTestDataDirectory test 3",
-        TestEnvironmentGetTestDataDirectoryTest3);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("getTestDataDirectory test 1", GetTestDataDirectoryTest1);
+    append<HeapAllocationErrorsTest>("getTestDataDirectory test 2", GetTestDataDirectoryTest2);
+    append<HeapAllocationErrorsTest>("getTestDataDirectory test 3", GetTestDataDirectoryTest3);
 }
 
-TestResult::EOutcome TestEnvironmentCreationTest1()
+TestResult::EOutcome TestEnvironmentTests::CreationTest1()
 {
     TestEnvironment environment;
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest1()
+TestResult::EOutcome TestEnvironmentTests::GetTestDataDirectoryTest1()
 {
     TestResult::EOutcome result = TestResult::eFailed;
     try
@@ -59,7 +56,7 @@ TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest1()
     return result;
 }
 
-TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest2()
+TestResult::EOutcome TestEnvironmentTests::GetTestDataDirectoryTest2()
 {
     TestEnvironment environment;
     environment.setTestDataDirectory("id1", "path1");
@@ -73,7 +70,7 @@ TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest2()
     }
 }
 
-TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest3()
+TestResult::EOutcome TestEnvironmentTests::GetTestDataDirectoryTest3()
 {
     Ishiko::Process::Environment::set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
 

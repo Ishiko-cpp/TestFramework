@@ -33,7 +33,7 @@
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
 int main(int argc, char* argv[])
@@ -46,17 +46,16 @@ int main(int argc, char* argv[])
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
     TestSequence& theTests = theTestHarness.tests();
-    AddTestEnvironmentTests(theTestHarness);
-    AddTestInformationTests(theTestHarness);
-    AddTestTests(theTestHarness);
+    theTests.append<TestEnvironmentTests>();
+    theTests.append<TestTests>();
     theTests.append<TestSequenceTests>();
-    AddFunctionBasedTestTests(theTestHarness);
-    AddFileComparisonTestTests(theTestHarness);
-    AddConsoleApplicationTestTests(theTestHarness);
-    AddHeapAllocationErrorsTestTests(theTestHarness.tests());
-    AddTestSetupActionsTests(theTestHarness);
-    AddTestTeardownActionsTests(theTestHarness);
-    TestHarnessTests::AddTests(theTestHarness);
+    theTests.append<FunctionBasedTestTests>();
+    theTests.append<FileComparisonTestTests>();
+    theTests.append<ConsoleApplicationTestTests>();
+    theTests.append<HeapAllocationErrorsTestTests>();
+    theTests.append<TestSetupActionsTests>();
+    theTests.append<TestTeardownActionsTests>();
+    theTests.append<TestHarnessTests>();
 
     return theTestHarness.run();
 }

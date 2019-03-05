@@ -25,11 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddTestEnvironmentTests(Ishiko::Tests::TestHarness& theTestHarness);
+class TestEnvironmentTests : public Ishiko::Tests::TestSequence
+{
+public:
+    TestEnvironmentTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
-Ishiko::Tests::TestResult::EOutcome TestEnvironmentCreationTest1();
-Ishiko::Tests::TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest1();
-Ishiko::Tests::TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest2();
-Ishiko::Tests::TestResult::EOutcome TestEnvironmentGetTestDataDirectoryTest3();
+private:
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+    static Ishiko::Tests::TestResult::EOutcome GetTestDataDirectoryTest1();
+    static Ishiko::Tests::TestResult::EOutcome GetTestDataDirectoryTest2();
+    static Ishiko::Tests::TestResult::EOutcome GetTestDataDirectoryTest3();
+
+};
 
 #endif
