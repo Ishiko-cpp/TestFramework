@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2018 Xavier Leclercq
+    Copyright (c) 2007-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,7 +21,6 @@
 */
 
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
-#include "TestInformationTests/TestInformationTests.h"
 #include "TestTests/TestTests.h"
 #include "TestSequenceTests/TestSequenceTests.h"
 #include "FunctionBasedTestTests/FunctionBasedTestTests.h"

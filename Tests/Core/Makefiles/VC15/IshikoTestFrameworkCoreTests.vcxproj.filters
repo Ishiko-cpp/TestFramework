@@ -38,9 +38,6 @@
     <ClInclude Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestInformationTests\TestInformationTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\TestSequenceTests\TestSequenceTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -86,9 +83,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TestInformationTests\TestInformationTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestSequenceTests\TestSequenceTests.cpp">

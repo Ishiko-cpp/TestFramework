@@ -28,5 +28,5 @@ using namespace Ishiko::Tests;
 TestSetupActionsTests::TestSetupActionsTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "TestSetupAction tests", environment)
 {
-    AddProcessActionTests(testSequence);
+    append<ProcessActionTests>();
 }

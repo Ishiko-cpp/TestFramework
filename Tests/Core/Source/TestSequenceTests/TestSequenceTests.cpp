@@ -23,7 +23,7 @@
 #include "TestSequenceTests.h"
 #include "../TestClasses/SimpleTestClass1.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
 TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "TestSequence tests", environment)

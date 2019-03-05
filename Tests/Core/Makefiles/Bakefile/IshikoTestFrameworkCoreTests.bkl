@@ -28,7 +28,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
         ../../Source/TestClasses/SimpleTestClass1.h
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.h
-        ../../Source/TestInformationTests/TestInformationTests.h
         ../../Source/TestSequenceTests/TestSequenceTests.h
         ../../Source/TestSetupActionsTests/ProcessActionTests.h
         ../../Source/TestSetupActionsTests/TestSetupActionsTests.h
@@ -49,7 +48,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
         ../../Source/TestClasses/SimpleTestClass1.cpp
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.cpp
-        ../../Source/TestInformationTests/TestInformationTests.cpp
         ../../Source/TestSequenceTests/TestSequenceTests.cpp
         ../../Source/TestSetupActionsTests/ProcessActionTests.cpp
         ../../Source/TestSetupActionsTests/TestSetupActionsTests.cpp
