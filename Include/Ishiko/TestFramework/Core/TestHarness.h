@@ -23,11 +23,11 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTHARNESS_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTHARNESS_H_
 
-#include "TestApplicationReturnCodes.h"
 #include "TestConfiguration.h"
+#include "TestEnvironment.h"
 #include "TestSequence.h"
 #include "TopTestSequence.h"
-#include "TestProgressObserver.h"
+#include "TestApplicationReturnCodes.h"
 #include <string>
 
 namespace Ishiko
@@ -35,11 +35,11 @@ namespace Ishiko
 namespace Tests
 {
 
-class TestHarnessBase
+class TestHarness
 {
 public:
-	explicit TestHarnessBase(const std::string& title);
-	virtual ~TestHarnessBase();
+	explicit TestHarness(const std::string& title);
+	virtual ~TestHarness();
 
 	int run();
 
@@ -54,16 +54,6 @@ private:
 	TestEnvironment m_environment;
     TopTestSequence m_topSequence;
 };
-
-}
-}
-
-namespace Ishiko
-{
-namespace Tests
-{
-
-typedef TestHarnessBase TestHarness;
 
 }
 }

@@ -21,6 +21,7 @@
 */
 
 #include "TestHarness.h"
+#include "TestProgressObserver.h"
 #include <iostream>
 #include <iomanip>
 #include <memory>
@@ -30,16 +31,16 @@ namespace Ishiko
 namespace Tests
 {
 
-TestHarnessBase::TestHarnessBase(const std::string& title)
+TestHarness::TestHarness(const std::string& title)
     : m_environment(TestEnvironment::defaultTestEnvironment()), m_topSequence(title, m_environment)
 {
 }
 
-TestHarnessBase::~TestHarnessBase()
+TestHarness::~TestHarness()
 {
 }
 
-int TestHarnessBase::run()
+int TestHarness::run()
 {
     std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
 
@@ -49,17 +50,17 @@ int TestHarnessBase::run()
     return result;
 }
 
-TestEnvironment& TestHarnessBase::environment()
+TestEnvironment& TestHarness::environment()
 {
     return m_environment;
 }
 
-TestSequence& TestHarnessBase::tests()
+TestSequence& TestHarness::tests()
 {
     return m_topSequence;
 }
 
-int TestHarnessBase::runTests()
+int TestHarness::runTests()
 {
     try
     {
