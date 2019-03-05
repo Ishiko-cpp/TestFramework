@@ -24,13 +24,12 @@
 
 using namespace Ishiko::Tests;
 
-void AddFileComparisonTestTests(TestHarness& theTestHarness)
+FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "FileComparisonTest tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("FileComparisonTest tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FileComparisonTestCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run success test 1", FileComparisonTestRunSuccessTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run failure test 1", FileComparisonTestRunFailureTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("run success test 1", RunSuccessTest1);
+    append<HeapAllocationErrorsTest>("run failure test 1", RunFailureTest1);
 }
 
 TestResult::EOutcome FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
@@ -38,7 +37,7 @@ TestResult::EOutcome FileComparisonTestCreationTest1Helper(FileComparisonTest& t
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FileComparisonTestCreationTest1()
+TestResult::EOutcome FileComparisonTestTests::CreationTest1()
 {
     FileComparisonTest test(TestNumber(), "FileComparisonTestCreationTest1", FileComparisonTestCreationTest1Helper);
     return TestResult::ePassed;
@@ -51,7 +50,7 @@ TestResult::EOutcome FileComparisonTestRunSuccessTest1Helper(FileComparisonTest&
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FileComparisonTestRunSuccessTest1()
+TestResult::EOutcome FileComparisonTestTests::RunSuccessTest1()
 {
     FileComparisonTest test(TestNumber(), "FileComparisonTestRunSuccessTest1",
         FileComparisonTestRunSuccessTest1Helper);
@@ -68,7 +67,7 @@ TestResult::EOutcome FileComparisonTestRunFailureTest1Helper(FileComparisonTest&
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FileComparisonTestRunFailureTest1()
+TestResult::EOutcome FileComparisonTestTests::RunFailureTest1()
 {
     FileComparisonTest test(TestNumber(), "FileComparisonTestRunFailureTest1",
         FileComparisonTestRunFailureTest1Helper);

@@ -25,10 +25,16 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddFileComparisonTestTests(Ishiko::Tests::TestHarness& theTestHarness);
+class FileComparisonTestTests : public Ishiko::Tests::TestSequence
+{
+public:
+    FileComparisonTestTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
-Ishiko::Tests::TestResult::EOutcome FileComparisonTestCreationTest1();
-Ishiko::Tests::TestResult::EOutcome FileComparisonTestRunSuccessTest1();
-Ishiko::Tests::TestResult::EOutcome FileComparisonTestRunFailureTest1();
+private:
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+    static Ishiko::Tests::TestResult::EOutcome RunSuccessTest1();
+    static Ishiko::Tests::TestResult::EOutcome RunFailureTest1();
+};
 
 #endif
