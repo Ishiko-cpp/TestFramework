@@ -32,9 +32,9 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
-    static Ishiko::Tests::TestResult::EOutcome RunSuccessTest1();
-    static Ishiko::Tests::TestResult::EOutcome RunFailureTest1();
+    static Ishiko::Tests::TestResult CreationTest1();
+    static Ishiko::Tests::TestResult RunSuccessTest1();
+    static Ishiko::Tests::TestResult RunFailureTest1();
 };
 
 #endif

@@ -32,49 +32,49 @@ FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const
     append<HeapAllocationErrorsTest>("run failure test 1", RunFailureTest1);
 }
 
-TestResult::EOutcome FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
+TestResult FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
 {
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FileComparisonTestTests::CreationTest1()
+TestResult FileComparisonTestTests::CreationTest1()
 {
     FileComparisonTest test(TestNumber(), "FileComparisonTestCreationTest1", FileComparisonTestCreationTest1Helper);
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
+TestResult FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
 {
     test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../TestData/ComparisonTestFiles/Hello2.txt");
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FileComparisonTestTests::RunSuccessTest1()
+TestResult FileComparisonTestTests::RunSuccessTest1()
 {
     FileComparisonTest test(TestNumber(), "FileComparisonTestRunSuccessTest1",
         FileComparisonTestRunSuccessTest1Helper);
     
     test.run();
     
-    return test.result().outcome();
+    return test.result();
 }
 
-TestResult::EOutcome FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
+TestResult FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
 {
     test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../TestData/ComparisonTestFiles/NotHello.txt");
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FileComparisonTestTests::RunFailureTest1()
+TestResult FileComparisonTestTests::RunFailureTest1()
 {
     FileComparisonTest test(TestNumber(), "FileComparisonTestRunFailureTest1",
         FileComparisonTestRunFailureTest1Helper);
 
     test.run();
     
-    if (test.result().outcome() == TestResult::eFailed)
+    if (test.result() == TestResult::eFailed)
     {
         return TestResult::ePassed;
     }

@@ -38,7 +38,7 @@ ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& numbe
     append<HeapAllocationErrorsTest>("run failure test 2", RunFailureTest2);
 }
 
-TestResult::EOutcome ConsoleApplicationTestTests::CreationTest1(Test& test)
+TestResult ConsoleApplicationTestTests::CreationTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/WriteFileTestHelper.exe");
 
@@ -48,7 +48,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::CreationTest1(Test& test)
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
+TestResult ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -56,7 +56,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
         executablePath.string(), 0);
     applicationTest.run();
 
-    if (applicationTest.result().passed())
+    if (applicationTest.passed())
     {
         return TestResult::ePassed;
     }
@@ -66,7 +66,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
+TestResult ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -74,7 +74,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest2", commandLine, 3);
     applicationTest.run();
 
-    if (applicationTest.result().passed())
+    if (applicationTest.passed())
     {
         return TestResult::ePassed;
     }
@@ -84,7 +84,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestTests::RunFailureTest1(Test& test)
+TestResult ConsoleApplicationTestTests::RunFailureTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -92,7 +92,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunFailureTest1(Test& test)
         executablePath.string(), 3);
     applicationTest.run();
 
-    if (applicationTest.result().passed())
+    if (applicationTest.passed())
     {
         return TestResult::eFailed;
     }
@@ -102,7 +102,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunFailureTest1(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
+TestResult ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
 {
     create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
 
@@ -119,7 +119,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    if (applicationTest.result().passed())
+    if (applicationTest.passed())
     {
         return TestResult::ePassed;
     }
@@ -129,7 +129,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
     }
 }
 
-TestResult::EOutcome ConsoleApplicationTestTests::RunFailureTest2(Test& test)
+TestResult ConsoleApplicationTestTests::RunFailureTest2(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
     path outputPath(test.environment().getTestOutputDirectory()
@@ -144,7 +144,7 @@ TestResult::EOutcome ConsoleApplicationTestTests::RunFailureTest2(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    if (applicationTest.result().passed())
+    if (applicationTest.passed())
     {
         return TestResult::eFailed;
     }

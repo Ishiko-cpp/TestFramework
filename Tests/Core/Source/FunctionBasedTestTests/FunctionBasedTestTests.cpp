@@ -35,39 +35,39 @@ FunctionBasedTestTests::FunctionBasedTestTests(const TestNumber& number, const T
     append<HeapAllocationErrorsTest>("run failure test 2", RunFailureTest2);
 }
 
-TestResult::EOutcome FunctionBasedTestCreationTest1Helper()
+TestResult FunctionBasedTestCreationTest1Helper()
 {
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestTests::CreationTest1()
+TestResult FunctionBasedTestTests::CreationTest1()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestCreationTest1", FunctionBasedTestCreationTest1Helper);
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestCreationTest2Helper(Test& test)
+TestResult FunctionBasedTestCreationTest2Helper(Test& test)
 {
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestTests::CreationTest2()
+TestResult FunctionBasedTestTests::CreationTest2()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestCreationTest2", FunctionBasedTestCreationTest2Helper);
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestRunSuccessTest1Helper()
+TestResult FunctionBasedTestRunSuccessTest1Helper()
 {
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome FunctionBasedTestTests::RunSuccessTest1()
+TestResult FunctionBasedTestTests::RunSuccessTest1()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunSuccessTest1", FunctionBasedTestRunSuccessTest1Helper);
     test.run();
 
-    if (test.result().outcome() == TestResult::ePassed)
+    if (test.result() == TestResult::ePassed)
     {
         return TestResult::ePassed;
     }
@@ -77,7 +77,7 @@ TestResult::EOutcome FunctionBasedTestTests::RunSuccessTest1()
     }
 }
 
-TestResult::EOutcome FunctionBasedTestRunSuccessTest2Helper(Test& test)
+TestResult FunctionBasedTestRunSuccessTest2Helper(Test& test)
 {
     if (test.name() == "FunctionBasedTestRunSuccessTest2")
     {
@@ -89,12 +89,12 @@ TestResult::EOutcome FunctionBasedTestRunSuccessTest2Helper(Test& test)
     }
 }
 
-TestResult::EOutcome FunctionBasedTestTests::RunSuccessTest2()
+TestResult FunctionBasedTestTests::RunSuccessTest2()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunSuccessTest2", FunctionBasedTestRunSuccessTest2Helper);
     test.run();
 
-    if (test.result().outcome() == TestResult::ePassed)
+    if (test.result() == TestResult::ePassed)
     {
         return TestResult::ePassed;
     }
@@ -104,17 +104,17 @@ TestResult::EOutcome FunctionBasedTestTests::RunSuccessTest2()
     }
 }
 
-TestResult::EOutcome FunctionBasedTestRunFailureTest1Helper()
+TestResult FunctionBasedTestRunFailureTest1Helper()
 {
     return TestResult::eFailed;
 }
 
-TestResult::EOutcome FunctionBasedTestTests::RunFailureTest1()
+TestResult FunctionBasedTestTests::RunFailureTest1()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunFailureTest1", FunctionBasedTestRunFailureTest1Helper);
     test.run();
 
-    if (test.result().outcome() == TestResult::eFailed)
+    if (test.result() == TestResult::eFailed)
     {
         return TestResult::ePassed;
     }
@@ -124,7 +124,7 @@ TestResult::EOutcome FunctionBasedTestTests::RunFailureTest1()
     }
 }
 
-TestResult::EOutcome FunctionBasedTestRunFailureTest2Helper(Test& test)
+TestResult FunctionBasedTestRunFailureTest2Helper(Test& test)
 {
     if (test.name() != "FunctionBasedTestRunFailureTest2")
     {
@@ -136,12 +136,12 @@ TestResult::EOutcome FunctionBasedTestRunFailureTest2Helper(Test& test)
     }
 }
 
-TestResult::EOutcome FunctionBasedTestTests::RunFailureTest2()
+TestResult FunctionBasedTestTests::RunFailureTest2()
 {
     FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunFailureTest2", FunctionBasedTestRunFailureTest2Helper);
     test.run();
 
-    if (test.result().outcome() == TestResult::eFailed)
+    if (test.result() == TestResult::eFailed)
     {
         return TestResult::ePassed;
     }
