@@ -25,14 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class TestHarnessTests
+class TestHarnessTests : public Ishiko::Tests::TestSequence
 {
 public:
     TestHarnessTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::Tests::EOutcome CreationTest1();
-    static Ishiko::Tests::Tests::EOutcome RunTest1();
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+    static Ishiko::Tests::TestResult::EOutcome RunTest1();
 };
 
 #endif

@@ -25,8 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddHeapAllocationErrorsTestTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+class HeapAllocationErrorsTestTests : public Ishiko::Tests::TestSequence
+{
+public:
+    HeapAllocationErrorsTestTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
-Ishiko::TestFramework::TestResult::EOutcome HeapAllocationErrorsTestCreationTest1();
+private:
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+};
 
 #endif

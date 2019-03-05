@@ -27,7 +27,8 @@
 using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-DirectoriesTeardownActionTests::DirectoriesTeardownActionTests(const TestNumber& number, const TestEnvironment& environment)
+DirectoriesTeardownActionTests::DirectoriesTeardownActionTests(const TestNumber& number,
+    const TestEnvironment& environment)
     : TestSequence(number, "DirectoriesTeardownAction tests", environment)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);

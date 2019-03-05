@@ -22,13 +22,13 @@
 
 #include "HeapAllocationErrorsTestTests.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void AddHeapAllocationErrorsTestTests(TestSequence& parentTestSequence)
+HeapAllocationErrorsTestTests::HeapAllocationErrorsTestTests(const TestNumber& number,
+    const TestEnvironment& environment)
+    : TestSequence(number, "HeapAllocationErrorsTest tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("HeapAllocationErrorsTest tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", HeapAllocationErrorsTestCreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
 TestResult::EOutcome HeapAllocationErrorsTestCreationTest1Helper()
@@ -36,7 +36,7 @@ TestResult::EOutcome HeapAllocationErrorsTestCreationTest1Helper()
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome HeapAllocationErrorsTestCreationTest1()
+TestResult::EOutcome HeapAllocationErrorsTestTests::CreationTest1()
 {
     HeapAllocationErrorsTest test(TestNumber(), "HeapAllocationErrorsTestCreationTest1",
         HeapAllocationErrorsTestCreationTest1Helper);

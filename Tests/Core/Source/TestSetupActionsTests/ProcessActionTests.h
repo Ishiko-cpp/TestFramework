@@ -25,10 +25,15 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddProcessActionTests(Ishiko::Tests::TestSequence& parentTestSequence);
+class ProcessActionTests : public Ishiko::Tests::TestSequence
+{
+public:
+    ProcessActionTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-Ishiko::Tests::TestResult::EOutcome ProcessActionCreationTest1();
-Ishiko::Tests::TestResult::EOutcome ProcessActionSetupWaitForExitTest1(Ishiko::Tests::FileComparisonTest& test);
-Ishiko::Tests::TestResult::EOutcome ProcessActionSetupTerminateTest1();
+private:
+    static Ishiko::Tests::TestResult::EOutcome CreationTest1();
+    static Ishiko::Tests::TestResult::EOutcome SetupWaitForExitTest1(Ishiko::Tests::FileComparisonTest& test);
+    static Ishiko::Tests::TestResult::EOutcome SetupTerminateTest1();
+};
 
 #endif
