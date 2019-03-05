@@ -29,41 +29,40 @@ namespace Tests
 {
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome (*runFct)())
+    TestResult (*runFct)())
     : Test(number, name)
 {
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct);
 }
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome(*runFct)(), const TestEnvironment& environment)
+    TestResult (*runFct)(), const TestEnvironment& environment)
     : Test(number, name, environment)
 {
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);
 }
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome (*runFct)(Test& test))
+    TestResult (*runFct)(Test& test))
     : Test(TestNumber(), name)
 {
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct);
 }
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome(*runFct)(Test& test), const TestEnvironment& environment)
+    TestResult (*runFct)(Test& test), const TestEnvironment& environment)
     : Test(TestNumber(), name, environment)
 {
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);
 }
 
-TestResult::EOutcome HeapAllocationErrorsTest::doRun(TestObserver::ptr& observer)
+TestResult HeapAllocationErrorsTest::doRun(TestObserver::ptr& observer)
 {
     // We do not pass in the observer as m_test wasn't 
     // created by the user.
     m_test->run();
 
-    TestResult::EOutcome normalOutcome = m_test->result().outcome();
-    return normalOutcome;
+    return m_test->result();
 }
 
 }

@@ -40,13 +40,13 @@ FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::stri
 }
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome (*runFct)(FileComparisonTest& test))
+    TestResult (*runFct)(FileComparisonTest& test))
     : Test(number, name), m_runFct(runFct)
 {
 }
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome(*runFct)(FileComparisonTest& test), const TestEnvironment& environment)
+    TestResult (*runFct)(FileComparisonTest& test), const TestEnvironment& environment)
     : Test(number, name, environment), m_runFct(runFct)
 {
 }
@@ -81,9 +81,9 @@ const boost::filesystem::path& FileComparisonTest::getReferenceFilePath() const
     return m_referenceFilePath;
 }
 
-TestResult::EOutcome FileComparisonTest::doRun(TestObserver::ptr& observer)
+TestResult FileComparisonTest::doRun(TestObserver::ptr& observer)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
+    TestResult result = TestResult::eFailed;
 
     if (m_runFct)
     {

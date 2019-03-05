@@ -21,33 +21,3 @@
 */
 
 #include "TestResult.h"
-#include "Test.h"
-#include "TestSequence.h"
-
-namespace Ishiko
-{
-namespace Tests
-{
-
-TestResult::TestResult()
-    : m_outcome(eUnknown)
-{
-}
-
-TestResult::EOutcome TestResult::outcome() const
-{
-    return m_outcome;
-}
-
-bool TestResult::passed() const
-{
-    return (m_outcome == ePassed);
-}
-
-void TestResult::setOutcome(EOutcome outcome)
-{
-    m_outcome = outcome;
-}
-
-}
-}

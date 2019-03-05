@@ -77,7 +77,7 @@ std::string TestProgressObserver::formatNumber(const TestNumber& number)
 std::string TestProgressObserver::formatResult(const TestResult& result)
 {
     std::string formattedResult;
-    switch (result.outcome())
+    switch (result)
     {
     case TestResult::eUnknown:
         formattedResult = "UNKNOWN!!!";

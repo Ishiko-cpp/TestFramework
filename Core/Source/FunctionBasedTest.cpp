@@ -28,30 +28,30 @@ namespace Tests
 {
 
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome (*runFct)())
+    TestResult (*runFct)())
     : Test(number, name), m_runFctVoid(runFct), m_runFctTest(0)
 {
 }
 
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome (*runFct)(), const TestEnvironment& environment)
+    TestResult (*runFct)(), const TestEnvironment& environment)
     : Test(number, name, environment), m_runFctVoid(runFct), m_runFctTest(0)
 {
 }
 
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome(*runFct)(Test& test))
+    TestResult (*runFct)(Test& test))
     : Test(number, name), m_runFctVoid(0), m_runFctTest(runFct)
 {
 }
 
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult::EOutcome (*runFct)(Test& test), const TestEnvironment& environment)
+    TestResult (*runFct)(Test& test), const TestEnvironment& environment)
     : Test(number, name, environment), m_runFctVoid(0), m_runFctTest(runFct)
 {
 }
 
-TestResult::EOutcome FunctionBasedTest::doRun(TestObserver::ptr& observer)
+TestResult FunctionBasedTest::doRun(TestObserver::ptr& observer)
 {
     if (m_runFctTest)
     {

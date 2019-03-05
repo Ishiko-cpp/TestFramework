@@ -52,9 +52,9 @@ void ConsoleApplicationTest::setStandardOutputReferenceFilePath(const boost::fil
     m_standardOutputTest.setReferenceFilePath(path);
 }
 
-TestResult::EOutcome ConsoleApplicationTest::doRun(TestObserver::ptr& observer)
+TestResult ConsoleApplicationTest::doRun(TestObserver::ptr& observer)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
+    TestResult result = TestResult::eFailed;
 
     Ishiko::Process::ProcessCreator processCreator(m_commandLine);
     if (!m_standardOutputTest.getOutputFilePath().empty())
@@ -85,7 +85,7 @@ TestResult::EOutcome ConsoleApplicationTest::doRun(TestObserver::ptr& observer)
             !m_standardOutputTest.getReferenceFilePath().empty())
         {
             m_standardOutputTest.run();
-            if (m_standardOutputTest.result().passed())
+            if (m_standardOutputTest.passed())
             {
                 standardOutputTestPassed = true;
             }
