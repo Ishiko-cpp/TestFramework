@@ -30,13 +30,14 @@ namespace Tests
 {
 
 Test::Test(const TestNumber& number, const std::string& name)
-    : m_number(number), m_name(name), m_environment(TestEnvironment::defaultTestEnvironment()),
-    m_memoryLeakCheck(true)
+    : m_number(number), m_name(name), m_result(TestResult::eUnknown),
+    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_environment(environment), m_memoryLeakCheck(true)
+    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(environment),
+    m_memoryLeakCheck(true)
 {
 }
 
@@ -62,7 +63,7 @@ const TestResult& Test::result() const
 
 bool Test::passed() const
 {
-    return m_result.passed();
+    return (m_result == TestResult::ePassed);
 }
 
 void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
@@ -110,25 +111,25 @@ void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryL
         exception = 0;
         failed = 0;
         total = 1;
-        switch (m_result.outcome())
+        switch (m_result)
         {
-            case TestResult::EOutcome::eUnknown:
+            case TestResult::eUnknown:
                 unknown = 1;
                 break;
 
-            case TestResult::EOutcome::ePassed:
+            case TestResult::ePassed:
                 passed = 1;
                 break;
 
-            case TestResult::EOutcome::ePassedButMemoryLeaks:
+            case TestResult::ePassedButMemoryLeaks:
                 passedButMemoryLeaks = 1;
                 break;
 
-            case TestResult::EOutcome::eException:
+            case TestResult::eException:
                 exception = 1;
                 break;
 
-            case TestResult::EOutcome::eFailed:
+            case TestResult::eFailed:
                 failed = 1;
                 break;
         }
@@ -136,7 +137,7 @@ void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryL
 }
 void Test::fail(const char* file, int line)
 {
-    m_result.setOutcome(TestResult::eFailed);
+    m_result = TestResult::eFailed;
 }
 
 void Test::run()
@@ -153,26 +154,26 @@ void Test::run(TestObserver::ptr& observer)
 
     DebugHeap::HeapState heapStateBefore;
 
-    TestResult::EOutcome outcome = TestResult::eFailed;
+    TestResult result = TestResult::eFailed;
     try
     {
-        outcome = doRun(observer);
+        result = doRun(observer);
     }
     catch (...)
     {
-        outcome = TestResult::eException;
+        result = TestResult::eException;
     }
 
     DebugHeap::HeapState heapStateAfter;
 
     if (m_memoryLeakCheck && (heapStateBefore.allocatedSize() != heapStateAfter.allocatedSize())
-        && (outcome == TestResult::ePassed))
+        && (result == TestResult::ePassed))
     {
-        m_result.setOutcome(TestResult::ePassedButMemoryLeaks);
+        m_result = TestResult::ePassedButMemoryLeaks;
     }
     else
     {
-        m_result.setOutcome(outcome);
+        m_result = result;
     }
 
     teardown();

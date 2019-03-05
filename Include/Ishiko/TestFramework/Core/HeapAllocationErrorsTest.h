@@ -34,16 +34,16 @@ namespace Tests
 class HeapAllocationErrorsTest : public Test
 {
 public:
-    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult::EOutcome (*runFct)());
-    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult::EOutcome(*runFct)(),
+    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult (*runFct)());
+    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult (*runFct)(),
         const TestEnvironment& environment);
     HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-        TestResult::EOutcome(*runFct)(Test& test));
+        TestResult (*runFct)(Test& test));
     HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-        TestResult::EOutcome(*runFct)(Test& test), const TestEnvironment& environment);
+        TestResult (*runFct)(Test& test), const TestEnvironment& environment);
 
 protected:
-    TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
+    TestResult doRun(TestObserver::ptr& observer) override;
 
 private:
     std::shared_ptr<Test> m_test;

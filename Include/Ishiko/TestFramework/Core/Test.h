@@ -70,7 +70,7 @@ public:
 protected:
     virtual void setup();
     virtual void teardown();
-    virtual TestResult::EOutcome doRun(TestObserver::ptr& observer) = 0;
+    virtual TestResult doRun(TestObserver::ptr& observer) = 0;
     virtual void notify(TestObserver::EEventType type,
         TestObserver::ptr& observer);
     

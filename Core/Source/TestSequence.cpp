@@ -68,10 +68,10 @@ void TestSequence::append(std::shared_ptr<Test> test)
     m_tests.push_back(test);
 }
 
-TestResult::EOutcome TestSequence::doRun(TestObserver::ptr& observer)
+TestResult TestSequence::doRun(TestObserver::ptr& observer)
 {
     // By default the outcome is unknown
-    TestResult::EOutcome result = TestResult::eUnknown;
+    TestResult result = TestResult::eUnknown;
 
     for (size_t i = 0; i < m_tests.size(); ++i)
     {
@@ -80,20 +80,20 @@ TestResult::EOutcome TestSequence::doRun(TestObserver::ptr& observer)
         test.run(observer);
 
         // Update the result
-        TestResult::EOutcome outcome = test.result().outcome();
+        TestResult newResult = test.result();
         if (i == 0)
         {
             // The first test determines the initial value of the result
-            result = outcome;
+            result = newResult;
         }
         else if (result == TestResult::eUnknown)
         {
             // If the current sequence outcome is unknown it can only get worse and be set
             // to exception or failed (if the outcome we are adding is exception or 
             // failed)
-            if ((outcome == TestResult::eFailed) || (outcome == TestResult::eException))
+            if ((newResult == TestResult::eFailed) || (newResult == TestResult::eException))
             {
-                result = outcome;
+                result = newResult;
             }
         }
         else if (result == TestResult::ePassed)
@@ -102,24 +102,24 @@ TestResult::EOutcome TestSequence::doRun(TestObserver::ptr& observer)
             // result we are adding is passed, else it will be 'unknown', 
             // 'passedButMemoryLeaks', 'exception' or 'failed'.
             // depending on the outcome of the result we are adding.
-            result = outcome;
+            result = newResult;
         }
         else if (result == TestResult::ePassedButMemoryLeaks)
         {
             // It can only stay at this state if the test is passed or ePassedButMemoryLeaks.
-            if ((outcome == TestResult::eFailed) ||
-                (outcome == TestResult::eException) ||
-                (outcome == TestResult::eUnknown))
+            if ((newResult == TestResult::eFailed) ||
+                (newResult == TestResult::eException) ||
+                (newResult == TestResult::eUnknown))
             {
-                result = outcome;
+                result = newResult;
             }
         }
         else if (result == TestResult::eException)
         {
             // It can only get worse. This happens only if the outcome is 'failed'
-            if (outcome == TestResult::eFailed)
+            if (newResult == TestResult::eFailed)
             {
-                result = outcome;
+                result = newResult;
             }
         }
     }

@@ -30,27 +30,13 @@ namespace Ishiko
 namespace Tests
 {
 
-class TestResult
+enum class TestResult
 {
-public:
-    enum EOutcome
-    {
-        eUnknown,
-        ePassed,
-        ePassedButMemoryLeaks,
-        eException,
-        eFailed
-    };
-
-public:
-    TestResult();
-
-    EOutcome outcome() const;
-    bool passed() const;
-    void setOutcome(EOutcome outcome);
-
-private:
-    EOutcome m_outcome;
+    eUnknown,
+    ePassed,
+    ePassedButMemoryLeaks,
+    eException,
+    eFailed
 };
 
 }
