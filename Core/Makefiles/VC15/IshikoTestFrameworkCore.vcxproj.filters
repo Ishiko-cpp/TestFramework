@@ -62,9 +62,6 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarnessBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestInformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
