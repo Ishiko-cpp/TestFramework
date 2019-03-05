@@ -22,7 +22,7 @@
 
 #include "FileComparisonTestTests.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
 void AddFileComparisonTestTests(TestHarness& theTestHarness)
 {

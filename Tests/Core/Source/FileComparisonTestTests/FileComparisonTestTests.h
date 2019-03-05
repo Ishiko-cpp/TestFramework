@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2017 Xavier Leclercq
+    Copyright (c) 2007-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,10 +25,10 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddFileComparisonTestTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+void AddFileComparisonTestTests(Ishiko::Tests::TestHarness& theTestHarness);
 
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestCreationTest1();
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestRunSuccessTest1();
-Ishiko::TestFramework::TestResult::EOutcome FileComparisonTestRunFailureTest1();
+Ishiko::Tests::TestResult::EOutcome FileComparisonTestCreationTest1();
+Ishiko::Tests::TestResult::EOutcome FileComparisonTestRunSuccessTest1();
+Ishiko::Tests::TestResult::EOutcome FileComparisonTestRunFailureTest1();
 
 #endif

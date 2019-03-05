@@ -25,13 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddConsoleApplicationTestTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+void AddConsoleApplicationTestTests(Ishiko::Tests::TestHarness& theTestHarness);
 
-Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestCreationTest1(Ishiko::TestFramework::Test& test);
-Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Ishiko::TestFramework::Test& test);
-Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Ishiko::TestFramework::Test& test);
-Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Ishiko::TestFramework::Test& test);
-Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Ishiko::TestFramework::Test& test);
-Ishiko::TestFramework::TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Ishiko::TestFramework::Test& test);
+Ishiko::Tests::TestResult::EOutcome ConsoleApplicationTestCreationTest1(Ishiko::Tests::Test& test);
+Ishiko::Tests::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest1(Ishiko::Tests::Test& test);
+Ishiko::Tests::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest2(Ishiko::Tests::Test& test);
+Ishiko::Tests::TestResult::EOutcome ConsoleApplicationTestRunFailureTest1(Ishiko::Tests::Test& test);
+Ishiko::Tests::TestResult::EOutcome ConsoleApplicationTestRunSuccessTest3(Ishiko::Tests::Test& test);
+Ishiko::Tests::TestResult::EOutcome ConsoleApplicationTestRunFailureTest2(Ishiko::Tests::Test& test);
 
 #endif

@@ -23,7 +23,7 @@
 #include "TestEnvironmentTests.h"
 #include "Ishiko/Process/Environment.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
 void AddTestEnvironmentTests(TestHarness& theTestHarness)
 {

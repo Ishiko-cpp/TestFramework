@@ -24,7 +24,7 @@
 #include "Ishiko/TestFramework/Core/ProcessAction.h"
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
 void AddProcessActionTests(Ishiko::TestFramework::TestSequence& parentTestSequence)

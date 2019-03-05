@@ -23,7 +23,7 @@
 #include "ConsoleApplicationTestTests.h"
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
 void AddConsoleApplicationTestTests(TestHarness& theTestHarness)

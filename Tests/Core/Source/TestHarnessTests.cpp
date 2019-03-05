@@ -23,7 +23,7 @@
 #include "TestHarnessTests.h"
 #include "Ishiko/TestFramework/Core/TestHarness.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
 void TestHarnessTests::AddTests(Ishiko::TestFramework::TestHarness& theTestHarness)
 {

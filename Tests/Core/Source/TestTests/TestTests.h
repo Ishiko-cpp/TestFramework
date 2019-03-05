@@ -25,8 +25,8 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddTestTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+void AddTestTests(Ishiko::Tests::TestHarness& theTestHarness);
 
-Ishiko::TestFramework::TestResult::EOutcome TestCreationTest1();
+Ishiko::Tests::TestResult::EOutcome TestCreationTest1();
 
 #endif

@@ -25,10 +25,10 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddTestInformationTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+void AddTestInformationTests(Ishiko::Tests::TestHarness& theTestHarness);
 
-Ishiko::TestFramework::TestResult::EOutcome TestInformationCreationTest1();
-Ishiko::TestFramework::TestResult::EOutcome TestInformationNumberTest1();
-Ishiko::TestFramework::TestResult::EOutcome TestInformationNameTest1();
+Ishiko::Tests::TestResult::EOutcome TestInformationCreationTest1();
+Ishiko::Tests::TestResult::EOutcome TestInformationNumberTest1();
+Ishiko::Tests::TestResult::EOutcome TestInformationNameTest1();
 
 #endif

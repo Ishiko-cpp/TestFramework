@@ -22,7 +22,7 @@
 
 #include "TestInformationTests.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
 void AddTestInformationTests(TestHarness& theTestHarness)
 {
