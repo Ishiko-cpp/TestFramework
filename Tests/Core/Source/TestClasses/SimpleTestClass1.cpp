@@ -24,18 +24,18 @@
 
 using namespace Ishiko::Tests;
 
-SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& name, TestResult::EOutcome outcome)
-    : Test(number, name), m_outcome(outcome)
+SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& name, TestResult result)
+    : Test(number, name), m_result(result)
 {
 }
 
-SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& name, TestResult::EOutcome outcome,
+SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& name, TestResult result,
     const TestEnvironment& environment)
-    : Test(number, name, environment), m_outcome(outcome)
+    : Test(number, name, environment), m_result(result)
 {
 }
 
-TestResult::EOutcome SimpleTestClass1::doRun(TestObserver::ptr& observer)
+TestResult SimpleTestClass1::doRun(TestObserver::ptr& observer)
 {
-    return m_outcome;
+    return m_result;
 }

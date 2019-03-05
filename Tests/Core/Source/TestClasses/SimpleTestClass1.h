@@ -29,16 +29,16 @@ class SimpleTestClass1 : public Ishiko::Tests::Test
 {
 public:
     SimpleTestClass1(const Ishiko::Tests::TestNumber& number, const std::string& name,
-        Ishiko::Tests::TestResult::EOutcome outcome);
+        Ishiko::Tests::TestResult result);
     SimpleTestClass1(const Ishiko::Tests::TestNumber& number, const std::string& name,
-        Ishiko::Tests::TestResult::EOutcome outcome,
+        Ishiko::Tests::TestResult result,
         const Ishiko::Tests::TestEnvironment& environment);
 
 protected:
-    Ishiko::Tests::TestResult::EOutcome doRun(Ishiko::Tests::TestObserver::ptr& observer) override;
+    Ishiko::Tests::TestResult doRun(Ishiko::Tests::TestObserver::ptr& observer) override;
 
 private:
-    Ishiko::Tests::TestResult::EOutcome m_outcome;
+    Ishiko::Tests::TestResult m_result;
 };
 
 #endif
