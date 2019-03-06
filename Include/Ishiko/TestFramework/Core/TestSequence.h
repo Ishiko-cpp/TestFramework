@@ -48,7 +48,7 @@ public:
     TestClass& append(Args&&... args);
     
 protected:
-    TestResult doRun(TestObserver::ptr& observer) override;
+    TestResult doRun(Observer::ptr& observer) override;
 
 private:
     std::vector<std::shared_ptr<Test> > m_tests;

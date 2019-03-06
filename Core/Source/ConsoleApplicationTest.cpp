@@ -52,7 +52,7 @@ void ConsoleApplicationTest::setStandardOutputReferenceFilePath(const boost::fil
     m_standardOutputTest.setReferenceFilePath(path);
 }
 
-TestResult ConsoleApplicationTest::doRun(TestObserver::ptr& observer)
+TestResult ConsoleApplicationTest::doRun(Observer::ptr& observer)
 {
     TestResult result = TestResult::eFailed;
 

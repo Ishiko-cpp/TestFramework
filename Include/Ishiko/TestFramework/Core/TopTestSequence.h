@@ -39,7 +39,7 @@ public:
     virtual ~TopTestSequence();
 
 protected:
-    virtual void notify(TestObserver::EEventType type, TestObserver::ptr& observer);
+    virtual void notify(Observer::EEventType type, Observer::ptr& observer);
 };
 
 }

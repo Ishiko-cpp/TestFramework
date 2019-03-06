@@ -23,7 +23,7 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTPROGRESSOBSERVER_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTPROGRESSOBSERVER_H_
 
-#include "TestObserver.h"
+#include "Test.h"
 #include "TestNumber.h"
 #include "TestResult.h"
 #include <string>
@@ -33,7 +33,7 @@ namespace Ishiko
 namespace Tests
 {
 
-class TestProgressObserver : public TestObserver
+class TestProgressObserver : public Test::Observer
 {
 public:
     TestProgressObserver();

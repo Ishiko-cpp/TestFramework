@@ -26,10 +26,10 @@
 #include "TestNumber.h"
 #include "TestResult.h"
 #include "TestEnvironment.h"
-#include "TestObserver.h"
 #include "TestSetupAction.h"
 #include "TestTeardownAction.h"
 #include <string>
+#include <memory>
 
 namespace Ishiko
 {
@@ -42,6 +42,25 @@ namespace Tests
 class Test
 {
 public:
+    class Observer
+    {
+    public:
+        typedef std::shared_ptr<Observer> ptr;
+
+    public:
+        enum EEventType
+        {
+            eTestStart,
+            eTestEnd
+        };
+
+    public:
+        Observer();
+        virtual ~Observer() throw();
+
+        virtual void notify(EEventType type, const Test& test);
+    };
+
     /// Constructor.
     /// @param number The number of the test.
     /// @param name The name of the test.
@@ -62,7 +81,7 @@ public:
     const TestEnvironment& environment() const;
     
     virtual void run();
-    virtual void run(TestObserver::ptr& observer);
+    virtual void run(Observer::ptr& observer);
 
     virtual void addSetupAction(std::shared_ptr<TestSetupAction> action);
     virtual void addTeardownAction(std::shared_ptr<TestTeardownAction> action);
@@ -70,9 +89,8 @@ public:
 protected:
     virtual void setup();
     virtual void teardown();
-    virtual TestResult doRun(TestObserver::ptr& observer) = 0;
-    virtual void notify(TestObserver::EEventType type,
-        TestObserver::ptr& observer);
+    virtual TestResult doRun(Observer::ptr& observer) = 0;
+    virtual void notify(Observer::EEventType type, Observer::ptr& observer);
     
 private:
     TestNumber m_number;

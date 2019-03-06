@@ -42,8 +42,7 @@ TopTestSequence::~TopTestSequence()
 {
 }
 
-void TopTestSequence::notify(TestObserver::EEventType type,
-                             TestObserver::ptr& observer)
+void TopTestSequence::notify(Observer::EEventType type, Observer::ptr& observer)
 {
     // Do nothing because the top level sequence is a 
     // sequence hidden to the user and used by the test 

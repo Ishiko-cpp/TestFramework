@@ -29,6 +29,18 @@ namespace Ishiko
 namespace Tests
 {
 
+Test::Observer::Observer()
+{
+}
+
+Test::Observer::~Observer() throw()
+{
+}
+
+void Test::Observer::notify(EEventType type, const Test& test)
+{
+}
+
 Test::Test(const TestNumber& number, const std::string& name)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
     m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true)
@@ -142,13 +154,13 @@ void Test::fail(const char* file, int line)
 
 void Test::run()
 {
-    TestObserver::ptr observer = std::make_shared<TestObserver>();
+    Observer::ptr observer = std::make_shared<Observer>();
     run(observer);
 }
 
-void Test::run(TestObserver::ptr& observer)
+void Test::run(Observer::ptr& observer)
 {
-    notify(TestObserver::eTestStart, observer);
+    notify(Observer::eTestStart, observer);
 
     setup();
 
@@ -178,7 +190,7 @@ void Test::run(TestObserver::ptr& observer)
 
     teardown();
 
-    notify(TestObserver::eTestEnd, observer);
+    notify(Observer::eTestEnd, observer);
 }
 
 void Test::addSetupAction(std::shared_ptr<TestSetupAction> action)
@@ -207,8 +219,7 @@ void Test::teardown()
     }
 }
 
-void Test::notify(TestObserver::EEventType type,
-                  TestObserver::ptr& observer)
+void Test::notify(Observer::EEventType type, Observer::ptr& observer)
 {
     if (observer)
     {
