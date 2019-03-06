@@ -97,6 +97,8 @@ public:
     virtual void addSetupAction(std::shared_ptr<TestSetupAction> action);
     virtual void addTeardownAction(std::shared_ptr<TestTeardownAction> action);
 
+    Observers& observers();
+
 protected:
     virtual void setup();
     virtual void teardown();
@@ -111,6 +113,7 @@ private:
     bool m_memoryLeakCheck;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
+    Observers m_observers;
 };
 
 }

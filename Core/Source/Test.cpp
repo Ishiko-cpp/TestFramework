@@ -258,6 +258,11 @@ void Test::addTeardownAction(std::shared_ptr<TestTeardownAction> action)
     m_teardownActions.push_back(action);
 }
 
+Test::Observers& Test::observers()
+{
+    return m_observers;
+}
+
 void Test::setup()
 {
     for (size_t i = 0; i < m_setupActions.size(); ++i)
