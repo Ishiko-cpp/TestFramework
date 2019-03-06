@@ -52,22 +52,24 @@ public:
             eTestEnd
         };
 
-    public:
         virtual ~Observer() noexcept = default;
 
         virtual void onEvent(const Test& source, EEventType type);
     };
 
-    class Observers : public Observer
+    class Observers final
     {
     public:
-        Observers();
-        virtual ~Observers() throw();
+        void add(std::shared_ptr<Observer> observer);
+        void remove(std::shared_ptr<Observer> observer);
 
-        virtual void notify(EEventType type, const Test& test);
+        void notifyEvent(const Test& source, Observer::EEventType type);
 
     private:
-        std::vector<std::shared_ptr<Observer> > m_observers;
+        void removeDeletedObservers();
+
+    private:
+        std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
     /// Constructor.
