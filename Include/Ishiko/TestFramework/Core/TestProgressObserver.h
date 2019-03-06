@@ -36,7 +36,7 @@ namespace Tests
 class TestProgressObserver : public Test::Observer
 {
 public:
-    void onEvent(EEventType type, const Test& test) override;
+    void onEvent(const Test& source, EEventType type) override;
 
 protected:
     static std::string formatNumber(const TestNumber& number);

@@ -30,13 +30,13 @@ namespace Ishiko
 namespace Tests
 {
 
-void TestProgressObserver::onEvent(EEventType type, const Test& test)
+void TestProgressObserver::onEvent(const Test& source, EEventType type)
 {
     switch (type)
     {
     case eTestStart:
-        std::cout << m_nesting << formatNumber(test.number())
-            << " " << test.name() << " started" << std::endl;
+        std::cout << m_nesting << formatNumber(source.number())
+            << " " << source.name() << " started" << std::endl;
         m_nesting.append("\t");
         break;
 
@@ -46,9 +46,9 @@ void TestProgressObserver::onEvent(EEventType type, const Test& test)
             m_nesting.erase(m_nesting.size() - 1);
         }
 
-        std::cout << m_nesting << formatNumber(test.number())
-            << " " << test.name() << " completed, result is "
-            << formatResult(test.result()) << std::endl;
+        std::cout << m_nesting << formatNumber(source.number())
+            << " " << source.name() << " completed, result is "
+            << formatResult(source.result()) << std::endl;
         break;
     }
 }

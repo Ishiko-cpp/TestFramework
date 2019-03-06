@@ -54,7 +54,7 @@ public:
     public:
         virtual ~Observer() noexcept = default;
 
-        virtual void onEvent(EEventType type, const Test& test);
+        virtual void onEvent(const Test& source, EEventType type);
     };
 
     /// Constructor.

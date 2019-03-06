@@ -29,7 +29,7 @@ namespace Ishiko
 namespace Tests
 {
 
-void Test::Observer::onEvent(EEventType type, const Test& test)
+void Test::Observer::onEvent(const Test& source, EEventType type)
 {
 }
 
@@ -213,7 +213,7 @@ void Test::teardown()
 
 void Test::notify(Observer::EEventType type, Observer& observer)
 {
-    observer.onEvent(type, *this);
+    observer.onEvent(*this, type);
 }
 
 const TestEnvironment& Test::environment() const
