@@ -48,10 +48,10 @@ public:
     TestClass& append(Args&&... args);
     
 protected:
-    TestResult doRun(Observer::ptr& observer) override;
+    TestResult doRun(Observer& observer) override;
 
 private:
-    std::vector<std::shared_ptr<Test> > m_tests;
+    std::vector<std::shared_ptr<Test>> m_tests;
 };
 
 template <class TestClass, typename... Args>

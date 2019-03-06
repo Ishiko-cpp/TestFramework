@@ -64,7 +64,7 @@ int TestHarness::runTests()
 {
     try
     {
-        TestProgressObserver::ptr progressObserver = std::make_shared<TestProgressObserver>();
+        TestProgressObserver progressObserver;
         std::cout << std::endl;
         m_topSequence.run(progressObserver);
         std::cout << std::endl;

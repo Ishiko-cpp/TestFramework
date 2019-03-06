@@ -45,9 +45,6 @@ public:
     class Observer
     {
     public:
-        typedef std::shared_ptr<Observer> ptr;
-
-    public:
         enum EEventType
         {
             eTestStart,
@@ -55,10 +52,9 @@ public:
         };
 
     public:
-        Observer();
-        virtual ~Observer() throw();
+        virtual ~Observer() noexcept = default;
 
-        virtual void notify(EEventType type, const Test& test);
+        virtual void onEvent(EEventType type, const Test& test);
     };
 
     /// Constructor.
@@ -81,7 +77,7 @@ public:
     const TestEnvironment& environment() const;
     
     virtual void run();
-    virtual void run(Observer::ptr& observer);
+    virtual void run(Observer& observer);
 
     virtual void addSetupAction(std::shared_ptr<TestSetupAction> action);
     virtual void addTeardownAction(std::shared_ptr<TestTeardownAction> action);
@@ -89,8 +85,8 @@ public:
 protected:
     virtual void setup();
     virtual void teardown();
-    virtual TestResult doRun(Observer::ptr& observer) = 0;
-    virtual void notify(Observer::EEventType type, Observer::ptr& observer);
+    virtual TestResult doRun(Observer& observer) = 0;
+    virtual void notify(Observer::EEventType type, Observer& observer);
     
 private:
     TestNumber m_number;

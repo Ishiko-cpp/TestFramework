@@ -81,7 +81,7 @@ const boost::filesystem::path& FileComparisonTest::getReferenceFilePath() const
     return m_referenceFilePath;
 }
 
-TestResult FileComparisonTest::doRun(Observer::ptr& observer)
+TestResult FileComparisonTest::doRun(Observer& observer)
 {
     TestResult result = TestResult::eFailed;
 

@@ -68,7 +68,7 @@ void TestSequence::append(std::shared_ptr<Test> test)
     m_tests.push_back(test);
 }
 
-TestResult TestSequence::doRun(Observer::ptr& observer)
+TestResult TestSequence::doRun(Observer& observer)
 {
     // By default the outcome is unknown
     TestResult result = TestResult::eUnknown;

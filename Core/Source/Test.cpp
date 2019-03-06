@@ -29,15 +29,7 @@ namespace Ishiko
 namespace Tests
 {
 
-Test::Observer::Observer()
-{
-}
-
-Test::Observer::~Observer() throw()
-{
-}
-
-void Test::Observer::notify(EEventType type, const Test& test)
+void Test::Observer::onEvent(EEventType type, const Test& test)
 {
 }
 
@@ -154,11 +146,11 @@ void Test::fail(const char* file, int line)
 
 void Test::run()
 {
-    Observer::ptr observer = std::make_shared<Observer>();
+    Observer observer;
     run(observer);
 }
 
-void Test::run(Observer::ptr& observer)
+void Test::run(Observer& observer)
 {
     notify(Observer::eTestStart, observer);
 
@@ -219,12 +211,9 @@ void Test::teardown()
     }
 }
 
-void Test::notify(Observer::EEventType type, Observer::ptr& observer)
+void Test::notify(Observer::EEventType type, Observer& observer)
 {
-    if (observer)
-    {
-        observer->notify(type, *this);
-    }
+    observer.onEvent(type, *this);
 }
 
 const TestEnvironment& Test::environment() const

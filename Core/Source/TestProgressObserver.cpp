@@ -30,16 +30,7 @@ namespace Ishiko
 namespace Tests
 {
 
-TestProgressObserver::TestProgressObserver()
-{
-}
-
-TestProgressObserver::~TestProgressObserver() throw()
-{
-}
-
-void TestProgressObserver::notify(EEventType type,
-                                  const Test& test)
+void TestProgressObserver::onEvent(EEventType type, const Test& test)
 {
     switch (type)
     {
