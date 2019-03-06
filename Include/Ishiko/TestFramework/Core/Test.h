@@ -29,6 +29,7 @@
 #include "TestSetupAction.h"
 #include "TestTeardownAction.h"
 #include <string>
+#include <vector>
 #include <memory>
 
 namespace Ishiko
@@ -55,6 +56,18 @@ public:
         virtual ~Observer() noexcept = default;
 
         virtual void onEvent(const Test& source, EEventType type);
+    };
+
+    class Observers : public Observer
+    {
+    public:
+        Observers();
+        virtual ~Observers() throw();
+
+        virtual void notify(EEventType type, const Test& test);
+
+    private:
+        std::vector<std::shared_ptr<Observer> > m_observers;
     };
 
     /// Constructor.

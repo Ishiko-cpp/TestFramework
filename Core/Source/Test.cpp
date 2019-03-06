@@ -33,6 +33,22 @@ void Test::Observer::onEvent(const Test& source, EEventType type)
 {
 }
 
+Test::Observers::Observers()
+{
+}
+
+Test::Observers::~Observers() throw()
+{
+}
+
+void Test::Observers::notify(EEventType type, const Test& test)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        m_observers[i]->onEvent(test, type);
+    }
+}
+
 Test::Test(const TestNumber& number, const std::string& name)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
     m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true)
