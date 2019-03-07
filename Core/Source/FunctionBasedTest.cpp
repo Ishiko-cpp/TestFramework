@@ -26,45 +26,22 @@ namespace Ishiko
 {
 namespace Tests
 {
-
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)())
-    : Test(number, name), m_runFctVoid(runFct), m_runFctTest(0)
+    void (*runFct)(Test& test))
+    : Test(number, name), m_runFctTest(runFct)
 {
 }
 
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(), const TestEnvironment& environment)
-    : Test(number, name, environment), m_runFctVoid(runFct), m_runFctTest(0)
-{
-}
-
-FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(Test& test))
-    : Test(number, name), m_runFctVoid(0), m_runFctTest(runFct)
-{
-}
-
-FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(Test& test), const TestEnvironment& environment)
-    : Test(number, name, environment), m_runFctVoid(0), m_runFctTest(runFct)
+    void (*runFct)(Test& test), const TestEnvironment& environment)
+    : Test(number, name, environment), m_runFctTest(runFct)
 {
 }
 
 TestResult FunctionBasedTest::doRun()
 {
-    if (m_runFctTest)
-    {
-        return m_runFctTest(*this);
-    }
-    else if (m_runFctVoid)
-    {
-        return m_runFctVoid();
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    m_runFctTest(*this);
+    return result();
 }
 
 }

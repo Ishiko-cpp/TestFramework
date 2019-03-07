@@ -34,13 +34,10 @@ namespace Tests
 class HeapAllocationErrorsTest : public Test
 {
 public:
-    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult (*runFct)());
-    HeapAllocationErrorsTest(const TestNumber& number, const std::string& name, TestResult (*runFct)(),
-        const TestEnvironment& environment);
     HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-        TestResult (*runFct)(Test& test));
+        void (*runFct)(Test& test));
     HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-        TestResult (*runFct)(Test& test), const TestEnvironment& environment);
+        void (*runFct)(Test& test), const TestEnvironment& environment);
 
 protected:
     TestResult doRun() override;

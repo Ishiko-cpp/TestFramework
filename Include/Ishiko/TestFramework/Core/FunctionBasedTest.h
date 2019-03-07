@@ -35,19 +35,15 @@ namespace Tests
 class FunctionBasedTest : public Test
 {
 public:
-    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult (*runFct)());
-    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult (*runFct)(),
-        const TestEnvironment& environment);
-    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult (*runFct)(Test& test));
-    FunctionBasedTest(const TestNumber& number, const std::string& name, TestResult (*runFct)(Test& test),
+    FunctionBasedTest(const TestNumber& number, const std::string& name, void (*runFct)(Test& test));
+    FunctionBasedTest(const TestNumber& number, const std::string& name, void (*runFct)(Test& test),
         const TestEnvironment& environment);
 
 protected:
     TestResult doRun() override;
 
 private:
-    TestResult (*m_runFctVoid)();
-    TestResult (*m_runFctTest)(Test& test);
+    void (*m_runFctTest)(Test& test);
 };
 
 }

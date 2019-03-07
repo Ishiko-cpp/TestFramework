@@ -88,6 +88,8 @@ public:
     void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
         size_t& total) const;
     void fail(const char* file, int line);
+    void failIf(bool condition, const char* file, int line);
+    void pass();
 
     const TestEnvironment& environment() const;
     
@@ -117,5 +119,8 @@ private:
 
 }
 }
+
+#define ISHTF_FAIL_IF(condition) test.failIf(condition, __FILE__, __LINE__) 
+#define ISHTF_PASS() test.pass()
 
 #endif

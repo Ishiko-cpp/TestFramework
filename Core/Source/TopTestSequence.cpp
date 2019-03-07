@@ -38,10 +38,6 @@ TopTestSequence::TopTestSequence(const std::string& name,
 {
 }
 
-TopTestSequence::~TopTestSequence()
-{
-}
-
 void TopTestSequence::notify(Observer::EEventType type)
 {
     // Do nothing because the top level sequence is a 

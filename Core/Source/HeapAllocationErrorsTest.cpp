@@ -29,28 +29,14 @@ namespace Tests
 {
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)())
-    : Test(number, name)
-{
-    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct);
-}
-
-HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(), const TestEnvironment& environment)
-    : Test(number, name, environment)
-{
-    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);
-}
-
-HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(Test& test))
+    void (*runFct)(Test& test))
     : Test(TestNumber(), name)
 {
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct);
 }
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(Test& test), const TestEnvironment& environment)
+    void (*runFct)(Test& test), const TestEnvironment& environment)
     : Test(TestNumber(), name, environment)
 {
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);

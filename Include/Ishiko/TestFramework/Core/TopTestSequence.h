@@ -36,7 +36,6 @@ public:
     explicit TopTestSequence(const std::string& name);
     TopTestSequence(const std::string& name, 
         const TestEnvironment& environment);
-    virtual ~TopTestSequence();
 
 protected:
     void notify(Observer::EEventType type) override;

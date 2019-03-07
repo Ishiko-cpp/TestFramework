@@ -207,6 +207,22 @@ void Test::fail(const char* file, int line)
     m_result = TestResult::eFailed;
 }
 
+void Test::failIf(bool condition, const char* file, int line)
+{
+    if (condition)
+    {
+        m_result = TestResult::eFailed;
+    }
+}
+
+void Test::pass()
+{
+    if (m_result == TestResult::eUnknown)
+    {
+        m_result = TestResult::ePassed;
+    }
+}
+
 const TestEnvironment& Test::environment() const
 {
     return m_environment;
