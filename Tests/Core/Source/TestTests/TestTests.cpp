@@ -29,10 +29,30 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     : TestSequence(number, "Test tests", environment)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("pass test 1", PassTest1);
+    append<HeapAllocationErrorsTest>("fail test 1", FailTest1);
 }
 
 void TestTests::CreationTest1(Test& test)
 {
     SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
+    ISHTF_PASS();
+}
+
+void TestTests::PassTest1(Test& test)
+{
+    SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
+    testClass.pass();
+
+    ISHTF_FAIL_UNLESS(testClass.result() == TestResult::ePassed);
+    ISHTF_PASS();
+}
+
+void TestTests::FailTest1(Test& test)
+{
+    SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
+    testClass.fail(__FILE__, __LINE__);
+
+    ISHTF_FAIL_UNLESS(testClass.result() == TestResult::eFailed);
     ISHTF_PASS();
 }

@@ -88,6 +88,8 @@ public:
     bool passed() const;
     void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
         size_t& total) const;
+    void abort(const char* file, int line);
+    void abortIf(bool condition, const char* file, int line);
     void fail(const char* file, int line);
     void failIf(bool condition, const char* file, int line);
     void pass();
@@ -108,6 +110,10 @@ protected:
     virtual void notify(Observer::EEventType type);
     
 private:
+    class AbortException
+    {
+    };
+
     TestNumber m_number;
     std::string m_name;
     TestResult m_result;
@@ -121,8 +127,12 @@ private:
 }
 }
 
-#define ISHTF_FAIL() test.fail(__FILE__, __LINE__) 
-#define ISHTF_FAIL_IF(condition) test.failIf(condition, __FILE__, __LINE__) 
+#define ISHTF_ABORT() test.abort(__FILE__, __LINE__)
+#define ISHTF_ABORT_IF(condition) test.abortIf((condition), __FILE__, __LINE__)
+#define ISHTF_ABORT_UNLESS(condition) test.abortIf(!(condition), __FILE__, __LINE__)
+#define ISHTF_FAIL() test.fail(__FILE__, __LINE__)
+#define ISHTF_FAIL_IF(condition) test.failIf((condition), __FILE__, __LINE__)
+#define ISHTF_FAIL_UNLESS(condition) test.failIf(!(condition), __FILE__, __LINE__)
 #define ISHTF_PASS() test.pass()
 
 #endif

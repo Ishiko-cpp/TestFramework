@@ -207,6 +207,22 @@ void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryL
         }
     }
 }
+
+void Test::abort(const char* file, int line)
+{
+    m_result = TestResult::eFailed;
+    throw AbortException();
+}
+
+void Test::abortIf(bool condition, const char* file, int line)
+{
+    if (condition)
+    {
+        m_result = TestResult::eFailed;
+        throw AbortException();
+    }
+}
+
 void Test::fail(const char* file, int line)
 {
     m_result = TestResult::eFailed;
@@ -244,6 +260,10 @@ void Test::run()
     try
     {
         doRun();
+    }
+    catch (const AbortException& e)
+    {
+        // abort() was called, the exception is only used as a way to interrupt the test.
     }
     catch (...)
     {
