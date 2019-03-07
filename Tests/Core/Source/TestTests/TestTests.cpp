@@ -31,8 +31,8 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult TestTests::CreationTest1()
+void TestTests::CreationTest1(Test& test)
 {
     SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

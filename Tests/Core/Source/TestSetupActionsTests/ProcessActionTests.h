@@ -31,9 +31,9 @@ public:
     ProcessActionTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::TestResult CreationTest1();
-    static Ishiko::Tests::TestResult SetupWaitForExitTest1(Ishiko::Tests::FileComparisonTest& test);
-    static Ishiko::Tests::TestResult SetupTerminateTest1();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void SetupWaitForExitTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void SetupTerminateTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

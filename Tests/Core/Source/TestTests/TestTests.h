@@ -31,7 +31,7 @@ public:
     TestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::TestResult CreationTest1();
+    static void CreationTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

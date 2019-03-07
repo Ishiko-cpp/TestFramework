@@ -35,13 +35,13 @@ ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestEnvir
     append<HeapAllocationErrorsTest>("setup() (terminate) test 2", SetupTerminateTest1);
 }
 
-TestResult ProcessActionTests::CreationTest1()
+void ProcessActionTests::CreationTest1(Test& test)
 {
     ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe", ProcessAction::eWaitForExit);
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
+void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
 {
     path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
     test.setOutputFilePath(outputPath);
@@ -53,13 +53,15 @@ TestResult ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
         ProcessAction::eWaitForExit);
     action.setup();
     action.teardown();
-    return TestResult::ePassed;
+
+    ISHTF_PASS();
 }
 
-TestResult ProcessActionTests::SetupTerminateTest1()
+void ProcessActionTests::SetupTerminateTest1(Test& test)
 {
     ProcessAction action("../../TestData/Binaries/PermanentAppTestHelper.exe", ProcessAction::eTerminate);
     action.setup();
     action.teardown();
-    return TestResult::ePassed;
+
+    ISHTF_PASS();
 }
