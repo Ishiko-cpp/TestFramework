@@ -35,7 +35,7 @@ SimpleTestClass1::SimpleTestClass1(const TestNumber& number, const std::string& 
 {
 }
 
-TestResult SimpleTestClass1::doRun(Observer& observer)
+TestResult SimpleTestClass1::doRun()
 {
     return m_result;
 }

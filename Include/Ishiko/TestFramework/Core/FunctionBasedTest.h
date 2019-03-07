@@ -43,7 +43,7 @@ public:
         const TestEnvironment& environment);
 
 protected:
-    TestResult doRun(Observer& observer) override;
+    TestResult doRun() override;
 
 private:
     TestResult (*m_runFctVoid)();

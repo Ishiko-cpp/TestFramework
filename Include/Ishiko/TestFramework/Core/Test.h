@@ -92,7 +92,6 @@ public:
     const TestEnvironment& environment() const;
     
     virtual void run();
-    virtual void run(Observer& observer);
 
     virtual void addSetupAction(std::shared_ptr<TestSetupAction> action);
     virtual void addTeardownAction(std::shared_ptr<TestTeardownAction> action);
@@ -102,8 +101,8 @@ public:
 protected:
     virtual void setup();
     virtual void teardown();
-    virtual TestResult doRun(Observer& observer) = 0;
-    virtual void notify(Observer::EEventType type, Observer& observer);
+    virtual TestResult doRun() = 0;
+    virtual void notify(Observer::EEventType type);
     
 private:
     TestNumber m_number;

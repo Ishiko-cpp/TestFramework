@@ -28,16 +28,12 @@ namespace Tests
 {
 
 TestSequence::TestSequence(const TestNumber& number, const std::string& name)
-    : Test(number, name)
+    : Test(number, name), m_itemsObserver(std::make_shared<ItemsObserver>(*this))
 {
 }
 
 TestSequence::TestSequence(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : Test(number, name, environment)
-{
-}
-
-TestSequence::~TestSequence() noexcept
+    : Test(number, name, environment), m_itemsObserver(std::make_shared<ItemsObserver>(*this))
 {
 }
 
@@ -66,9 +62,10 @@ void TestSequence::append(std::shared_ptr<Test> test)
     }
 
     m_tests.push_back(test);
+    test->observers().add(m_itemsObserver);
 }
 
-TestResult TestSequence::doRun(Observer& observer)
+TestResult TestSequence::doRun()
 {
     // By default the outcome is unknown
     TestResult result = TestResult::eUnknown;
@@ -77,7 +74,7 @@ TestResult TestSequence::doRun(Observer& observer)
     {
         Test& test = *m_tests[i];
         
-        test.run(observer);
+        test.run();
 
         // Update the result
         TestResult newResult = test.result();
@@ -125,6 +122,16 @@ TestResult TestSequence::doRun(Observer& observer)
     }
 
     return result;
+}
+
+TestSequence::ItemsObserver::ItemsObserver(TestSequence& sequence)
+    : m_sequence(sequence)
+{
+}
+
+void TestSequence::ItemsObserver::onEvent(const Test& source, EEventType type)
+{
+    m_sequence.observers().notifyEvent(source, type);
 }
 
 }

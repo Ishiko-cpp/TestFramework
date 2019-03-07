@@ -36,7 +36,6 @@ class TestSequence : public Test
 public:
     TestSequence(const TestNumber& number, const std::string& name);
     TestSequence(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
-    ~TestSequence() noexcept override;
 
     const Test& operator[](size_t pos) const;
 
@@ -48,10 +47,22 @@ public:
     TestClass& append(Args&&... args);
     
 protected:
-    TestResult doRun(Observer& observer) override;
+    TestResult doRun() override;
 
 private:
+    class ItemsObserver : public Observer
+    {
+    public:
+        ItemsObserver(TestSequence& sequence);
+
+        void onEvent(const Test& source, EEventType type) override;
+
+    private:
+        TestSequence& m_sequence;
+    };
+
     std::vector<std::shared_ptr<Test>> m_tests;
+    std::shared_ptr<ItemsObserver> m_itemsObserver;
 };
 
 template <class TestClass, typename... Args>

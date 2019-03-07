@@ -207,15 +207,14 @@ void Test::fail(const char* file, int line)
     m_result = TestResult::eFailed;
 }
 
-void Test::run()
+const TestEnvironment& Test::environment() const
 {
-    Observer observer;
-    run(observer);
+    return m_environment;
 }
 
-void Test::run(Observer& observer)
+void Test::run()
 {
-    notify(Observer::eTestStart, observer);
+    notify(Observer::eTestStart);
 
     setup();
 
@@ -224,7 +223,7 @@ void Test::run(Observer& observer)
     TestResult result = TestResult::eFailed;
     try
     {
-        result = doRun(observer);
+        result = doRun();
     }
     catch (...)
     {
@@ -245,7 +244,7 @@ void Test::run(Observer& observer)
 
     teardown();
 
-    notify(Observer::eTestEnd, observer);
+    notify(Observer::eTestEnd);
 }
 
 void Test::addSetupAction(std::shared_ptr<TestSetupAction> action)
@@ -279,14 +278,9 @@ void Test::teardown()
     }
 }
 
-void Test::notify(Observer::EEventType type, Observer& observer)
+void Test::notify(Observer::EEventType type)
 {
-    observer.onEvent(*this, type);
-}
-
-const TestEnvironment& Test::environment() const
-{
-    return m_environment;
+    observers().notifyEvent(*this, type);
 }
 
 }

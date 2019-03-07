@@ -43,7 +43,7 @@ public:
         TestResult (*runFct)(Test& test), const TestEnvironment& environment);
 
 protected:
-    TestResult doRun(Observer& observer) override;
+    TestResult doRun() override;
 
 private:
     std::shared_ptr<Test> m_test;

@@ -44,7 +44,7 @@ public:
     void setStandardOutputReferenceFilePath(const boost::filesystem::path& path);
 
 protected:
-    TestResult doRun(Observer& observer) override;
+    TestResult doRun() override;
 
 private:
     std::string m_commandLine;

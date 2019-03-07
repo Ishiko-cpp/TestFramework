@@ -51,7 +51,7 @@ FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string
 {
 }
 
-TestResult FunctionBasedTest::doRun(Observer& observer)
+TestResult FunctionBasedTest::doRun()
 {
     if (m_runFctTest)
     {

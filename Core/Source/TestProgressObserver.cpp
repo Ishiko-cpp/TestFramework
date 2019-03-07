@@ -37,13 +37,13 @@ void TestProgressObserver::onEvent(const Test& source, EEventType type)
     case eTestStart:
         std::cout << m_nesting << formatNumber(source.number())
             << " " << source.name() << " started" << std::endl;
-        m_nesting.append("\t");
+        m_nesting.append("    ");
         break;
 
     case eTestEnd:
         if (!m_nesting.empty())
         {
-            m_nesting.erase(m_nesting.size() - 1);
+            m_nesting.erase(m_nesting.size() - 4);
         }
 
         std::cout << m_nesting << formatNumber(source.number())

@@ -34,7 +34,7 @@ public:
         Ishiko::Tests::TestResult result, const Ishiko::Tests::TestEnvironment& environment);
 
 protected:
-    Ishiko::Tests::TestResult doRun(Observer& observer) override;
+    Ishiko::Tests::TestResult doRun() override;
 
 private:
     Ishiko::Tests::TestResult m_result;
