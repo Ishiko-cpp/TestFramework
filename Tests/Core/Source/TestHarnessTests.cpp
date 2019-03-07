@@ -32,22 +32,17 @@ TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestEnvironme
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
 }
 
-TestResult TestHarnessTests::CreationTest1()
+void TestHarnessTests::CreationTest1(Test& test)
 {
     TestHarness theTestHarness("TestHarnessTests_CreationTest1");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult TestHarnessTests::RunTest1()
+void TestHarnessTests::RunTest1(Test& test)
 {
-    TestResult result = TestResult::eFailed;
-
     TestHarness theTestHarness("TestHarnessTests_RunTest1");
     int returnCode = theTestHarness.run();
-    if (returnCode == eTestFailure)
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_IF(returnCode != eTestFailure)
+    ISHTF_PASS();
 }

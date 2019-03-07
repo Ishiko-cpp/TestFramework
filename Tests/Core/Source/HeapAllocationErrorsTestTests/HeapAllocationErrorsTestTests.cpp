@@ -31,14 +31,14 @@ HeapAllocationErrorsTestTests::HeapAllocationErrorsTestTests(const TestNumber& n
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult HeapAllocationErrorsTestCreationTest1Helper()
+void HeapAllocationErrorsTestCreationTest1Helper(Test& test)
 {
-    return TestResult::ePassed;
+    test.pass();
 }
 
-TestResult HeapAllocationErrorsTestTests::CreationTest1()
+void HeapAllocationErrorsTestTests::CreationTest1(Test& test)
 {
-    HeapAllocationErrorsTest test(TestNumber(), "HeapAllocationErrorsTestCreationTest1",
+    HeapAllocationErrorsTest allocTest(TestNumber(), "HeapAllocationErrorsTestCreationTest1",
         HeapAllocationErrorsTestCreationTest1Helper);
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

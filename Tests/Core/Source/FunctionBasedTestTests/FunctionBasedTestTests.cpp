@@ -28,125 +28,51 @@ FunctionBasedTestTests::FunctionBasedTestTests(const TestNumber& number, const T
     : TestSequence(number, "FunctionBasedTest tests", environment)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
     append<HeapAllocationErrorsTest>("run success test 1", RunSuccessTest1);
-    append<HeapAllocationErrorsTest>("run success test 2", RunSuccessTest2);
     append<HeapAllocationErrorsTest>("run failure test 1", RunFailureTest1);
-    append<HeapAllocationErrorsTest>("run failure test 2", RunFailureTest2);
 }
 
-TestResult FunctionBasedTestCreationTest1Helper()
+void FunctionBasedTestCreationTest1Helper(Test& test)
 {
-    return TestResult::ePassed;
+    test.pass();
 }
 
-TestResult FunctionBasedTestTests::CreationTest1()
+void FunctionBasedTestTests::CreationTest1(Test& test)
 {
-    FunctionBasedTest test(TestNumber(), "FunctionBasedTestCreationTest1", FunctionBasedTestCreationTest1Helper);
-    return TestResult::ePassed;
+    FunctionBasedTest functionTest(TestNumber(), "FunctionBasedTestCreationTest1", FunctionBasedTestCreationTest1Helper);
+    ISHTF_PASS();
 }
 
-TestResult FunctionBasedTestCreationTest2Helper(Test& test)
+void FunctionBasedTestRunSuccessTest1Helper(Test& test)
 {
-    return TestResult::ePassed;
-}
-
-TestResult FunctionBasedTestTests::CreationTest2()
-{
-    FunctionBasedTest test(TestNumber(), "FunctionBasedTestCreationTest2", FunctionBasedTestCreationTest2Helper);
-    return TestResult::ePassed;
-}
-
-TestResult FunctionBasedTestRunSuccessTest1Helper()
-{
-    return TestResult::ePassed;
-}
-
-TestResult FunctionBasedTestTests::RunSuccessTest1()
-{
-    FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunSuccessTest1", FunctionBasedTestRunSuccessTest1Helper);
-    test.run();
-
-    if (test.result() == TestResult::ePassed)
+    if (test.name() == "FunctionBasedTestRunSuccessTest1")
     {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
+        test.pass();
     }
 }
 
-TestResult FunctionBasedTestRunSuccessTest2Helper(Test& test)
+void FunctionBasedTestTests::RunSuccessTest1(Test& test)
 {
-    if (test.name() == "FunctionBasedTestRunSuccessTest2")
+    FunctionBasedTest functionTest(TestNumber(), "FunctionBasedTestRunSuccessTest1", FunctionBasedTestRunSuccessTest1Helper);
+    functionTest.run();
+
+    ISHTF_FAIL_IF(functionTest.result() != TestResult::ePassed);
+    ISHTF_PASS();
+}
+
+void FunctionBasedTestRunFailureTest1Helper(Test& test)
+{
+    if (test.name() != "FunctionBasedTestRunFailureTest1")
     {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
+        test.pass();
     }
 }
 
-TestResult FunctionBasedTestTests::RunSuccessTest2()
+void FunctionBasedTestTests::RunFailureTest1(Test& test)
 {
-    FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunSuccessTest2", FunctionBasedTestRunSuccessTest2Helper);
-    test.run();
+    FunctionBasedTest functionTest(TestNumber(), "FunctionBasedTestRunFailureTest1", FunctionBasedTestRunFailureTest1Helper);
+    functionTest.run();
 
-    if (test.result() == TestResult::ePassed)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
-}
-
-TestResult FunctionBasedTestRunFailureTest1Helper()
-{
-    return TestResult::eFailed;
-}
-
-TestResult FunctionBasedTestTests::RunFailureTest1()
-{
-    FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunFailureTest1", FunctionBasedTestRunFailureTest1Helper);
-    test.run();
-
-    if (test.result() == TestResult::eFailed)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
-}
-
-TestResult FunctionBasedTestRunFailureTest2Helper(Test& test)
-{
-    if (test.name() != "FunctionBasedTestRunFailureTest2")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
-}
-
-TestResult FunctionBasedTestTests::RunFailureTest2()
-{
-    FunctionBasedTest test(TestNumber(), "FunctionBasedTestRunFailureTest2", FunctionBasedTestRunFailureTest2Helper);
-    test.run();
-
-    if (test.result() == TestResult::eFailed)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(functionTest.result() != TestResult::eFailed);
+    ISHTF_PASS();
 }
