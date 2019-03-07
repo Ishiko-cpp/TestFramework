@@ -35,15 +35,14 @@ TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 3", GetTestDataDirectoryTest3);
 }
 
-TestResult TestEnvironmentTests::CreationTest1()
+void TestEnvironmentTests::CreationTest1(Test& test)
 {
     TestEnvironment environment;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult TestEnvironmentTests::GetTestDataDirectoryTest1()
+void TestEnvironmentTests::GetTestDataDirectoryTest1(Test& test)
 {
-    TestResult result = TestResult::eFailed;
     try
     {
         TestEnvironment environment;
@@ -51,26 +50,21 @@ TestResult TestEnvironmentTests::GetTestDataDirectoryTest1()
     }
     catch (const TestException& exception)
     {
-        result = TestResult::ePassed;
+        ISHTF_PASS();
     }
-    return result;
 }
 
-TestResult TestEnvironmentTests::GetTestDataDirectoryTest2()
+void TestEnvironmentTests::GetTestDataDirectoryTest2(Test& test)
 {
     TestEnvironment environment;
     environment.setTestDataDirectory("id1", "path1");
     if (environment.getTestDataDirectory("id1") == "path1")
     {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
+        return ISHTF_PASS();
     }
 }
 
-TestResult TestEnvironmentTests::GetTestDataDirectoryTest3()
+void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
 {
     Ishiko::Process::Environment::set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
 
@@ -78,10 +72,6 @@ TestResult TestEnvironmentTests::GetTestDataDirectoryTest3()
     environment.setTestDataDirectory("id1", "$(TestEnvironmentGetTestDataDirectoryTest3)/path1");
     if (environment.getTestDataDirectory("id1") == "dummy/path1")
     {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
+        ISHTF_PASS();
     }
 }

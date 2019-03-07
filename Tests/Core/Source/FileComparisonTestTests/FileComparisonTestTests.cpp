@@ -32,54 +32,50 @@ FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const
     append<HeapAllocationErrorsTest>("run failure test 1", RunFailureTest1);
 }
 
-TestResult FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
+void FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
 {
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult FileComparisonTestTests::CreationTest1()
+void FileComparisonTestTests::CreationTest1(Test& test)
 {
-    FileComparisonTest test(TestNumber(), "FileComparisonTestCreationTest1", FileComparisonTestCreationTest1Helper);
-    return TestResult::ePassed;
+    FileComparisonTest comparisonTest(TestNumber(), "FileComparisonTestCreationTest1",
+        FileComparisonTestCreationTest1Helper);
+    ISHTF_PASS();
 }
 
-TestResult FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
+void FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
 {
     test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../TestData/ComparisonTestFiles/Hello2.txt");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult FileComparisonTestTests::RunSuccessTest1()
+void FileComparisonTestTests::RunSuccessTest1(Test& test)
 {
-    FileComparisonTest test(TestNumber(), "FileComparisonTestRunSuccessTest1",
+    FileComparisonTest comparisonTest(TestNumber(), "FileComparisonTestRunSuccessTest1",
         FileComparisonTestRunSuccessTest1Helper);
     
-    test.run();
+    comparisonTest.run();
     
-    return test.result();
+    ISHTF_FAIL_IF(comparisonTest.result() != TestResult::ePassed);
+    ISHTF_PASS();
 }
 
-TestResult FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
+void FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
 {
     test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../TestData/ComparisonTestFiles/NotHello.txt");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult FileComparisonTestTests::RunFailureTest1()
+void FileComparisonTestTests::RunFailureTest1(Test& test)
 {
-    FileComparisonTest test(TestNumber(), "FileComparisonTestRunFailureTest1",
+    FileComparisonTest comparisonTest(TestNumber(), "FileComparisonTestRunFailureTest1",
         FileComparisonTestRunFailureTest1Helper);
 
-    test.run();
+    comparisonTest.run();
     
-    if (test.result() == TestResult::eFailed)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(comparisonTest.result() != TestResult::eFailed);
+    ISHTF_PASS();
 }

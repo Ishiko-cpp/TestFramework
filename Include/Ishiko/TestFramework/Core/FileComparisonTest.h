@@ -37,9 +37,9 @@ public:
     FileComparisonTest(const TestNumber& number, const std::string& name);
     FileComparisonTest(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
     FileComparisonTest(const TestNumber& number, const std::string& name,
-        TestResult (*runFct)(FileComparisonTest& test));
+        void (*runFct)(FileComparisonTest& test));
     FileComparisonTest(const TestNumber& number, const std::string& name,
-        TestResult (*runFct)(FileComparisonTest& test), const TestEnvironment& environment);
+        void (*runFct)(FileComparisonTest& test), const TestEnvironment& environment);
 
     const boost::filesystem::path& getOutputFilePath() const;
     void setOutputFilePath(const boost::filesystem::path& path);
@@ -51,7 +51,7 @@ protected:
     TestResult doRun() override;
 
 private:
-    TestResult (*m_runFct)(FileComparisonTest& test);
+    void (*m_runFct)(FileComparisonTest& test);
     boost::filesystem::path m_outputFilePath;
     boost::filesystem::path m_referenceFilePath;
 };

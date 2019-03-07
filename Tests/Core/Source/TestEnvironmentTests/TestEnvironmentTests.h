@@ -32,10 +32,10 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::TestResult CreationTest1();
-    static Ishiko::Tests::TestResult GetTestDataDirectoryTest1();
-    static Ishiko::Tests::TestResult GetTestDataDirectoryTest2();
-    static Ishiko::Tests::TestResult GetTestDataDirectoryTest3();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void GetTestDataDirectoryTest1(Ishiko::Tests::Test& test);
+    static void GetTestDataDirectoryTest2(Ishiko::Tests::Test& test);
+    static void GetTestDataDirectoryTest3(Ishiko::Tests::Test& test);
 
 };
 

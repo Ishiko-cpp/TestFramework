@@ -43,6 +43,6 @@ void TestHarnessTests::RunTest1(Test& test)
     TestHarness theTestHarness("TestHarnessTests_RunTest1");
     int returnCode = theTestHarness.run();
 
-    ISHTF_FAIL_IF(returnCode != eTestFailure)
+    ISHTF_FAIL_IF(returnCode != eTestFailure);
     ISHTF_PASS();
 }

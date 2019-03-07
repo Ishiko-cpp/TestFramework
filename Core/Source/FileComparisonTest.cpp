@@ -40,13 +40,13 @@ FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::stri
 }
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(FileComparisonTest& test))
+    void (*runFct)(FileComparisonTest& test))
     : Test(number, name), m_runFct(runFct)
 {
 }
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name,
-    TestResult (*runFct)(FileComparisonTest& test), const TestEnvironment& environment)
+    void (*runFct)(FileComparisonTest& test), const TestEnvironment& environment)
     : Test(number, name, environment), m_runFct(runFct)
 {
 }
@@ -87,7 +87,7 @@ TestResult FileComparisonTest::doRun()
 
     if (m_runFct)
     {
-        result = m_runFct(*this);
+        m_runFct(*this);
     }
     else
     {
