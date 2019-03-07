@@ -36,35 +36,29 @@ TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnviron
     append<HeapAllocationErrorsTest>("getResult test 3", GetResultTest3);
 }
 
-TestResult TestSequenceTests::CreationTest1()
+void TestSequenceTests::CreationTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult TestSequenceTests::AppendTest1()
+void TestSequenceTests::AppendTest1(Test& test)
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Test> test = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> simpleTest = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
 
     // Append test to sequence
-    seq.append(test);
+    seq.append(simpleTest);
 
     // Check the test count
-    if (seq.size() == 1)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(seq.size() != 1);
+    ISHTF_PASS();
 }
 
-TestResult TestSequenceTests::AppendTest2()
+void TestSequenceTests::AppendTest2(Test& test)
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
@@ -73,55 +67,37 @@ TestResult TestSequenceTests::AppendTest2()
     seq.append<SimpleTestClass1>("Test", TestResult::ePassed);
 
     // Check the test count
-    if (seq.size() == 1)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(seq.size() != 1);
+    ISHTF_PASS();
 }
 
-TestResult TestSequenceTests::GetResultTest1()
+void TestSequenceTests::GetResultTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
 
-    if (seq.result() == TestResult::eUnknown)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(seq.result() != TestResult::eUnknown);
+    ISHTF_PASS();
 }
 
-TestResult TestSequenceTests::GetResultTest2()
+void TestSequenceTests::GetResultTest2(Test& test)
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Test> test = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> simpleTest = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
 
     // Append test to sequence
-    seq.append(test);
+    seq.append(simpleTest);
 
     // Run the sequence to update the test result
     seq.run();
 
-    if (seq.result() == TestResult::ePassed)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(seq.result() != TestResult::ePassed);
+    ISHTF_PASS();
 }
 
-TestResult TestSequenceTests::GetResultTest3()
+void TestSequenceTests::GetResultTest3(Test& test)
 {
     // Creating test sequence
     TestSequence seq(TestNumber(1), "Sequence");
@@ -137,12 +113,6 @@ TestResult TestSequenceTests::GetResultTest3()
     // Run the sequence to update the test result
     seq.run();
 
-    if (seq.result() == TestResult::eFailed)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(seq.result() != TestResult::eFailed);
+    ISHTF_PASS();
 }

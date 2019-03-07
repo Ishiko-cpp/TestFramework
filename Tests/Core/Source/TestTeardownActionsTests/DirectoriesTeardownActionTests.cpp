@@ -35,13 +35,13 @@ DirectoriesTeardownActionTests::DirectoriesTeardownActionTests(const TestNumber&
     append<HeapAllocationErrorsTest>("teardown() test 1", TeardownTest1);
 }
 
-TestResult DirectoriesTeardownActionTests::CreationTest1()
+void DirectoriesTeardownActionTests::CreationTest1(Test& test)
 {
     DirectoriesTeardownAction action;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult DirectoriesTeardownActionTeardownTest1Helper(Test& test)
+void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 {
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();
@@ -55,28 +55,19 @@ TestResult DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 
     if (create_directories(path))
     {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
+        ISHTF_PASS();
     }
 }
 
-TestResult DirectoriesTeardownActionTests::TeardownTest1()
+void DirectoriesTeardownActionTests::TeardownTest1(Test& test)
 {
     const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
 
-    FunctionBasedTest test(TestNumber(), "DirectoriesTeardownActionTeardownTest1",
+    FunctionBasedTest functionTest(TestNumber(), "DirectoriesTeardownActionTeardownTest1",
         DirectoriesTeardownActionTeardownTest1Helper);
-    test.run();
+    functionTest.run();
 
-    if (!exists(path) && test.passed())
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(exists(path));
+    ISHTF_FAIL_IF(!functionTest.passed());
+    ISHTF_PASS();
 }
