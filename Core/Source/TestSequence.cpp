@@ -65,7 +65,7 @@ void TestSequence::append(std::shared_ptr<Test> test)
     test->observers().add(m_itemsObserver);
 }
 
-TestResult TestSequence::doRun()
+void TestSequence::doRun()
 {
     // By default the outcome is unknown
     TestResult result = TestResult::eUnknown;
@@ -121,7 +121,7 @@ TestResult TestSequence::doRun()
         }
     }
 
-    return result;
+    setResult(result);
 }
 
 TestSequence::ItemsObserver::ItemsObserver(TestSequence& sequence)

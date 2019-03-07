@@ -83,7 +83,8 @@ public:
     void setNumber(const TestNumber& number);
     const std::string& name() const;
 
-    const TestResult& result() const;
+    TestResult result() const;
+    void setResult(TestResult result);
     bool passed() const;
     void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
         size_t& total) const;
@@ -103,7 +104,7 @@ public:
 protected:
     virtual void setup();
     virtual void teardown();
-    virtual TestResult doRun() = 0;
+    virtual void doRun() = 0;
     virtual void notify(Observer::EEventType type);
     
 private:
@@ -120,6 +121,7 @@ private:
 }
 }
 
+#define ISHTF_FAIL() test.fail(__FILE__, __LINE__) 
 #define ISHTF_FAIL_IF(condition) test.failIf(condition, __FILE__, __LINE__) 
 #define ISHTF_PASS() test.pass()
 

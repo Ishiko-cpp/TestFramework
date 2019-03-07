@@ -42,13 +42,13 @@ HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, con
     m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);
 }
 
-TestResult HeapAllocationErrorsTest::doRun()
+void HeapAllocationErrorsTest::doRun()
 {
     // We do not pass in the observer as m_test wasn't 
     // created by the user.
     m_test->run();
 
-    return m_test->result();
+    setResult(m_test->result());
 }
 
 }

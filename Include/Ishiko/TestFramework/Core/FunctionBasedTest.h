@@ -40,7 +40,7 @@ public:
         const TestEnvironment& environment);
 
 protected:
-    TestResult doRun() override;
+    void doRun() override;
 
 private:
     void (*m_runFctTest)(Test& test);

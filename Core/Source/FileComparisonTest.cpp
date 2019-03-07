@@ -81,21 +81,18 @@ const boost::filesystem::path& FileComparisonTest::getReferenceFilePath() const
     return m_referenceFilePath;
 }
 
-TestResult FileComparisonTest::doRun()
+void FileComparisonTest::doRun()
 {
-    TestResult result = TestResult::eFailed;
-
     if (m_runFct)
     {
         m_runFct(*this);
-        result = this->result();
     }
     else
     {
-        result = TestResult::ePassed;
+        pass();
     }
 
-    if (result == TestResult::ePassed)
+    if (passed())
     {
         // We first try to open the two files
         FILE *file = fopen(m_outputFilePath.string().c_str(), "rb");
@@ -115,10 +112,10 @@ TestResult FileComparisonTest::doRun()
                 fclose(refFile);
             }
 
-            result = TestResult::eFailed;
+            fail(__FILE__, __LINE__);
         }
 
-        if (result == TestResult::ePassed)
+        if (passed())
         {
             // We managed to open both file, let's compare them
 
@@ -157,12 +154,10 @@ TestResult FileComparisonTest::doRun()
 
             if (!(isFileEof && isRefFileEof))
             {
-                result = TestResult::eFailed;
+                fail(__FILE__, __LINE__);
             }
         }
     }
-
-    return result;
 }
 
 }

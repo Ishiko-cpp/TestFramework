@@ -48,7 +48,7 @@ public:
     void setReferenceFilePath(const boost::filesystem::path& path);
 
 protected:
-    TestResult doRun() override;
+    void doRun() override;
 
 private:
     void (*m_runFct)(FileComparisonTest& test);

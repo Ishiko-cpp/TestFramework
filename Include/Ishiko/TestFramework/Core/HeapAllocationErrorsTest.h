@@ -40,7 +40,7 @@ public:
         void (*runFct)(Test& test), const TestEnvironment& environment);
 
 protected:
-    TestResult doRun() override;
+    void doRun() override;
 
 private:
     std::shared_ptr<Test> m_test;

@@ -47,7 +47,7 @@ public:
     TestClass& append(Args&&... args);
     
 protected:
-    TestResult doRun() override;
+    void doRun() override;
 
 private:
     class ItemsObserver : public Observer

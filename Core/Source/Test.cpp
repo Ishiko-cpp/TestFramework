@@ -123,9 +123,14 @@ const std::string& Test::name() const
     return m_name;
 }
 
-const TestResult& Test::result() const
+TestResult Test::result() const
 {
     return m_result;
+}
+
+void Test::setResult(TestResult result)
+{
+    m_result = result;
 }
 
 bool Test::passed() const
@@ -236,26 +241,21 @@ void Test::run()
 
     DebugHeap::HeapState heapStateBefore;
 
-    TestResult result = TestResult::eFailed;
     try
     {
-        result = doRun();
+        doRun();
     }
     catch (...)
     {
-        result = TestResult::eException;
+        m_result = TestResult::eException;
     }
 
     DebugHeap::HeapState heapStateAfter;
 
     if (m_memoryLeakCheck && (heapStateBefore.allocatedSize() != heapStateAfter.allocatedSize())
-        && (result == TestResult::ePassed))
+        && (m_result == TestResult::ePassed))
     {
         m_result = TestResult::ePassedButMemoryLeaks;
-    }
-    else
-    {
-        m_result = result;
     }
 
     teardown();

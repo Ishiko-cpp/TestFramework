@@ -38,7 +38,7 @@ FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string
 {
 }
 
-TestResult FunctionBasedTest::doRun()
+void FunctionBasedTest::doRun()
 {
     m_runFctTest(*this);
     if (result() == TestResult::eUnknown)
@@ -47,7 +47,6 @@ TestResult FunctionBasedTest::doRun()
         // failure.
         fail(__FILE__, __LINE__);
     }
-    return result();
 }
 
 }
