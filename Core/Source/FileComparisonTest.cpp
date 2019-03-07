@@ -88,6 +88,7 @@ TestResult FileComparisonTest::doRun()
     if (m_runFct)
     {
         m_runFct(*this);
+        result = this->result();
     }
     else
     {

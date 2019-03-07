@@ -120,6 +120,6 @@ void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    ISHTF_FAIL_IF(!applicationTest.passed());
+    ISHTF_FAIL_IF(applicationTest.passed());
     ISHTF_PASS();
 }

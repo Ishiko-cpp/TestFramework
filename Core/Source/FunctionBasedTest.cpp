@@ -41,6 +41,12 @@ FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string
 TestResult FunctionBasedTest::doRun()
 {
     m_runFctTest(*this);
+    if (result() == TestResult::eUnknown)
+    {
+        // The function didn't fail but at no point did it mark the test as passed either so we consider this a
+        // failure.
+        fail(__FILE__, __LINE__);
+    }
     return result();
 }
 
