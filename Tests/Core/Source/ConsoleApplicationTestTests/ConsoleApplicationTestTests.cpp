@@ -38,17 +38,17 @@ ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& numbe
     append<HeapAllocationErrorsTest>("run failure test 2", RunFailureTest2);
 }
 
-TestResult ConsoleApplicationTestTests::CreationTest1(Test& test)
+void ConsoleApplicationTestTests::CreationTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/WriteFileTestHelper.exe");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest1",
         executablePath.string().c_str(), 0);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
+void ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -56,17 +56,11 @@ TestResult ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
         executablePath.string(), 0);
     applicationTest.run();
 
-    if (applicationTest.passed())
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(!applicationTest.passed());
+    ISHTF_PASS();
 }
 
-TestResult ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
+void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -74,17 +68,11 @@ TestResult ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest2", commandLine, 3);
     applicationTest.run();
 
-    if (applicationTest.passed())
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(!applicationTest.passed());
+    ISHTF_PASS();
 }
 
-TestResult ConsoleApplicationTestTests::RunFailureTest1(Test& test)
+void ConsoleApplicationTestTests::RunFailureTest1(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
 
@@ -92,17 +80,11 @@ TestResult ConsoleApplicationTestTests::RunFailureTest1(Test& test)
         executablePath.string(), 3);
     applicationTest.run();
 
-    if (applicationTest.passed())
-    {
-        return TestResult::eFailed;
-    }
-    else
-    {
-        return TestResult::ePassed;
-    }
+    ISHTF_FAIL_IF(applicationTest.passed());
+    ISHTF_PASS();
 }
 
-TestResult ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
+void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
 {
     create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
 
@@ -119,17 +101,11 @@ TestResult ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    if (applicationTest.passed())
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(!applicationTest.passed());
+    ISHTF_PASS();
 }
 
-TestResult ConsoleApplicationTestTests::RunFailureTest2(Test& test)
+void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
 {
     path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
     path outputPath(test.environment().getTestOutputDirectory()
@@ -144,12 +120,6 @@ TestResult ConsoleApplicationTestTests::RunFailureTest2(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    if (applicationTest.passed())
-    {
-        return TestResult::eFailed;
-    }
-    else
-    {
-        return TestResult::ePassed;
-    }
+    ISHTF_FAIL_IF(applicationTest.passed());
+    ISHTF_PASS();
 }

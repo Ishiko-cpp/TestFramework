@@ -34,13 +34,13 @@ FilesTeardownActionTests::FilesTeardownActionTests(const TestNumber& number, con
     append<HeapAllocationErrorsTest>("teardown() test 1", TeardownTest1);
 }
 
-TestResult FilesTeardownActionTests::CreationTest1()
+void FilesTeardownActionTests::CreationTest1(Test& test)
 {
     FilesTeardownAction action;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult FilesTeardownActionTeardownTest1Helper(Test& test)
+void FilesTeardownActionTeardownTest1Helper(Test& test)
 {
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();
@@ -55,29 +55,19 @@ TestResult FilesTeardownActionTeardownTest1Helper(Test& test)
     std::ofstream file(path);
     file.close();
 
-    if (exists(path))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(!exists(path));
+    ISHTF_PASS();
 }
 
-TestResult FilesTeardownActionTests::TeardownTest1()
+void FilesTeardownActionTests::TeardownTest1(Test& test)
 {
     const char* path = "../../TestOutput/TestTeardownActionsTests/FilesTeardownActionTeardownTest1";
 
-    FunctionBasedTest test(TestNumber(), "FilesTeardownActionTeardownTest1", FilesTeardownActionTeardownTest1Helper);
-    test.run();
+    FunctionBasedTest teardownTest(TestNumber(), "FilesTeardownActionTeardownTest1",
+        FilesTeardownActionTeardownTest1Helper);
+    teardownTest.run();
 
-    if (!exists(path) && test.passed())
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_IF(exists(path));
+    ISHTF_FAIL_IF(!teardownTest.passed());
+    ISHTF_PASS();
 }

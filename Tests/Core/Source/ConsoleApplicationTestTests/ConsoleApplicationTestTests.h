@@ -32,12 +32,12 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::Tests::TestResult CreationTest1(Ishiko::Tests::Test& test);
-    static Ishiko::Tests::TestResult RunSuccessTest1(Ishiko::Tests::Test& test);
-    static Ishiko::Tests::TestResult RunSuccessTest2(Ishiko::Tests::Test& test);
-    static Ishiko::Tests::TestResult RunFailureTest1(Ishiko::Tests::Test& test);
-    static Ishiko::Tests::TestResult RunSuccessTest3(Ishiko::Tests::Test& test);
-    static Ishiko::Tests::TestResult RunFailureTest2(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void RunSuccessTest1(Ishiko::Tests::Test& test);
+    static void RunSuccessTest2(Ishiko::Tests::Test& test);
+    static void RunFailureTest1(Ishiko::Tests::Test& test);
+    static void RunSuccessTest3(Ishiko::Tests::Test& test);
+    static void RunFailureTest2(Ishiko::Tests::Test& test);
 };
 
 #endif
