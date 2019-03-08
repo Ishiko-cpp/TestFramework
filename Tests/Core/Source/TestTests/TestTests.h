@@ -32,6 +32,7 @@ public:
 
 private:
     static void CreationTest1(Ishiko::Tests::Test& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
     static void PassTest1(Ishiko::Tests::Test& test);
     static void FailTest1(Ishiko::Tests::Test& test);
 };

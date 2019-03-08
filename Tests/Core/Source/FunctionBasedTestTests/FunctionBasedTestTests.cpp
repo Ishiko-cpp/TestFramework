@@ -27,20 +27,8 @@ using namespace Ishiko::Tests;
 FunctionBasedTestTests::FunctionBasedTestTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "FunctionBasedTest tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("run success test 1", RunSuccessTest1);
     append<HeapAllocationErrorsTest>("run failure test 1", RunFailureTest1);
-}
-
-void FunctionBasedTestCreationTest1Helper(Test& test)
-{
-    test.pass();
-}
-
-void FunctionBasedTestTests::CreationTest1(Test& test)
-{
-    Test functionTest(TestNumber(), "FunctionBasedTestCreationTest1", FunctionBasedTestCreationTest1Helper);
-    ISHTF_PASS();
 }
 
 void FunctionBasedTestRunSuccessTest1Helper(Test& test)

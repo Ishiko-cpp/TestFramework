@@ -31,7 +31,6 @@ public:
     FunctionBasedTestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
     static void RunSuccessTest1(Ishiko::Tests::Test& test);
     static void RunFailureTest1(Ishiko::Tests::Test& test);
 };

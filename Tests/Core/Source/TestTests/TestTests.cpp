@@ -21,7 +21,6 @@
 */
 
 #include "TestTests.h"
-#include "../TestClasses/SimpleTestClass1.h"
 
 using namespace Ishiko::Tests;
 
@@ -29,19 +28,31 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     : TestSequence(number, "Test tests", environment)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
     append<HeapAllocationErrorsTest>("pass test 1", PassTest1);
     append<HeapAllocationErrorsTest>("fail test 1", FailTest1);
 }
 
 void TestTests::CreationTest1(Test& test)
 {
-    SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
+    Test testClass(TestNumber(1), "TestCreationTest1");
+    ISHTF_PASS();
+}
+
+void TestCreationTest2Helper(Test& test)
+{
+    test.pass();
+}
+
+void TestTests::CreationTest2(Test& test)
+{
+    Test functionTest(TestNumber(), "TestCreationTest2", TestCreationTest2Helper);
     ISHTF_PASS();
 }
 
 void TestTests::PassTest1(Test& test)
 {
-    SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
+    Test testClass(TestNumber(1), "PassTest1");
     testClass.pass();
 
     ISHTF_FAIL_UNLESS(testClass.result() == TestResult::ePassed);
@@ -50,7 +61,7 @@ void TestTests::PassTest1(Test& test)
 
 void TestTests::FailTest1(Test& test)
 {
-    SimpleTestClass1 testClass(TestNumber(1), "SimpleTestClass1", TestResult::ePassed);
+    Test testClass(TestNumber(1), "FailTest1");
     testClass.fail(__FILE__, __LINE__);
 
     ISHTF_FAIL_UNLESS(testClass.result() == TestResult::eFailed);
