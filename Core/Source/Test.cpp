@@ -108,6 +108,18 @@ Test::Test(const TestNumber& number, const std::string& name, const TestEnvironm
 {
 }
 
+Test::Test(const TestNumber& number, const std::string& name, TestResult result)
+    : m_number(number), m_name(name), m_result(result), m_environment(TestEnvironment::defaultTestEnvironment()),
+    m_memoryLeakCheck(true), m_runFctTest(0)
+{
+}
+
+Test::Test(const TestNumber& number, const std::string& name, TestResult result, const TestEnvironment& environment)
+    : m_number(number), m_name(name), m_result(result), m_environment(environment), m_memoryLeakCheck(true),
+    m_runFctTest(0)
+{
+}
+
 Test::Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test))
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
     m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFctTest(runFct)

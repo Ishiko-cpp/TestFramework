@@ -77,6 +77,8 @@ public:
     /// @param name The name of the test.
     Test(const TestNumber& number, const std::string& name);
     Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
+    Test(const TestNumber& number, const std::string& name, TestResult result);
+    Test(const TestNumber& number, const std::string& name, TestResult result, const TestEnvironment& environment);
     Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test));
     Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test),
         const TestEnvironment& environment);
