@@ -29,41 +29,58 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
     append<HeapAllocationErrorsTest>("pass test 1", PassTest1);
     append<HeapAllocationErrorsTest>("fail test 1", FailTest1);
+    append<HeapAllocationErrorsTest>("run test 1", RunTest1);
 }
 
 void TestTests::CreationTest1(Test& test)
 {
-    Test testClass(TestNumber(1), "TestCreationTest1");
+    Test myTest(TestNumber(1), "TestCreationTest1");
     ISHTF_PASS();
-}
-
-void TestCreationTest2Helper(Test& test)
-{
-    test.pass();
 }
 
 void TestTests::CreationTest2(Test& test)
 {
-    Test functionTest(TestNumber(), "TestCreationTest2", TestCreationTest2Helper);
+    Test myTest(TestNumber(1), "TestCreationTest2", TestResult::ePassed);
+    ISHTF_PASS();
+}
+
+void TestCreationTest3Helper(Test& test)
+{
+    test.pass();
+}
+
+void TestTests::CreationTest3(Test& test)
+{
+    Test myTest(TestNumber(), "TestCreationTest3", TestCreationTest3Helper);
     ISHTF_PASS();
 }
 
 void TestTests::PassTest1(Test& test)
 {
-    Test testClass(TestNumber(1), "PassTest1");
-    testClass.pass();
+    Test myTest(TestNumber(1), "PassTest1");
+    myTest.pass();
 
-    ISHTF_FAIL_UNLESS(testClass.result() == TestResult::ePassed);
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::ePassed);
     ISHTF_PASS();
 }
 
 void TestTests::FailTest1(Test& test)
 {
-    Test testClass(TestNumber(1), "FailTest1");
-    testClass.fail(__FILE__, __LINE__);
+    Test myTest(TestNumber(1), "FailTest1");
+    myTest.fail(__FILE__, __LINE__);
 
-    ISHTF_FAIL_UNLESS(testClass.result() == TestResult::eFailed);
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_PASS();
+}
+
+void TestTests::RunTest1(Test& test)
+{
+    Test myTest(TestNumber(1), "TestRunTest1");
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
     ISHTF_PASS();
 }
