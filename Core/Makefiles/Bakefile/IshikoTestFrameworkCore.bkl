@@ -39,7 +39,6 @@ library IshikoTestFrameworkCore : Boost, IshikoProcess
         ../../../Include/Ishiko/TestFramework/Core/DirectoriesTeardownAction.h
         ../../../Include/Ishiko/TestFramework/Core/FileComparisonTest.h
         ../../../Include/Ishiko/TestFramework/Core/FilesTeardownAction.h
-        ../../../Include/Ishiko/TestFramework/Core/FunctionBasedTest.h
         ../../../Include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.h
         ../../../Include/Ishiko/TestFramework/Core/DebugHeap.h
         ../../../Include/Ishiko/TestFramework/Core/ProcessAction.h
@@ -64,7 +63,6 @@ library IshikoTestFrameworkCore : Boost, IshikoProcess
         ../../Source/DirectoriesTeardownAction.cpp
         ../../Source/FileComparisonTest.cpp
         ../../Source/FilesTeardownAction.cpp
-        ../../Source/FunctionBasedTest.cpp
         ../../Source/HeapAllocationErrorsTest.cpp
         ../../Source/DebugHeap.cpp
         ../../Source/ProcessAction.cpp

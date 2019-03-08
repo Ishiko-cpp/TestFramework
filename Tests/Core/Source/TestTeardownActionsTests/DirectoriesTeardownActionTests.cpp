@@ -63,7 +63,7 @@ void DirectoriesTeardownActionTests::TeardownTest1(Test& test)
 {
     const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
 
-    FunctionBasedTest functionTest(TestNumber(), "DirectoriesTeardownActionTeardownTest1",
+    Test functionTest(TestNumber(), "DirectoriesTeardownActionTeardownTest1",
         DirectoriesTeardownActionTeardownTest1Helper);
     functionTest.run();
 

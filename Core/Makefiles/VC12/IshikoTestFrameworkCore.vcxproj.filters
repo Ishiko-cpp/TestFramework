@@ -32,9 +32,6 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FunctionBasedTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -95,9 +92,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FilesTeardownAction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\FunctionBasedTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp">

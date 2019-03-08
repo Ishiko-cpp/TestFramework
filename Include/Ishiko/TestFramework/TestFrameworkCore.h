@@ -24,7 +24,6 @@
 #define _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
 
 #include "Core/TestException.h"
-#include "Core/FunctionBasedTest.h"
 #include "Core/HeapAllocationErrorsTest.h"
 #include "Core/FileComparisonTest.h"
 #include "Core/ConsoleApplicationTest.h"

@@ -39,7 +39,7 @@ void FunctionBasedTestCreationTest1Helper(Test& test)
 
 void FunctionBasedTestTests::CreationTest1(Test& test)
 {
-    FunctionBasedTest functionTest(TestNumber(), "FunctionBasedTestCreationTest1", FunctionBasedTestCreationTest1Helper);
+    Test functionTest(TestNumber(), "FunctionBasedTestCreationTest1", FunctionBasedTestCreationTest1Helper);
     ISHTF_PASS();
 }
 
@@ -53,7 +53,7 @@ void FunctionBasedTestRunSuccessTest1Helper(Test& test)
 
 void FunctionBasedTestTests::RunSuccessTest1(Test& test)
 {
-    FunctionBasedTest functionTest(TestNumber(), "FunctionBasedTestRunSuccessTest1", FunctionBasedTestRunSuccessTest1Helper);
+    Test functionTest(TestNumber(), "FunctionBasedTestRunSuccessTest1", FunctionBasedTestRunSuccessTest1Helper);
     functionTest.run();
 
     ISHTF_FAIL_IF(functionTest.result() != TestResult::ePassed);
@@ -70,7 +70,7 @@ void FunctionBasedTestRunFailureTest1Helper(Test& test)
 
 void FunctionBasedTestTests::RunFailureTest1(Test& test)
 {
-    FunctionBasedTest functionTest(TestNumber(), "FunctionBasedTestRunFailureTest1", FunctionBasedTestRunFailureTest1Helper);
+    Test functionTest(TestNumber(), "FunctionBasedTestRunFailureTest1", FunctionBasedTestRunFailureTest1Helper);
     functionTest.run();
 
     ISHTF_FAIL_IF(functionTest.result() != TestResult::eFailed);

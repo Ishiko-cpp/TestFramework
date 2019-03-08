@@ -63,8 +63,7 @@ void FilesTeardownActionTests::TeardownTest1(Test& test)
 {
     const char* path = "../../TestOutput/TestTeardownActionsTests/FilesTeardownActionTeardownTest1";
 
-    FunctionBasedTest teardownTest(TestNumber(), "FilesTeardownActionTeardownTest1",
-        FilesTeardownActionTeardownTest1Helper);
+    Test teardownTest(TestNumber(), "FilesTeardownActionTeardownTest1", FilesTeardownActionTeardownTest1Helper);
     teardownTest.run();
 
     ISHTF_FAIL_IF(exists(path));

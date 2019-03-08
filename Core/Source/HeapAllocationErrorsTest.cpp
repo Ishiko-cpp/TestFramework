@@ -21,7 +21,6 @@
 */
 
 #include "HeapAllocationErrorsTest.h"
-#include "FunctionBasedTest.h"
 
 namespace Ishiko
 {
@@ -32,14 +31,14 @@ HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, con
     void (*runFct)(Test& test))
     : Test(TestNumber(), name)
 {
-    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct);
+    m_test = std::make_shared<Test>(TestNumber(), name, runFct);
 }
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
     void (*runFct)(Test& test), const TestEnvironment& environment)
     : Test(TestNumber(), name, environment)
 {
-    m_test = std::make_shared<FunctionBasedTest>(TestNumber(), name, runFct, environment);
+    m_test = std::make_shared<Test>(TestNumber(), name, runFct, environment);
 }
 
 void HeapAllocationErrorsTest::doRun()
