@@ -98,38 +98,38 @@ void Test::Observers::removeDeletedObservers()
 
 Test::Test(const TestNumber& number, const std::string& name)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
-    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFctTest(0)
+    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(environment),
-    m_memoryLeakCheck(true), m_runFctTest(0)
+    m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, TestResult result)
     : m_number(number), m_name(name), m_result(result), m_environment(TestEnvironment::defaultTestEnvironment()),
-    m_memoryLeakCheck(true), m_runFctTest(0)
+    m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, TestResult result, const TestEnvironment& environment)
     : m_number(number), m_name(name), m_result(result), m_environment(environment), m_memoryLeakCheck(true),
-    m_runFctTest(0)
+    m_runFct(0)
 {
 }
 
-Test::Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test))
+Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
-    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFctTest(runFct)
+    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(runFct)
 {
 }
 
-Test::Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test),
+Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct,
     const TestEnvironment& environment)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(environment),
-    m_memoryLeakCheck(true), m_runFctTest(runFct)
+    m_memoryLeakCheck(true), m_runFct(runFct)
 {
 }
 
@@ -339,9 +339,9 @@ void Test::setup()
 
 void Test::doRun()
 {
-    if (m_runFctTest)
+    if (m_runFct)
     {
-        m_runFctTest(*this);
+        m_runFct(*this);
     }
 }
 

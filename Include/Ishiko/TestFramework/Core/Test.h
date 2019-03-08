@@ -28,6 +28,7 @@
 #include "TestEnvironment.h"
 #include "TestSetupAction.h"
 #include "TestTeardownAction.h"
+#include <functional>
 #include <string>
 #include <vector>
 #include <memory>
@@ -79,8 +80,8 @@ public:
     Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
     Test(const TestNumber& number, const std::string& name, TestResult result);
     Test(const TestNumber& number, const std::string& name, TestResult result, const TestEnvironment& environment);
-    Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test));
-    Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test),
+    Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct);
+    Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct,
         const TestEnvironment& environment);
     virtual ~Test() noexcept = default;
 
@@ -127,7 +128,7 @@ private:
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
     Observers m_observers;
-    void (*m_runFctTest)(Test& test);
+    std::function<void(Test& test)> m_runFct;
 };
 
 }
