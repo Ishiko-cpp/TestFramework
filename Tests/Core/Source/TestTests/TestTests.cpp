@@ -34,6 +34,10 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     append<HeapAllocationErrorsTest>("Creation test 5", CreationTest5);
     append<HeapAllocationErrorsTest>("pass test 1", PassTest1);
     append<HeapAllocationErrorsTest>("fail test 1", FailTest1);
+    append<HeapAllocationErrorsTest>("fail test 2", FailTest2);
+    append<HeapAllocationErrorsTest>("failIf test 1", FailIfTest1);
+    append<HeapAllocationErrorsTest>("failIf test 2", FailIfTest2);
+    append<HeapAllocationErrorsTest>("failIf test 3", FailIfTest3);
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
@@ -44,12 +48,16 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
 void TestTests::CreationTest1(Test& test)
 {
     Test myTest(TestNumber(1), "TestCreationTest1");
+
+    ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();
 }
 
 void TestTests::CreationTest2(Test& test)
 {
     Test myTest(TestNumber(1), "TestCreationTest2", TestResult::ePassed);
+
+    ISHTF_FAIL_IF(myTest.result() != TestResult::ePassed);
     ISHTF_PASS();
 }
 
@@ -61,12 +69,16 @@ void TestCreationTest3Helper(Test& test)
 void TestTests::CreationTest3(Test& test)
 {
     Test myTest(TestNumber(), "TestCreationTest3", TestCreationTest3Helper);
+
+    ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();
 }
 
 void TestTests::CreationTest4(Test& test)
 {
     Test myTest(TestNumber(), "TestCreationTest4", [](Test& test) {});
+
+    ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();
 }
 
@@ -74,6 +86,8 @@ void TestTests::CreationTest5(Test& test)
 {
     int data = 5;
     Test myTest(TestNumber(), "TestCreationTest4", [data](Test& test) {});
+
+    ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();
 }
 
@@ -92,6 +106,45 @@ void TestTests::FailTest1(Test& test)
     myTest.fail(__FILE__, __LINE__);
 
     ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_PASS();
+}
+
+void TestTests::FailTest2(Test& test)
+{
+    Test myTest(TestNumber(1), "FailTest2");
+    myTest.fail(__FILE__, __LINE__);
+    myTest.pass();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_PASS();
+}
+
+void TestTests::FailIfTest1(Test& test)
+{
+    Test myTest(TestNumber(1), "FailIfTest1");
+    myTest.failIf(true, __FILE__, __LINE__);
+    myTest.pass();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_PASS();
+}
+
+void TestTests::FailIfTest2(Test& test)
+{
+    Test myTest(TestNumber(1), "FailIfTest2");
+    myTest.failIf(false, __FILE__, __LINE__);
+    myTest.pass();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::ePassed);
+    ISHTF_PASS();
+}
+
+void TestTests::FailIfTest3(Test& test)
+{
+    Test myTest(TestNumber(1), "FailIfTest3");
+    myTest.failIf(false, __FILE__, __LINE__);
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eUnknown);
     ISHTF_PASS();
 }
 

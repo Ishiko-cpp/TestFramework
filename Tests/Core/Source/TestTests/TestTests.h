@@ -38,6 +38,10 @@ private:
     static void CreationTest5(Ishiko::Tests::Test& test);
     static void PassTest1(Ishiko::Tests::Test& test);
     static void FailTest1(Ishiko::Tests::Test& test);
+    static void FailTest2(Ishiko::Tests::Test& test);
+    static void FailIfTest1(Ishiko::Tests::Test& test);
+    static void FailIfTest2(Ishiko::Tests::Test& test);
+    static void FailIfTest3(Ishiko::Tests::Test& test);
     static void RunTest1(Ishiko::Tests::Test& test);
     static void RunTest2(Ishiko::Tests::Test& test);
     static void RunTest3(Ishiko::Tests::Test& test);
