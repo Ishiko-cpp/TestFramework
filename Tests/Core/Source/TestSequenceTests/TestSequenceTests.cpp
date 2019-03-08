@@ -21,7 +21,6 @@
 */
 
 #include "TestSequenceTests.h"
-#include "../TestClasses/SimpleTestClass1.h"
 
 using namespace Ishiko::Tests;
 
@@ -48,7 +47,7 @@ void TestSequenceTests::AppendTest1(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Test> simpleTest = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> simpleTest = std::make_shared<Test>(TestNumber(1), "Test", TestResult::ePassed);
 
     // Append test to sequence
     seq.append(simpleTest);
@@ -64,7 +63,7 @@ void TestSequenceTests::AppendTest2(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Create and append a test to the sequence in one go using the templated append function
-    seq.append<SimpleTestClass1>("Test", TestResult::ePassed);
+    seq.append<Test>("Test", TestResult::ePassed);
 
     // Check the test count
     ISHTF_FAIL_IF(seq.size() != 1);
@@ -85,7 +84,7 @@ void TestSequenceTests::GetResultTest2(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Test> simpleTest = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> simpleTest = std::make_shared<Test>(TestNumber(1), "Test", TestResult::ePassed);
 
     // Append test to sequence
     seq.append(simpleTest);
@@ -103,11 +102,11 @@ void TestSequenceTests::GetResultTest3(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating first test (passes)
-    std::shared_ptr<Test> test1 = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::ePassed);
     seq.append(test1);
 
     // Creating second test (fails)
-    std::shared_ptr<Test> test2 = std::make_shared<SimpleTestClass1>(TestNumber(1), "Test", TestResult::eFailed);
+    std::shared_ptr<Test> test2 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::eFailed);
     seq.append(test2);
 
     // Run the sequence to update the test result
