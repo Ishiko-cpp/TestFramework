@@ -77,6 +77,9 @@ public:
     /// @param name The name of the test.
     Test(const TestNumber& number, const std::string& name);
     Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
+    Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test));
+    Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test),
+        const TestEnvironment& environment);
     virtual ~Test() noexcept = default;
 
     const TestNumber& number() const;
@@ -105,8 +108,8 @@ public:
 
 protected:
     virtual void setup();
+    virtual void doRun();
     virtual void teardown();
-    virtual void doRun() = 0;
     virtual void notify(Observer::EEventType type);
     
 private:
@@ -122,6 +125,7 @@ private:
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
     Observers m_observers;
+    void (*m_runFctTest)(Test& test);
 };
 
 }

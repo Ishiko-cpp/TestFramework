@@ -98,13 +98,26 @@ void Test::Observers::removeDeletedObservers()
 
 Test::Test(const TestNumber& number, const std::string& name)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
-    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true)
+    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFctTest(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(environment),
-    m_memoryLeakCheck(true)
+    m_memoryLeakCheck(true), m_runFctTest(0)
+{
+}
+
+Test::Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test))
+    : m_number(number), m_name(name), m_result(TestResult::eUnknown),
+    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFctTest(runFct)
+{
+}
+
+Test::Test(const TestNumber& number, const std::string& name, void (*runFct)(Test& test),
+    const TestEnvironment& environment)
+    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(environment),
+    m_memoryLeakCheck(true), m_runFctTest(runFct)
 {
 }
 
@@ -260,6 +273,12 @@ void Test::run()
     try
     {
         doRun();
+        if (m_result == TestResult::eUnknown)
+        {
+            // The function didn't fail but at no point did it mark the test as passed either so we consider this a
+            // failure.
+            fail(__FILE__, __LINE__);
+        }
     }
     catch (const AbortException& e)
     {
@@ -303,6 +322,14 @@ void Test::setup()
     for (size_t i = 0; i < m_setupActions.size(); ++i)
     {
         m_setupActions[i]->setup();
+    }
+}
+
+void Test::doRun()
+{
+    if (m_runFctTest)
+    {
+        m_runFctTest(*this);
     }
 }
 

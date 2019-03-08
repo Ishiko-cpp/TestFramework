@@ -26,6 +26,7 @@ namespace Ishiko
 {
 namespace Tests
 {
+
 FunctionBasedTest::FunctionBasedTest(const TestNumber& number, const std::string& name,
     void (*runFct)(Test& test))
     : Test(number, name), m_runFctTest(runFct)
