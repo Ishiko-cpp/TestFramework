@@ -26,7 +26,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
         ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.h
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
-        ../../Source/TestClasses/SimpleTestClass1.h
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.h
         ../../Source/TestSequenceTests/TestSequenceTests.h
         ../../Source/TestSetupActionsTests/ProcessActionTests.h
@@ -46,7 +45,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp
         ../../Source/FunctionBasedTestTests/FunctionBasedTestTests.cpp
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
-        ../../Source/TestClasses/SimpleTestClass1.cpp
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.cpp
         ../../Source/TestSequenceTests/TestSequenceTests.cpp
         ../../Source/TestSetupActionsTests/ProcessActionTests.cpp

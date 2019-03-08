@@ -158,7 +158,6 @@
     <ClCompile Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.cpp" />
     <ClCompile Include="..\..\Source\FunctionBasedTestTests\FunctionBasedTestTests.cpp" />
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp" />
-    <ClCompile Include="..\..\Source\TestClasses\SimpleTestClass1.cpp" />
     <ClCompile Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.cpp" />
     <ClCompile Include="..\..\Source\TestSequenceTests\TestSequenceTests.cpp" />
     <ClCompile Include="..\..\Source\TestSetupActionsTests\ProcessActionTests.cpp" />
@@ -174,7 +173,6 @@
     <ClInclude Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.h" />
     <ClInclude Include="..\..\Source\FunctionBasedTestTests\FunctionBasedTestTests.h" />
     <ClInclude Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h" />
-    <ClInclude Include="..\..\Source\TestClasses\SimpleTestClass1.h" />
     <ClInclude Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.h" />
     <ClInclude Include="..\..\Source\TestSequenceTests\TestSequenceTests.h" />
     <ClInclude Include="..\..\Source\TestSetupActionsTests\ProcessActionTests.h" />
