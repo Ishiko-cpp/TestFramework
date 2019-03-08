@@ -23,7 +23,6 @@
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
 #include "TestTests/TestTests.h"
 #include "TestSequenceTests/TestSequenceTests.h"
-#include "FunctionBasedTestTests/FunctionBasedTestTests.h"
 #include "FileComparisonTestTests/FileComparisonTestTests.h"
 #include "ConsoleApplicationTestTests/ConsoleApplicationTestTests.h"
 #include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"
@@ -49,7 +48,6 @@ int main(int argc, char* argv[])
     theTests.append<TestEnvironmentTests>();
     theTests.append<TestTests>();
     theTests.append<TestSequenceTests>();
-    theTests.append<FunctionBasedTestTests>();
     theTests.append<FileComparisonTestTests>();
     theTests.append<ConsoleApplicationTestTests>();
     theTests.append<HeapAllocationErrorsTestTests>();
