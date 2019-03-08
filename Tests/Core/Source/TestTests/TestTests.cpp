@@ -38,6 +38,7 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
     append<HeapAllocationErrorsTest>("run test 4", RunTest4);
+    append<HeapAllocationErrorsTest>("abort test 1", AbortTest1);
 }
 
 void TestTests::CreationTest1(Test& test)
@@ -143,5 +144,21 @@ void TestTests::RunTest4(Test& test)
     myTest.run();
 
     ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_PASS();
+}
+
+void TestTests::AbortTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(1), "TestAbortTest1",
+        [&canary](Test& test)
+        {
+            test.abort(__FILE__, __LINE__);
+            canary = true;
+        });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }

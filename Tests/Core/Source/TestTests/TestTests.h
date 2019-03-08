@@ -42,6 +42,7 @@ private:
     static void RunTest2(Ishiko::Tests::Test& test);
     static void RunTest3(Ishiko::Tests::Test& test);
     static void RunTest4(Ishiko::Tests::Test& test);
+    static void AbortTest1(Ishiko::Tests::Test& test);
 };
 
 #endif
