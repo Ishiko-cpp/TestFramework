@@ -47,8 +47,9 @@ public:
 
 	TestSequence& tests();
 
-protected:
+private:
 	int runTests();
+    void printSummary();
 
 private:
 	TestEnvironment m_environment;

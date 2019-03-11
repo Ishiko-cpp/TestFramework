@@ -71,46 +71,56 @@ int TestHarness::runTests()
         m_topSequence.run();
         std::cout << std::endl;
 
-        size_t unknown = 0;
-        size_t passed = 0;
-        size_t passedButMemoryLeaks = 0;
-        size_t exception = 0;
-        size_t failed = 0;
-        size_t total = 0;
-        m_topSequence.getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, total);
+        printSummary();
+
         if (!m_topSequence.passed())
         {
-            std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)
-                << "% (" << unknown << " unknown, "
-                << passed << " passed, "
-                << passedButMemoryLeaks << " passed but with memory leaks, "
-                << exception << " threw exceptions, "
-                << failed << " failed, "
-                << total << " total)" << std::endl;
-            std::cout << std::endl;
-            std::cout << "Test Suite FAILED!!!" << std::endl;
-
             return eTestFailure;
         }
         else
         {
-            std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)
-                << "% (" << unknown << " unknown, "
-                << passed << " passed, "
-                << passedButMemoryLeaks << " passed but with memory leaks, "
-                << exception << " threw exceptions, "
-                << failed << " failed, "
-                << total << " total)" << std::endl;
-
-            std::cout << std::endl;
-            std::cout << "Test Suite passed" << std::endl;
-
             return eOK;
         }
     }
     catch (...)
     {
         return eException;
+    }
+}
+
+void TestHarness::printSummary()
+{
+    size_t unknown = 0;
+    size_t passed = 0;
+    size_t passedButMemoryLeaks = 0;
+    size_t exception = 0;
+    size_t failed = 0;
+    size_t total = 0;
+    m_topSequence.getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, total);
+    if (!m_topSequence.passed())
+    {
+        std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)
+            << "% (" << unknown << " unknown, "
+            << passed << " passed, "
+            << passedButMemoryLeaks << " passed but with memory leaks, "
+            << exception << " threw exceptions, "
+            << failed << " failed, "
+            << total << " total)" << std::endl;
+        std::cout << std::endl;
+        std::cout << "Test Suite FAILED!!!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)
+            << "% (" << unknown << " unknown, "
+            << passed << " passed, "
+            << passedButMemoryLeaks << " passed but with memory leaks, "
+            << exception << " threw exceptions, "
+            << failed << " failed, "
+            << total << " total)" << std::endl;
+
+        std::cout << std::endl;
+        std::cout << "Test Suite passed" << std::endl;
     }
 }
 
