@@ -324,6 +324,11 @@ void Test::addTeardownAction(std::shared_ptr<TestTeardownAction> action)
     m_teardownActions.push_back(action);
 }
 
+void Test::traverse(std::function<void(const Test& test)> function) const
+{
+    function(*this);
+}
+
 Test::Observers& Test::observers()
 {
     return m_observers;

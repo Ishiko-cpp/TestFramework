@@ -71,6 +71,7 @@ int TestHarness::runTests()
         m_topSequence.run();
         std::cout << std::endl;
 
+        printDetailedResults();
         printSummary();
 
         if (!m_topSequence.passed())
@@ -86,6 +87,15 @@ int TestHarness::runTests()
     {
         return eException;
     }
+}
+
+void TestHarness::printDetailedResults()
+{
+    m_topSequence.traverse(
+        [](const Test& test) -> void
+        {
+            std::cout << test.name() << std::endl;
+        });
 }
 
 void TestHarness::printSummary()

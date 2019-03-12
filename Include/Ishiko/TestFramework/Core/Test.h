@@ -107,6 +107,8 @@ public:
     virtual void addSetupAction(std::shared_ptr<TestSetupAction> action);
     virtual void addTeardownAction(std::shared_ptr<TestTeardownAction> action);
 
+    virtual void traverse(std::function<void(const Test& test)> function) const;
+
     Observers& observers();
 
 protected:

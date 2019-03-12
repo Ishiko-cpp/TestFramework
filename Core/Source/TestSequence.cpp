@@ -65,6 +65,15 @@ void TestSequence::append(std::shared_ptr<Test> test)
     test->observers().add(m_itemsObserver);
 }
 
+void TestSequence::traverse(std::function<void(const Test& test)> function) const
+{
+    function(*this);
+    for (size_t i = 0; i < m_tests.size(); ++i)
+    {
+        m_tests[i]->traverse(function);
+    }
+}
+
 void TestSequence::doRun()
 {
     // By default the outcome is unknown

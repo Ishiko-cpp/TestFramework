@@ -46,6 +46,8 @@ public:
     template <class TestClass, typename... Args>
     TestClass& append(Args&&... args);
     
+    void traverse(std::function<void(const Test& test)> function) const override;
+
 protected:
     void doRun() override;
 

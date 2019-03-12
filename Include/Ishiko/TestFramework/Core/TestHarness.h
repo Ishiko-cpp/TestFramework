@@ -49,6 +49,7 @@ public:
 
 private:
 	int runTests();
+    void printDetailedResults();
     void printSummary();
 
 private:
