@@ -92,8 +92,8 @@ public:
     TestResult result() const;
     void setResult(TestResult result);
     bool passed() const;
-    void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
-        size_t& total) const;
+    virtual void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
+        size_t& failed, size_t& total) const;
     void abort(const char* file, int line);
     void abortIf(bool condition, const char* file, int line);
     void fail(const char* file, int line);

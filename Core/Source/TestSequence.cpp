@@ -65,6 +65,41 @@ void TestSequence::append(std::shared_ptr<Test> test)
     test->observers().add(m_itemsObserver);
 }
 
+void TestSequence::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
+    size_t& failed, size_t& total) const
+{
+    if (m_tests.size() == 0)
+    {
+        // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't do
+        // that this case would go unnoticed in the returned values.
+        unknown = 1;
+        passed = 0;
+        passedButMemoryLeaks = 0;
+        exception = 0;
+        failed = 0;
+        total = 1;
+    }
+    else
+    {
+        for (size_t i = 0; i < m_tests.size(); ++i)
+        {
+            size_t u = 0;
+            size_t p = 0;
+            size_t pbml = 0;
+            size_t e = 0;
+            size_t f = 0;
+            size_t t = 0;
+            m_tests[i]->getPassRate(u, p, pbml, e, f, t);
+            unknown += u;
+            passed += p;
+            passedButMemoryLeaks += pbml;
+            exception += e;
+            failed += f;
+            total += t;
+        }
+    }
+}
+
 void TestSequence::traverse(std::function<void(const Test& test)> function) const
 {
     function(*this);
