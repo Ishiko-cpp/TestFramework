@@ -96,7 +96,13 @@ void TestHarness::printDetailedResults()
         {
             if (!test.passed())
             {
-                std::cout << test.name() << ToString(test.result()) << std::endl;
+                const TestSequence* sequence = dynamic_cast<const TestSequence*>(&test);
+                // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't
+                // do that this case would go unreported.
+                if (!sequence || (sequence->size() == 0))
+                {
+                    std::cout << test.name() << ToString(test.result()) << std::endl;
+                }
             }
         });
 }
