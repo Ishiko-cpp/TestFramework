@@ -94,7 +94,10 @@ void TestHarness::printDetailedResults()
     m_topSequence.traverse(
         [](const Test& test) -> void
         {
-            std::cout << test.name() << std::endl;
+            if (!test.passed())
+            {
+                std::cout << test.name() << ToString(test.result()) << std::endl;
+            }
         });
 }
 

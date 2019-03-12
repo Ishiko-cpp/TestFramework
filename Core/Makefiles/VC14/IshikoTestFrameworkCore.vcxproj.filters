@@ -124,6 +124,9 @@
     <ClCompile Include="..\..\Source\TestProgressObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\TestResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TestSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

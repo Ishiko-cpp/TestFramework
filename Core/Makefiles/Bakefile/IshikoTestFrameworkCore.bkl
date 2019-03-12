@@ -73,6 +73,7 @@ library IshikoTestFrameworkCore : Boost, IshikoProcess
         ../../Source/TestHarness.cpp
         ../../Source/TestNumber.cpp
         ../../Source/TestProgressObserver.cpp
+        ../../Source/TestResult.cpp
         ../../Source/TestSequence.cpp
         ../../Source/TestSetupAction.cpp
         ../../Source/TestTeardownAction.cpp

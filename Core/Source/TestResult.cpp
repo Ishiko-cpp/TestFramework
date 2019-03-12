@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2019 Xavier Leclercq
+    Copyright (c) 2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,28 +20,44 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTRESULT_H_
-#define _ISHIKO_TESTFRAMEWORK_CORE_TESTRESULT_H_
-
-#include <string>
+#include "TestResult.h"
 
 namespace Ishiko
 {
 namespace Tests
 {
 
-enum class TestResult
+std::string ToString(TestResult result)
 {
-    eUnknown,
-    ePassed,
-    ePassedButMemoryLeaks,
-    eException,
-    eFailed
-};
+    std::string str;
+    switch (result)
+    {
+    case TestResult::eUnknown:
+        str = "unknown";
+        break;
 
-std::string ToString(TestResult result);
+    case TestResult::ePassed:
+        str = "passed";
+        break;
+
+    case TestResult::ePassedButMemoryLeaks:
+        str = "memory leak detected";
+        break;
+
+    case TestResult::eException:
+        str = "exception";
+        break;
+
+    case TestResult::eFailed:
+        str = "failed";
+        break;
+
+    default:
+        str = "UNEXPECTED OUTCOME ENUM VALUE";
+        break;
+    }
+    return str;
+}
 
 }
 }
-
-#endif
