@@ -26,8 +26,7 @@
 using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& number,
-    const TestEnvironment& environment)
+ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ConsoleApplicationTest tests", environment)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
