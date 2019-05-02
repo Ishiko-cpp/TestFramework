@@ -255,7 +255,7 @@ void Test::run()
             fail(__FILE__, __LINE__);
         }
     }
-    catch (const AbortException& e)
+    catch (const AbortException&)
     {
         // abort() was called, the exception is only used as a way to interrupt the test.
     }

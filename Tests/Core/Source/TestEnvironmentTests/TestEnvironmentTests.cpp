@@ -48,7 +48,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest1(Test& test)
         TestEnvironment environment;
         environment.getTestDataDirectory("dummy");
     }
-    catch (const TestException& exception)
+    catch (const TestException&)
     {
         ISHTF_PASS();
     }

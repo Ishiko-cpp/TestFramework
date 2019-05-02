@@ -137,10 +137,12 @@ private:
 }
 
 #define ISHTF_ABORT() test.abort(__FILE__, __LINE__)
-#define ISHTF_ABORT_IF(condition) test.abortIf((condition), __FILE__, __LINE__)
+// The double negation is needed to cope with classes that have an explicit operator bool
+#define ISHTF_ABORT_IF(condition) test.abortIf(!!(condition), __FILE__, __LINE__)
 #define ISHTF_ABORT_UNLESS(condition) test.abortIf(!(condition), __FILE__, __LINE__)
 #define ISHTF_FAIL() test.fail(__FILE__, __LINE__)
-#define ISHTF_FAIL_IF(condition) test.failIf((condition), __FILE__, __LINE__)
+// The double negation is needed to cope with classes that have an explicit operator bool
+#define ISHTF_FAIL_IF(condition) test.failIf(!!(condition), __FILE__, __LINE__)
 #define ISHTF_FAIL_UNLESS(condition) test.failIf(!(condition), __FILE__, __LINE__)
 #define ISHTF_PASS() test.pass()
 
