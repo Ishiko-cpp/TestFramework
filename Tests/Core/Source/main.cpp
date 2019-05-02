@@ -21,6 +21,7 @@
 */
 
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
+#include "TestNumberTests.h"
 #include "TestTests/TestTests.h"
 #include "TestSequenceTests/TestSequenceTests.h"
 #include "FileComparisonTestTests/FileComparisonTestTests.h"
@@ -46,6 +47,7 @@ int main(int argc, char* argv[])
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<TestEnvironmentTests>();
+    theTests.append<TestNumberTests>();
     theTests.append<TestTests>();
     theTests.append<TestSequenceTests>();
     theTests.append<FileComparisonTestTests>();
