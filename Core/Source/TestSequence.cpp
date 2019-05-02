@@ -65,6 +65,17 @@ void TestSequence::append(std::shared_ptr<Test> test)
     test->observers().add(m_itemsObserver);
 }
 
+void TestSequence::setNumber(const TestNumber& number)
+{
+    Test::setNumber(number);
+    TestNumber deeperNumber = number;
+    deeperNumber.deeperNumber();
+    for (std::shared_ptr<Test>& test : m_tests)
+    {
+        test->setNumber(deeperNumber++);
+    }
+}
+
 void TestSequence::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
     size_t& failed, size_t& total) const
 {

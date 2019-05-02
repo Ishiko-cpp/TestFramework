@@ -45,6 +45,8 @@ public:
 
     template <class TestClass, typename... Args>
     TestClass& append(Args&&... args);
+
+    void setNumber(const TestNumber& number) override;
     
     void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
         size_t& total) const override;

@@ -86,7 +86,7 @@ public:
     virtual ~Test() noexcept = default;
 
     const TestNumber& number() const;
-    void setNumber(const TestNumber& number);
+    virtual void setNumber(const TestNumber& number);
     const std::string& name() const;
 
     TestResult result() const;
