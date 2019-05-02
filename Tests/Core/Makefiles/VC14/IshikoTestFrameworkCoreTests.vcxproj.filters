@@ -20,6 +20,9 @@
     <ClInclude Include="..\..\Source\TestNumberTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\TestTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\TestHarnessTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,15 +56,15 @@
     <ClInclude Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestTests\TestTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestNumberTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestHarnessTests.cpp">
@@ -95,9 +98,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TestTests\TestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

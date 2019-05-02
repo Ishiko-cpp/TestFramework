@@ -22,7 +22,7 @@
 
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
 #include "TestNumberTests.h"
-#include "TestTests/TestTests.h"
+#include "TestTests.h"
 #include "TestSequenceTests/TestSequenceTests.h"
 #include "FileComparisonTestTests/FileComparisonTestTests.h"
 #include "ConsoleApplicationTestTests/ConsoleApplicationTestTests.h"

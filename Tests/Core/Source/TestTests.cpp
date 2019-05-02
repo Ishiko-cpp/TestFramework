@@ -27,11 +27,11 @@ using namespace Ishiko::Tests;
 TestTests::TestTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "Test tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
-    append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
-    append<HeapAllocationErrorsTest>("Creation test 4", CreationTest4);
-    append<HeapAllocationErrorsTest>("Creation test 5", CreationTest5);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
+    append<HeapAllocationErrorsTest>("Constructor test 3", ConstructorTest3);
+    append<HeapAllocationErrorsTest>("Constructor test 4", ConstructorTest4);
+    append<HeapAllocationErrorsTest>("Constructor test 5", ConstructorTest5);
     append<HeapAllocationErrorsTest>("pass test 1", PassTest1);
     append<HeapAllocationErrorsTest>("fail test 1", FailTest1);
     append<HeapAllocationErrorsTest>("fail test 2", FailTest2);
@@ -45,47 +45,47 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     append<HeapAllocationErrorsTest>("abort test 1", AbortTest1);
 }
 
-void TestTests::CreationTest1(Test& test)
+void TestTests::ConstructorTest1(Test& test)
 {
-    Test myTest(TestNumber(1), "TestCreationTest1");
+    Test myTest(TestNumber(1), "TestConstructorTest1");
 
     ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();
 }
 
-void TestTests::CreationTest2(Test& test)
+void TestTests::ConstructorTest2(Test& test)
 {
-    Test myTest(TestNumber(1), "TestCreationTest2", TestResult::ePassed);
+    Test myTest(TestNumber(1), "TestConstructorTest2", TestResult::ePassed);
 
     ISHTF_FAIL_IF(myTest.result() != TestResult::ePassed);
     ISHTF_PASS();
 }
 
-void TestCreationTest3Helper(Test& test)
+void TestConstructorTest3Helper(Test& test)
 {
     test.pass();
 }
 
-void TestTests::CreationTest3(Test& test)
+void TestTests::ConstructorTest3(Test& test)
 {
-    Test myTest(TestNumber(), "TestCreationTest3", TestCreationTest3Helper);
+    Test myTest(TestNumber(), "TestConstructorTest3", TestConstructorTest3Helper);
 
     ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();
 }
 
-void TestTests::CreationTest4(Test& test)
+void TestTests::ConstructorTest4(Test& test)
 {
-    Test myTest(TestNumber(), "TestCreationTest4", [](Test& test) {});
+    Test myTest(TestNumber(), "TestConstructorTest4", [](Test& test) {});
 
     ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();
 }
 
-void TestTests::CreationTest5(Test& test)
+void TestTests::ConstructorTest5(Test& test)
 {
     int data = 5;
-    Test myTest(TestNumber(), "TestCreationTest4", [data](Test& test) {});
+    Test myTest(TestNumber(), "TestConstructorTest5", [data](Test& test) {});
 
     ISHTF_FAIL_IF(myTest.result() != TestResult::eUnknown);
     ISHTF_PASS();

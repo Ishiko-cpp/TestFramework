@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\TestNumberTests.cpp" />
+    <ClCompile Include="..\..\Source\TestTests.cpp" />
     <ClCompile Include="..\..\Source\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp" />
     <ClCompile Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.cpp" />
@@ -165,10 +166,10 @@
     <ClCompile Include="..\..\Source\TestTeardownActionsTests\TestTeardownActionsTests.cpp" />
     <ClCompile Include="..\..\Source\TestTeardownActionsTests\DirectoriesTeardownActionTests.cpp" />
     <ClCompile Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.cpp" />
-    <ClCompile Include="..\..\Source\TestTests\TestTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\TestNumberTests.h" />
+    <ClInclude Include="..\..\Source\TestTests.h" />
     <ClInclude Include="..\..\Source\TestHarnessTests.h" />
     <ClInclude Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
     <ClInclude Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.h" />
@@ -180,7 +181,6 @@
     <ClInclude Include="..\..\Source\TestTeardownActionsTests\TestTeardownActionsTests.h" />
     <ClInclude Include="..\..\Source\TestTeardownActionsTests\DirectoriesTeardownActionTests.h" />
     <ClInclude Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.h" />
-    <ClInclude Include="..\..\Source\TestTests\TestTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
