@@ -75,10 +75,11 @@ TestNumber TestNumber::operator ++(int)
     return result;
 }
 
-TestNumber& TestNumber::deeperNumber()
+TestNumber TestNumber::getDeeperNumber() const
 {
-    m_number.push_back(1);
-    return *this;
+    TestNumber result = *this;
+    result.m_number.push_back(1);
+    return result;
 }
 
 }

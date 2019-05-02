@@ -45,7 +45,7 @@ public:
 
     TestNumber& operator ++();
     TestNumber operator ++(int);
-    TestNumber& deeperNumber();
+    TestNumber getDeeperNumber() const;
 
 private:
     std::vector<int> m_number;

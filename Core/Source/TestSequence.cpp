@@ -52,8 +52,7 @@ void TestSequence::append(std::shared_ptr<Test> test)
     // We need to update the number of the test
     if (m_tests.size() == 0)
     {
-        TestNumber newNumber = number();
-        test->setNumber(newNumber.deeperNumber());
+        test->setNumber(number().getDeeperNumber());
     }
     else
     {
@@ -68,8 +67,7 @@ void TestSequence::append(std::shared_ptr<Test> test)
 void TestSequence::setNumber(const TestNumber& number)
 {
     Test::setNumber(number);
-    TestNumber deeperNumber = number;
-    deeperNumber.deeperNumber();
+    TestNumber deeperNumber = number.getDeeperNumber();
     for (std::shared_ptr<Test>& test : m_tests)
     {
         test->setNumber(deeperNumber++);
