@@ -23,7 +23,7 @@
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
 #include "TestNumberTests.h"
 #include "TestTests.h"
-#include "TestSequenceTests/TestSequenceTests.h"
+#include "TestSequenceTests.h"
 #include "FileComparisonTestTests/FileComparisonTestTests.h"
 #include "ConsoleApplicationTestTests/ConsoleApplicationTestTests.h"
 #include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"

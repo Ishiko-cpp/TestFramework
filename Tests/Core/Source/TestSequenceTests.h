@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSEQUENCETESTS_TESTSEQUENCETESTS_H_
-#define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSEQUENCETESTS_TESTSEQUENCETESTS_H_
+#ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSEQUENCETESTS_H_
+#define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTSEQUENCETESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
@@ -32,7 +32,7 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void ConstructorTest1(Ishiko::Tests::Test& test);
     static void AppendTest1(Ishiko::Tests::Test& test);
     static void AppendTest2(Ishiko::Tests::Test& test);
     static void GetResultTest1(Ishiko::Tests::Test& test);

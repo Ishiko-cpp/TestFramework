@@ -22,13 +22,13 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     {
         ../../Source/TestNumberTests.h
         ../../Source/TestTests.h
+        ../../Source/TestSequenceTests.h
         ../../Source/TestHarnessTests.h
 
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.h
-        ../../Source/TestSequenceTests/TestSequenceTests.h
         ../../Source/TestSetupActionsTests/ProcessActionTests.h
         ../../Source/TestSetupActionsTests/TestSetupActionsTests.h
         ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.h
@@ -41,13 +41,13 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/main.cpp
         ../../Source/TestNumberTests.cpp
         ../../Source/TestTests.cpp
+        ../../Source/TestSequenceTests.cpp
         ../../Source/TestHarnessTests.cpp
 
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp
         ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
         ../../Source/TestEnvironmentTests/TestEnvironmentTests.cpp
-        ../../Source/TestSequenceTests/TestSequenceTests.cpp
         ../../Source/TestSetupActionsTests/ProcessActionTests.cpp
         ../../Source/TestSetupActionsTests/TestSetupActionsTests.cpp
         ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.cpp

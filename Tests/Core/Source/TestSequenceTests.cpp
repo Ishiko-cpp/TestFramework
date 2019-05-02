@@ -27,7 +27,7 @@ using namespace Ishiko::Tests;
 TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "TestSequence tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("append test 1", AppendTest1);
     append<HeapAllocationErrorsTest>("append test 2", AppendTest2);
     append<HeapAllocationErrorsTest>("getResult test 1", GetResultTest1);
@@ -35,7 +35,7 @@ TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnviron
     append<HeapAllocationErrorsTest>("getResult test 3", GetResultTest3);
 }
 
-void TestSequenceTests::CreationTest1(Test& test)
+void TestSequenceTests::ConstructorTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
     ISHTF_PASS();
