@@ -36,6 +36,12 @@ TestNumber::TestNumber(int major)
     m_number.push_back(major);
 }
 
+TestNumber::TestNumber(int major, int minor)
+{
+    m_number.push_back(major);
+    m_number.push_back(minor);
+}
+
 size_t TestNumber::depth() const
 {
     return m_number.size();

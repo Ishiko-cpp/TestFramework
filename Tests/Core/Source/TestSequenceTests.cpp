@@ -38,6 +38,7 @@ TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnviron
 void TestSequenceTests::ConstructorTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
+
     ISHTF_PASS();
 }
 
@@ -52,8 +53,10 @@ void TestSequenceTests::AppendTest1(Test& test)
     // Append test to sequence
     seq.append(simpleTest);
 
-    // Check the test count
+    // Check the test sequence
     ISHTF_FAIL_IF(seq.size() != 1);
+    ISHTF_FAIL_UNLESS(seq[0].name() == "Test");
+    ISHTF_FAIL_UNLESS(simpleTest->number() == TestNumber(1, 1));
     ISHTF_PASS();
 }
 
@@ -65,8 +68,10 @@ void TestSequenceTests::AppendTest2(Test& test)
     // Create and append a test to the sequence in one go using the templated append function
     seq.append<Test>("Test", TestResult::ePassed);
 
-    // Check the test count
+    // Check the test sequence
     ISHTF_FAIL_IF(seq.size() != 1);
+    ISHTF_FAIL_UNLESS(seq[0].name() == "Test");
+    ISHTF_FAIL_UNLESS(seq[0].number() == TestNumber(1, 1));
     ISHTF_PASS();
 }
 

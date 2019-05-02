@@ -36,6 +36,7 @@ class TestNumber
 public:
     TestNumber();
     TestNumber(int major);
+    TestNumber(int major, int minor);
 
     size_t depth() const;
     int part(size_t i) const;
