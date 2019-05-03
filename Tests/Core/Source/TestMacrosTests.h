@@ -33,6 +33,8 @@ public:
 private:
     static void PassMacroTest1(Ishiko::Tests::Test& test);
     static void FailMacroTest1(Ishiko::Tests::Test& test);
+    static void FailIfMacroTest1(Ishiko::Tests::Test& test);
+    static void FailIfMacroTest2(Ishiko::Tests::Test& test);
     static void AbortMacroTest1(Ishiko::Tests::Test& test);
 };
 

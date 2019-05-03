@@ -29,6 +29,8 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment
 {
     append<HeapAllocationErrorsTest>("ISHTF_PASS test 1", PassMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL test 1", FailMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF test 1", FailIfMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF test 2", FailIfMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT test 1", AbortMacroTest1);
 }
 
@@ -47,38 +49,76 @@ void TestMacrosTests::PassMacroTest1(Test& test)
 
 void TestMacrosTests::FailMacroTest1(Test& test)
 {
-    bool hit = false;
+    bool canary = false;
     Test myTest(TestNumber(), "FailMacroTest1",
-        [&hit](Test& test)
+        [&canary](Test& test)
         {
             ISHTF_FAIL();
 
-            hit = true;
+            canary = true;
 
             ISHTF_PASS();
         });
     myTest.run();
 
     ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
-    ISHTF_FAIL_UNLESS(hit);
+    ISHTF_FAIL_UNLESS(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::FailIfMacroTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfMacroTest1",
+        [&canary](Test& test)
+    {
+        ISHTF_FAIL_IF(false);
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::ePassed);
+    ISHTF_FAIL_UNLESS(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::FailIfMacroTest2(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfMacroTest2",
+        [&canary](Test& test)
+    {
+        ISHTF_FAIL_IF(true);
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_FAIL_UNLESS(canary);
     ISHTF_PASS();
 }
 
 void TestMacrosTests::AbortMacroTest1(Test& test)
 {
-    bool hit = false;
+    bool canary = false;
     Test myTest(TestNumber(), "AbortMacroTest1",
-        [&hit](Test& test)
+        [&canary](Test& test)
         {
             ISHTF_ABORT();
 
-            hit = true;
+            canary = true;
 
             ISHTF_PASS();
         });
     myTest.run();
 
     ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
-    ISHTF_FAIL_IF(hit);
+    ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
