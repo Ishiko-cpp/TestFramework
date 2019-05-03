@@ -29,6 +29,9 @@ class TestMacrosTests : public Ishiko::Tests::TestSequence
 {
 public:
     TestMacrosTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+
+private:
+    static void PassMacroTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

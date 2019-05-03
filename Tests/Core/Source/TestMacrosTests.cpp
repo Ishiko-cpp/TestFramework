@@ -27,4 +27,18 @@ using namespace Ishiko::Tests;
 TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "Test macros tests", environment)
 {
+    append<HeapAllocationErrorsTest>("ISHTF_PASS test 1", PassMacroTest1);
+}
+
+void TestMacrosTests::PassMacroTest1(Test& test)
+{
+    Test myTest(TestNumber(), "PassMacroTest1",
+        [](Test& test)
+        {
+            ISHTF_PASS();
+        });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::ePassed);
+    ISHTF_PASS();
 }
