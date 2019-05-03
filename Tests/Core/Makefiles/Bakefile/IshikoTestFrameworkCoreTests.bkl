@@ -22,6 +22,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     {
         ../../Source/TestNumberTests.h
         ../../Source/TestTests.h
+        ../../Source/TestMacrosTests.h
         ../../Source/TestSequenceTests.h
         ../../Source/TestHarnessTests.h
 
@@ -41,6 +42,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/main.cpp
         ../../Source/TestNumberTests.cpp
         ../../Source/TestTests.cpp
+        ../../Source/TestMacrosTests.cpp
         ../../Source/TestSequenceTests.cpp
         ../../Source/TestHarnessTests.cpp
 

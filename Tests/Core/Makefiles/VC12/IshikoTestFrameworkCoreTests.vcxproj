@@ -155,6 +155,7 @@
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\TestNumberTests.cpp" />
     <ClCompile Include="..\..\Source\TestTests.cpp" />
+    <ClCompile Include="..\..\Source\TestMacrosTests.cpp" />
     <ClCompile Include="..\..\Source\TestSequenceTests.cpp" />
     <ClCompile Include="..\..\Source\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp" />
@@ -170,6 +171,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\TestNumberTests.h" />
     <ClInclude Include="..\..\Source\TestTests.h" />
+    <ClInclude Include="..\..\Source\TestMacrosTests.h" />
     <ClInclude Include="..\..\Source\TestSequenceTests.h" />
     <ClInclude Include="..\..\Source\TestHarnessTests.h" />
     <ClInclude Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
