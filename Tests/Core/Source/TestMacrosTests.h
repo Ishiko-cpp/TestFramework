@@ -36,6 +36,8 @@ private:
     static void FailIfMacroTest1(Ishiko::Tests::Test& test);
     static void FailIfMacroTest2(Ishiko::Tests::Test& test);
     static void AbortMacroTest1(Ishiko::Tests::Test& test);
+    static void AbortIfMacroTest1(Ishiko::Tests::Test& test);
+    static void AbortIfMacroTest2(Ishiko::Tests::Test& test);
 };
 
 #endif

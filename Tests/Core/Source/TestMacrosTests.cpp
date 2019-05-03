@@ -32,6 +32,8 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF test 1", FailIfMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF test 2", FailIfMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT test 1", AbortMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF test 1", AbortIfMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF test 2", AbortIfMacroTest2);
 }
 
 void TestMacrosTests::PassMacroTest1(Test& test)
@@ -71,13 +73,13 @@ void TestMacrosTests::FailIfMacroTest1(Test& test)
     bool canary = false;
     Test myTest(TestNumber(), "FailIfMacroTest1",
         [&canary](Test& test)
-    {
-        ISHTF_FAIL_IF(false);
+        {
+            ISHTF_FAIL_IF(false);
 
-        canary = true;
+            canary = true;
 
-        ISHTF_PASS();
-    });
+            ISHTF_PASS();
+        });
     myTest.run();
 
     ISHTF_FAIL_UNLESS(myTest.result() == TestResult::ePassed);
@@ -90,13 +92,13 @@ void TestMacrosTests::FailIfMacroTest2(Test& test)
     bool canary = false;
     Test myTest(TestNumber(), "FailIfMacroTest2",
         [&canary](Test& test)
-    {
-        ISHTF_FAIL_IF(true);
+        {
+            ISHTF_FAIL_IF(true);
 
-        canary = true;
+            canary = true;
 
-        ISHTF_PASS();
-    });
+            ISHTF_PASS();
+        });
     myTest.run();
 
     ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
@@ -111,6 +113,44 @@ void TestMacrosTests::AbortMacroTest1(Test& test)
         [&canary](Test& test)
         {
             ISHTF_ABORT();
+
+            canary = true;
+
+            ISHTF_PASS();
+        });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_FAIL_IF(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::AbortIfMacroTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "AbortIfMacroTest1",
+        [&canary](Test& test)
+        {
+            ISHTF_ABORT_IF(false);
+
+            canary = true;
+
+            ISHTF_PASS();
+        });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::ePassed);
+    ISHTF_FAIL_UNLESS(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::AbortIfMacroTest2(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "AbortIfMacroTest2",
+        [&canary](Test& test)
+        {
+            ISHTF_ABORT_IF(true);
 
             canary = true;
 
