@@ -28,6 +28,8 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment
     : TestSequence(number, "Test macros tests", environment)
 {
     append<HeapAllocationErrorsTest>("ISHTF_PASS test 1", PassMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_FAIL test 1", FailMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_ABORT test 1", AbortMacroTest1);
 }
 
 void TestMacrosTests::PassMacroTest1(Test& test)
@@ -40,5 +42,43 @@ void TestMacrosTests::PassMacroTest1(Test& test)
     myTest.run();
 
     ISHTF_FAIL_UNLESS(myTest.result() == TestResult::ePassed);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::FailMacroTest1(Test& test)
+{
+    bool hit = false;
+    Test myTest(TestNumber(), "FailMacroTest1",
+        [&hit](Test& test)
+        {
+            ISHTF_FAIL();
+
+            hit = true;
+
+            ISHTF_PASS();
+        });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_FAIL_UNLESS(hit);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::AbortMacroTest1(Test& test)
+{
+    bool hit = false;
+    Test myTest(TestNumber(), "AbortMacroTest1",
+        [&hit](Test& test)
+        {
+            ISHTF_ABORT();
+
+            hit = true;
+
+            ISHTF_PASS();
+        });
+    myTest.run();
+
+    ISHTF_FAIL_UNLESS(myTest.result() == TestResult::eFailed);
+    ISHTF_FAIL_IF(hit);
     ISHTF_PASS();
 }
