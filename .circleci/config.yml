@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: gcc:latest
+      - image: ishikocpp/gcc-boost:9.1.0-1.70.1
     steps:
       - checkout
       - run:
