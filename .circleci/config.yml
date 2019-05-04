@@ -7,7 +7,7 @@ jobs:
       - run: 
           name: "Set ISHIKO environment variable and create directory"
           command: mkdir /Ishiko && echo 'export ISHIKO="/Ishiko"' >> $BASH_ENV
-      - checkout
+      - checkout:
           path: /Ishiko/TestFramework
       - run:
           name: "Checkout Ishiko/Process dependency"
