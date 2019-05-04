@@ -23,4 +23,4 @@ jobs:
           command: cd /Ishiko/TestFramework/Tests/Core/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /Ishiko/TestFramework/Tests/Core/Makefiles/GNUmakefile && IshikoTestFrameworkTests
+          command: cd /Ishiko/TestFramework/Tests/Core/Makefiles/GNUmakefile && IshikoTestFrameworkCoreTests
