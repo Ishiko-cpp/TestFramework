@@ -4,10 +4,11 @@ jobs:
     docker:
       - image: ishikocpp/gcc-boost:9.1.0-1.70.0
     steps:
-      - checkout
       - run: 
           name: "Set ISHIKO environment variable and create directory"
           command: mkdir /Ishiko && echo 'export ISHIKO="/Ishiko"' >> $BASH_ENV
+      - checkout
+          path: /Ishiko/TestFramework
       - run:
           name: "Checkout Ishiko/Process dependency"
           command: cd /Ishiko && git clone https://github.com/Ishiko-Cpp/Process.git
