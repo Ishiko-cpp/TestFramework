@@ -14,3 +14,6 @@ jobs:
       - run:
           name: Build
           command: cd Core/Makefiles/GNUmakefile && make
+      - run:
+          name: Test build
+          command: cd Tests/Core/Makefiles/GNUmakefile && make
