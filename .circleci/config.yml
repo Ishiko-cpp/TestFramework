@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: "Set ISHIKO environment variable"
-          command: echo 'export ISHIKO="/Ishiko"' >> $BASH_ENV
+          name: "Set ISHIKO environment variable and create directory"
+          command: mkdir /Ishiko && echo 'export ISHIKO="/Ishiko"' >> $BASH_ENV
       - run:
           name: "Checkout Ishiko/Process dependency"
-          command: git clone https://github.com/Ishiko-Cpp/Process.git
+          command: cd /Ishiko && git clone https://github.com/Ishiko-Cpp/Process.git
       - run:
           name: Build
           command: cd Core/Makefiles/GNUmakefile && make
