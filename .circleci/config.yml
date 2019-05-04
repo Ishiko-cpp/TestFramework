@@ -5,6 +5,9 @@ jobs:
       - image: ishikocpp/gcc-boost:9.1.0-1.70.0
     steps:
       - checkout
+      - run: 
+          name: "Set ISHIKO environment variables"
+          command: echo 'export ISHIKO="/Ishiko/"' >> $BASH_ENV
       - run:
           name: Build
           command: cd Core/Makefiles/GNUmakefile && make
