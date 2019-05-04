@@ -13,6 +13,9 @@ jobs:
       - checkout:
           path: /Ishiko/TestFramework
       - run:
+          name: "Build Ishiko/Process dependency"
+          command: cd /Ishiko/Process/Makefiles/GNUmakefile && make
+      - run:
           name: Build
           command: cd /Ishiko/TestFramework/Core/Makefiles/GNUmakefile && make
       - run:
