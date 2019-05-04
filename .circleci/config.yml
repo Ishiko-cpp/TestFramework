@@ -14,7 +14,7 @@ jobs:
           path: /Ishiko/TestFramework
       - run:
           name: Build
-          command: cd /IshikoCore/Makefiles/GNUmakefile && make
+          command: cd /Ishiko/Core/Makefiles/GNUmakefile && make
       - run:
           name: Test build
-          command: cd /IshikoTests/Core/Makefiles/GNUmakefile && make
+          command: cd /Ishiko/Tests/Core/Makefiles/GNUmakefile && make
