@@ -30,13 +30,12 @@ namespace Ishiko
 namespace Tests
 {
 
-void TestProgressObserver::onEvent(const Test& source, EEventType type)
+void TestProgressObserver::onLifecycleEvent(const Test& source, EEventType type)
 {
     switch (type)
     {
     case eTestStart:
-        std::cout << m_nesting << formatNumber(source.number())
-            << " " << source.name() << " started" << std::endl;
+        std::cout << m_nesting << formatNumber(source.number()) << " " << source.name() << " started" << std::endl;
         m_nesting.append("    ");
         break;
 
@@ -46,10 +45,22 @@ void TestProgressObserver::onEvent(const Test& source, EEventType type)
             m_nesting.erase(m_nesting.size() - 4);
         }
 
-        std::cout << m_nesting << formatNumber(source.number())
-            << " " << source.name() << " completed, result is "
+        std::cout << m_nesting << formatNumber(source.number()) << " " << source.name() << " completed, result is "
             << formatResult(source.result()) << std::endl;
         break;
+    }
+}
+
+void TestProgressObserver::onCheckFailed(const Test& source, const std::string& message, const char* file, int line)
+{
+    if (message.size() == 0)
+    {
+        std::cout << m_nesting << "Check failed [file: " << file << ", line: " << line << "]" << std::endl;
+    }
+    else
+    {
+        std::cout << m_nesting << "Check failed: " << message << " [file: " << file << ", line: " << line << "]" 
+            << std::endl;
     }
 }
 

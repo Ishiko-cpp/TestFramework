@@ -29,7 +29,11 @@ namespace Ishiko
 namespace Tests
 {
 
-void Test::Observer::onEvent(const Test& source, EEventType type)
+void Test::Observer::onLifecycleEvent(const Test& source, EEventType type)
+{
+}
+
+void Test::Observer::onCheckFailed(const Test& source, const std::string& message, const char* file, int line)
 {
 }
 
@@ -69,14 +73,30 @@ void Test::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
-void Test::Observers::notifyEvent(const Test& source, Observer::EEventType type)
+void Test::Observers::notifyLifecycleEvent(const Test& source, Observer::EEventType type)
 {
     for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
     {
         std::shared_ptr<Observer> observer = o.first.lock();
         if (observer)
         {
-            observer->onEvent(source, type);
+            observer->onLifecycleEvent(source, type);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Test::Observers::notifyCheckFailed(const Test& source, const std::string& message, const char* file, int line)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onCheckFailed(source, message, file, line);
         }
         else
         {
@@ -198,7 +218,7 @@ void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryL
 
 void Test::abort(const char* file, int line)
 {
-    m_result = TestResult::eFailed;
+    fail(file, line);
     throw AbortException();
 }
 
@@ -206,21 +226,27 @@ void Test::abortIf(bool condition, const char* file, int line)
 {
     if (condition)
     {
-        m_result = TestResult::eFailed;
+        fail(file, line);
         throw AbortException();
     }
 }
 
 void Test::fail(const char* file, int line)
 {
+    fail("", file, line);
+}
+
+void Test::fail(const std::string& message, const char* file, int line)
+{
     m_result = TestResult::eFailed;
+    m_observers.notifyCheckFailed(*this, message, file, line);
 }
 
 void Test::failIf(bool condition, const char* file, int line)
 {
     if (condition)
     {
-        m_result = TestResult::eFailed;
+        fail(file, line);
     }
 }
 
@@ -252,7 +278,7 @@ void Test::run()
         {
             // The function didn't fail but at no point did it mark the test as passed either so we consider this a
             // failure.
-            fail(__FILE__, __LINE__);
+            fail("Test completed without being marked passed or failed", __FILE__, __LINE__);
         }
     }
     catch (const AbortException&)
@@ -323,7 +349,7 @@ void Test::teardown()
 
 void Test::notify(Observer::EEventType type)
 {
-    observers().notifyEvent(*this, type);
+    m_observers.notifyLifecycleEvent(*this, type);
 }
 
 }

@@ -55,7 +55,8 @@ public:
 
         virtual ~Observer() noexcept = default;
 
-        virtual void onEvent(const Test& source, EEventType type);
+        virtual void onLifecycleEvent(const Test& source, EEventType type);
+        virtual void onCheckFailed(const Test& source, const std::string& message, const char* file, int line);
     };
 
     class Observers final
@@ -64,7 +65,8 @@ public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
 
-        void notifyEvent(const Test& source, Observer::EEventType type);
+        void notifyLifecycleEvent(const Test& source, Observer::EEventType type);
+        void notifyCheckFailed(const Test& source, const std::string& message, const char* file, int line);
 
     private:
         void removeDeletedObservers();
@@ -97,6 +99,7 @@ public:
     void abort(const char* file, int line);
     void abortIf(bool condition, const char* file, int line);
     void fail(const char* file, int line);
+    void fail(const std::string& message, const char* file, int line);
     void failIf(bool condition, const char* file, int line);
     void pass();
 

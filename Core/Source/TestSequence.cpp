@@ -182,10 +182,17 @@ TestSequence::ItemsObserver::ItemsObserver(TestSequence& sequence)
 {
 }
 
-void TestSequence::ItemsObserver::onEvent(const Test& source, EEventType type)
+void TestSequence::ItemsObserver::onLifecycleEvent(const Test& source, EEventType type)
 {
-    m_sequence.observers().notifyEvent(source, type);
+    m_sequence.observers().notifyLifecycleEvent(source, type);
 }
+
+void TestSequence::ItemsObserver::onCheckFailed(const Test& source, const std::string& message, const char* file,
+    int line)
+{
+    m_sequence.observers().notifyCheckFailed(source, message, file, line);
+}
+
 
 }
 }

@@ -43,7 +43,19 @@ protected:
     void doRun() override;
 
 private:
+    class InnerObserver : public Observer
+    {
+    public:
+        InnerObserver(Test& test);
+
+        void onCheckFailed(const Test& source, const std::string& message, const char* file, int line) override;
+
+    private:
+        Test& m_test;
+    };
+
     std::shared_ptr<Test> m_test;
+    std::shared_ptr<InnerObserver> m_innerObserver;
 };
 
 }

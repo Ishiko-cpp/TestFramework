@@ -62,7 +62,8 @@ private:
     public:
         ItemsObserver(TestSequence& sequence);
 
-        void onEvent(const Test& source, EEventType type) override;
+        void onLifecycleEvent(const Test& source, EEventType type) override;
+        void onCheckFailed(const Test& source, const std::string& message, const char* file, int line) override;
 
     private:
         TestSequence& m_sequence;
