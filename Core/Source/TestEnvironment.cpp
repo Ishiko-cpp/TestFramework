@@ -29,14 +29,6 @@ namespace Ishiko
 namespace Tests
 {
 
-TestEnvironment::TestEnvironment()
-{
-}
-
-TestEnvironment::~TestEnvironment()
-{
-}
-
 const TestEnvironment& TestEnvironment::defaultTestEnvironment()
 {
     static TestEnvironment defaultEnvironment;

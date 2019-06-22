@@ -22,6 +22,7 @@
 
 #include "TestHarness.h"
 #include "TestProgressObserver.h"
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include <iostream>
 #include <iomanip>
 #include <memory>
@@ -32,11 +33,8 @@ namespace Tests
 {
 
 TestHarness::TestHarness(const std::string& title)
-    : m_environment(TestEnvironment::defaultTestEnvironment()), m_topSequence(title, m_environment)
-{
-}
-
-TestHarness::~TestHarness()
+    : m_environment(TestEnvironment::defaultTestEnvironment()), m_topSequence(title, m_environment),
+    m_timestampOutputDirectory(true)
 {
 }
 
@@ -44,7 +42,8 @@ int TestHarness::run()
 {
     std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
 
-    // Run the tests
+    prepareOutputDirectory();
+
     int result = runTests();
 
     return result;
@@ -58,6 +57,23 @@ TestEnvironment& TestHarness::environment()
 TestSequence& TestHarness::tests()
 {
     return m_topSequence;
+}
+
+void TestHarness::prepareOutputDirectory()
+{
+    if (m_timestampOutputDirectory)
+    {
+        boost::posix_time::ptime currentSecond = boost::posix_time::second_clock::universal_time();
+        std::stringstream currentSecondStr;
+        currentSecondStr << currentSecond.date().year()
+            << std::setw(2) << std::setfill('0') << currentSecond.date().month().as_number()
+            << std::setw(2) << std::setfill('0') << currentSecond.date().day() << "T"
+            << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().hours()
+            << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().minutes()
+            << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().seconds() << "Z";
+        boost::filesystem::path newOutputDirectory = m_environment.getTestOutputDirectory() / currentSecondStr.str();
+        m_environment.setTestOutputDirectory(newOutputDirectory.string());
+    }
 }
 
 int TestHarness::runTests()

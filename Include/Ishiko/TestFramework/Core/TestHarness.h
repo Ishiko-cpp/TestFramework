@@ -39,7 +39,7 @@ class TestHarness
 {
 public:
 	explicit TestHarness(const std::string& title);
-	virtual ~TestHarness();
+	virtual ~TestHarness() noexcept = default;
 
 	int run();
 
@@ -48,6 +48,7 @@ public:
 	TestSequence& tests();
 
 private:
+    void prepareOutputDirectory();
 	int runTests();
     void printDetailedResults();
     void printSummary();
@@ -55,6 +56,7 @@ private:
 private:
 	TestEnvironment m_environment;
     TopTestSequence m_topSequence;
+    bool m_timestampOutputDirectory;
 };
 
 }

@@ -46,14 +46,15 @@ void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();
 
-    const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
+    path directoryPath(test.environment().getTestOutputDirectory()
+        / "TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1");
     std::shared_ptr<DirectoriesTeardownAction> action = std::make_shared<DirectoriesTeardownAction>();
-    action->add(path);
+    action->add(directoryPath);
     test.addTeardownAction(action);
 
     tracking.restore();
 
-    if (create_directories(path))
+    if (create_directories(directoryPath))
     {
         ISHTF_PASS();
     }
@@ -61,13 +62,14 @@ void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 
 void DirectoriesTeardownActionTests::TeardownTest1(Test& test)
 {
-    const char* path = "../../TestOutput/TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1";
+    path directoryPath(test.environment().getTestOutputDirectory()
+        / "TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1");
 
     Test functionTest(TestNumber(), "DirectoriesTeardownActionTeardownTest1",
-        DirectoriesTeardownActionTeardownTest1Helper);
+        DirectoriesTeardownActionTeardownTest1Helper, test.environment());
     functionTest.run();
 
-    ISHTF_FAIL_IF(exists(path));
+    ISHTF_FAIL_IF(exists(directoryPath));
     ISHTF_FAIL_IF(!functionTest.passed());
     ISHTF_PASS();
 }

@@ -34,8 +34,8 @@ namespace Tests
 class TestEnvironment
 {
 public:
-    TestEnvironment();
-    virtual ~TestEnvironment();
+    TestEnvironment() = default;
+    virtual ~TestEnvironment() noexcept = default;
     static const TestEnvironment& defaultTestEnvironment();
 
     // This function is equivalent to calling getTestDataDirectory("(default)")
