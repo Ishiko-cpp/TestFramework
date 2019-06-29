@@ -118,37 +118,37 @@ void Test::Observers::removeDeletedObservers()
 
 Test::Test(const TestNumber& number, const std::string& name)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
-    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(0)
+    m_environment(&TestEnvironment::DefaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(environment),
+    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(&environment),
     m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, TestResult result)
-    : m_number(number), m_name(name), m_result(result), m_environment(TestEnvironment::defaultTestEnvironment()),
+    : m_number(number), m_name(name), m_result(result), m_environment(&TestEnvironment::DefaultTestEnvironment()),
     m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, TestResult result, const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(result), m_environment(environment), m_memoryLeakCheck(true),
+    : m_number(number), m_name(name), m_result(result), m_environment(&environment), m_memoryLeakCheck(true),
     m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct)
     : m_number(number), m_name(name), m_result(TestResult::eUnknown),
-    m_environment(TestEnvironment::defaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(runFct)
+    m_environment(&TestEnvironment::DefaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(runFct)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct,
     const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(environment),
+    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(&environment),
     m_memoryLeakCheck(true), m_runFct(runFct)
 {
 }
@@ -259,6 +259,11 @@ void Test::pass()
 }
 
 const TestEnvironment& Test::environment() const
+{
+    return m_environment;
+}
+
+TestEnvironment& Test::environment()
 {
     return m_environment;
 }

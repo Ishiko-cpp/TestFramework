@@ -29,15 +29,49 @@ TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
     const TestEnvironment& environment)
     : TestSequence(number, "TestEnvironment tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
+    append<HeapAllocationErrorsTest>("Constructor test 3", ConstructorTest3);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 1", GetTestDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 2", GetTestDataDirectoryTest2);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 3", GetTestDataDirectoryTest3);
+    append<HeapAllocationErrorsTest>("setReferenceDataDirectory test 1", SetReferenceDataDirectoryTest1);
+    append<HeapAllocationErrorsTest>("setTestOutputDirectory test 1", SetTestOutputDirectoryTest1);
 }
 
-void TestEnvironmentTests::CreationTest1(Test& test)
+void TestEnvironmentTests::ConstructorTest1(Test& test)
 {
     TestEnvironment environment;
+
+    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "");
+    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "");
+    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "");
+    ISHTF_PASS();
+}
+
+void TestEnvironmentTests::ConstructorTest2(Test& test)
+{
+    TestEnvironment parentEnvironment;
+    TestEnvironment environment(&parentEnvironment);
+
+    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "");
+    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "");
+    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "");
+    ISHTF_PASS();
+}
+
+void TestEnvironmentTests::ConstructorTest3(Test& test)
+{
+    TestEnvironment parentEnvironment;
+    parentEnvironment.setTestDataDirectory("data");
+    parentEnvironment.setReferenceDataDirectory("referenceData");
+    parentEnvironment.setTestOutputDirectory("output");
+
+    TestEnvironment environment(&parentEnvironment);
+
+    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "data");
+    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "referenceData");
+    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "output");
     ISHTF_PASS();
 }
 
@@ -74,4 +108,28 @@ void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
     {
         ISHTF_PASS();
     }
+}
+
+void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)
+{
+    TestEnvironment parentEnvironment;
+
+    TestEnvironment environment(&parentEnvironment);
+    environment.setReferenceDataDirectory("referenceData");
+
+    ISHTF_FAIL_UNLESS(parentEnvironment.getReferenceDataDirectory() == "");
+    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "referenceData");
+    ISHTF_PASS();
+}
+
+void TestEnvironmentTests::SetTestOutputDirectoryTest1(Test& test)
+{
+    TestEnvironment parentEnvironment;
+
+    TestEnvironment environment(&parentEnvironment);
+    environment.setTestOutputDirectory("output");
+
+    ISHTF_FAIL_UNLESS(parentEnvironment.getTestOutputDirectory() == "");
+    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "output");
+    ISHTF_PASS();
 }

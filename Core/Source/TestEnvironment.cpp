@@ -29,7 +29,19 @@ namespace Ishiko
 namespace Tests
 {
 
-const TestEnvironment& TestEnvironment::defaultTestEnvironment()
+TestEnvironment::TestEnvironment()
+    : m_parent(nullptr), m_referenceDataDirectory(boost::filesystem::path()),
+    m_testOutputDirectory(boost::filesystem::path())
+{
+    m_testDataDirectories["(default)"] = boost::filesystem::path();
+}
+
+TestEnvironment::TestEnvironment(const TestEnvironment* parent)
+    : m_parent(parent)
+{
+}
+
+const TestEnvironment& TestEnvironment::DefaultTestEnvironment()
 {
     static TestEnvironment defaultEnvironment;
     return defaultEnvironment;
@@ -46,6 +58,10 @@ const boost::filesystem::path& TestEnvironment::getTestDataDirectory(const std::
     if (it != m_testDataDirectories.end())
     {
         return it->second;
+    }
+    else if (m_parent)
+    {
+        return m_parent->getTestDataDirectory(id);
     }
     else
     {
@@ -69,7 +85,14 @@ void TestEnvironment::setTestDataDirectory(const std::string& path)
 
 const boost::filesystem::path& TestEnvironment::getReferenceDataDirectory() const
 {
-    return m_referenceDataDirectory;
+    if (!m_referenceDataDirectory && m_parent)
+    {
+        return m_parent->getReferenceDataDirectory();
+    }
+    else
+    {
+        return *m_referenceDataDirectory;
+    }
 }
 
 void TestEnvironment::setReferenceDataDirectory(const std::string& path)
@@ -82,7 +105,14 @@ void TestEnvironment::setReferenceDataDirectory(const std::string& path)
 
 const boost::filesystem::path& TestEnvironment::getTestOutputDirectory() const
 {
-    return m_testOutputDirectory;
+    if (!m_testOutputDirectory && m_parent)
+    {
+        return m_parent->getTestOutputDirectory();
+    }
+    else
+    {
+        return *m_testOutputDirectory;
+    }
 }
 
 void TestEnvironment::setTestOutputDirectory(const std::string& path)

@@ -104,7 +104,8 @@ public:
     void pass();
 
     const TestEnvironment& environment() const;
-    
+    TestEnvironment& environment();
+
     virtual void run();
 
     virtual void addSetupAction(std::shared_ptr<TestSetupAction> action);
@@ -128,7 +129,7 @@ private:
     TestNumber m_number;
     std::string m_name;
     TestResult m_result;
-    const TestEnvironment& m_environment;
+    TestEnvironment m_environment;
     bool m_memoryLeakCheck;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;

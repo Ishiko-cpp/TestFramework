@@ -34,7 +34,7 @@ namespace Tests
 {
 
 TestHarness::TestHarness(const std::string& title)
-    : m_environment(TestEnvironment::defaultTestEnvironment()), m_topSequence(title, m_environment),
+    : m_environment(TestEnvironment::DefaultTestEnvironment()), m_topSequence(title, m_environment),
     m_timestampOutputDirectory(true)
 {
 }

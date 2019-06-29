@@ -24,6 +24,7 @@
 #define _ISHIKO_TESTFRAMEWORK_CORE_TESTENVIRONMENT_H_
 
 #include <boost/filesystem/path.hpp>
+#include <boost/optional.hpp>
 #include <map>
 
 namespace Ishiko
@@ -34,9 +35,10 @@ namespace Tests
 class TestEnvironment
 {
 public:
-    TestEnvironment() = default;
+    TestEnvironment();
+    TestEnvironment(const TestEnvironment* parent);
     virtual ~TestEnvironment() noexcept = default;
-    static const TestEnvironment& defaultTestEnvironment();
+    static const TestEnvironment& DefaultTestEnvironment();
 
     // This function is equivalent to calling getTestDataDirectory("(default)")
     // and exists to avoid the need to give a name to the test data
@@ -64,9 +66,10 @@ public:
     virtual void setTestOutputDirectory(const std::string& path);
 
 private:
+    const TestEnvironment* m_parent;
     std::map<std::string, boost::filesystem::path> m_testDataDirectories;
-    boost::filesystem::path m_referenceDataDirectory;
-    boost::filesystem::path m_testOutputDirectory;
+    boost::optional<boost::filesystem::path> m_referenceDataDirectory;
+    boost::optional<boost::filesystem::path> m_testOutputDirectory;
 };
 
 }
