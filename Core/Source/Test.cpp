@@ -23,6 +23,7 @@
 #include "Test.h"
 #include "TestSequence.h"
 #include "DebugHeap.h"
+#include <boost/filesystem/operations.hpp>
 
 namespace Ishiko
 {
@@ -330,6 +331,12 @@ Test::Observers& Test::observers()
 
 void Test::setup()
 {
+    boost::filesystem::path outputDirectory = m_environment.getTestOutputDirectory();
+    if (outputDirectory != "")
+    {
+        boost::filesystem::create_directories(outputDirectory);
+    }
+
     for (size_t i = 0; i < m_setupActions.size(); ++i)
     {
         m_setupActions[i]->setup();
