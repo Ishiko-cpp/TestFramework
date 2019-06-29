@@ -35,6 +35,7 @@ TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 1", GetTestDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 2", GetTestDataDirectoryTest2);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 3", GetTestDataDirectoryTest3);
+    append<HeapAllocationErrorsTest>("setTestDataDirectory test 1", SetTestDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("setReferenceDataDirectory test 1", SetReferenceDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("setTestOutputDirectory test 1", SetTestOutputDirectoryTest1);
 }
@@ -108,6 +109,19 @@ void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
     {
         ISHTF_PASS();
     }
+}
+
+void TestEnvironmentTests::SetTestDataDirectoryTest1(Test& test)
+{
+    TestEnvironment parentEnvironment;
+    parentEnvironment.setTestDataDirectory("parent");
+
+    TestEnvironment environment(&parentEnvironment);
+    environment.setTestDataDirectory("testData");
+
+    ISHTF_FAIL_UNLESS(parentEnvironment.getTestDataDirectory() == "parent");
+    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "parent/testData");
+    ISHTF_PASS();
 }
 
 void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)

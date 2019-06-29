@@ -54,19 +54,31 @@ boost::filesystem::path TestEnvironment::getTestDataDirectory() const
 
 boost::filesystem::path TestEnvironment::getTestDataDirectory(const std::string& id) const
 {
+    boost::filesystem::path result;
     std::map<std::string, boost::filesystem::path>::const_iterator it = m_testDataDirectories.find(id);
-    if (it != m_testDataDirectories.end())
+    if (m_parent)
     {
-        return it->second;
-    }
-    else if (m_parent)
-    {
-        return m_parent->getTestDataDirectory(id);
+        if (it != m_testDataDirectories.end())
+        {
+            result = (m_parent->getTestDataDirectory(id) / it->second);
+        }
+        else
+        {
+            result = m_parent->getTestDataDirectory(id);
+        }
     }
     else
     {
-        throw TestException("getTestDataDirectory: no directory found with id " + id);
+        if (it != m_testDataDirectories.end())
+        {
+            return it->second;
+        }
+        else
+        {
+            throw TestException("getTestDataDirectory: no directory found with id " + id);
+        }
     }
+    return result;
 }
 
 void TestEnvironment::setTestDataDirectory(const std::string& id, 
