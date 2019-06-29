@@ -113,23 +113,25 @@ void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
 void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)
 {
     TestEnvironment parentEnvironment;
+    parentEnvironment.setReferenceDataDirectory("parent");
 
     TestEnvironment environment(&parentEnvironment);
     environment.setReferenceDataDirectory("referenceData");
 
-    ISHTF_FAIL_UNLESS(parentEnvironment.getReferenceDataDirectory() == "");
-    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "referenceData");
+    ISHTF_FAIL_UNLESS(parentEnvironment.getReferenceDataDirectory() == "parent");
+    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "parent/referenceData");
     ISHTF_PASS();
 }
 
 void TestEnvironmentTests::SetTestOutputDirectoryTest1(Test& test)
 {
     TestEnvironment parentEnvironment;
+    parentEnvironment.setTestOutputDirectory("parent");
 
     TestEnvironment environment(&parentEnvironment);
     environment.setTestOutputDirectory("output");
 
-    ISHTF_FAIL_UNLESS(parentEnvironment.getTestOutputDirectory() == "");
-    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "output");
+    ISHTF_FAIL_UNLESS(parentEnvironment.getTestOutputDirectory() == "parent");
+    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "parent/output");
     ISHTF_PASS();
 }

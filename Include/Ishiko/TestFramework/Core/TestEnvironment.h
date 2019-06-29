@@ -43,24 +43,24 @@ public:
     // This function is equivalent to calling getTestDataDirectory("(default)")
     // and exists to avoid the need to give a name to the test data
     // directory unnecessarily.
-    virtual const boost::filesystem::path& getTestDataDirectory() const;
+    virtual boost::filesystem::path getTestDataDirectory() const;
     // Sets the default test data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     // This is equivalent to calling setTestDataDirectory("(default)", path)
     // and exists to avoid the need to give a name to the test data
     // directory unnecessarily.
     virtual void setTestDataDirectory(const boost::filesystem::path& path);
-    virtual const boost::filesystem::path& getTestDataDirectory(const std::string& id) const;
+    virtual boost::filesystem::path getTestDataDirectory(const std::string& id) const;
     // Adds or updates a path in the list of test data directories. The path argument
     // can contain environment variables by using the $(...) notation.
     virtual void setTestDataDirectory(const std::string& id, const boost::filesystem::path& path);
 
-    virtual const boost::filesystem::path& getReferenceDataDirectory() const;
+    virtual boost::filesystem::path getReferenceDataDirectory() const;
     // Sets the default reference data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     virtual void setReferenceDataDirectory(const boost::filesystem::path& path);
 
-    virtual const boost::filesystem::path& getTestOutputDirectory() const;
+    virtual boost::filesystem::path getTestOutputDirectory() const;
     // Sets the default test output directory. The path argument
     // can contain environment variables by using the $(...) notation.
     virtual void setTestOutputDirectory(const boost::filesystem::path& path);

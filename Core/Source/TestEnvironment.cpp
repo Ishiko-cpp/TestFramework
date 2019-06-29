@@ -47,12 +47,12 @@ const TestEnvironment& TestEnvironment::DefaultTestEnvironment()
     return defaultEnvironment;
 }
 
-const boost::filesystem::path& TestEnvironment::getTestDataDirectory() const
+boost::filesystem::path TestEnvironment::getTestDataDirectory() const
 {
     return getTestDataDirectory("(default)");
 }
 
-const boost::filesystem::path& TestEnvironment::getTestDataDirectory(const std::string& id) const
+boost::filesystem::path TestEnvironment::getTestDataDirectory(const std::string& id) const
 {
     std::map<std::string, boost::filesystem::path>::const_iterator it = m_testDataDirectories.find(id);
     if (it != m_testDataDirectories.end())
@@ -83,16 +83,25 @@ void TestEnvironment::setTestDataDirectory(const boost::filesystem::path& path)
     setTestDataDirectory("(default)", path);
 }
 
-const boost::filesystem::path& TestEnvironment::getReferenceDataDirectory() const
+boost::filesystem::path TestEnvironment::getReferenceDataDirectory() const
 {
-    if (!m_referenceDataDirectory && m_parent)
+    boost::filesystem::path result;
+    if (m_parent)
     {
-        return m_parent->getReferenceDataDirectory();
+        if (m_referenceDataDirectory)
+        {
+            result = (m_parent->getReferenceDataDirectory() / *m_referenceDataDirectory);
+        }
+        else
+        {
+            result = m_parent->getReferenceDataDirectory();
+        }
     }
-    else
+    else if (m_referenceDataDirectory)
     {
-        return *m_referenceDataDirectory;
+        result = *m_referenceDataDirectory;
     }
+    return result;
 }
 
 void TestEnvironment::setReferenceDataDirectory(const boost::filesystem::path& path)
@@ -103,16 +112,25 @@ void TestEnvironment::setReferenceDataDirectory(const boost::filesystem::path& p
     m_referenceDataDirectory = expandedPath;
 }
 
-const boost::filesystem::path& TestEnvironment::getTestOutputDirectory() const
+boost::filesystem::path TestEnvironment::getTestOutputDirectory() const
 {
-    if (!m_testOutputDirectory && m_parent)
+    boost::filesystem::path result;
+    if (m_parent)
     {
-        return m_parent->getTestOutputDirectory();
+        if (m_testOutputDirectory)
+        {
+            result = (m_parent->getTestOutputDirectory() / *m_testOutputDirectory);
+        }
+        else
+        {
+            result = m_parent->getTestOutputDirectory();
+        }
     }
-    else
+    else if (m_testOutputDirectory)
     {
-        return *m_testOutputDirectory;
+        result = *m_testOutputDirectory;
     }
+    return result;
 }
 
 void TestEnvironment::setTestOutputDirectory(const boost::filesystem::path& path)
