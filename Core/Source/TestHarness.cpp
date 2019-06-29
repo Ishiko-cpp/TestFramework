@@ -22,6 +22,7 @@
 
 #include "TestHarness.h"
 #include "TestProgressObserver.h"
+#include <boost/filesystem/operations.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <iostream>
 #include <iomanip>
@@ -72,6 +73,7 @@ void TestHarness::prepareOutputDirectory()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().minutes()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().seconds() << "Z";
         boost::filesystem::path newOutputDirectory = m_environment.getTestOutputDirectory() / currentSecondStr.str();
+        boost::filesystem::create_directories(newOutputDirectory);
         m_environment.setTestOutputDirectory(newOutputDirectory.string());
     }
 }
