@@ -56,7 +56,7 @@ void FilesTeardownActionTeardownTest1Helper(Test& test)
     std::ofstream file(filePath.string());
     file.close();
 
-    ISHTF_FAIL_IF(!exists(filePath));
+    ISHTF_FAIL_IF_NOT(exists(filePath));
     ISHTF_PASS();
 }
 
@@ -70,6 +70,6 @@ void FilesTeardownActionTests::TeardownTest1(Test& test)
     teardownTest.run();
 
     ISHTF_FAIL_IF(exists(filePath));
-    ISHTF_FAIL_IF(!teardownTest.passed());
+    ISHTF_FAIL_IF_NOT(teardownTest.passed());
     ISHTF_PASS();
 }

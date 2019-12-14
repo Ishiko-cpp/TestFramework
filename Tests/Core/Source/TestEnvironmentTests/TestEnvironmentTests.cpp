@@ -44,9 +44,9 @@ void TestEnvironmentTests::ConstructorTest1(Test& test)
 {
     TestEnvironment environment;
 
-    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "");
-    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "");
-    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "");
+    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "");
+    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "");
+    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "");
     ISHTF_PASS();
 }
 
@@ -55,9 +55,9 @@ void TestEnvironmentTests::ConstructorTest2(Test& test)
     TestEnvironment parentEnvironment;
     TestEnvironment environment(&parentEnvironment);
 
-    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "");
-    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "");
-    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "");
+    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "");
+    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "");
+    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "");
     ISHTF_PASS();
 }
 
@@ -70,9 +70,9 @@ void TestEnvironmentTests::ConstructorTest3(Test& test)
 
     TestEnvironment environment(&parentEnvironment);
 
-    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "data");
-    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "referenceData");
-    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "output");
+    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "data");
+    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "referenceData");
+    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "output");
     ISHTF_PASS();
 }
 
@@ -119,8 +119,8 @@ void TestEnvironmentTests::SetTestDataDirectoryTest1(Test& test)
     TestEnvironment environment(&parentEnvironment);
     environment.setTestDataDirectory("testData");
 
-    ISHTF_FAIL_UNLESS(parentEnvironment.getTestDataDirectory() == "parent");
-    ISHTF_FAIL_UNLESS(environment.getTestDataDirectory() == "parent/testData");
+    ISHTF_FAIL_IF_NEQ(parentEnvironment.getTestDataDirectory(), "parent");
+    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "parent/testData");
     ISHTF_PASS();
 }
 
@@ -132,8 +132,8 @@ void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)
     TestEnvironment environment(&parentEnvironment);
     environment.setReferenceDataDirectory("referenceData");
 
-    ISHTF_FAIL_UNLESS(parentEnvironment.getReferenceDataDirectory() == "parent");
-    ISHTF_FAIL_UNLESS(environment.getReferenceDataDirectory() == "parent/referenceData");
+    ISHTF_FAIL_IF_NEQ(parentEnvironment.getReferenceDataDirectory(), "parent");
+    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "parent/referenceData");
     ISHTF_PASS();
 }
 
@@ -145,7 +145,7 @@ void TestEnvironmentTests::SetTestOutputDirectoryTest1(Test& test)
     TestEnvironment environment(&parentEnvironment);
     environment.setTestOutputDirectory("output");
 
-    ISHTF_FAIL_UNLESS(parentEnvironment.getTestOutputDirectory() == "parent");
-    ISHTF_FAIL_UNLESS(environment.getTestOutputDirectory() == "parent/output");
+    ISHTF_FAIL_IF_NEQ(parentEnvironment.getTestOutputDirectory(), "parent");
+    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "parent/output");
     ISHTF_PASS();
 }

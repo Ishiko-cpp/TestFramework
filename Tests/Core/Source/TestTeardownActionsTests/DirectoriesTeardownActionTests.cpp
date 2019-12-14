@@ -70,6 +70,6 @@ void DirectoriesTeardownActionTests::TeardownTest1(Test& test)
     functionTest.run();
 
     ISHTF_FAIL_IF(exists(directoryPath));
-    ISHTF_FAIL_IF(!functionTest.passed());
+    ISHTF_FAIL_IF_NOT(functionTest.passed());
     ISHTF_PASS();
 }

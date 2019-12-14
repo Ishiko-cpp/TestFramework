@@ -54,9 +54,9 @@ void TestSequenceTests::AppendTest1(Test& test)
     seq.append(simpleTest);
 
     // Check the test sequence
-    ISHTF_FAIL_IF(seq.size() != 1);
-    ISHTF_FAIL_UNLESS(seq[0].name() == "Test");
-    ISHTF_FAIL_UNLESS(simpleTest->number() == TestNumber(1, 1));
+    ISHTF_FAIL_IF_NEQ(seq.size(), 1);
+    ISHTF_FAIL_IF_NEQ(seq[0].name(), "Test");
+    ISHTF_FAIL_IF_NEQ(simpleTest->number(), TestNumber(1, 1));
     ISHTF_PASS();
 }
 
@@ -69,9 +69,9 @@ void TestSequenceTests::AppendTest2(Test& test)
     seq.append<Test>("Test", TestResult::ePassed);
 
     // Check the test sequence
-    ISHTF_FAIL_IF(seq.size() != 1);
-    ISHTF_FAIL_UNLESS(seq[0].name() == "Test");
-    ISHTF_FAIL_UNLESS(seq[0].number() == TestNumber(1, 1));
+    ISHTF_FAIL_IF_NEQ(seq.size(), 1);
+    ISHTF_FAIL_IF_NEQ(seq[0].name(), "Test");
+    ISHTF_FAIL_IF_NEQ(seq[0].number(), TestNumber(1, 1));
     ISHTF_PASS();
 }
 
@@ -79,7 +79,7 @@ void TestSequenceTests::GetResultTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
 
-    ISHTF_FAIL_IF(seq.result() != TestResult::eUnknown);
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::eUnknown);
     ISHTF_PASS();
 }
 
@@ -97,7 +97,7 @@ void TestSequenceTests::GetResultTest2(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF(seq.result() != TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::ePassed);
     ISHTF_PASS();
 }
 
@@ -117,6 +117,6 @@ void TestSequenceTests::GetResultTest3(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF(seq.result() != TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::eFailed);
     ISHTF_PASS();
 }
