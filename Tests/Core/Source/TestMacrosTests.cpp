@@ -31,6 +31,8 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment
     append<HeapAllocationErrorsTest>("ISHTF_FAIL test 1", FailMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF test 1", FailIfMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF test 2", FailIfMacroTest2);
+    append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_NOT test 1", FailIfNotMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_NOT test 2", FailIfNotMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_EQ test 1", FailIfEqMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_EQ test 2", FailIfEqMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_NEQ test 1", FailIfNeqMacroTest1);
@@ -38,6 +40,8 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment
     append<HeapAllocationErrorsTest>("ISHTF_ABORT test 1", AbortMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF test 1", AbortIfMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF test 2", AbortIfMacroTest2);
+    append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_NOT test 1", AbortIfNotMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_NOT test 2", AbortIfNotMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_EQ test 1", AbortIfEqMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_EQ test 2", AbortIfEqMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_NEQ test 1", AbortIfNeqMacroTest1);
@@ -107,6 +111,44 @@ void TestMacrosTests::FailIfMacroTest2(Test& test)
 
             ISHTF_PASS();
         });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NOT(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::FailIfNotMacroTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfNotMacroTest1",
+        [&canary](Test& test)
+    {
+        ISHTF_FAIL_IF_NOT(true);
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NOT(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::FailIfNotMacroTest2(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfNotMacroTest2",
+        [&canary](Test& test)
+    {
+        ISHTF_FAIL_IF_NOT(false);
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
     myTest.run();
 
     ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
@@ -240,6 +282,44 @@ void TestMacrosTests::AbortIfMacroTest2(Test& test)
 
             ISHTF_PASS();
         });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::AbortIfNotMacroTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "AbortIfNotMacroTest1",
+        [&canary](Test& test)
+    {
+        ISHTF_ABORT_IF_NOT(true);
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NOT(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::AbortIfNotMacroTest2(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "AbortIfNotMacroTest2",
+        [&canary](Test& test)
+    {
+        ISHTF_ABORT_IF_NOT(false);
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
     myTest.run();
 
     ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);

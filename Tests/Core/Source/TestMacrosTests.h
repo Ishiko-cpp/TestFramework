@@ -35,6 +35,8 @@ private:
     static void FailMacroTest1(Ishiko::Tests::Test& test);
     static void FailIfMacroTest1(Ishiko::Tests::Test& test);
     static void FailIfMacroTest2(Ishiko::Tests::Test& test);
+    static void FailIfNotMacroTest1(Ishiko::Tests::Test& test);
+    static void FailIfNotMacroTest2(Ishiko::Tests::Test& test);
     static void FailIfEqMacroTest1(Ishiko::Tests::Test& test);
     static void FailIfEqMacroTest2(Ishiko::Tests::Test& test);
     static void FailIfNeqMacroTest1(Ishiko::Tests::Test& test);
@@ -42,6 +44,8 @@ private:
     static void AbortMacroTest1(Ishiko::Tests::Test& test);
     static void AbortIfMacroTest1(Ishiko::Tests::Test& test);
     static void AbortIfMacroTest2(Ishiko::Tests::Test& test);
+    static void AbortIfNotMacroTest1(Ishiko::Tests::Test& test);
+    static void AbortIfNotMacroTest2(Ishiko::Tests::Test& test);
     static void AbortIfEqMacroTest1(Ishiko::Tests::Test& test);
     static void AbortIfEqMacroTest2(Ishiko::Tests::Test& test);
     static void AbortIfNeqMacroTest1(Ishiko::Tests::Test& test);
