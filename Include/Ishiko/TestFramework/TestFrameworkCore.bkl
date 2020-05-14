@@ -1,24 +1,24 @@
-ishikopath = envvar("ISHIKO");
+ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
 
-setting ISHIKO_TESTFRAMEWORK_ROOT
+setting ISHIKO_CPP_TESTFRAMEWORK_ROOT
 {
     help = "Path to the Ishiko TestFramework installation";
-    default = '$(ISHIKO)/TestFramework';
+    default = '$(ISHIKO_CPP)/TestFramework';
 }
 
 template IshikoTestFrameworkCore : IshikoProcess, Boost
 {
-    includedirs += $(ISHIKO_TESTFRAMEWORK_ROOT)/Include;
+    includedirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include;
 
     if ($(toolset) == gnu)
     {
-        libdirs += $(ISHIKO_TESTFRAMEWORK_ROOT)/Lib;
+        libdirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib;
     }
 
     if ($(toolset) != gnu)
     {
-        libdirs += $(ISHIKO_TESTFRAMEWORK_ROOT)/Lib/$(arch);
+        libdirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib/$(arch);
     }
 }
