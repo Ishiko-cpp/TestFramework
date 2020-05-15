@@ -37,8 +37,8 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      BOOST_ROOT           Path to the Boost installation
-#      ISHIKO_PROCESS_ROOT  Path to the Ishiko Process installation
+#      BOOST_ROOT               Path to the Boost installation
+#      ISHIKO_CPP_PROCESS_ROOT  Path to the Ishiko Process installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -68,7 +68,7 @@ endif
 # Path to the Boost installation
 BOOST_ROOT ?= $(BOOST)
 # Path to the Ishiko Process installation
-ISHIKO_PROCESS_ROOT ?= $(ISHIKO)/Process
+ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/Process
 
 # ------------
 
@@ -79,61 +79,61 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoTestF
 	$(RANLIB) $@
 
 $(_builddir)IshikoTestFrameworkCore_ConsoleApplicationTest.o: ../../Source/ConsoleApplicationTest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/ConsoleApplicationTest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/ConsoleApplicationTest.cpp
 
 $(_builddir)IshikoTestFrameworkCore_DirectoriesTeardownAction.o: ../../Source/DirectoriesTeardownAction.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/DirectoriesTeardownAction.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/DirectoriesTeardownAction.cpp
 
 $(_builddir)IshikoTestFrameworkCore_FileComparisonTest.o: ../../Source/FileComparisonTest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/FileComparisonTest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/FileComparisonTest.cpp
 
 $(_builddir)IshikoTestFrameworkCore_FilesTeardownAction.o: ../../Source/FilesTeardownAction.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/FilesTeardownAction.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/FilesTeardownAction.cpp
 
 $(_builddir)IshikoTestFrameworkCore_HeapAllocationErrorsTest.o: ../../Source/HeapAllocationErrorsTest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/HeapAllocationErrorsTest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/HeapAllocationErrorsTest.cpp
 
 $(_builddir)IshikoTestFrameworkCore_DebugHeap.o: ../../Source/DebugHeap.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/DebugHeap.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/DebugHeap.cpp
 
 $(_builddir)IshikoTestFrameworkCore_ProcessAction.o: ../../Source/ProcessAction.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/ProcessAction.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/ProcessAction.cpp
 
 $(_builddir)IshikoTestFrameworkCore_Test.o: ../../Source/Test.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/Test.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/Test.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestConfiguration.o: ../../Source/TestConfiguration.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestConfiguration.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestConfiguration.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestEnvironment.o: ../../Source/TestEnvironment.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestEnvironment.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestEnvironment.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestException.o: ../../Source/TestException.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestException.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestException.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestHarness.o: ../../Source/TestHarness.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestHarness.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestHarness.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestNumber.o: ../../Source/TestNumber.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestNumber.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestNumber.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestProgressObserver.o: ../../Source/TestProgressObserver.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestProgressObserver.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestProgressObserver.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestResult.o: ../../Source/TestResult.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestResult.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestResult.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestSequence.o: ../../Source/TestSequence.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestSequence.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestSequence.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestSetupAction.o: ../../Source/TestSetupAction.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestSetupAction.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestSetupAction.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TestTeardownAction.o: ../../Source/TestTeardownAction.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestTeardownAction.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TestTeardownAction.cpp
 
 $(_builddir)IshikoTestFrameworkCore_TopTestSequence.o: ../../Source/TopTestSequence.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TopTestSequence.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I../../../Include/Ishiko/TestFramework/Core -std=c++11 ../../Source/TopTestSequence.cpp
 
 clean:
 	rm -f $(_builddir)*.o
