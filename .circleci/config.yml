@@ -5,22 +5,22 @@ jobs:
       - image: ishikocpp/gcc-boost:9.1.0-1.70.0
     steps:
       - run: 
-          name: "Set ISHIKO environment variable and create directory"
-          command: mkdir /Ishiko && echo 'export ISHIKO="/Ishiko"' >> $BASH_ENV
+          name: "Set ISHIKO_CPP environment variable and create directory"
+          command: mkdir /Ishiko-cpp && echo 'export ISHIKO_CPP="/Ishiko-cpp"' >> $BASH_ENV
       - run:
-          name: "Checkout Ishiko/Process dependency"
-          command: cd /Ishiko && git clone https://github.com/Ishiko-Cpp/Process.git
+          name: "Checkout Ishiko-cpp/Process dependency"
+          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Process.git
       - checkout:
-          path: /Ishiko/TestFramework
+          path: /Ishiko-cpp/TestFramework
       - run:
-          name: "Build Ishiko/Process dependency"
-          command: cd /Ishiko/Process/Makefiles/GNUmakefile && make
+          name: "Build Ishiko-cpp/Process dependency"
+          command: cd /Ishiko-cpp/Process/Makefiles/GNUmakefile && make
       - run:
           name: Build
-          command: cd /Ishiko/TestFramework/Core/Makefiles/GNUmakefile && make
+          command: cd /Ishiko-cpp/TestFramework/Core/Makefiles/GNUmakefile && make
       - run:
           name: Test build
-          command: cd /Ishiko/TestFramework/Tests/Core/Makefiles/GNUmakefile && make
+          command: cd /Ishiko-cpp/TestFramework/Tests/Core/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /Ishiko/TestFramework/Tests/Core/Makefiles/GNUmakefile && ./IshikoTestFrameworkCoreTests
+          command: cd /Ishiko-cpp/TestFramework/Tests/Core/Makefiles/GNUmakefile && ./IshikoTestFrameworkCoreTests
