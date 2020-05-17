@@ -84,7 +84,7 @@ boost::filesystem::path TestEnvironment::getTestDataDirectory(const std::string&
 void TestEnvironment::setTestDataDirectory(const std::string& id, 
                                            const boost::filesystem::path& path)
 {
-    std::string expandedPath = Process::Environment::expandVariablesInString(
+    std::string expandedPath = Process::Environment::ExpandVariablesInString(
         path.string(), Process::Environment::eDollarAndParentheses);
 
     m_testDataDirectories[id] = expandedPath;
@@ -118,7 +118,7 @@ boost::filesystem::path TestEnvironment::getReferenceDataDirectory() const
 
 void TestEnvironment::setReferenceDataDirectory(const boost::filesystem::path& path)
 {
-    std::string expandedPath = Process::Environment::expandVariablesInString(
+    std::string expandedPath = Process::Environment::ExpandVariablesInString(
         path.string(), Process::Environment::eDollarAndParentheses);
 
     m_referenceDataDirectory = expandedPath;
@@ -147,7 +147,7 @@ boost::filesystem::path TestEnvironment::getTestOutputDirectory() const
 
 void TestEnvironment::setTestOutputDirectory(const boost::filesystem::path& path)
 {
-    std::string expandedPath = Process::Environment::expandVariablesInString(
+    std::string expandedPath = Process::Environment::ExpandVariablesInString(
         path.string(), Process::Environment::eDollarAndParentheses);
 
     m_testOutputDirectory = expandedPath;

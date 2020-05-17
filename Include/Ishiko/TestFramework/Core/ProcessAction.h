@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,7 +25,7 @@
 
 #include "TestSetupAction.h"
 #include "TestTeardownAction.h"
-#include "Ishiko/Process/ProcessHandle.h"
+#include "Ishiko/Process/ChildProcess.h"
 #include <string>
 #include <memory>
 
@@ -54,7 +54,7 @@ public:
 private:
     std::string m_commandLine;
     EMode m_mode;
-    Process::ProcessHandle m_processHandle;
+    Process::ChildProcess m_processHandle;
 };
 
 }

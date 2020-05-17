@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,7 +22,7 @@
 
 #include "ProcessAction.h"
 #include "TestException.h"
-#include "Ishiko/Process/ProcessCreator.h"
+#include "Ishiko/Process/ChildProcessBuilder.h"
 
 namespace Ishiko
 {
@@ -41,7 +41,7 @@ ProcessAction::~ProcessAction()
 
 void ProcessAction::setup()
 {
-    int err = Process::ProcessCreator::StartProcess(m_commandLine, m_processHandle);
+    int err = Process::ChildProcessBuilder::StartProcess(m_commandLine, m_processHandle);
     if (err != 0)
     {
         throw TestException("ProcessAction::setup failed to execute: " + m_commandLine);
