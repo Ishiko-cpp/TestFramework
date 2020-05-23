@@ -103,7 +103,11 @@ void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
 {
     create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
 
+#ifdef __linux__
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/StandardOutputTestHelper");
+#else
     path executablePath(test.environment().getTestDataDirectory() / "Bin/StandardOutputTestHelper.exe");
+#endif
     path outputPath(test.environment().getTestOutputDirectory()
         / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
     remove(outputPath);
