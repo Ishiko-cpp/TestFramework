@@ -49,7 +49,7 @@ void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
     test.setReferenceFilePath(test.environment().getReferenceDataDirectory()
         / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
 
-    ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe " + outputPath.generic_string(),
+    ProcessAction action("../../TestData/Binaries/WriteFileTestHelper.exe " + outputPath.string(),
         ProcessAction::eWaitForExit);
     action.setup();
     action.teardown();

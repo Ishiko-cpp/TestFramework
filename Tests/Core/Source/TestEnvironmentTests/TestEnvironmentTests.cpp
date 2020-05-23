@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2019 Xavier Leclercq
+    Copyright (c) 2007-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -101,7 +101,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest2(Test& test)
 
 void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
 {
-    Ishiko::Process::Environment::set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
+    Ishiko::Process::Environment::Set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
 
     TestEnvironment environment;
     environment.setTestDataDirectory("id1", "$(TestEnvironmentGetTestDataDirectoryTest3)/path1");
