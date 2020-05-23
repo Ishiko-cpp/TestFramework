@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2019 Xavier Leclercq
+    Copyright (c) 2005-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -120,7 +120,7 @@ void TestHarness::printDetailedResults()
                 // do that this case would go unreported.
                 if (!sequence || (sequence->size() == 0))
                 {
-                    std::cout << test.name() << ToString(test.result()) << std::endl;
+                    std::cout << test.name() << " " << ToString(test.result()) << std::endl;
                 }
             }
         });
