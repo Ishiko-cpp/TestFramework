@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -39,7 +39,11 @@ ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& numbe
 
 void ConsoleApplicationTestTests::CreationTest1(Test& test)
 {
-    path executablePath(test.environment().getTestDataDirectory() / "Binaries/WriteFileTestHelper.exe");
+#ifdef __linux__
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/WriteFileTestHelper");
+#else
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/WriteFileTestHelper.exe");
+#endif
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest1",
         executablePath.string().c_str(), 0);
@@ -49,31 +53,35 @@ void ConsoleApplicationTestTests::CreationTest1(Test& test)
 
 void ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
 {
-    path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
+#ifdef __linux__
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper");
+#else
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper.exe");
+#endif
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest1",
         executablePath.string(), 0);
     applicationTest.run();
 
-    ISHTF_FAIL_IF(!applicationTest.passed());
+    ISHTF_FAIL_IF_NOT(applicationTest.passed());
     ISHTF_PASS();
 }
 
 void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 {
-    path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper.exe");
 
     std::string commandLine = executablePath.string() + " 3";
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest2", commandLine, 3);
     applicationTest.run();
 
-    ISHTF_FAIL_IF(!applicationTest.passed());
+    ISHTF_FAIL_IF_NOT(applicationTest.passed());
     ISHTF_PASS();
 }
 
 void ConsoleApplicationTestTests::RunFailureTest1(Test& test)
 {
-    path executablePath(test.environment().getTestDataDirectory() / "Binaries/ExitCodeTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper.exe");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest1",
         executablePath.string(), 3);
@@ -87,7 +95,7 @@ void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
 {
     create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
 
-    path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/StandardOutputTestHelper.exe");
     path outputPath(test.environment().getTestOutputDirectory()
         / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
     remove(outputPath);
@@ -100,13 +108,13 @@ void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    ISHTF_FAIL_IF(!applicationTest.passed());
+    ISHTF_FAIL_IF_NOT(applicationTest.passed());
     ISHTF_PASS();
 }
 
 void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
 {
-    path executablePath(test.environment().getTestDataDirectory() / "Binaries/StandardOutputTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/StandardOutputTestHelper.exe");
     path outputPath(test.environment().getTestOutputDirectory()
         / "ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt");
     remove(outputPath);
