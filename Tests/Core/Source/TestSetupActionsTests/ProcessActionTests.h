@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -32,6 +32,7 @@ public:
 
 private:
     static void CreationTest1(Ishiko::Tests::Test& test);
+    static void SetupFailureTest1(Ishiko::Tests::Test& test);
     static void SetupWaitForExitTest1(Ishiko::Tests::FileComparisonTest& test);
     static void SetupTerminateTest1(Ishiko::Tests::Test& test);
 };

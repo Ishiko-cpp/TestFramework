@@ -31,6 +31,7 @@ ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestEnvir
     : TestSequence(number, "ProcessAction tests", environment)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("setup (failure) test 1", SetupFailureTest1);
     append<FileComparisonTest>("setup() (wait for exit) test 1", SetupWaitForExitTest1);
     append<HeapAllocationErrorsTest>("setup() (terminate) test 1", SetupTerminateTest1);
 }
@@ -39,6 +40,21 @@ void ProcessActionTests::CreationTest1(Test& test)
 {
     ProcessAction action("../../TestData/Bin/WriteFileTestHelper.exe", ProcessAction::eWaitForExit);
     ISHTF_PASS();
+}
+
+void ProcessActionTests::SetupFailureTest1(Test& test)
+{
+    ProcessAction action("doesnotexist", ProcessAction::eWaitForExit);
+
+    try
+    {
+        action.setup();
+        action.teardown();
+    }
+    catch (...)
+    {
+        ISHTF_PASS();
+    }
 }
 
 void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
