@@ -9,7 +9,7 @@ program StandardOutputTestHelper
 {
     archs = x86 x86_64;
 
-    outputdir = ../../../TestData/Binaries;
+    outputdir = ../../../TestData/Bin;
 
     sources
     {
