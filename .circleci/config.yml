@@ -28,6 +28,9 @@ jobs:
           name: Test build
           command: cd /Ishiko-cpp/TestFramework/Tests/Core/Makefiles/GNUmakefile && make
       - run:
+          name: Build ExitCodeTestHelper
+          command: cd /Ishiko-cpp/TestFramework/Tests/Core/ExitCodeTestHelper/Makefiles/GNUmakefile && make
+      - run:
           name: Build WriteFileTestHelper
           command: cd /Ishiko-cpp/TestFramework/Tests/Core/WriteFileTestHelper/Makefiles/GNUmakefile && make
       - run:
