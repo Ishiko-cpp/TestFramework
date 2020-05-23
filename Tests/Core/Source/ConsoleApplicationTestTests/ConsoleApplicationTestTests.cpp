@@ -69,7 +69,11 @@ void ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
 
 void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 {
+#ifdef __linux__
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper");
+#else
     path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper.exe");
+#endif
 
     std::string commandLine = executablePath.string() + " 3";
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest2", commandLine, 3);
@@ -81,7 +85,11 @@ void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 
 void ConsoleApplicationTestTests::RunFailureTest1(Test& test)
 {
+#ifdef __linux__
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper");
+#else
     path executablePath(test.environment().getTestDataDirectory() / "Bin/ExitCodeTestHelper.exe");
+#endif
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest1",
         executablePath.string(), 3);
