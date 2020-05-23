@@ -24,6 +24,8 @@
 #include "TestException.h"
 #include "Ishiko/Process/ChildProcessBuilder.h"
 
+using namespace Ishiko::Process;
+
 namespace Ishiko
 {
 namespace Tests
@@ -41,8 +43,9 @@ ProcessAction::~ProcessAction()
 
 void ProcessAction::setup()
 {
-    int err = Process::ChildProcessBuilder::StartProcess(m_commandLine, m_processHandle);
-    if (err != 0)
+    Error error(0);
+    m_processHandle = ChildProcessBuilder::StartProcess(m_commandLine, error);
+    if (error)
     {
         throw TestException("ProcessAction::setup failed to execute: " + m_commandLine);
     }

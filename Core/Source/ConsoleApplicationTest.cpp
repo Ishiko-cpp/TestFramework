@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,7 +21,9 @@
 */
 
 #include "ConsoleApplicationTest.h"
-#include "Ishiko/Process/ProcessCreator.h"
+#include "Ishiko/Process/ChildProcessBuilder.h"
+
+using namespace Ishiko::Process;
 
 namespace Ishiko
 {
@@ -56,14 +58,15 @@ void ConsoleApplicationTest::doRun()
 {
     TestResult result = TestResult::eFailed;
 
-    Ishiko::Process::ProcessCreator processCreator(m_commandLine);
+    ChildProcessBuilder processCreator(m_commandLine);
     if (!m_standardOutputTest.getOutputFilePath().empty())
     {
         processCreator.redirectStandardOutputToFile(m_standardOutputTest.getOutputFilePath().string());
     }
 
-    Ishiko::Process::ProcessHandle processHandle;
-    if (processCreator.start(processHandle) == 0)
+    Error error(0);
+    ChildProcess processHandle = processCreator.start(error);
+    if (!error)
     {
         processHandle.waitForExit();
 
