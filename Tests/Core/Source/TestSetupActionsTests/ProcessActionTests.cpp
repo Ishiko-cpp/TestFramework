@@ -59,14 +59,18 @@ void ProcessActionTests::SetupFailureTest1(Test& test)
 
 void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
 {
+#ifdef __linux__
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/WriteFileTestHelper");
+#else
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/WriteFileTestHelper.exe");
+#endif
     path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
     test.setOutputFilePath(outputPath);
     create_directories(test.environment().getTestOutputDirectory() / "TestSetupActionsTests");
     test.setReferenceFilePath(test.environment().getReferenceDataDirectory()
         / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
 
-    ProcessAction action("../../TestData/Bin/WriteFileTestHelper.exe " + outputPath.string(),
-        ProcessAction::eWaitForExit);
+    ProcessAction action(executablePath.string() + " " + outputPath.string(), ProcessAction::eWaitForExit);
     action.setup();
     action.teardown();
 
