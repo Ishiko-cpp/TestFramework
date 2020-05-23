@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2016 Xavier Leclercq
+	Copyright (c) 2016-2020 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -36,8 +36,6 @@ int main(int argc, char* argv[])
         output << "Hello World!";
         output.close();
     }
-
-    _sleep(2000);
 
     return 0;
 }
