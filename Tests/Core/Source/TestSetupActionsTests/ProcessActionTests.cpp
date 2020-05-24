@@ -79,7 +79,13 @@ void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
 
 void ProcessActionTests::SetupTerminateTest1(Test& test)
 {
-    ProcessAction action("../../TestData/Bin/PermanentAppTestHelper.exe", ProcessAction::eTerminate);
+#ifdef __linux__
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/PermanentAppTestHelper");
+#else
+    path executablePath(test.environment().getTestDataDirectory() / "Bin/PermanentAppTestHelper.exe");
+#endif
+
+    ProcessAction action(executablePath.string(), ProcessAction::eTerminate);
     action.setup();
     action.teardown();
 
