@@ -1,5 +1,5 @@
 /*
-	Copyright (c) 2016 Xavier Leclercq
+	Copyright (c) 2016-2020 Xavier Leclercq
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
@@ -21,13 +21,14 @@
 */
 
 #include <iostream>
+#include <thread>
 
 int main(int argc, char* argv[])
 {
     while (true)
     {
         std::cout << "App running..." << std::endl;
-        _sleep(10000);
+        std::this_thread::sleep_for(std::chrono::seconds(10));
     }
 
     return 0;
