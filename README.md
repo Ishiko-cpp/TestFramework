@@ -2,6 +2,8 @@
 
 A C++ test framework.
 
+[![<ORG_NAME>](https://circleci.com/gh/Ishiko-cpp/TestFramework.svg?style=svg)](https://circleci.com/gh/Ishiko-cpp/TestFramework)
+
 ## License
 
 Copyright (c) 2005-2020 Xavier Leclercq
