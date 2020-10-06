@@ -1,23 +1,7 @@
 /*
-    Copyright (c) 2005-2019 Xavier Leclercq
-
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE SOFTWARE.
+    Copyright (c) 2005-2020 Xavier Leclercq
+    Released under the MIT License
+    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
 
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_TEST_H_
@@ -146,12 +130,16 @@ private:
 #define ISHTF_ABORT_IF_NOT(condition) test.abortIf(!(condition), __FILE__, __LINE__)
 #define ISHTF_ABORT_IF_EQ(value1, value2) ISHTF_ABORT_IF((value1) == (value2))
 #define ISHTF_ABORT_IF_NEQ(value1, value2) ISHTF_ABORT_IF((value1) != (value2))
+#define ISHTF_ABORT_IF_STR_EQ(value1, value2) ISHTF_ABORT_IF(strcmp(value1, value2) == 0)
+#define ISHTF_ABORT_IF_STR_NEQ(value1, value2) ISHTF_ABORT_IF(strcmp(value1, value2) != 0)
 #define ISHTF_FAIL() test.fail(__FILE__, __LINE__)
 // The double negation is needed to cope with classes that have an explicit operator bool
 #define ISHTF_FAIL_IF(condition) test.failIf(!!(condition), __FILE__, __LINE__)
 #define ISHTF_FAIL_IF_NOT(condition) test.failIf(!(condition), __FILE__, __LINE__)
 #define ISHTF_FAIL_IF_EQ(value1, value2) ISHTF_FAIL_IF((value1) == (value2))
 #define ISHTF_FAIL_IF_NEQ(value1, value2) ISHTF_FAIL_IF((value1) != (value2))
+#define ISHTF_FAIL_IF_STR_EQ(value1, value2) ISHTF_FAIL_IF(strcmp(value1, value2) == 0)
+#define ISHTF_FAIL_IF_STR_NEQ(value1, value2) ISHTF_FAIL_IF(strcmp(value1, value2) != 0)
 #define ISHTF_PASS() test.pass()
 
 #endif
