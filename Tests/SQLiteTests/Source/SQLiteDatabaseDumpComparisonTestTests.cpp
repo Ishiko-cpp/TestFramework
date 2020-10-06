@@ -36,6 +36,8 @@ void AddSQLiteDatabaseDumpComparisonTestTests(Ishiko::TestFramework::TestHarness
 
     new Ishiko::TestFramework::HeapAllocationErrorsTest("run success test 1",
         SQLiteDatabaseDumpComparisonTestRunSuccessTest1, comparisonTestSequence);
+    new Ishiko::TestFramework::HeapAllocationErrorsTest("run success test 2",
+        SQLiteDatabaseDumpComparisonTestRunSuccessTest2, comparisonTestSequence);
 
     new Ishiko::TestFramework::HeapAllocationErrorsTest("run failure test 1",
         SQLiteDatabaseDumpComparisonTestRunFailureTest1, comparisonTestSequence);
@@ -76,6 +78,28 @@ Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunS
         SQLiteDatabaseDumpComparisonTestRunSuccessTest1Helper);
 
     dbtest.setDatabaseFilePath(test.environment().getTestOutputDirectory() / "SQLiteDatabaseDumpComparisonTestRunSuccessTest1.db");
+    dbtest.run();
+
+    return dbtest.result().outcome();
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest2Helper(Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest& test)
+{
+    sqlite3* db = 0;
+    sqlite3_open(test.databaseFilePath().string().c_str(), &db);
+    char* sql = "CREATE TABLE PERSONS(FIRSTNAME CHAR PRIMARY KEY NOT NULL);";
+    sqlite3_exec(db, sql, 0, 0, 0);
+    sqlite3_close(db);
+    return Ishiko::TestFramework::TestResult::ePassed;
+}
+
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest2(Ishiko::TestFramework::Test& test)
+{
+    Ishiko::TestFramework::SQLiteDatabaseDumpComparisonTest dbtest(
+        Ishiko::TestFramework::TestNumber(), "SQLiteDatabaseDumpComparisonTestRunSuccessTest2",
+        SQLiteDatabaseDumpComparisonTestRunSuccessTest2Helper);
+
+    dbtest.setDatabaseFilePath(test.environment().getTestOutputDirectory() / "SQLiteDatabaseDumpComparisonTestRunSuccessTest2.db");
     dbtest.run();
 
     return dbtest.result().outcome();

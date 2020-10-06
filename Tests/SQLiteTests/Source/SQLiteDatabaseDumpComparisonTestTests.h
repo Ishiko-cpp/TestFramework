@@ -30,6 +30,7 @@ void AddSQLiteDatabaseDumpComparisonTestTests(Ishiko::TestFramework::TestHarness
 Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCreationTest1();
 Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestCreationTest2();
 Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest1(Ishiko::TestFramework::Test& test);
+Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunSuccessTest2(Ishiko::TestFramework::Test& test);
 Ishiko::TestFramework::TestResult::EOutcome SQLiteDatabaseDumpComparisonTestRunFailureTest1();
 
 #endif

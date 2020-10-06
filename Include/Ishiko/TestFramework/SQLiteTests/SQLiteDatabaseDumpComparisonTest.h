@@ -46,6 +46,9 @@ protected:
     TestResult::EOutcome doRun(TestObserver::ptr& observer) override;
 
 private:
+    static void dumpDatabse(const boost::filesystem::path& databasePath);
+
+private:
     TestResult::EOutcome (*m_runFct)(SQLiteDatabaseDumpComparisonTest& test);
     boost::filesystem::path m_databaseFilePath;
     FileComparisonTest m_comparisonTest;

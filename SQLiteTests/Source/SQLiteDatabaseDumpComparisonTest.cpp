@@ -21,6 +21,7 @@
 */
 
 #include "SQLiteDatabaseDumpComparisonTest.h"
+#include "Ishiko/SQLite/sqlite3.h"
 
 namespace Ishiko
 {
@@ -69,11 +70,29 @@ TestResult::EOutcome SQLiteDatabaseDumpComparisonTest::doRun(TestObserver::ptr& 
 
     if (result == TestResult::ePassed)
     {
-        m_comparisonTest.run();
-        result = m_comparisonTest.result().outcome();
+        result = TestResult::eFailed;
+
+        if (!m_databaseFilePath.empty())
+        {
+            dumpDatabse(m_databaseFilePath);
+
+            m_comparisonTest.run();
+            result = m_comparisonTest.result().outcome();
+        }
     }
 
     return result;
+}
+
+void SQLiteDatabaseDumpComparisonTest::dumpDatabse(const boost::filesystem::path& databasePath)
+{
+    sqlite3* db = 0;
+    sqlite3_open(databasePath.string().c_str(), &db);
+
+    char* sql = "SELECT name FROM sqlite_master WHERE type='table';";
+    sqlite3_exec(db, sql, 0, 0, 0);
+
+    sqlite3_close(db);
 }
 
 }

@@ -1,5 +1,6 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+import $(ishikopath)/SQLite/Include/Ishiko/SQLite.bkl;
 
 toolsets = gnu vs2015 vs2013;
 
@@ -7,7 +8,7 @@ gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2015.solutionfile = ../VC14/IshikoTestFrameworkSQLiteTests.sln;
 vs2013.solutionfile = ../VC12/IshikoTestFrameworkSQLiteTests.sln;
 
-library IshikoTestFrameworkSQLiteTests : IshikoTestFrameworkCore
+library IshikoTestFrameworkSQLiteTests : IshikoTestFrameworkCore, IshikoSQLite
 {
     archs = x86 x86_64;
 

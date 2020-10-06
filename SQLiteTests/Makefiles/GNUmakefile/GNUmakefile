@@ -40,6 +40,7 @@ endif
 #      BOOST_ROOT                 Path to the Boost installation
 #      ISHIKO_PROCESS_ROOT        Path to the Ishiko Process installation
 #      ISHIKO_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
+#      ISHIKO_SQLITE_ROOT         Path to the Ishiko SQLite installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -72,6 +73,8 @@ BOOST_ROOT ?= $(BOOST)
 ISHIKO_PROCESS_ROOT ?= $(ISHIKO)/Process
 # Path to the Ishiko TestFramework installation
 ISHIKO_TESTFRAMEWORK_ROOT ?= $(ISHIKO)/TestFramework
+# Path to the Ishiko SQLite installation
+ISHIKO_SQLITE_ROOT ?= $(ISHIKO)/SQLite
 
 # ------------
 
@@ -82,7 +85,7 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),IshikoTestF
 	$(RANLIB) $@
 
 $(_builddir)IshikoTestFrameworkSQLiteTests_SQLiteDatabaseDumpComparisonTest.o: ../../Source/SQLiteDatabaseDumpComparisonTest.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -I../../../Include/Ishiko/TestFramework/SQLiteTests -std=c++11 ../../Source/SQLiteDatabaseDumpComparisonTest.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_PROCESS_ROOT)/Include -I$(BOOST_ROOT) -I$(ISHIKO_TESTFRAMEWORK_ROOT)/Include -I$(ISHIKO_SQLITE_ROOT)/Include -I../../../Include/Ishiko/TestFramework/SQLiteTests -std=c++11 ../../Source/SQLiteDatabaseDumpComparisonTest.cpp
 
 clean:
 	rm -f $(_builddir)*.o
