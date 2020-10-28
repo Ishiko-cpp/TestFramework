@@ -8,6 +8,9 @@ jobs:
           name: "Set ISHIKO_CPP environment variable and create directory"
           command: mkdir /Ishiko-cpp && echo 'export ISHIKO_CPP="/Ishiko-cpp"' >> $BASH_ENV
       - run:
+          name: "Checkout Ishiko-cpp/Platform dependency"
+          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Platform.git
+      - run:
           name: "Checkout Ishiko-cpp/Errors dependency"
           command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Errors.git
       - run:
