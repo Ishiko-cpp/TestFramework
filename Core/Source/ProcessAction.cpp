@@ -28,7 +28,7 @@ ProcessAction::~ProcessAction()
 void ProcessAction::setup()
 {
     Error error(0);
-    m_processHandle = Spawn(m_commandLine, error);
+    m_processHandle = ChildProcess::Spawn(m_commandLine, error);
     if (error)
     {
         throw TestException("ProcessAction::setup failed to execute: " + m_commandLine);
