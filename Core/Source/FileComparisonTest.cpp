@@ -1,27 +1,12 @@
 /*
-    Copyright (c) 2007-2019 Xavier Leclercq
-
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE SOFTWARE.
+    Copyright (c) 2007-2020 Xavier Leclercq
+    Released under the MIT License
+    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
 
 #include "FileComparisonTest.h"
 #include "DebugHeap.h"
+#include <Ishiko/Platform/Compilers.h>
 
 namespace Ishiko
 {
@@ -95,11 +80,28 @@ void FileComparisonTest::doRun()
     if (passed())
     {
         // We first try to open the two files
-        FILE *file = fopen(m_outputFilePath.string().c_str(), "rb");
-        FILE *refFile = fopen(m_referenceFilePath.string().c_str(), "rb");
+#if ISHIKO_COMPILER == ISHIKO_COMPILER_GCC
+        FILE* file = fopen(m_outputFilePath.string().c_str(), "rb");
+        FILE* refFile = fopen(m_referenceFilePath.string().c_str(), "rb");
+#elif ISHIKO_COMPILER == ISHIKO_COMPILER_MSVC
+        FILE* file = nullptr;
+        errno_t err = fopen_s(&file, m_outputFilePath.string().c_str(), "rb");
+        if (err != 0)
+        {
+            file = nullptr;
+        }
+        FILE* refFile = nullptr;
+        err = fopen_s(&refFile, m_referenceFilePath.string().c_str(), "rb");
+        if (err != 0)
+        {
+            refFile = nullptr;
+        }
+#else
+    #error Unsupported or unrecognized compiler
+#endif
         
-        bool isFileOpen = (file != 0);
-        bool isRefFileOpen = (refFile != 0);
+        bool isFileOpen = (file != nullptr);
+        bool isRefFileOpen = (refFile != nullptr);
 
         if (!isFileOpen || !isRefFileOpen)
         {
