@@ -17,9 +17,9 @@ TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
     append<HeapAllocationErrorsTest>("Constructor test 3", ConstructorTest3);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 1", GetTestDataDirectoryTest1);
-    append<HeapAllocationErrorsTest>("getTestDataDirectory test 2", GetTestDataDirectoryTest2);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 3", GetTestDataDirectoryTest3);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 4", GetTestDataDirectoryTest4);
+    append<HeapAllocationErrorsTest>("getTestDataDirectory test 5", GetTestDataDirectoryTest5);
     append<HeapAllocationErrorsTest>("getTestDataPath test 1", GetTestDataPathTest1);
     append<HeapAllocationErrorsTest>("setTestDataDirectory test 1", SetTestDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getReferenceDataDirectory test 1", GetReferenceDataDirectoryTest1);
@@ -74,7 +74,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest1(Test& test)
     ISHTF_PASS();
 }
 
-void TestEnvironmentTests::GetTestDataDirectoryTest2(Test& test)
+void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
 {
     try
     {
@@ -87,7 +87,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest2(Test& test)
     }
 }
 
-void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
+void TestEnvironmentTests::GetTestDataDirectoryTest4(Test& test)
 {
     TestEnvironment environment;
     environment.setTestDataDirectory("id1", "path1");
@@ -97,7 +97,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
     }
 }
 
-void TestEnvironmentTests::GetTestDataDirectoryTest4(Test& test)
+void TestEnvironmentTests::GetTestDataDirectoryTest5(Test& test)
 {
     Ishiko::Process::CurrentEnvironment::Set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
 
