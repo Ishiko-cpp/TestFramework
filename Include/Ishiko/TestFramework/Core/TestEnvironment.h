@@ -49,16 +49,18 @@ public:
     void setReferenceDataDirectory(const std::string& id, const boost::filesystem::path& path);
 
     boost::filesystem::path getTestOutputDirectory() const;
+    boost::filesystem::path getTestOutputDirectory(const std::string& id) const;
     boost::filesystem::path getTestOutputPath(const boost::filesystem::path& path) const;
     // Sets the default test output directory. The path argument
     // can contain environment variables by using the $(...) notation.
     void setTestOutputDirectory(const boost::filesystem::path& path);
+    void setTestOutputDirectory(const std::string& id, const boost::filesystem::path& path);
 
 private:
     const TestEnvironment* m_parent;
     std::map<std::string, boost::filesystem::path> m_testDataDirectories;
     std::map<std::string, boost::filesystem::path> m_referenceDataDirectories;
-    boost::optional<boost::filesystem::path> m_testOutputDirectory;
+    std::map<std::string, boost::filesystem::path> m_testOutputDirectories;
 };
 
 }

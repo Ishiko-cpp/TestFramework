@@ -14,10 +14,11 @@ namespace Tests
 {
 
 TestEnvironment::TestEnvironment()
-    : m_parent(nullptr), m_testOutputDirectory(boost::filesystem::path())
+    : m_parent(nullptr)
 {
     m_testDataDirectories["(default)"] = boost::filesystem::path();
     m_referenceDataDirectories["(default)"] = boost::filesystem::path();
+    m_testOutputDirectories["(default)"] = boost::filesystem::path();
 }
 
 TestEnvironment::TestEnvironment(const TestEnvironment* parent)
@@ -139,21 +140,34 @@ void TestEnvironment::setReferenceDataDirectory(const std::string& id, const boo
 
 boost::filesystem::path TestEnvironment::getTestOutputDirectory() const
 {
+    return getTestOutputDirectory("(default)");
+}
+
+boost::filesystem::path TestEnvironment::getTestOutputDirectory(const std::string& id) const
+{
     boost::filesystem::path result;
+    std::map<std::string, boost::filesystem::path>::const_iterator it = m_testOutputDirectories.find(id);
     if (m_parent)
     {
-        if (m_testOutputDirectory)
+        if (it != m_testOutputDirectories.end())
         {
-            result = (m_parent->getTestOutputDirectory() / *m_testOutputDirectory);
+            result = (m_parent->getTestOutputDirectory(id) / it->second);
         }
         else
         {
-            result = m_parent->getTestOutputDirectory();
+            result = m_parent->getTestOutputDirectory(id);
         }
     }
-    else if (m_testOutputDirectory)
+    else
     {
-        result = *m_testOutputDirectory;
+        if (it != m_testOutputDirectories.end())
+        {
+            return it->second;
+        }
+        else
+        {
+            throw TestException("getTestOutputDirectory: no directory found with id " + id);
+        }
     }
     return result;
 }
@@ -165,10 +179,15 @@ boost::filesystem::path TestEnvironment::getTestOutputPath(const boost::filesyst
 
 void TestEnvironment::setTestOutputDirectory(const boost::filesystem::path& path)
 {
+    setTestOutputDirectory("(default)", path);
+}
+
+void TestEnvironment::setTestOutputDirectory(const std::string& id, const boost::filesystem::path& path)
+{
     std::string expandedPath = Process::CurrentEnvironment::ExpandVariablesInString(path.string(),
         Process::CurrentEnvironment::eDollarAndParentheses);
 
-    m_testOutputDirectory = expandedPath;
+    m_testOutputDirectories[id] = expandedPath;
 }
 
 }
