@@ -17,14 +17,17 @@ TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
     append<HeapAllocationErrorsTest>("Constructor test 3", ConstructorTest3);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 1", GetTestDataDirectoryTest1);
+    append<HeapAllocationErrorsTest>("getTestDataDirectory test 2", GetTestDataDirectoryTest2);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 3", GetTestDataDirectoryTest3);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 4", GetTestDataDirectoryTest4);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 5", GetTestDataDirectoryTest5);
     append<HeapAllocationErrorsTest>("getTestDataPath test 1", GetTestDataPathTest1);
     append<HeapAllocationErrorsTest>("setTestDataDirectory test 1", SetTestDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getReferenceDataDirectory test 1", GetReferenceDataDirectoryTest1);
+    append<HeapAllocationErrorsTest>("getReferenceDataDirectory test 2", GetReferenceDataDirectoryTest2);
     append<HeapAllocationErrorsTest>("setReferenceDataDirectory test 1", SetReferenceDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestOutputDirectory test 1", GetTestOutputDirectoryTest1);
+    append<HeapAllocationErrorsTest>("getTestOutputDirectory test 2", GetTestOutputDirectoryTest2);
     append<HeapAllocationErrorsTest>("setTestOutputDirectory test 1", SetTestOutputDirectoryTest1);
 }
 
@@ -71,6 +74,19 @@ void TestEnvironmentTests::GetTestDataDirectoryTest1(Test& test)
     boost::filesystem::path directory = environment.getTestDataDirectory();
 
     ISHTF_FAIL_IF_NEQ(directory, "");
+    ISHTF_PASS();
+}
+
+void TestEnvironmentTests::GetTestDataDirectoryTest2(Test& test)
+{
+    TestEnvironment environment;
+    environment.setTestDataDirectory("data");
+    environment.setReferenceDataDirectory("reference");
+    environment.setTestOutputDirectory("output");
+
+    boost::filesystem::path directory = environment.getTestDataDirectory();
+
+    ISHTF_FAIL_IF_NEQ(directory, "data");
     ISHTF_PASS();
 }
 
@@ -143,6 +159,19 @@ void TestEnvironmentTests::GetReferenceDataDirectoryTest1(Test& test)
     ISHTF_PASS();
 }
 
+void TestEnvironmentTests::GetReferenceDataDirectoryTest2(Test& test)
+{
+    TestEnvironment environment;
+    environment.setTestDataDirectory("data");
+    environment.setReferenceDataDirectory("reference");
+    environment.setTestOutputDirectory("output");
+
+    boost::filesystem::path directory = environment.getReferenceDataDirectory();
+
+    ISHTF_FAIL_IF_NEQ(directory, "reference");
+    ISHTF_PASS();
+}
+
 void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)
 {
     TestEnvironment parentEnvironment;
@@ -163,6 +192,19 @@ void TestEnvironmentTests::GetTestOutputDirectoryTest1(Test& test)
     boost::filesystem::path directory = environment.getTestOutputDirectory();
 
     ISHTF_FAIL_IF_NEQ(directory, "");
+    ISHTF_PASS();
+}
+
+void TestEnvironmentTests::GetTestOutputDirectoryTest2(Test& test)
+{
+    TestEnvironment environment;
+    environment.setTestDataDirectory("data");
+    environment.setReferenceDataDirectory("reference");
+    environment.setTestOutputDirectory("output");
+
+    boost::filesystem::path directory = environment.getTestOutputDirectory();
+
+    ISHTF_FAIL_IF_NEQ(directory, "output");
     ISHTF_PASS();
 }
 
