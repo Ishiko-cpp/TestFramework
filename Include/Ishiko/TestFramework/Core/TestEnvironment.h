@@ -28,6 +28,7 @@ public:
     // and exists to avoid the need to give a name to the test data
     // directory unnecessarily.
     boost::filesystem::path getTestDataDirectory() const;
+    boost::filesystem::path getTestDataPath(const boost::filesystem::path& path) const;
     // Sets the default test data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     // This is equivalent to calling setTestDataDirectory("(default)", path)
@@ -40,11 +41,13 @@ public:
     void setTestDataDirectory(const std::string& id, const boost::filesystem::path& path);
 
     boost::filesystem::path getReferenceDataDirectory() const;
+    boost::filesystem::path getReferenceDataPath(const boost::filesystem::path& path) const;
     // Sets the default reference data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     void setReferenceDataDirectory(const boost::filesystem::path& path);
 
     boost::filesystem::path getTestOutputDirectory() const;
+    boost::filesystem::path getTestOutputPath(const boost::filesystem::path& path) const;
     // Sets the default test output directory. The path argument
     // can contain environment variables by using the $(...) notation.
     void setTestOutputDirectory(const boost::filesystem::path& path);

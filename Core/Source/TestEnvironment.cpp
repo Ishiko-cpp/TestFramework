@@ -36,6 +36,11 @@ boost::filesystem::path TestEnvironment::getTestDataDirectory() const
     return getTestDataDirectory("(default)");
 }
 
+boost::filesystem::path TestEnvironment::getTestDataPath(const boost::filesystem::path& path) const
+{
+    return getTestDataDirectory() / path;
+}
+
 boost::filesystem::path TestEnvironment::getTestDataDirectory(const std::string& id) const
 {
     boost::filesystem::path result;
@@ -100,6 +105,11 @@ boost::filesystem::path TestEnvironment::getReferenceDataDirectory() const
     return result;
 }
 
+boost::filesystem::path TestEnvironment::getReferenceDataPath(const boost::filesystem::path& path) const
+{
+    return getReferenceDataDirectory() / path;
+}
+
 void TestEnvironment::setReferenceDataDirectory(const boost::filesystem::path& path)
 {
     std::string expandedPath = Process::CurrentEnvironment::ExpandVariablesInString(path.string(),
@@ -127,6 +137,11 @@ boost::filesystem::path TestEnvironment::getTestOutputDirectory() const
         result = *m_testOutputDirectory;
     }
     return result;
+}
+
+boost::filesystem::path TestEnvironment::getTestOutputPath(const boost::filesystem::path& path) const
+{
+    return getTestOutputDirectory() / path;
 }
 
 void TestEnvironment::setTestOutputDirectory(const boost::filesystem::path& path)
