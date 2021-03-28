@@ -28,6 +28,7 @@ public:
     // and exists to avoid the need to give a name to the test data
     // directory unnecessarily.
     boost::filesystem::path getTestDataDirectory() const;
+    boost::filesystem::path getTestDataDirectory(const std::string& id) const;
     boost::filesystem::path getTestDataPath(const boost::filesystem::path& path) const;
     // Sets the default test data directory. The path argument
     // can contain environment variables by using the $(...) notation.
@@ -35,16 +36,17 @@ public:
     // and exists to avoid the need to give a name to the test data
     // directory unnecessarily.
     void setTestDataDirectory(const boost::filesystem::path& path);
-    boost::filesystem::path getTestDataDirectory(const std::string& id) const;
     // Adds or updates a path in the list of test data directories. The path argument
     // can contain environment variables by using the $(...) notation.
     void setTestDataDirectory(const std::string& id, const boost::filesystem::path& path);
 
     boost::filesystem::path getReferenceDataDirectory() const;
+    boost::filesystem::path getReferenceDataDirectory(const std::string& id) const;
     boost::filesystem::path getReferenceDataPath(const boost::filesystem::path& path) const;
     // Sets the default reference data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     void setReferenceDataDirectory(const boost::filesystem::path& path);
+    void setReferenceDataDirectory(const std::string& id, const boost::filesystem::path& path);
 
     boost::filesystem::path getTestOutputDirectory() const;
     boost::filesystem::path getTestOutputPath(const boost::filesystem::path& path) const;
@@ -55,7 +57,7 @@ public:
 private:
     const TestEnvironment* m_parent;
     std::map<std::string, boost::filesystem::path> m_testDataDirectories;
-    boost::optional<boost::filesystem::path> m_referenceDataDirectory;
+    std::map<std::string, boost::filesystem::path> m_referenceDataDirectories;
     boost::optional<boost::filesystem::path> m_testOutputDirectory;
 };
 

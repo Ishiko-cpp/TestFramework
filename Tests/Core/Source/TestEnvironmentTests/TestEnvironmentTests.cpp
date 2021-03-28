@@ -16,6 +16,7 @@ TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
     append<HeapAllocationErrorsTest>("Constructor test 3", ConstructorTest3);
+    append<HeapAllocationErrorsTest>("getTestDataDirectory test 1", GetTestDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 2", GetTestDataDirectoryTest2);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 3", GetTestDataDirectoryTest3);
     append<HeapAllocationErrorsTest>("getTestDataDirectory test 4", GetTestDataDirectoryTest4);
@@ -60,6 +61,16 @@ void TestEnvironmentTests::ConstructorTest3(Test& test)
     ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "data");
     ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "referenceData");
     ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "output");
+    ISHTF_PASS();
+}
+
+void TestEnvironmentTests::GetTestDataDirectoryTest1(Test& test)
+{
+    TestEnvironment environment;
+
+    boost::filesystem::path directory = environment.getTestDataDirectory();
+
+    ISHTF_FAIL_IF_NEQ(directory, "");
     ISHTF_PASS();
 }
 
