@@ -19,9 +19,9 @@ private:
     static void ConstructorTest1(Ishiko::Tests::Test& test);
     static void ConstructorTest2(Ishiko::Tests::Test& test);
     static void ConstructorTest3(Ishiko::Tests::Test& test);
-    static void GetTestDataDirectoryTest1(Ishiko::Tests::Test& test);
     static void GetTestDataDirectoryTest2(Ishiko::Tests::Test& test);
     static void GetTestDataDirectoryTest3(Ishiko::Tests::Test& test);
+    static void GetTestDataDirectoryTest4(Ishiko::Tests::Test& test);
     static void GetTestDataPathTest1(Ishiko::Tests::Test& test);
     static void SetTestDataDirectoryTest1(Ishiko::Tests::Test& test);
     static void GetReferenceDataDirectoryTest1(Ishiko::Tests::Test& test);
