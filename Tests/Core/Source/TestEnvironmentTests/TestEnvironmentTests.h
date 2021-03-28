@@ -28,9 +28,11 @@ private:
     static void SetTestDataDirectoryTest1(Ishiko::Tests::Test& test);
     static void GetReferenceDataDirectoryTest1(Ishiko::Tests::Test& test);
     static void GetReferenceDataDirectoryTest2(Ishiko::Tests::Test& test);
+    static void GetReferenceDataPathTest1(Ishiko::Tests::Test& test);
     static void SetReferenceDataDirectoryTest1(Ishiko::Tests::Test& test);
     static void GetTestOutputDirectoryTest1(Ishiko::Tests::Test& test);
     static void GetTestOutputDirectoryTest2(Ishiko::Tests::Test& test);
+    static void GetTestOutputPathTest1(Ishiko::Tests::Test& test);
     static void SetTestOutputDirectoryTest1(Ishiko::Tests::Test& test);
 };
 

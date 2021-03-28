@@ -25,9 +25,11 @@ TestEnvironmentTests::TestEnvironmentTests(const TestNumber& number,
     append<HeapAllocationErrorsTest>("setTestDataDirectory test 1", SetTestDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getReferenceDataDirectory test 1", GetReferenceDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getReferenceDataDirectory test 2", GetReferenceDataDirectoryTest2);
+    append<HeapAllocationErrorsTest>("getReferenceDataPath test 1", GetReferenceDataPathTest1);
     append<HeapAllocationErrorsTest>("setReferenceDataDirectory test 1", SetReferenceDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestOutputDirectory test 1", GetTestOutputDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestOutputDirectory test 2", GetTestOutputDirectoryTest2);
+    append<HeapAllocationErrorsTest>("getTestOutputPath test 1", GetTestOutputPathTest1);
     append<HeapAllocationErrorsTest>("setTestOutputDirectory test 1", SetTestOutputDirectoryTest1);
 }
 
@@ -172,6 +174,17 @@ void TestEnvironmentTests::GetReferenceDataDirectoryTest2(Test& test)
     ISHTF_PASS();
 }
 
+void TestEnvironmentTests::GetReferenceDataPathTest1(Test& test)
+{
+    TestEnvironment environment;
+    environment.setReferenceDataDirectory("reference");
+
+    boost::filesystem::path referencePath = environment.getReferenceDataPath("file");
+
+    ISHTF_FAIL_IF_NEQ(referencePath, "reference/file");
+    ISHTF_PASS();
+}
+
 void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)
 {
     TestEnvironment parentEnvironment;
@@ -205,6 +218,17 @@ void TestEnvironmentTests::GetTestOutputDirectoryTest2(Test& test)
     boost::filesystem::path directory = environment.getTestOutputDirectory();
 
     ISHTF_FAIL_IF_NEQ(directory, "output");
+    ISHTF_PASS();
+}
+
+void TestEnvironmentTests::GetTestOutputPathTest1(Test& test)
+{
+    TestEnvironment environment;
+    environment.setTestOutputDirectory("output");
+
+    boost::filesystem::path outputPath = environment.getTestOutputPath("file");
+
+    ISHTF_FAIL_IF_NEQ(outputPath, "output/file");
     ISHTF_PASS();
 }
 
