@@ -14,6 +14,9 @@ jobs:
           name: "Checkout Ishiko-cpp/Errors dependency"
           command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Errors.git
       - run:
+          name: "Checkout Ishiko-cpp/Text dependency"
+          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Text.git
+      - run:
           name: "Checkout Ishiko-cpp/Process dependency"
           command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Process.git
       - checkout:
@@ -21,6 +24,9 @@ jobs:
       - run:
           name: "Build Ishiko-cpp/Errors dependency"
           command: cd /Ishiko-cpp/Errors/Makefiles/GNUmakefile && make
+      - run:
+          name: "Build Ishiko-cpp/Text dependency"
+          command: cd /Ishiko-cpp/Text/Makefiles/GNUmakefile && make
       - run:
           name: "Build Ishiko-cpp/Process dependency"
           command: cd /Ishiko-cpp/Process/Makefiles/GNUmakefile && make
