@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2020 Xavier Leclercq
+    Copyright (c) 2005-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
@@ -41,6 +41,7 @@ public:
 
         virtual void onLifecycleEvent(const Test& source, EEventType type);
         virtual void onCheckFailed(const Test& source, const std::string& message, const char* file, int line);
+        virtual void onExceptionThrown(const Test& source, std::exception_ptr exception);
     };
 
     class Observers final
@@ -51,6 +52,7 @@ public:
 
         void notifyLifecycleEvent(const Test& source, Observer::EEventType type);
         void notifyCheckFailed(const Test& source, const std::string& message, const char* file, int line);
+        void notifyExceptionThrown(const Test& source, std::exception_ptr exception);
 
     private:
         void removeDeletedObservers();
