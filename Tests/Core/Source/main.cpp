@@ -7,6 +7,7 @@
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
 #include "TestNumberTests.h"
 #include "TestTests.h"
+#include "TestMacrosFormatterTests.h"
 #include "TestMacrosTests.h"
 #include "TestSequenceTests.h"
 #include "FileComparisonTestTests/FileComparisonTestTests.h"
@@ -34,6 +35,7 @@ int main(int argc, char* argv[])
     theTests.append<TestEnvironmentTests>();
     theTests.append<TestNumberTests>();
     theTests.append<TestTests>();
+    theTests.append<TestMacrosFormatterTests>();
     theTests.append<TestMacrosTests>();
     theTests.append<TestSequenceTests>();
     theTests.append<FileComparisonTestTests>();

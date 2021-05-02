@@ -7,12 +7,14 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
 #define _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
 
+#include "Core/ConsoleApplicationTest.h"
 #include "Core/HeapAllocationErrorsTest.h"
 #include "Core/FileComparisonTest.h"
-#include "Core/ConsoleApplicationTest.h"
 #include "Core/TestException.h"
 #include "Core/TestHarness.h"
 #include "Core/TestMacros.h"
+#include "Core/TestMacrosFormatter.h"
+#include "Core/TestProgressObserver.h"
 #include "Core/DirectoriesTeardownAction.h"
 #include "Core/FilesTeardownAction.h"
 #include "Core/ProcessAction.h"
