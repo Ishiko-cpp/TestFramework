@@ -127,6 +127,9 @@
     <ClCompile Include="..\..\Source\TestNumber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\TestMacrosFormatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TestProgressObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

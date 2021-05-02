@@ -163,6 +163,7 @@
     <ClCompile Include="..\..\Source\TestException.cpp" />
     <ClCompile Include="..\..\Source\TestHarness.cpp" />
     <ClCompile Include="..\..\Source\TestNumber.cpp" />
+    <ClCompile Include="..\..\Source\TestMacrosFormatter.cpp" />
     <ClCompile Include="..\..\Source\TestProgressObserver.cpp" />
     <ClCompile Include="..\..\Source\TestResult.cpp" />
     <ClCompile Include="..\..\Source\TestSequence.cpp" />
