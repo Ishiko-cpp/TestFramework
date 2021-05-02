@@ -68,9 +68,9 @@ public:
     template <typename V>
     static std::string Format(const std::string& macro, const std::string& valueString, const V& value);
 
-    template <typename V, typename R>
-    static std::string Format(const std::string& macro, const std::string& valueString,
-        const std::string& referenceString, const V& value, const R& reference);
+    template <typename V1, typename V2>
+    static std::string Format(const std::string& macro, const std::string& value1String,
+        const std::string& value2String, const V1& value1, const V2& value2);
 };
 
 template <typename V>
@@ -89,23 +89,23 @@ std::string TestMacrosFormatter::Format(const std::string& macro, const std::str
     return result;
 }
 
-template <typename V, typename R>
-std::string TestMacrosFormatter::Format(const std::string& macro, const std::string& valueString,
-    const std::string& referenceString, const V& value, const R& reference)
+template <typename V1, typename V2>
+std::string TestMacrosFormatter::Format(const std::string& macro, const std::string& value1String,
+    const std::string& value2String, const V1& value1, const V2& value2)
 {
     std::string result;
 
-    result += macro + "(" + valueString + ", " + referenceString + ") failed with actual values (";
+    result += macro + "(" + value1String + ", " + value2String + ") failed with actual values (";
 
-    std::string formattedValue;
-    Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue);
-    result += formattedValue;
+    std::string formattedValue1;
+    Internal::UniversalFormatter<typename std::decay<V1>::type>::Format(value1, formattedValue1);
+    result += formattedValue1;
 
     result += ", ";
 
-    std::string formattedReference;
-    Internal::UniversalFormatter<typename std::decay<R>::type>::Format(reference, formattedReference);
-    result += formattedReference;
+    std::string formattedValue2;
+    Internal::UniversalFormatter<typename std::decay<V2>::type>::Format(value2, formattedValue2);
+    result += formattedValue2;
 
     result += ")";
 
