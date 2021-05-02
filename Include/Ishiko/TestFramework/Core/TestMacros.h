@@ -18,15 +18,25 @@
 #define ISHTF_ABORT_IF_STR_EQ(value1, value2) ISHTF_ABORT_IF(strcmp(value1, value2) == 0)
 #define ISHTF_ABORT_IF_STR_NEQ(value1, value2) ISHTF_ABORT_IF(strcmp(value1, value2) != 0)
 #define ISHTF_FAIL() test.fail(__FILE__, __LINE__)
+
 // The double negation is needed to cope with classes that have an explicit operator bool
-#define ISHTF_FAIL_IF(condition) test.failIf(!!(condition), __FILE__, __LINE__)
+#define ISHTF_FAIL_IF(condition)                                                                \
+    if (!!(condition))                                                                          \
+    {                                                                                           \
+        std::string message =                                                                   \
+            Ishiko::Tests::TestMacrosFormatter::Format("ISHTF_FAIL_IF", #condition, condition); \
+        test.fail(message, __FILE__, __LINE__);                                                 \
+    }
+
 #define ISHTF_FAIL_IF_NOT(condition) test.failIf(!(condition), __FILE__, __LINE__)
 #define ISHTF_FAIL_IF_EQ(value1, value2) ISHTF_FAIL_IF((value1) == (value2))
 
-#define ISHTF_FAIL_IF_NEQ(value, reference)                                                                       \
-    if ((value) != (reference))                                                                                   \
-    {                                                                                                             \
-        test.fail(Ishiko::Tests::TestMacrosFormatter::FormatComparison(value, reference), __FILE__, __LINE__); \
+#define ISHTF_FAIL_IF_NEQ(value, reference)                                                                        \
+    if ((value) != (reference))                                                                                    \
+    {                                                                                                              \
+        std::string message =                                                                                      \
+            Ishiko::Tests::TestMacrosFormatter::Format("ISHTF_FAIL_IF_NEQ", #value, #reference, value, reference); \
+        test.fail(message, __FILE__, __LINE__);                                                                    \
     }
 
 #define ISHTF_FAIL_IF_STR_EQ(value1, value2) ISHTF_FAIL_IF(strcmp(value1, value2) == 0)

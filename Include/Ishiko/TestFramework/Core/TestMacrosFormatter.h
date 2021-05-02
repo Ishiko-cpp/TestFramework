@@ -65,19 +65,51 @@ public:
 class TestMacrosFormatter
 {
 public:
+    template <typename V>
+    static std::string Format(const std::string& macro, const std::string& valueString, const V& value);
+
     template <typename V, typename R>
-    static std::string FormatComparison(const V& value, const R& reference);
+    static std::string Format(const std::string& macro, const std::string& valueString,
+        const std::string& referenceString, const V& value, const R& reference);
 };
 
-template <typename V, typename R>
-std::string TestMacrosFormatter::FormatComparison(const V& value, const R& reference)
+template <typename V>
+std::string TestMacrosFormatter::Format(const std::string& macro, const std::string& valueString, const V& value)
 {
-    std::string formattedValue;
-    std::string formattedReference;
-    Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue);
-    Internal::UniversalFormatter<typename std::decay<R>::type>::Format(reference, formattedReference);
+    std::string result;
 
-    return (formattedValue + " != " + formattedReference);
+    result += macro + "(" + valueString + ") failed with actual value (";
+
+    std::string formattedValue;
+    Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue);
+    result += formattedValue;
+
+    result += ")";
+
+    return result;
+}
+
+template <typename V, typename R>
+std::string TestMacrosFormatter::Format(const std::string& macro, const std::string& valueString,
+    const std::string& referenceString, const V& value, const R& reference)
+{
+    std::string result;
+
+    result += macro + "(" + valueString + ", " + referenceString + ") failed with actual values (";
+
+    std::string formattedValue;
+    Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue);
+    result += formattedValue;
+
+    result += ", ";
+
+    std::string formattedReference;
+    Internal::UniversalFormatter<typename std::decay<R>::type>::Format(reference, formattedReference);
+    result += formattedReference;
+
+    result += ")";
+
+    return result;
 }
 
 template <typename T, typename Enable>
