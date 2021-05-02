@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 20121 Xavier Leclercq
+    Copyright (c) 2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
@@ -14,6 +14,13 @@ class TestMacrosFormatterTests : public Ishiko::Tests::TestSequence
 public:
     TestMacrosFormatterTests(const Ishiko::Tests::TestNumber& number,
         const Ishiko::Tests::TestEnvironment& environment);
+
+private:
+    static void FormatComparisonTest1(Ishiko::Tests::Test& test);
+    static void FormatComparisonTest2(Ishiko::Tests::Test& test);
+    static void FormatComparisonTest3(Ishiko::Tests::Test& test);
+    static void FormatComparisonTest4(Ishiko::Tests::Test& test);
+    static void FormatComparisonTest5(Ishiko::Tests::Test& test);
 };
 
 #endif

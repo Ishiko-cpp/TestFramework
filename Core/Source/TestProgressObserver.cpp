@@ -14,12 +14,17 @@ namespace Ishiko
 namespace Tests
 {
 
+TestProgressObserver::TestProgressObserver(std::ostream& output)
+    : m_output(output)
+{
+}
+
 void TestProgressObserver::onLifecycleEvent(const Test& source, EEventType type)
 {
     switch (type)
     {
     case eTestStart:
-        std::cout << m_nesting << formatNumber(source.number()) << " " << source.name() << " started" << std::endl;
+        m_output << m_nesting << formatNumber(source.number()) << " " << source.name() << " started" << std::endl;
         m_nesting.append("    ");
         break;
 
@@ -29,7 +34,7 @@ void TestProgressObserver::onLifecycleEvent(const Test& source, EEventType type)
             m_nesting.erase(m_nesting.size() - 4);
         }
 
-        std::cout << m_nesting << formatNumber(source.number()) << " " << source.name() << " completed, result is "
+        m_output << m_nesting << formatNumber(source.number()) << " " << source.name() << " completed, result is "
             << formatResult(source.result()) << std::endl;
         break;
     }
@@ -39,11 +44,11 @@ void TestProgressObserver::onCheckFailed(const Test& source, const std::string& 
 {
     if (message.empty())
     {
-        std::cout << m_nesting << "Check failed [file: " << file << ", line: " << line << "]" << std::endl;
+        m_output << m_nesting << "Check failed [file: " << file << ", line: " << line << "]" << std::endl;
     }
     else
     {
-        std::cout << m_nesting << "Check failed: " << message << " [file: " << file << ", line: " << line << "]" 
+        m_output << m_nesting << "Check failed: " << message << " [file: " << file << ", line: " << line << "]"
             << std::endl;
     }
 }
@@ -58,16 +63,16 @@ void TestProgressObserver::onExceptionThrown(const Test& source, std::exception_
         }
         catch (const std::exception& e)
         {
-            std::cout << m_nesting << "Exception thrown: " << e.what() << std::endl;
+            m_output << m_nesting << "Exception thrown: " << e.what() << std::endl;
         }
         catch(...)
         {
-            std::cout << m_nesting << "Exception not derived from std::exception thrown" << std::endl;
+            m_output << m_nesting << "Exception not derived from std::exception thrown" << std::endl;
         }
     }
     else
     {
-        std::cout << m_nesting << "Exception thrown but no exception information available" << std::endl;
+        m_output << m_nesting << "Exception thrown but no exception information available" << std::endl;
     }
 }
 
