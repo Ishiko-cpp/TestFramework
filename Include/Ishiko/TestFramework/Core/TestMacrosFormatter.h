@@ -74,8 +74,8 @@ std::string TestMacrosFormatter::FormatComparison(const V& value, const R& refer
 {
     std::string formattedValue;
     std::string formattedReference;
-    Internal::UniversalFormatter<std::decay<V>::type>::Format(value, formattedValue);
-    Internal::UniversalFormatter<std::decay<R>::type>::Format(reference, formattedReference);
+    Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue);
+    Internal::UniversalFormatter<typename std::decay<R>::type>::Format(reference, formattedReference);
 
     return (formattedValue + " != " + formattedReference);
 }
