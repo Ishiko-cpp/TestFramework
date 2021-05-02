@@ -62,6 +62,9 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestMacros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestMacrosFormatter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>

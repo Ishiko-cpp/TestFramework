@@ -186,6 +186,7 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestException.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestMacros.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestMacrosFormatter.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestResult.h" />
