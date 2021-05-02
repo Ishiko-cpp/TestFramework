@@ -81,8 +81,14 @@ std::string TestMacrosFormatter::Format(const std::string& macro, const std::str
     result += macro + "(" + valueString + ") failed with actual value (";
 
     std::string formattedValue;
-    Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue);
-    result += formattedValue;
+    if (Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue))
+    {
+        result += formattedValue;
+    }
+    else
+    {
+        result += "<not printable>";
+    }
 
     result += ")";
 
@@ -98,14 +104,26 @@ std::string TestMacrosFormatter::Format(const std::string& macro, const std::str
     result += macro + "(" + value1String + ", " + value2String + ") failed with actual values (";
 
     std::string formattedValue1;
-    Internal::UniversalFormatter<typename std::decay<V1>::type>::Format(value1, formattedValue1);
-    result += formattedValue1;
+    if (Internal::UniversalFormatter<typename std::decay<V1>::type>::Format(value1, formattedValue1))
+    {
+        result += formattedValue1;
+    }
+    else
+    {
+        result += "<not printable>";
+    }
 
     result += ", ";
 
     std::string formattedValue2;
-    Internal::UniversalFormatter<typename std::decay<V2>::type>::Format(value2, formattedValue2);
-    result += formattedValue2;
+    if (Internal::UniversalFormatter<typename std::decay<V2>::type>::Format(value2, formattedValue2))
+    {
+        result += formattedValue2;
+    }
+    else
+    {
+        result += "<not printable>";
+    }
 
     result += ")";
 
