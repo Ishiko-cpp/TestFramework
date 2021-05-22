@@ -151,17 +151,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ConsoleApplicationTest.cpp" />
+    <ClCompile Include="..\..\Source\DebugHeap.cpp" />
     <ClCompile Include="..\..\Source\DirectoriesTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\FileComparisonTest.cpp" />
     <ClCompile Include="..\..\Source\FilesTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp" />
-    <ClCompile Include="..\..\Source\DebugHeap.cpp" />
+    <ClCompile Include="..\..\Source\JUnitXMLFile.cpp" />
     <ClCompile Include="..\..\Source\ProcessAction.cpp" />
     <ClCompile Include="..\..\Source\Test.cpp" />
     <ClCompile Include="..\..\Source\TestConfiguration.cpp" />
     <ClCompile Include="..\..\Source\TestEnvironment.cpp" />
     <ClCompile Include="..\..\Source\TestException.cpp" />
     <ClCompile Include="..\..\Source\TestHarness.cpp" />
+    <ClCompile Include="..\..\Source\TestHarnessCommandLine.cpp" />
     <ClCompile Include="..\..\Source\TestNumber.cpp" />
     <ClCompile Include="..\..\Source\TestProgressObserver.cpp" />
     <ClCompile Include="..\..\Source\TestResult.cpp" />
@@ -173,11 +175,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\TestFrameworkCore.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ConsoleApplicationTest.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DebugHeap.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DebugHeap.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\JUnitXMLFile.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ProcessAction.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\Test.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
@@ -185,6 +188,7 @@
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestEnvironment.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestException.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h" />
+    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarnessCommandLine.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
     <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestResult.h" />
