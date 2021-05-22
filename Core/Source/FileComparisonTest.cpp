@@ -1,12 +1,15 @@
 /*
-    Copyright (c) 2007-2020 Xavier Leclercq
+    Copyright (c) 2007-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
 
 #include "FileComparisonTest.h"
 #include "DebugHeap.h"
+#include <Ishiko/Diff.h>
 #include <Ishiko/Platform/Compilers.h>
+
+using namespace Ishiko::Diff;
 
 namespace Ishiko
 {
@@ -157,6 +160,13 @@ void FileComparisonTest::doRun()
             if (!(isFileEof && isRefFileEof))
             {
                 fail(__FILE__, __LINE__);
+
+                Error error;
+                TextPatch diff  = TextDiff::LineDiffFiles(m_referenceFilePath, m_outputFilePath, error);
+                if (diff.size() > 0)
+                {
+                    fail(diff[0].text(), __FILE__, __LINE__);
+                }
             }
         }
     }
