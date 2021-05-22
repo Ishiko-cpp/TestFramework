@@ -5,7 +5,6 @@
 */
 
 #include "JUnitXMLFileTests.h"
-#include "TestHarnessCommandLineTests.h"
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
 #include "TestNumberTests.h"
 #include "TestTests.h"
@@ -44,7 +43,6 @@ int main(int argc, char* argv[])
     theTests.append<TestSetupActionsTests>();
     theTests.append<TestTeardownActionsTests>();
     theTests.append<JUnitXMLFileTests>();
-    theTests.append<TestHarnessCommandLineTests>();
     theTests.append<TestHarnessTests>();
 
     return theTestHarness.run();

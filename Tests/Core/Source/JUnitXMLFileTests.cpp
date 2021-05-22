@@ -5,6 +5,7 @@
 */
 
 #include "JUnitXMLFileTests.h"
+#include "Ishiko/TestFramework/Core/JUnitXMLFile.h"
 
 using namespace Ishiko::Tests;
 
@@ -16,4 +17,7 @@ JUnitXMLFileTests::JUnitXMLFileTests(const TestNumber& number, const TestEnviron
 
 void JUnitXMLFileTests::ConstructorTest1(Test& test)
 {
+    JUnitXMLFile junitXMLFile;
+
+    ISHTF_PASS();
 }
