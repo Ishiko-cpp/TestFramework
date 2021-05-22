@@ -23,9 +23,6 @@
     <ClInclude Include="..\..\Source\TestHarnessTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestHarnessCommandLineTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\TestNumberTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -74,9 +71,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestHarnessTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TestHarnessCommandLineTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestNumberTests.cpp">

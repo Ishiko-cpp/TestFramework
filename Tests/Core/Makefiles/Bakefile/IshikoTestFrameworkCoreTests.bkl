@@ -21,7 +21,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     {
         ../../Source/JUnitXMLFileTests.h
         ../../Source/TestHarnessTests.h
-        ../../Source/TestHarnessCommandLineTests.h
         ../../Source/TestNumberTests.h
         ../../Source/TestTests.h
         ../../Source/TestMacrosTests.h
@@ -43,7 +42,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../Source/main.cpp
         ../../Source/JUnitXMLFileTests.cpp
         ../../Source/TestHarnessTests.cpp
-        ../../Source/TestHarnessCommandLineTests.cpp
         ../../Source/TestNumberTests.cpp
         ../../Source/TestTests.cpp
         ../../Source/TestMacrosTests.cpp
