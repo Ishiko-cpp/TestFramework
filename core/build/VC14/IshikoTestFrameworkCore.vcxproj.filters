@@ -17,72 +17,81 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\TestFrameworkCore.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\TestFrameworkCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ConsoleApplicationTest.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ConsoleApplicationTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DebugHeap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FileComparisonTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FilesTeardownAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DebugHeap.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ProcessAction.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\Test.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestConfiguration.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestEnvironment.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestConfiguration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestException.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestEnvironment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarness.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestProgressObserver.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarnessCommandLine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestResult.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestNumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSequence.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestProgressObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSetupAction.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownAction.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TopTestSequence.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestSetupAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestTeardownAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TopTestSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ConsoleApplicationTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DebugHeap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DirectoriesTeardownAction.cpp">
@@ -97,7 +106,7 @@
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\DebugHeap.cpp">
+    <ClCompile Include="..\..\Source\JUnitXMLFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProcessAction.cpp">
@@ -116,6 +125,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestHarness.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestHarnessCommandLine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestNumber.cpp">
