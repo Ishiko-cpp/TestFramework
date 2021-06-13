@@ -5,28 +5,22 @@ jobs:
       - image: ishikocpp/gcc-boost:10.1.0-1.73.0
     steps:
       - run: 
-          name: "Set ISHIKO_CPP environment variable and create directory"
-          command: mkdir /Ishiko-cpp && echo 'export ISHIKO_CPP="/Ishiko-cpp"' >> $BASH_ENV
+          name: "Set ISHIKO_CPP environment variable and create workspace directory"
+          command: mkdir -p /projects/ishiko/cpp && echo 'export ISHIKO_CPP="/projects/ishiko/cpp"' >> $BASH_ENV
       - run:
-          name: "Checkout Ishiko-cpp/Platform dependency"
-          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Platform.git
+          name: "Install build dependency: Ishiko/C++ Platform"
+          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/platform.git && cd platform/build/GNUmakefile && make
       - run:
-          name: "Checkout Ishiko-cpp/Errors dependency"
-          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Errors.git
+          name: "Install build dependency: Ishiko/C++ Errors"
+          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/errors.git && cd errors/build/GNUmakefile && make
       - run:
-          name: "Checkout Ishiko-cpp/Text dependency"
-          command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Text.git
+          name: "Install build dependency: Ishiko/C++ Text"
+          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/text.git && cd text/build/GNUmakefile && make
       - run:
           name: "Checkout Ishiko-cpp/Process dependency"
           command: cd /Ishiko-cpp && git clone https://github.com/Ishiko-cpp/Process.git
       - checkout:
           path: /Ishiko-cpp/TestFramework
-      - run:
-          name: "Build Ishiko-cpp/Errors dependency"
-          command: cd /Ishiko-cpp/Errors/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build Ishiko-cpp/Text dependency"
-          command: cd /Ishiko-cpp/Text/Makefiles/GNUmakefile && make
       - run:
           name: "Build Ishiko-cpp/Process dependency"
           command: cd /Ishiko-cpp/Process/Makefiles/GNUmakefile && make
