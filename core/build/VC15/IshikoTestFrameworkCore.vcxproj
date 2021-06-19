@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\Include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/process\include;..\..\..\include\Ishiko\TestFramework\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -172,28 +172,29 @@
     <ClCompile Include="..\..\Source\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\TestFrameworkCore.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ConsoleApplicationTest.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DebugHeap.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\JUnitXMLFile.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\ProcessAction.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\Test.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestConfiguration.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestEnvironment.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestException.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestHarness.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestNumber.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestResult.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSequence.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestSetupAction.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TestTeardownAction.h" />
-    <ClInclude Include="..\..\..\Include\Ishiko\TestFramework\Core\TopTestSequence.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\TestFrameworkCore.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ConsoleApplicationTest.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DebugHeap.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLFile.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\Test.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestConfiguration.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestEnvironment.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestException.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarness.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarnessCommandLine.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestNumber.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestResult.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestSequence.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestSetupAction.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestTeardownAction.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TopTestSequence.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

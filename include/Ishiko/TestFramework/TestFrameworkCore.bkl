@@ -10,7 +10,7 @@ setting ISHIKO_CPP_TESTFRAMEWORK_ROOT
 
 template IshikoTestFrameworkCore : IshikoProcess, Boost
 {
-    includedirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include;
+    includedirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include;
 
     if ($(toolset) == gnu)
     {
