@@ -4,20 +4,20 @@
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
 
-#include "JUnitXMLFileTests.h"
+#include "JUnitXMLWriterTests.h"
 #include "Ishiko/TestFramework/Core/JUnitXMLFile.h"
 
 using namespace Ishiko::Tests;
 
-JUnitXMLFileTests::JUnitXMLFileTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "JUnitXMLFile tests", environment)
+JUnitXMLWriterTests::JUnitXMLWriterTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "JUnitXMLWriter tests", environment)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
 }
 
-void JUnitXMLFileTests::ConstructorTest1(Test& test)
+void JUnitXMLWriterTests::ConstructorTest1(Test& test)
 {
-    JUnitXMLFile junitXMLFile;
+    JUnitXMLWriter junitXMLFile;
 
     ISHTF_PASS();
 }

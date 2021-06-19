@@ -4,4 +4,4 @@
     See https://github.com/ishiko-cpp/test/blob/main/LICENSE.txt
 */
 
-#include "JUnitXMLFile.h"
+#include "JUnitXMLWriter.h"

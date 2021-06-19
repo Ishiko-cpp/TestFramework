@@ -38,7 +38,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLFile.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.h">
@@ -103,7 +103,7 @@
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\JUnitXMLFile.cpp">
+    <ClCompile Include="..\..\Source\JUnitXMLWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProcessAction.cpp">
