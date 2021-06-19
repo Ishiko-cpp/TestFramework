@@ -153,11 +153,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\JUnitXMLFileTests.cpp" />
+    <ClCompile Include="..\..\Source\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\Source\TestNumberTests.cpp" />
     <ClCompile Include="..\..\Source\TestTests.cpp" />
     <ClCompile Include="..\..\Source\TestMacrosTests.cpp" />
     <ClCompile Include="..\..\Source\TestSequenceTests.cpp" />
-    <ClCompile Include="..\..\Source\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp" />
     <ClCompile Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.cpp" />
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp" />
@@ -169,11 +170,12 @@
     <ClCompile Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\JUnitXMLFileTests.h" />
+    <ClInclude Include="..\..\Source\TestHarnessTests.h" />
     <ClInclude Include="..\..\Source\TestNumberTests.h" />
     <ClInclude Include="..\..\Source\TestTests.h" />
     <ClInclude Include="..\..\Source\TestMacrosTests.h" />
     <ClInclude Include="..\..\Source\TestSequenceTests.h" />
-    <ClInclude Include="..\..\Source\TestHarnessTests.h" />
     <ClInclude Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
     <ClInclude Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.h" />
     <ClInclude Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h" />

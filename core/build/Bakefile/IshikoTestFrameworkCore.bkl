@@ -49,7 +49,6 @@ library IshikoTestFrameworkCore : IshikoProcess, Boost
         ../../../include/Ishiko/TestFramework/Core/TestEnvironment.h
         ../../../include/Ishiko/TestFramework/Core/TestException.h
         ../../../include/Ishiko/TestFramework/Core/TestHarness.h
-        ../../../include/Ishiko/TestFramework/Core/TestHarnessCommandLine.h
         ../../../include/Ishiko/TestFramework/Core/TestNumber.h
         ../../../include/Ishiko/TestFramework/Core/TestProgressObserver.h
         ../../../include/Ishiko/TestFramework/Core/TestResult.h
@@ -74,7 +73,6 @@ library IshikoTestFrameworkCore : IshikoProcess, Boost
         ../../Source/TestEnvironment.cpp
         ../../Source/TestException.cpp
         ../../Source/TestHarness.cpp
-        ../../Source/TestHarnessCommandLine.cpp
         ../../Source/TestNumber.cpp
         ../../Source/TestProgressObserver.cpp
         ../../Source/TestResult.cpp
