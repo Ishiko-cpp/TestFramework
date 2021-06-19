@@ -19,11 +19,12 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     headers
     {
+        ../../Source/JUnitXMLFileTests.h
+        ../../Source/TestHarnessTests.h
         ../../Source/TestNumberTests.h
         ../../Source/TestTests.h
         ../../Source/TestMacrosTests.h
         ../../Source/TestSequenceTests.h
-        ../../Source/TestHarnessTests.h
 
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
@@ -39,11 +40,12 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     sources
     {
         ../../Source/main.cpp
+        ../../Source/JUnitXMLFileTests.cpp
+        ../../Source/TestHarnessTests.cpp
         ../../Source/TestNumberTests.cpp
         ../../Source/TestTests.cpp
         ../../Source/TestMacrosTests.cpp
         ../../Source/TestSequenceTests.cpp
-        ../../Source/TestHarnessTests.cpp
 
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp

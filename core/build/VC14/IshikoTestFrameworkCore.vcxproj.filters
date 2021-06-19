@@ -127,9 +127,6 @@
     <ClCompile Include="..\..\Source\TestHarness.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestHarnessCommandLine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\TestNumber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
