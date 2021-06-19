@@ -74,7 +74,7 @@ ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
 # Path to the Ishiko Process installation
 ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/process
 # Path to the Ishiko TestFramework installation
-ISHIKO_CPP_TESTFRAMEWORK_ROOT ?= $(ISHIKO_CPP)/TestFramework
+ISHIKO_CPP_TESTFRAMEWORK_ROOT ?= $(ISHIKO_CPP)/test
 
 # ------------
 
