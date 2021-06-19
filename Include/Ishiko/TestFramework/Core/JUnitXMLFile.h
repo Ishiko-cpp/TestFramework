@@ -7,4 +7,16 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_CORE_JUNITXMLFILE_H_
 #define _ISHIKO_TESTFRAMEWORK_CORE_JUNITXMLFILE_H_
 
+namespace Ishiko
+{
+namespace Tests
+{
+
+class JUnitXMLFile
+{
+};
+
+}
+}
+
 #endif
