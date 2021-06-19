@@ -1,4 +1,4 @@
-# Ishiko/C++ - TestFramework
+# Ishiko/C++ Test
 
 A C++ test framework.
 
@@ -11,7 +11,7 @@ A C++ test framework.
 
 # Project Status
 
-[![Ishiko-cpp](https://circleci.com/gh/Ishiko-cpp/TestFramework.svg?style=shield)](https://circleci.com/gh/Ishiko-cpp/TestFramework)
+[![ishiko-cpp](https://circleci.com/gh/ishiko-cpp/test.svg?style=shield)](https://circleci.com/gh/ishiko-cpp/test)
 
 This project is intended for use by its author only.
 
@@ -25,7 +25,7 @@ None.
 
 ## License
 
-Copyright (c) 2005-2020 Xavier Leclercq
+Copyright (c) 2005-2021 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
