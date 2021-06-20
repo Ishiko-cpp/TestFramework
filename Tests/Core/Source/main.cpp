@@ -4,7 +4,7 @@
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
 
-#include "JUnitXMLFileTests.h"
+#include "JUnitXMLWriterTests.h"
 #include "TestEnvironmentTests/TestEnvironmentTests.h"
 #include "TestNumberTests.h"
 #include "TestTests.h"
@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     theTests.append<HeapAllocationErrorsTestTests>();
     theTests.append<TestSetupActionsTests>();
     theTests.append<TestTeardownActionsTests>();
-    theTests.append<JUnitXMLFileTests>();
+    theTests.append<JUnitXMLWriterTests>();
     theTests.append<TestHarnessTests>();
 
     return theTestHarness.run();
