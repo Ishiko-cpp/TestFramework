@@ -18,27 +18,27 @@ jobs:
           command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/text.git && cd text/build/GNUmakefile && make
       - run:
           name: "Install build dependency: Ishiko/C++ Process"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/process.git && cd process/build/GNUmakefile && make
+          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/process.git && cd process/build/gnumake && make
       - checkout:
-          path: /projects/ishiko/cpp/test
+          path: /projects/ishiko/cpp/tests
       - run:
           name: Build
-          command: cd /projects/ishiko/cpp/test/core/build/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/core/build/GNUmakefile && make
       - run:
           name: Test build
-          command: cd /projects/ishiko/cpp/test/Tests/Core/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/Tests/Core/Makefiles/GNUmakefile && make
       - run:
           name: Build ExitCodeTestHelper
-          command: cd /projects/ishiko/cpp/test/Tests/Core/ExitCodeTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/Tests/Core/ExitCodeTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Build PermanentAppTestHelper
-          command: cd /projects/ishiko/cpp/test/Tests/Core/PermanentAppTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/Tests/Core/PermanentAppTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Build StandardOutputTestHelper
-          command: cd /projects/ishiko/cpp/test/Tests/Core/StandardOutputTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/Tests/Core/StandardOutputTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Build WriteFileTestHelper
-          command: cd /projects/ishiko/cpp/test/Tests/Core/WriteFileTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/Tests/Core/WriteFileTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /projects/ishiko/cpp/test/Tests/Core/Makefiles/GNUmakefile && ./IshikoTestFrameworkCoreTests
+          command: cd /projects/ishiko/cpp/tests/Tests/Core/Makefiles/GNUmakefile && ./IshikoTestFrameworkCoreTests
