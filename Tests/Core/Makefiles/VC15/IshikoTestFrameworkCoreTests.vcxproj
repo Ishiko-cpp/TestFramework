@@ -153,7 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
-    <ClCompile Include="..\..\Source\JUnitXMLFileTests.cpp" />
+    <ClCompile Include="..\..\Source\JUnitXMLWriterTests.cpp" />
     <ClCompile Include="..\..\Source\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\Source\TestNumberTests.cpp" />
     <ClCompile Include="..\..\Source\TestTests.cpp" />
@@ -170,7 +170,7 @@
     <ClCompile Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\JUnitXMLFileTests.h" />
+    <ClInclude Include="..\..\Source\JUnitXMLWriterTests.h" />
     <ClInclude Include="..\..\Source\TestHarnessTests.h" />
     <ClInclude Include="..\..\Source\TestNumberTests.h" />
     <ClInclude Include="..\..\Source\TestTests.h" />

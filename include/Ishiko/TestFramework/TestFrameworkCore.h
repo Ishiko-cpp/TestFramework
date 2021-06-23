@@ -11,7 +11,7 @@
 #include "Core/TestException.h"
 #include "Core/HeapAllocationErrorsTest.h"
 #include "Core/FileComparisonTest.h"
-#include "Core/JUnitXMLFile.h"
+#include "Core/JUnitXMLWriter.h"
 #include "Core/TestHarness.h"
 #include "Core/DirectoriesTeardownAction.h"
 #include "Core/FilesTeardownAction.h"
