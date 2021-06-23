@@ -4,15 +4,15 @@
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_CORE_JUNITXMLFILE_H_
-#define _ISHIKO_TESTFRAMEWORK_CORE_JUNITXMLFILE_H_
+#ifndef _ISHIKO_TESTFRAMEWORK_CORE_JUNITXMLWRITER_H_
+#define _ISHIKO_TESTFRAMEWORK_CORE_JUNITXMLWRITER_H_
 
 namespace Ishiko
 {
 namespace Tests
 {
 
-class JUnitXMLFile
+class JUnitXMLWriter
 {
 };
 

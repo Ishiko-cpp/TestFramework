@@ -19,7 +19,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     headers
     {
-        ../../Source/JUnitXMLFileTests.h
+        ../../Source/JUnitXMLWriterTests.h
         ../../Source/TestHarnessTests.h
         ../../Source/TestNumberTests.h
         ../../Source/TestTests.h
@@ -40,7 +40,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     sources
     {
         ../../Source/main.cpp
-        ../../Source/JUnitXMLFileTests.cpp
+        ../../Source/JUnitXMLWriterTests.cpp
         ../../Source/TestHarnessTests.cpp
         ../../Source/TestNumberTests.cpp
         ../../Source/TestTests.cpp
