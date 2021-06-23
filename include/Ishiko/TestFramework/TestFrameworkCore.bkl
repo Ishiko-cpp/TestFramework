@@ -5,7 +5,7 @@ import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 setting ISHIKO_CPP_TESTFRAMEWORK_ROOT
 {
     help = "Path to the Ishiko TestFramework installation";
-    default = '$(ISHIKO_CPP)/test';
+    default = '$(ISHIKO_CPP)/tests';
 }
 
 template IshikoTestFrameworkCore : IshikoProcess, Boost
