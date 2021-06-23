@@ -1,4 +1,4 @@
-import ../../../../Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+import ../../../../include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -14,16 +14,17 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoTestFrameworkCore IshikoProcess IshikoErrors boost_filesystem boost_system;
+        libs += IshikoTestFrameworkCore IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
     }
 
     headers
     {
+        ../../Source/JUnitXMLWriterTests.h
+        ../../Source/TestHarnessTests.h
         ../../Source/TestNumberTests.h
         ../../Source/TestTests.h
         ../../Source/TestMacrosTests.h
         ../../Source/TestSequenceTests.h
-        ../../Source/TestHarnessTests.h
 
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
@@ -39,11 +40,12 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     sources
     {
         ../../Source/main.cpp
+        ../../Source/JUnitXMLWriterTests.cpp
+        ../../Source/TestHarnessTests.cpp
         ../../Source/TestNumberTests.cpp
         ../../Source/TestTests.cpp
         ../../Source/TestMacrosTests.cpp
         ../../Source/TestSequenceTests.cpp
-        ../../Source/TestHarnessTests.cpp
 
         ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
         ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp
