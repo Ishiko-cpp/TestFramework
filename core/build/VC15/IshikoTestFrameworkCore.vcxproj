@@ -156,7 +156,7 @@
     <ClCompile Include="..\..\Source\FileComparisonTest.cpp" />
     <ClCompile Include="..\..\Source\FilesTeardownAction.cpp" />
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp" />
-    <ClCompile Include="..\..\Source\JUnitXMLFile.cpp" />
+    <ClCompile Include="..\..\Source\JUnitXMLWriter.cpp" />
     <ClCompile Include="..\..\Source\ProcessAction.cpp" />
     <ClCompile Include="..\..\Source\Test.cpp" />
     <ClCompile Include="..\..\Source\TestConfiguration.cpp" />
@@ -179,7 +179,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FileComparisonTest.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FilesTeardownAction.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h" />
-    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLFile.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLWriter.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\Test.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.h" />
@@ -187,7 +187,6 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestEnvironment.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestException.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarness.h" />
-    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarnessCommandLine.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestNumber.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestProgressObserver.h" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestResult.h" />

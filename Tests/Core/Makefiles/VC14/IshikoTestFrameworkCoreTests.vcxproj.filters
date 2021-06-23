@@ -17,7 +17,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\JUnitXMLFileTests.h">
+    <ClInclude Include="..\..\Source\JUnitXMLWriterTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\TestHarnessTests.h">
@@ -67,7 +67,7 @@
     <ClCompile Include="..\..\Source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\JUnitXMLFileTests.cpp">
+    <ClCompile Include="..\..\Source\JUnitXMLWriterTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestHarnessTests.cpp">
