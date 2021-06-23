@@ -65,19 +65,69 @@ public:
 class TestMacrosFormatter
 {
 public:
-    template <typename V, typename R>
-    static std::string FormatComparison(const V& value, const R& reference);
+    template <typename V>
+    static std::string Format(const std::string& macro, const std::string& valueString, const V& value);
+
+    template <typename V1, typename V2>
+    static std::string Format(const std::string& macro, const std::string& value1String,
+        const std::string& value2String, const V1& value1, const V2& value2);
 };
 
-template <typename V, typename R>
-std::string TestMacrosFormatter::FormatComparison(const V& value, const R& reference)
+template <typename V>
+std::string TestMacrosFormatter::Format(const std::string& macro, const std::string& valueString, const V& value)
 {
-    std::string formattedValue;
-    std::string formattedReference;
-    Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue);
-    Internal::UniversalFormatter<typename std::decay<R>::type>::Format(reference, formattedReference);
+    std::string result;
 
-    return (formattedValue + " != " + formattedReference);
+    result += macro + "(" + valueString + ") failed with actual value (";
+
+    std::string formattedValue;
+    if (Internal::UniversalFormatter<typename std::decay<V>::type>::Format(value, formattedValue))
+    {
+        result += formattedValue;
+    }
+    else
+    {
+        result += "<not printable>";
+    }
+
+    result += ")";
+
+    return result;
+}
+
+template <typename V1, typename V2>
+std::string TestMacrosFormatter::Format(const std::string& macro, const std::string& value1String,
+    const std::string& value2String, const V1& value1, const V2& value2)
+{
+    std::string result;
+
+    result += macro + "(" + value1String + ", " + value2String + ") failed with actual values (";
+
+    std::string formattedValue1;
+    if (Internal::UniversalFormatter<typename std::decay<V1>::type>::Format(value1, formattedValue1))
+    {
+        result += formattedValue1;
+    }
+    else
+    {
+        result += "<not printable>";
+    }
+
+    result += ", ";
+
+    std::string formattedValue2;
+    if (Internal::UniversalFormatter<typename std::decay<V2>::type>::Format(value2, formattedValue2))
+    {
+        result += formattedValue2;
+    }
+    else
+    {
+        result += "<not printable>";
+    }
+
+    result += ")";
+
+    return result;
 }
 
 template <typename T, typename Enable>

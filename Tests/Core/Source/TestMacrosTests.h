@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019-2020 Xavier Leclercq
+    Copyright (c) 2019-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
@@ -29,6 +29,8 @@ private:
     static void FailIfStrEqMacroTest2(Ishiko::Tests::Test& test);
     static void FailIfStrNeqMacroTest1(Ishiko::Tests::Test& test);
     static void FailIfStrNeqMacroTest2(Ishiko::Tests::Test& test);
+    static void FailIfNotContainMacroTest1(Ishiko::Tests::Test& test);
+    static void FailIfNotContainMacroTest2(Ishiko::Tests::Test& test);
     static void AbortMacroTest1(Ishiko::Tests::Test& test);
     static void AbortIfMacroTest1(Ishiko::Tests::Test& test);
     static void AbortIfMacroTest2(Ishiko::Tests::Test& test);

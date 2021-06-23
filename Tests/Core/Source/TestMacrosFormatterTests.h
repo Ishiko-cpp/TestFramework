@@ -16,11 +16,12 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void FormatComparisonTest1(Ishiko::Tests::Test& test);
-    static void FormatComparisonTest2(Ishiko::Tests::Test& test);
-    static void FormatComparisonTest3(Ishiko::Tests::Test& test);
-    static void FormatComparisonTest4(Ishiko::Tests::Test& test);
-    static void FormatComparisonTest5(Ishiko::Tests::Test& test);
+    static void FormatTest1(Ishiko::Tests::Test& test);
+    static void FormatTest2(Ishiko::Tests::Test& test);
+    static void FormatTest3(Ishiko::Tests::Test& test);
+    static void FormatTest4(Ishiko::Tests::Test& test);
+    static void FormatTest5(Ishiko::Tests::Test& test);
+    static void FormatTest6(Ishiko::Tests::Test& test);
 };
 
 #endif
