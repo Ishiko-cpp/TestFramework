@@ -37,11 +37,12 @@ library IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, Boost
         ../../../include/Ishiko/TestFramework/TestFrameworkCore.h
 
         ../../../include/Ishiko/TestFramework/Core/ConsoleApplicationTest.h
+        ../../../include/Ishiko/TestFramework/Core/DebugHeap.h
         ../../../include/Ishiko/TestFramework/Core/DirectoriesTeardownAction.h
         ../../../include/Ishiko/TestFramework/Core/FileComparisonTest.h
         ../../../include/Ishiko/TestFramework/Core/FilesTeardownAction.h
         ../../../include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.h
-        ../../../include/Ishiko/TestFramework/Core/DebugHeap.h
+        ../../../include/Ishiko/TestFramework/Core/JUnitXMLWriter.h
         ../../../include/Ishiko/TestFramework/Core/ProcessAction.h
         ../../../include/Ishiko/TestFramework/Core/Test.h
         ../../../include/Ishiko/TestFramework/Core/TestApplicationReturnCodes.h
@@ -63,11 +64,12 @@ library IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, Boost
     sources
     {
         ../../Source/ConsoleApplicationTest.cpp
+        ../../Source/DebugHeap.cpp
         ../../Source/DirectoriesTeardownAction.cpp
         ../../Source/FileComparisonTest.cpp
         ../../Source/FilesTeardownAction.cpp
         ../../Source/HeapAllocationErrorsTest.cpp
-        ../../Source/DebugHeap.cpp
+        ../../Source/JUnitXMLWriter.cpp
         ../../Source/ProcessAction.cpp
         ../../Source/Test.cpp
         ../../Source/TestConfiguration.cpp

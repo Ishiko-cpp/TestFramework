@@ -23,6 +23,9 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ConsoleApplicationTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DebugHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -35,7 +38,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DebugHeap.h">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.h">
@@ -91,6 +94,9 @@
     <ClCompile Include="..\..\Source\ConsoleApplicationTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\DebugHeap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\DirectoriesTeardownAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -103,7 +109,7 @@
     <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\DebugHeap.cpp">
+    <ClCompile Include="..\..\Source\JUnitXMLWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProcessAction.cpp">
