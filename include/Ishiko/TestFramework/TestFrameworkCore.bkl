@@ -15,11 +15,11 @@ template IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, Boost
 
     if ($(toolset) == gnu)
     {
-        libdirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib;
+        libdirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/lib;
     }
 
     if ($(toolset) != gnu)
     {
-        libdirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib/$(arch);
+        libdirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/lib/$(arch);
     }
 }
