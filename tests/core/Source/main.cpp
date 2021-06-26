@@ -17,7 +17,7 @@
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
 #include "TestHarnessTests.h"
-#include <Ishiko/Tests/TestFrameworkCore.h>
+#include <Ishiko/Tests/core.h>
 #include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
