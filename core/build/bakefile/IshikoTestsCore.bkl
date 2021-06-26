@@ -63,26 +63,26 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, Boost
 
     sources
     {
-        ../../Source/ConsoleApplicationTest.cpp
-        ../../Source/DebugHeap.cpp
-        ../../Source/DirectoriesTeardownAction.cpp
-        ../../Source/FileComparisonTest.cpp
-        ../../Source/FilesTeardownAction.cpp
-        ../../Source/HeapAllocationErrorsTest.cpp
-        ../../Source/JUnitXMLWriter.cpp
-        ../../Source/ProcessAction.cpp
-        ../../Source/Test.cpp
-        ../../Source/TestConfiguration.cpp
-        ../../Source/TestEnvironment.cpp
-        ../../Source/TestException.cpp
-        ../../Source/TestHarness.cpp
-        ../../Source/TestNumber.cpp
-        ../../Source/TestMacrosFormatter.cpp
-        ../../Source/TestProgressObserver.cpp
-        ../../Source/TestResult.cpp
-        ../../Source/TestSequence.cpp
-        ../../Source/TestSetupAction.cpp
-        ../../Source/TestTeardownAction.cpp
-        ../../Source/TopTestSequence.cpp
+        ../../src/ConsoleApplicationTest.cpp
+        ../../src/DebugHeap.cpp
+        ../../src/DirectoriesTeardownAction.cpp
+        ../../src/FileComparisonTest.cpp
+        ../../src/FilesTeardownAction.cpp
+        ../../src/HeapAllocationErrorsTest.cpp
+        ../../src/JUnitXMLWriter.cpp
+        ../../src/ProcessAction.cpp
+        ../../src/Test.cpp
+        ../../src/TestConfiguration.cpp
+        ../../src/TestEnvironment.cpp
+        ../../src/TestException.cpp
+        ../../src/TestHarness.cpp
+        ../../src/TestNumber.cpp
+        ../../src/TestMacrosFormatter.cpp
+        ../../src/TestProgressObserver.cpp
+        ../../src/TestResult.cpp
+        ../../src/TestSequence.cpp
+        ../../src/TestSetupAction.cpp
+        ../../src/TestTeardownAction.cpp
+        ../../src/TopTestSequence.cpp
     }
 }

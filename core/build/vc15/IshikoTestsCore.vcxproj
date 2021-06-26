@@ -150,27 +150,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\ConsoleApplicationTest.cpp" />
-    <ClCompile Include="..\..\Source\DebugHeap.cpp" />
-    <ClCompile Include="..\..\Source\DirectoriesTeardownAction.cpp" />
-    <ClCompile Include="..\..\Source\FileComparisonTest.cpp" />
-    <ClCompile Include="..\..\Source\FilesTeardownAction.cpp" />
-    <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp" />
-    <ClCompile Include="..\..\Source\JUnitXMLWriter.cpp" />
-    <ClCompile Include="..\..\Source\ProcessAction.cpp" />
-    <ClCompile Include="..\..\Source\Test.cpp" />
-    <ClCompile Include="..\..\Source\TestConfiguration.cpp" />
-    <ClCompile Include="..\..\Source\TestEnvironment.cpp" />
-    <ClCompile Include="..\..\Source\TestException.cpp" />
-    <ClCompile Include="..\..\Source\TestHarness.cpp" />
-    <ClCompile Include="..\..\Source\TestNumber.cpp" />
-    <ClCompile Include="..\..\Source\TestMacrosFormatter.cpp" />
-    <ClCompile Include="..\..\Source\TestProgressObserver.cpp" />
-    <ClCompile Include="..\..\Source\TestResult.cpp" />
-    <ClCompile Include="..\..\Source\TestSequence.cpp" />
-    <ClCompile Include="..\..\Source\TestSetupAction.cpp" />
-    <ClCompile Include="..\..\Source\TestTeardownAction.cpp" />
-    <ClCompile Include="..\..\Source\TopTestSequence.cpp" />
+    <ClCompile Include="..\..\src\ConsoleApplicationTest.cpp" />
+    <ClCompile Include="..\..\src\DebugHeap.cpp" />
+    <ClCompile Include="..\..\src\DirectoriesTeardownAction.cpp" />
+    <ClCompile Include="..\..\src\FileComparisonTest.cpp" />
+    <ClCompile Include="..\..\src\FilesTeardownAction.cpp" />
+    <ClCompile Include="..\..\src\HeapAllocationErrorsTest.cpp" />
+    <ClCompile Include="..\..\src\JUnitXMLWriter.cpp" />
+    <ClCompile Include="..\..\src\ProcessAction.cpp" />
+    <ClCompile Include="..\..\src\Test.cpp" />
+    <ClCompile Include="..\..\src\TestConfiguration.cpp" />
+    <ClCompile Include="..\..\src\TestEnvironment.cpp" />
+    <ClCompile Include="..\..\src\TestException.cpp" />
+    <ClCompile Include="..\..\src\TestHarness.cpp" />
+    <ClCompile Include="..\..\src\TestNumber.cpp" />
+    <ClCompile Include="..\..\src\TestMacrosFormatter.cpp" />
+    <ClCompile Include="..\..\src\TestProgressObserver.cpp" />
+    <ClCompile Include="..\..\src\TestResult.cpp" />
+    <ClCompile Include="..\..\src\TestSequence.cpp" />
+    <ClCompile Include="..\..\src\TestSetupAction.cpp" />
+    <ClCompile Include="..\..\src\TestTeardownAction.cpp" />
+    <ClCompile Include="..\..\src\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Ishiko\Tests\TestFrameworkCore.h" />
