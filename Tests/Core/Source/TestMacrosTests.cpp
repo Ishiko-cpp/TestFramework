@@ -5,6 +5,7 @@
 */
 
 #include "TestMacrosTests.h"
+#include "Ishiko/Tests/Core/TestMacros.h"
 #include "Ishiko/Tests/Core/TestProgressObserver.h"
 #include <Ishiko/Text.h>
 #include <sstream>
