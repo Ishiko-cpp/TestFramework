@@ -1,4 +1,4 @@
-import ../../../../include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+import ../../../../include/Ishiko/Tests/Core.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -7,14 +7,14 @@ vs2017.solutionfile = ../VC15/IshikoTestFrameworkCoreTests.sln;
 vs2015.solutionfile = ../VC14/IshikoTestFrameworkCoreTests.sln;
 vs2013.solutionfile = ../VC12/IshikoTestFrameworkCoreTests.sln;
 
-program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
+program IshikoTestFrameworkCoreTests : IshikoTestsCore
 {
     archs = x86 x86_64;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoTestFrameworkCore IshikoDiff IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
+        libs += IshikoTestsCore IshikoDiff IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
     }
 
     headers
