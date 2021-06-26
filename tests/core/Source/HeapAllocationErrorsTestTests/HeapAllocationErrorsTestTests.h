@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTS_TESTS_CORE_HEAPALLOCATIONERRORSTESTTESTS_HEAPALLOCATIONERRORSTESTTESTS_H_
 #define _ISHIKO_TESTS_TESTS_CORE_HEAPALLOCATIONERRORSTESTTESTS_HEAPALLOCATIONERRORSTESTTESTS_H_
 
-#include <Ishiko/Tests/core.h>
+#include <Ishiko/Tests/Core.h>
 
 class HeapAllocationErrorsTestTests : public Ishiko::Tests::TestSequence
 {

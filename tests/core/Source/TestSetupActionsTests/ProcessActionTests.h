@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTS_TESTS_CORE_TESTSETUPACTIONSTESTS_PROCESSACTIONTESTS_H_
 #define _ISHIKO_TESTS_TESTS_CORE_TESTSETUPACTIONSTESTS_PROCESSACTIONTESTS_H_
 
-#include <Ishiko/Tests/core.h>
+#include <Ishiko/Tests/Core.h>
 
 class ProcessActionTests : public Ishiko::Tests::TestSequence
 {

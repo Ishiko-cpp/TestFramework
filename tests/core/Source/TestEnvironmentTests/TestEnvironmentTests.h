@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTS_TESTS_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
 #define _ISHIKO_TESTS_TESTS_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
 
-#include <Ishiko/Tests/core.h>
+#include <Ishiko/Tests/Core.h>
 
 class TestEnvironmentTests : public Ishiko::Tests::TestSequence
 {
