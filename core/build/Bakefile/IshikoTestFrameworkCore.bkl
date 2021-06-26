@@ -1,4 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/diff/include/Ishiko/Diff.bkl;
 import $(ishikopath)/process/include/Ishiko/Process.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 
@@ -9,7 +10,7 @@ vs2017.solutionfile = ../VC15/IshikoTestFrameworkCore.sln;
 vs2015.solutionfile = ../VC14/IshikoTestFrameworkCore.sln;
 vs2013.solutionfile = ../VC12/IshikoTestFrameworkCore.sln;
 
-library IshikoTestFrameworkCore : IshikoProcess, Boost
+library IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, Boost
 {
     archs = x86 x86_64;
 
