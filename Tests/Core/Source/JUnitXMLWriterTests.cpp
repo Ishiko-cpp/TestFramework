@@ -1,11 +1,11 @@
 /*
     Copyright (c) 2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "JUnitXMLWriterTests.h"
-#include "Ishiko/TestFramework/Core/JUnitXMLWriter.h"
+#include "Ishiko/Tests/Core/JUnitXMLWriter.h"
 
 using namespace Ishiko::Tests;
 

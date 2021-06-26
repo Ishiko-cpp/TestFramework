@@ -1,13 +1,13 @@
 /*
     Copyright (c) 2007-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
 #define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/Tests/TestFrameworkCore.h>
 
 class TestEnvironmentTests : public Ishiko::Tests::TestSequence
 {
