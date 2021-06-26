@@ -1,7 +1,7 @@
 /*
     Copyright (c) 2007-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "JUnitXMLWriterTests.h"
@@ -17,7 +17,7 @@
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
 #include "TestHarnessTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/Tests/TestFrameworkCore.h>
 #include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
