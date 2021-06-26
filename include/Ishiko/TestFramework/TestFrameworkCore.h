@@ -10,6 +10,7 @@
 #include "Core/ConsoleApplicationTest.h"
 #include "Core/HeapAllocationErrorsTest.h"
 #include "Core/FileComparisonTest.h"
+#include "Core/JUnitXMLWriter.h"
 #include "Core/TestException.h"
 #include "Core/TestHarness.h"
 #include "Core/TestMacros.h"
