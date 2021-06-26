@@ -2,12 +2,12 @@ import ../../../../include/Ishiko/Tests/Core.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/IshikoTestFrameworkCoreTests.sln;
-vs2015.solutionfile = ../VC14/IshikoTestFrameworkCoreTests.sln;
-vs2013.solutionfile = ../VC12/IshikoTestFrameworkCoreTests.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/IshikoTestsCoreTests.sln;
+vs2015.solutionfile = ../vc14/IshikoTestsCoreTests.sln;
+vs2013.solutionfile = ../vc12/IshikoTestsCoreTests.sln;
 
-program IshikoTestFrameworkCoreTests : IshikoTestsCore
+program IshikoTestsCoreTests : IshikoTestsCore
 {
     archs = x86 x86_64;
 

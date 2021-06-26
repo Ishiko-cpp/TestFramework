@@ -173,7 +173,7 @@
     <ClCompile Include="..\..\src\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\TestFrameworkCore.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ConsoleApplicationTest.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\DebugHeap.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\DirectoriesTeardownAction.h" />
