@@ -7,6 +7,6 @@
 #ifndef _ISHIKO_TESTS_H_
 #define _ISHIKO_TESTS_H_
 
-#include "Tests/core.h"
+#include "Tests/Core.h"
 
 #endif
