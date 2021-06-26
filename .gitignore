@@ -12,6 +12,7 @@ Release/
 !/Lib/README.md
 Documentation/Doxygen/html
 Documentation/Doxygen/latex
-Tests/Core/TestData/Bin
-Tests/Core/TestOutput
+Tests/Core/TestData/Bin/*
+!Tests/Core/TestData/Bin/README.md
+Tests/Core/TestOutput/*
 Tests/SQLiteTests/TestOutput

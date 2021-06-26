@@ -9,7 +9,7 @@ setting ISHIKO_CPP_TESTFRAMEWORK_ROOT
     default = '$(ISHIKO_CPP)/tests';
 }
 
-template IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, Boost
+template IshikoTestsCore : IshikoDiff, IshikoProcess, Boost
 {
     includedirs += $(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include;
 
