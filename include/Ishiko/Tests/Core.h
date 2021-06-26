@@ -4,8 +4,8 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
-#define _ISHIKO_TESTFRAMEWORK_TESTFRAMEWORKCORE_H_
+#ifndef _ISHIKO_TESTS_CORE_H_
+#define _ISHIKO_TESTS_CORE_H_
 
 #include "Core/ConsoleApplicationTest.h"
 #include "Core/HeapAllocationErrorsTest.h"
@@ -21,9 +21,9 @@
 #include "Core/ProcessAction.h"
 
 #ifdef _DEBUG
-#pragma comment(lib, "IshikoTestFrameworkCore-d.lib")
+#pragma comment(lib, "IshikoTestsCore-d.lib")
 #else
-#pragma comment(lib, "IshikoTestFrameworkCore.lib")
+#pragma comment(lib, "IshikoTestsCore.lib")
 #endif
 
 #endif
