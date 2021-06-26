@@ -38,19 +38,19 @@ jobs:
           command: cd /projects/ishiko/cpp/tests/core/build/gnumake && make
       - run:
           name: Test build
-          command: cd /projects/ishiko/cpp/tests/tests/Core/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/tests/core/build/GNUmakefile && make
       - run:
           name: Build ExitCodeTestHelper
-          command: cd /projects/ishiko/cpp/tests/tests/Core/ExitCodeTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/tests/core/ExitCodeTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Build PermanentAppTestHelper
-          command: cd /projects/ishiko/cpp/tests/tests/Core/PermanentAppTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/tests/core/PermanentAppTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Build StandardOutputTestHelper
-          command: cd /projects/ishiko/cpp/tests/tests/Core/StandardOutputTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/tests/core/StandardOutputTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Build WriteFileTestHelper
-          command: cd /projects/ishiko/cpp/tests/tests/Core/WriteFileTestHelper/Makefiles/GNUmakefile && make
+          command: cd /projects/ishiko/cpp/tests/tests/core/WriteFileTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /projects/ishiko/cpp/tests/tests/Core/Makefiles/GNUmakefile && ./IshikoTestFrameworkCoreTests
+          command: cd /projects/ishiko/cpp/tests/tests/core/build/GNUmakefile && ./IshikoTestFrameworkCoreTests

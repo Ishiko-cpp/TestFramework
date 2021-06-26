@@ -91,67 +91,67 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\ConsoleApplicationTest.cpp">
+    <ClCompile Include="..\..\src\ConsoleApplicationTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\DebugHeap.cpp">
+    <ClCompile Include="..\..\src\DebugHeap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\DirectoriesTeardownAction.cpp">
+    <ClCompile Include="..\..\src\DirectoriesTeardownAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FileComparisonTest.cpp">
+    <ClCompile Include="..\..\src\FileComparisonTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FilesTeardownAction.cpp">
+    <ClCompile Include="..\..\src\FilesTeardownAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\HeapAllocationErrorsTest.cpp">
+    <ClCompile Include="..\..\src\HeapAllocationErrorsTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\JUnitXMLWriter.cpp">
+    <ClCompile Include="..\..\src\JUnitXMLWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProcessAction.cpp">
+    <ClCompile Include="..\..\src\ProcessAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Test.cpp">
+    <ClCompile Include="..\..\src\Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestConfiguration.cpp">
+    <ClCompile Include="..\..\src\TestConfiguration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestEnvironment.cpp">
+    <ClCompile Include="..\..\src\TestEnvironment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestException.cpp">
+    <ClCompile Include="..\..\src\TestException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestHarness.cpp">
+    <ClCompile Include="..\..\src\TestHarness.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestNumber.cpp">
+    <ClCompile Include="..\..\src\TestNumber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestMacrosFormatter.cpp">
+    <ClCompile Include="..\..\src\TestMacrosFormatter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestProgressObserver.cpp">
+    <ClCompile Include="..\..\src\TestProgressObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestResult.cpp">
+    <ClCompile Include="..\..\src\TestResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestSequence.cpp">
+    <ClCompile Include="..\..\src\TestSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestSetupAction.cpp">
+    <ClCompile Include="..\..\src\TestSetupAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestTeardownAction.cpp">
+    <ClCompile Include="..\..\src\TestTeardownAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TopTestSequence.cpp">
+    <ClCompile Include="..\..\src\TopTestSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
