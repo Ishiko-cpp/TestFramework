@@ -1,12 +1,16 @@
 /*
-    Copyright (c) 2019-2020 Xavier Leclercq
+    Copyright (c) 2019-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
 
 #include "TestMacrosTests.h"
+#include "Ishiko/TestFramework/Core/TestProgressObserver.h"
+#include <Ishiko/Text.h>
+#include <sstream>
 
 using namespace Ishiko::Tests;
+using namespace Ishiko::Text;
 
 TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "Test macros tests", environment)
@@ -25,6 +29,8 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_STR_EQ test 2", FailIfStrEqMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_STR_NEQ test 1", FailIfStrNeqMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_STR_NEQ test 2", FailIfStrNeqMacroTest2);
+    append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_NOT_CONTAIN test 1", FailIfNotContainMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHTF_FAIL_IF_NOT_CONTAIN test 2", FailIfNotContainMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT test 1", AbortMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF test 1", AbortIfMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF test 2", AbortIfMacroTest2);
@@ -103,9 +109,18 @@ void TestMacrosTests::FailIfMacroTest2(Test& test)
 
             ISHTF_PASS();
         });
+
+    std::stringstream progressOutput;
+    std::shared_ptr<TestProgressObserver> observer = std::make_shared<TestProgressObserver>(progressOutput);
+    myTest.observers().add(observer);
+
     myTest.run();
 
+    std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
+
     ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_ABORT_IF_NEQ(progressOutputLines.size(), 3);
+    ISHTF_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "ISHTF_FAIL_IF(true) failed with actual value (true)");
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -288,6 +303,44 @@ void TestMacrosTests::FailIfStrNeqMacroTest2(Test& test)
         [&canary](Test& test)
     {
         ISHTF_FAIL_IF_STR_NEQ("a", "b");
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NOT(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::FailIfNotContainMacroTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfNotContainMacroTest1",
+        [&canary](Test& test)
+    {
+        ISHTF_FAIL_IF_NOT_CONTAIN("abc", "b");
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NOT(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::FailIfNotContainMacroTest2(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfNotContainMacroTest2",
+        [&canary](Test& test)
+    {
+        ISHTF_FAIL_IF_NOT_CONTAIN("abc", "d");
 
         canary = true;
 
