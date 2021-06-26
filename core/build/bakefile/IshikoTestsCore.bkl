@@ -34,7 +34,7 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, Boost
 
     headers
     {
-        ../../../include/Ishiko/Tests/Core.h
+        ../../../include/Ishiko/Tests/core.h
         ../../../include/Ishiko/Tests/Core/ConsoleApplicationTest.h
         ../../../include/Ishiko/Tests/Core/DebugHeap.h
         ../../../include/Ishiko/Tests/Core/DirectoriesTeardownAction.h

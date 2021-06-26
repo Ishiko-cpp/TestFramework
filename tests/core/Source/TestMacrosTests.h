@@ -4,10 +4,10 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTMACROSTESTS_H_
-#define _ISHIKO_TEST_TESTFRAMEWORK_CORE_TESTMACROSTESTS_H_
+#ifndef _ISHIKO_TESTS_TESTS_CORE_TESTMACROSTESTS_H_
+#define _ISHIKO_TESTS_TESTS_CORE_TESTMACROSTESTS_H_
 
-#include <Ishiko/Tests/TestFrameworkCore.h>
+#include <Ishiko/Tests/core.h>
 
 class TestMacrosTests : public Ishiko::Tests::TestSequence
 {
