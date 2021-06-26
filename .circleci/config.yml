@@ -53,4 +53,4 @@ jobs:
           command: cd /projects/ishiko/cpp/tests/tests/core/WriteFileTestHelper/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /projects/ishiko/cpp/tests/tests/core/Makefiles/GNUmakefile && ./IshikoTestFrameworkCoreTests
+          command: cd /projects/ishiko/cpp/tests/tests/core/build/GNUmakefile && ./IshikoTestFrameworkCoreTests
