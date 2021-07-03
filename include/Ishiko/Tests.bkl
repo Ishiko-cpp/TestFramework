@@ -1,0 +1,25 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/diff/include/Ishiko/Diff.bkl;
+import $(ishikopath)/process/include/Ishiko/Process.bkl;
+import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+
+setting ISHIKO_CPP_TESTS_ROOT
+{
+    help = "Path to the Ishiko Tests installation";
+    default = '$(ISHIKO_CPP)/tests';
+}
+
+template IshikoTests : IshikoDiff, IshikoProcess, Boost
+{
+    includedirs += $(ISHIKO_CPP_TESTS_ROOT)/include;
+
+    if ($(toolset) == gnu)
+    {
+        libdirs += $(ISHIKO_CPP_TESTS_ROOT)/lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(ISHIKO_CPP_TESTS_ROOT)/lib/$(arch);
+    }
+}

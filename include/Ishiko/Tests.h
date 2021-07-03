@@ -9,4 +9,10 @@
 
 #include "Tests/Core.h"
 
+#ifdef _DEBUG
+#pragma comment(lib, "IshikoTests-d.lib")
+#else
+#pragma comment(lib, "IshikoTests.lib")
+#endif
+
 #endif
