@@ -34,8 +34,11 @@ jobs:
       - checkout:
           path: /projects/ishiko/cpp/tests
       - run:
-          name: Build
+          name: Build Tests/Core
           command: cd /projects/ishiko/cpp/tests/core/build/gnumake && make
+      - run:
+          name: Build Tests
+          command: cd /projects/ishiko/cpp/tests/build/gnumake && make
       - run:
           name: Test build
           command: cd /projects/ishiko/cpp/tests/tests/core/build/gnumake && make
