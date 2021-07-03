@@ -14,7 +14,7 @@ library IshikoTests : IshikoDiff, IshikoProcess, Boost
 {
     archs = x86 x86_64;
 
-    includedirs += ../../../include/Ishiko/Tests;
+    includedirs += ../../include/Ishiko/Tests;
     
     if ($(toolset) == gnu)
     {
@@ -34,54 +34,55 @@ library IshikoTests : IshikoDiff, IshikoProcess, Boost
 
     headers
     {
-        ../../../include/Ishiko/Tests/Core.h
-        ../../../include/Ishiko/Tests/Core/ConsoleApplicationTest.h
-        ../../../include/Ishiko/Tests/Core/DebugHeap.h
-        ../../../include/Ishiko/Tests/Core/DirectoriesTeardownAction.h
-        ../../../include/Ishiko/Tests/Core/FileComparisonTest.h
-        ../../../include/Ishiko/Tests/Core/FilesTeardownAction.h
-        ../../../include/Ishiko/Tests/Core/HeapAllocationErrorsTest.h
-        ../../../include/Ishiko/Tests/Core/JUnitXMLWriter.h
-        ../../../include/Ishiko/Tests/Core/ProcessAction.h
-        ../../../include/Ishiko/Tests/Core/Test.h
-        ../../../include/Ishiko/Tests/Core/TestApplicationReturnCodes.h
-        ../../../include/Ishiko/Tests/Core/TestConfiguration.h
-        ../../../include/Ishiko/Tests/Core/TestEnvironment.h
-        ../../../include/Ishiko/Tests/Core/TestException.h
-        ../../../include/Ishiko/Tests/Core/TestHarness.h
-        ../../../include/Ishiko/Tests/Core/TestMacros.h
-        ../../../include/Ishiko/Tests/Core/TestMacrosFormatter.h
-        ../../../include/Ishiko/Tests/Core/TestNumber.h
-        ../../../include/Ishiko/Tests/Core/TestProgressObserver.h
-        ../../../include/Ishiko/Tests/Core/TestResult.h
-        ../../../include/Ishiko/Tests/Core/TestSequence.h
-        ../../../include/Ishiko/Tests/Core/TestSetupAction.h
-        ../../../include/Ishiko/Tests/Core/TestTeardownAction.h
-        ../../../include/Ishiko/Tests/Core/TopTestSequence.h
+        ../../include/Ishiko/Tests.h
+        ../../include/Ishiko/Tests/Core.h
+        ../../include/Ishiko/Tests/Core/ConsoleApplicationTest.h
+        ../../include/Ishiko/Tests/Core/DebugHeap.h
+        ../../include/Ishiko/Tests/Core/DirectoriesTeardownAction.h
+        ../../include/Ishiko/Tests/Core/FileComparisonTest.h
+        ../../include/Ishiko/Tests/Core/FilesTeardownAction.h
+        ../../include/Ishiko/Tests/Core/HeapAllocationErrorsTest.h
+        ../../include/Ishiko/Tests/Core/JUnitXMLWriter.h
+        ../../include/Ishiko/Tests/Core/ProcessAction.h
+        ../../include/Ishiko/Tests/Core/Test.h
+        ../../include/Ishiko/Tests/Core/TestApplicationReturnCodes.h
+        ../../include/Ishiko/Tests/Core/TestConfiguration.h
+        ../../include/Ishiko/Tests/Core/TestEnvironment.h
+        ../../include/Ishiko/Tests/Core/TestException.h
+        ../../include/Ishiko/Tests/Core/TestHarness.h
+        ../../include/Ishiko/Tests/Core/TestMacros.h
+        ../../include/Ishiko/Tests/Core/TestMacrosFormatter.h
+        ../../include/Ishiko/Tests/Core/TestNumber.h
+        ../../include/Ishiko/Tests/Core/TestProgressObserver.h
+        ../../include/Ishiko/Tests/Core/TestResult.h
+        ../../include/Ishiko/Tests/Core/TestSequence.h
+        ../../include/Ishiko/Tests/Core/TestSetupAction.h
+        ../../include/Ishiko/Tests/Core/TestTeardownAction.h
+        ../../include/Ishiko/Tests/Core/TopTestSequence.h
     }
 
     sources
     {
-        ../../../core/src/ConsoleApplicationTest.cpp
-        ../../../core/src/DebugHeap.cpp
-        ../../../core/src/DirectoriesTeardownAction.cpp
-        ../../../core/src/FileComparisonTest.cpp
-        ../../../core/src/FilesTeardownAction.cpp
-        ../../../core/src/HeapAllocationErrorsTest.cpp
-        ../../../core/src/JUnitXMLWriter.cpp
-        ../../../core/src/ProcessAction.cpp
-        ../../../core/src/Test.cpp
-        ../../../core/src/TestConfiguration.cpp
-        ../../../core/src/TestEnvironment.cpp
-        ../../../core/src/TestException.cpp
-        ../../../core/src/TestHarness.cpp
-        ../../../core/src/TestNumber.cpp
-        ../../../core/src/TestMacrosFormatter.cpp
-        ../../../core/src/TestProgressObserver.cpp
-        ../../../core/src/TestResult.cpp
-        ../../../core/src/TestSequence.cpp
-        ../../../core/src/TestSetupAction.cpp
-        ../../../core/src/TestTeardownAction.cpp
-        ../../../core/src/TopTestSequence.cpp
+        ../../core/src/ConsoleApplicationTest.cpp
+        ../../core/src/DebugHeap.cpp
+        ../../core/src/DirectoriesTeardownAction.cpp
+        ../../core/src/FileComparisonTest.cpp
+        ../../core/src/FilesTeardownAction.cpp
+        ../../core/src/HeapAllocationErrorsTest.cpp
+        ../../core/src/JUnitXMLWriter.cpp
+        ../../core/src/ProcessAction.cpp
+        ../../core/src/Test.cpp
+        ../../core/src/TestConfiguration.cpp
+        ../../core/src/TestEnvironment.cpp
+        ../../core/src/TestException.cpp
+        ../../core/src/TestHarness.cpp
+        ../../core/src/TestNumber.cpp
+        ../../core/src/TestMacrosFormatter.cpp
+        ../../core/src/TestProgressObserver.cpp
+        ../../core/src/TestResult.cpp
+        ../../core/src/TestSequence.cpp
+        ../../core/src/TestSetupAction.cpp
+        ../../core/src/TestTeardownAction.cpp
+        ../../core/src/TopTestSequence.cpp
     }
 }
