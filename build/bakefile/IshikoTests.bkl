@@ -14,17 +14,17 @@ library IshikoTests : IshikoDiff, IshikoProcess, Boost
 {
     archs = x86 x86_64;
 
-    includedirs += ../../include/Ishiko/Tests;
+    includedirs += ../../include/Ishiko/Tests/Core;
     
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        outputdir = ../../../lib;
+        outputdir = ../../lib;
     }
 
     if ($(toolset) != gnu)
     {
-        outputdir = ../../../lib/$(arch);
+        outputdir = ../../lib/$(arch);
     }
 
     if ($(config) == Debug)
