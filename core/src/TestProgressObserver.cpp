@@ -93,23 +93,23 @@ std::string TestProgressObserver::formatResult(const TestResult& result)
     std::string formattedResult;
     switch (result)
     {
-    case TestResult::eUnknown:
+    case TestResult::unknown:
         formattedResult = "UNKNOWN!!!";
         break;
 
-    case TestResult::ePassed:
+    case TestResult::passed:
         formattedResult = "passed";
         break;
 
-    case TestResult::ePassedButMemoryLeaks:
+    case TestResult::passedButMemoryLeaks:
         formattedResult = "MEMORY LEAK DETECTED";
         break;
 
-    case TestResult::eException:
+    case TestResult::exception:
         formattedResult = "EXCEPTION!!!";
         break;
 
-    case TestResult::eFailed:
+    case TestResult::failed:
         formattedResult = "FAILED!!!";
         break;
 

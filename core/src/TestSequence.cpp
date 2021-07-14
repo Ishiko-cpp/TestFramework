@@ -105,7 +105,7 @@ void TestSequence::traverse(std::function<void(const Test& test)> function) cons
 void TestSequence::doRun()
 {
     // By default the outcome is unknown
-    TestResult result = TestResult::eUnknown;
+    TestResult result = TestResult::unknown;
 
     for (size_t i = 0; i < m_tests.size(); ++i)
     {
@@ -120,17 +120,17 @@ void TestSequence::doRun()
             // The first test determines the initial value of the result
             result = newResult;
         }
-        else if (result == TestResult::eUnknown)
+        else if (result == TestResult::unknown)
         {
             // If the current sequence outcome is unknown it can only get worse and be set
             // to exception or failed (if the outcome we are adding is exception or 
             // failed)
-            if ((newResult == TestResult::eFailed) || (newResult == TestResult::eException))
+            if ((newResult == TestResult::failed) || (newResult == TestResult::exception))
             {
                 result = newResult;
             }
         }
-        else if (result == TestResult::ePassed)
+        else if (result == TestResult::passed)
         {
             // If the current sequence outcome is passed it stays at this state only if the
             // result we are adding is passed, else it will be 'unknown', 
@@ -138,20 +138,20 @@ void TestSequence::doRun()
             // depending on the outcome of the result we are adding.
             result = newResult;
         }
-        else if (result == TestResult::ePassedButMemoryLeaks)
+        else if (result == TestResult::passedButMemoryLeaks)
         {
             // It can only stay at this state if the test is passed or ePassedButMemoryLeaks.
-            if ((newResult == TestResult::eFailed) ||
-                (newResult == TestResult::eException) ||
-                (newResult == TestResult::eUnknown))
+            if ((newResult == TestResult::failed) ||
+                (newResult == TestResult::exception) ||
+                (newResult == TestResult::unknown))
             {
                 result = newResult;
             }
         }
-        else if (result == TestResult::eException)
+        else if (result == TestResult::exception)
         {
             // It can only get worse. This happens only if the outcome is 'failed'
-            if (newResult == TestResult::eFailed)
+            if (newResult == TestResult::failed)
             {
                 result = newResult;
             }
