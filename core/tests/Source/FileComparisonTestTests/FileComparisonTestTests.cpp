@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2019 Xavier Leclercq
+    Copyright (c) 2007-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
 */
@@ -42,7 +42,7 @@ void FileComparisonTestTests::RunSuccessTest1(Test& test)
     
     comparisonTest.run();
     
-    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -61,6 +61,6 @@ void FileComparisonTestTests::RunFailureTest1(Test& test)
 
     comparisonTest.run();
     
-    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::failed);
     ISHTF_PASS();
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2019 Xavier Leclercq
+    Copyright (c) 2007-2021 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -48,7 +48,7 @@ void TestSequenceTests::AppendTest1(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Test> simpleTest = std::make_shared<Test>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> simpleTest = std::make_shared<Test>(TestNumber(1), "Test", TestResult::passed);
 
     // Append test to sequence
     seq.append(simpleTest);
@@ -66,7 +66,7 @@ void TestSequenceTests::AppendTest2(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Create and append a test to the sequence in one go using the templated append function
-    seq.append<Test>("Test", TestResult::ePassed);
+    seq.append<Test>("Test", TestResult::passed);
 
     // Check the test sequence
     ISHTF_FAIL_IF_NEQ(seq.size(), 1);
@@ -79,7 +79,7 @@ void TestSequenceTests::GetResultTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::eUnknown);
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::unknown);
     ISHTF_PASS();
 }
 
@@ -89,7 +89,7 @@ void TestSequenceTests::GetResultTest2(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating test
-    std::shared_ptr<Test> simpleTest = std::make_shared<Test>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> simpleTest = std::make_shared<Test>(TestNumber(1), "Test", TestResult::passed);
 
     // Append test to sequence
     seq.append(simpleTest);
@@ -97,7 +97,7 @@ void TestSequenceTests::GetResultTest2(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -107,16 +107,16 @@ void TestSequenceTests::GetResultTest3(Test& test)
     TestSequence seq(TestNumber(1), "Sequence");
 
     // Creating first test (passes)
-    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::ePassed);
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::passed);
     seq.append(test1);
 
     // Creating second test (fails)
-    std::shared_ptr<Test> test2 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::eFailed);
+    std::shared_ptr<Test> test2 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::failed);
     seq.append(test2);
 
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::failed);
     ISHTF_PASS();
 }

@@ -56,7 +56,7 @@ void TestMacrosTests::PassMacroTest1(Test& test)
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -74,7 +74,7 @@ void TestMacrosTests::FailMacroTest1(Test& test)
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -93,7 +93,7 @@ void TestMacrosTests::FailIfMacroTest1(Test& test)
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -119,7 +119,7 @@ void TestMacrosTests::FailIfMacroTest2(Test& test)
 
     std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_ABORT_IF_NEQ(progressOutputLines.size(), 3);
     ISHTF_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "ISHTF_FAIL_IF(true) failed with actual value (true)");
     ISHTF_FAIL_IF_NOT(canary);
@@ -140,7 +140,7 @@ void TestMacrosTests::FailIfNotMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -159,7 +159,7 @@ void TestMacrosTests::FailIfNotMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -178,7 +178,7 @@ void TestMacrosTests::FailIfEqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -197,7 +197,7 @@ void TestMacrosTests::FailIfEqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -216,7 +216,7 @@ void TestMacrosTests::FailIfNeqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -235,7 +235,7 @@ void TestMacrosTests::FailIfNeqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -254,7 +254,7 @@ void TestMacrosTests::FailIfStrEqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -273,7 +273,7 @@ void TestMacrosTests::FailIfStrEqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -292,7 +292,7 @@ void TestMacrosTests::FailIfStrNeqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -311,7 +311,7 @@ void TestMacrosTests::FailIfStrNeqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -330,7 +330,7 @@ void TestMacrosTests::FailIfNotContainMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -349,7 +349,7 @@ void TestMacrosTests::FailIfNotContainMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -368,7 +368,7 @@ void TestMacrosTests::AbortMacroTest1(Test& test)
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
@@ -387,7 +387,7 @@ void TestMacrosTests::AbortIfMacroTest1(Test& test)
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -406,7 +406,7 @@ void TestMacrosTests::AbortIfMacroTest2(Test& test)
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
@@ -425,7 +425,7 @@ void TestMacrosTests::AbortIfNotMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -444,7 +444,7 @@ void TestMacrosTests::AbortIfNotMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
@@ -463,7 +463,7 @@ void TestMacrosTests::AbortIfEqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -482,7 +482,7 @@ void TestMacrosTests::AbortIfEqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
@@ -501,7 +501,7 @@ void TestMacrosTests::AbortIfNeqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -520,7 +520,7 @@ void TestMacrosTests::AbortIfNeqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
@@ -539,7 +539,7 @@ void TestMacrosTests::AbortIfStrEqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -558,7 +558,7 @@ void TestMacrosTests::AbortIfStrEqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
@@ -577,7 +577,7 @@ void TestMacrosTests::AbortIfStrNeqMacroTest1(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_FAIL_IF_NOT(canary);
     ISHTF_PASS();
 }
@@ -596,7 +596,7 @@ void TestMacrosTests::AbortIfStrNeqMacroTest2(Test& test)
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
