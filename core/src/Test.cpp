@@ -263,6 +263,15 @@ void Test::pass()
     }
 }
 
+void Test::skip()
+{
+    if (m_result == TestResult::unknown)
+    {
+        m_result = TestResult::skipped;
+    }
+    throw AbortException();
+}
+
 const TestEnvironment& Test::environment() const
 {
     return m_environment;

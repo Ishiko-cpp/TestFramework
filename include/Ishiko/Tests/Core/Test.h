@@ -88,6 +88,7 @@ public:
     void fail(const std::string& message, const char* file, int line);
     void failIf(bool condition, const char* file, int line);
     void pass();
+    void skip();
 
     const TestEnvironment& environment() const;
     TestEnvironment& environment();

@@ -28,6 +28,7 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     append<HeapAllocationErrorsTest>("run test 4", RunTest4);
     append<HeapAllocationErrorsTest>("run test 5", RunTest5);
     append<HeapAllocationErrorsTest>("abort test 1", AbortTest1);
+    append<HeapAllocationErrorsTest>("skip test 1", SkipTest1);
 }
 
 void TestTests::ConstructorTest1(Test& test)
@@ -211,6 +212,22 @@ void TestTests::AbortTest1(Test& test)
     myTest.run();
 
     ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHTF_FAIL_IF(canary);
+    ISHTF_PASS();
+}
+
+void TestTests::SkipTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(1), "TestSkipTest1",
+        [&canary](Test& test)
+    {
+        test.skip();
+        canary = true;
+    });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::skipped);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }

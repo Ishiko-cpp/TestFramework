@@ -52,4 +52,6 @@
 
 #define ISHTF_PASS() test.pass()
 
+#define ISHTF_SKIP() test.skip()
+
 #endif

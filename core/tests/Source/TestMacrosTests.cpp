@@ -45,6 +45,7 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_STR_EQ test 2", AbortIfStrEqMacroTest2);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_STR_NEQ test 1", AbortIfStrNeqMacroTest1);
     append<HeapAllocationErrorsTest>("ISHTF_ABORT_IF_STR_NEQ test 2", AbortIfStrNeqMacroTest2);
+    append<HeapAllocationErrorsTest>("ISHTF_SKIP test 1", SkipMacroTest1);
 }
 
 void TestMacrosTests::PassMacroTest1(Test& test)
@@ -597,6 +598,25 @@ void TestMacrosTests::AbortIfStrNeqMacroTest2(Test& test)
     myTest.run();
 
     ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHTF_FAIL_IF(canary);
+    ISHTF_PASS();
+}
+
+void TestMacrosTests::SkipMacroTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "TestMacrosTests_SkipMacroTest1",
+        [&canary](Test& test)
+    {
+        ISHTF_SKIP();
+
+        canary = true;
+
+        ISHTF_PASS();
+    });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::skipped);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }

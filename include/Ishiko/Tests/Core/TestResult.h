@@ -20,7 +20,8 @@ enum class TestResult
     passed,
     passedButMemoryLeaks,
     exception,
-    failed
+    failed,
+    skipped
 };
 
 std::string ToString(TestResult result);
