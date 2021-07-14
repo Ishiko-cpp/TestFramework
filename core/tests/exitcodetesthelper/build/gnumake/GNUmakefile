@@ -44,7 +44,7 @@ CXX := c++
 builddir = .
 
 ifneq ($(builddir),.)
-_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../GNUmakefile/
+_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../gnumake/
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
@@ -53,8 +53,8 @@ all: ../../../TestData/Bin/ExitCodeTestHelper
 ../../../TestData/Bin/ExitCodeTestHelper: $(_builddir)ExitCodeTestHelper_main.o
 	$(CXX) -o $@ $(LDFLAGS) $(_builddir)ExitCodeTestHelper_main.o -pthread
 
-$(_builddir)ExitCodeTestHelper_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread ../../Source/main.cpp
+$(_builddir)ExitCodeTestHelper_main.o: ../../src/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread ../../src/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o
