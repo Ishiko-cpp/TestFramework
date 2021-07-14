@@ -1,9 +1,9 @@
 toolsets = gnu vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/ExitCodeTestHelper.sln;
-vs2015.solutionfile = ../VC14/ExitCodeTestHelper.sln;
-vs2013.solutionfile = ../VC12/ExitCodeTestHelper.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/ExitCodeTestHelper.sln;
+vs2015.solutionfile = ../vc14/ExitCodeTestHelper.sln;
+vs2013.solutionfile = ../vc12/ExitCodeTestHelper.sln;
 
 program ExitCodeTestHelper
 {
@@ -13,6 +13,6 @@ program ExitCodeTestHelper
 
     sources
     {
-        ../../Source/main.cpp
+        ../../src/main.cpp
     }
 }
