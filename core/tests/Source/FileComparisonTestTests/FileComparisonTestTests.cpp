@@ -1,7 +1,7 @@
 /*
-    Copyright (c) 2007-2019 Xavier Leclercq
+    Copyright (c) 2007-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "FileComparisonTestTests.h"
@@ -30,8 +30,8 @@ void FileComparisonTestTests::CreationTest1(Test& test)
 
 void FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
 {
-    test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
-    test.setReferenceFilePath("../../TestData/ComparisonTestFiles/Hello2.txt");
+    test.setOutputFilePath("../../data/ComparisonTestFiles/Hello.txt");
+    test.setReferenceFilePath("../../data/ComparisonTestFiles/Hello2.txt");
     ISHTF_PASS();
 }
 
@@ -42,14 +42,14 @@ void FileComparisonTestTests::RunSuccessTest1(Test& test)
     
     comparisonTest.run();
     
-    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
 void FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
 {
-    test.setOutputFilePath("../../TestData/ComparisonTestFiles/Hello.txt");
-    test.setReferenceFilePath("../../TestData/ComparisonTestFiles/NotHello.txt");
+    test.setOutputFilePath("../../data/ComparisonTestFiles/Hello.txt");
+    test.setReferenceFilePath("../../data/ComparisonTestFiles/NotHello.txt");
 
     ISHTF_PASS();
 }
@@ -61,6 +61,6 @@ void FileComparisonTestTests::RunFailureTest1(Test& test)
 
     comparisonTest.run();
     
-    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::failed);
     ISHTF_PASS();
 }

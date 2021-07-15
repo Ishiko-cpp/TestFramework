@@ -28,21 +28,22 @@ TestTests::TestTests(const TestNumber& number, const TestEnvironment& environmen
     append<HeapAllocationErrorsTest>("run test 4", RunTest4);
     append<HeapAllocationErrorsTest>("run test 5", RunTest5);
     append<HeapAllocationErrorsTest>("abort test 1", AbortTest1);
+    append<HeapAllocationErrorsTest>("skip test 1", SkipTest1);
 }
 
 void TestTests::ConstructorTest1(Test& test)
 {
     Test myTest(TestNumber(1), "TestConstructorTest1");
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eUnknown);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
     ISHTF_PASS();
 }
 
 void TestTests::ConstructorTest2(Test& test)
 {
-    Test myTest(TestNumber(1), "TestConstructorTest2", TestResult::ePassed);
+    Test myTest(TestNumber(1), "TestConstructorTest2", TestResult::passed);
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -55,7 +56,7 @@ void TestTests::ConstructorTest3(Test& test)
 {
     Test myTest(TestNumber(), "TestConstructorTest3", TestConstructorTest3Helper);
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eUnknown);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
     ISHTF_PASS();
 }
 
@@ -63,7 +64,7 @@ void TestTests::ConstructorTest4(Test& test)
 {
     Test myTest(TestNumber(), "TestConstructorTest4", [](Test& test) {});
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eUnknown);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
     ISHTF_PASS();
 }
 
@@ -72,7 +73,7 @@ void TestTests::ConstructorTest5(Test& test)
     int data = 5;
     Test myTest(TestNumber(), "TestConstructorTest5", [data](Test& test) {});
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eUnknown);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
     ISHTF_PASS();
 }
 
@@ -81,7 +82,7 @@ void TestTests::PassTest1(Test& test)
     Test myTest(TestNumber(1), "PassTest1");
     myTest.pass();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -90,7 +91,7 @@ void TestTests::FailTest1(Test& test)
     Test myTest(TestNumber(1), "FailTest1");
     myTest.fail(__FILE__, __LINE__);
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_PASS();
 }
 
@@ -100,7 +101,7 @@ void TestTests::FailTest2(Test& test)
     myTest.fail(__FILE__, __LINE__);
     myTest.pass();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_PASS();
 }
 
@@ -110,7 +111,7 @@ void TestTests::FailIfTest1(Test& test)
     myTest.failIf(true, __FILE__, __LINE__);
     myTest.pass();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_PASS();
 }
 
@@ -120,7 +121,7 @@ void TestTests::FailIfTest2(Test& test)
     myTest.failIf(false, __FILE__, __LINE__);
     myTest.pass();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -129,7 +130,7 @@ void TestTests::FailIfTest3(Test& test)
     Test myTest(TestNumber(1), "FailIfTest3");
     myTest.failIf(false, __FILE__, __LINE__);
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eUnknown);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
     ISHTF_PASS();
 }
 
@@ -138,16 +139,16 @@ void TestTests::RunTest1(Test& test)
     Test myTest(TestNumber(1), "TestRunTest1");
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_PASS();
 }
 
 void TestTests::RunTest2(Test& test)
 {
-    Test myTest(TestNumber(1), "TestRunTest2", TestResult::ePassed);
+    Test myTest(TestNumber(1), "TestRunTest2", TestResult::passed);
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -164,7 +165,7 @@ void TestTests::RunTest3(Test& test)
     Test myTest(TestNumber(1), "TestRunTest3", TestRunTest3Helper);
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::ePassed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
     ISHTF_PASS();
 }
 
@@ -181,7 +182,7 @@ void TestTests::RunTest4(Test& test)
     Test myTest(TestNumber(1), "TestRunTest4", TestRunTest4Helper);
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHTF_PASS();
 }
 
@@ -195,7 +196,7 @@ void TestTests::RunTest5(Test& test)
     Test myTest(TestNumber(1), "TestRunTest5", TestRunTest5Helper);
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eException);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::exception);
     ISHTF_PASS();
 }
 
@@ -210,7 +211,23 @@ void TestTests::AbortTest1(Test& test)
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::eFailed);
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHTF_FAIL_IF(canary);
+    ISHTF_PASS();
+}
+
+void TestTests::SkipTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(1), "TestSkipTest1",
+        [&canary](Test& test)
+    {
+        test.skip();
+        canary = true;
+    });
+    myTest.run();
+
+    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::skipped);
     ISHTF_FAIL_IF(canary);
     ISHTF_PASS();
 }
