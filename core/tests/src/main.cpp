@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     theTestHarness.environment().setTestDataDirectory("../../data");
     theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
     create_directories("../../TestOutput");
-    theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
+    theTestHarness.environment().setReferenceDataDirectory("../../reference");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<TestEnvironmentTests>();
