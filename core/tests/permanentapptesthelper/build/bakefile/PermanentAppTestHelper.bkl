@@ -1,9 +1,9 @@
 toolsets = gnu vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/PermanentAppTestHelper.sln;
-vs2015.solutionfile = ../VC14/PermanentAppTestHelper.sln;
-vs2013.solutionfile = ../VC12/PermanentAppTestHelper.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/PermanentAppTestHelper.sln;
+vs2015.solutionfile = ../vc14/PermanentAppTestHelper.sln;
+vs2013.solutionfile = ../vc12/PermanentAppTestHelper.sln;
 
 program PermanentAppTestHelper
 {
