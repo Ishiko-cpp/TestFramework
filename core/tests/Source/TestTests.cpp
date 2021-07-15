@@ -1,7 +1,7 @@
 /*
     Copyright (c) 2007-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "TestTests.h"
