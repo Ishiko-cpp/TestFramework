@@ -17,105 +17,105 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\JUnitXMLWriterTests.h">
+    <ClInclude Include="..\..\src\JUnitXMLWriterTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestHarnessTests.h">
+    <ClInclude Include="..\..\src\TestHarnessTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestNumberTests.h">
+    <ClInclude Include="..\..\src\TestNumberTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestTests.h">
+    <ClInclude Include="..\..\src\TestTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestMacrosTests.h">
+    <ClInclude Include="..\..\src\TestMacrosTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestMacrosFormatterTests.h">
+    <ClInclude Include="..\..\src\TestMacrosFormatterTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestSequenceTests.h">
+    <ClInclude Include="..\..\src\TestSequenceTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h">
+    <ClInclude Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.h">
+    <ClInclude Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h">
+    <ClInclude Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.h">
+    <ClInclude Include="..\..\src\TestEnvironmentTests\TestEnvironmentTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestSetupActionsTests\ProcessActionTests.h">
+    <ClInclude Include="..\..\src\TestSetupActionsTests\ProcessActionTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestSetupActionsTests\TestSetupActionsTests.h">
+    <ClInclude Include="..\..\src\TestSetupActionsTests\TestSetupActionsTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestTeardownActionsTests\TestTeardownActionsTests.h">
+    <ClInclude Include="..\..\src\TestTeardownActionsTests\TestTeardownActionsTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestTeardownActionsTests\DirectoriesTeardownActionTests.h">
+    <ClInclude Include="..\..\src\TestTeardownActionsTests\DirectoriesTeardownActionTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.h">
+    <ClInclude Include="..\..\src\TestTeardownActionsTests\FilesTeardownActionTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\main.cpp">
+    <ClCompile Include="..\..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\JUnitXMLWriterTests.cpp">
+    <ClCompile Include="..\..\src\JUnitXMLWriterTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestHarnessTests.cpp">
+    <ClCompile Include="..\..\src\TestHarnessTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestNumberTests.cpp">
+    <ClCompile Include="..\..\src\TestNumberTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestTests.cpp">
+    <ClCompile Include="..\..\src\TestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestMacrosTests.cpp">
+    <ClCompile Include="..\..\src\TestMacrosTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestMacrosFormatterTests.cpp">
+    <ClCompile Include="..\..\src\TestMacrosFormatterTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestSequenceTests.cpp">
+    <ClCompile Include="..\..\src\TestSequenceTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp">
+    <ClCompile Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.cpp">
+    <ClCompile Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp">
+    <ClCompile Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.cpp">
+    <ClCompile Include="..\..\src\TestEnvironmentTests\TestEnvironmentTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestSetupActionsTests\ProcessActionTests.cpp">
+    <ClCompile Include="..\..\src\TestSetupActionsTests\ProcessActionTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestSetupActionsTests\TestSetupActionsTests.cpp">
+    <ClCompile Include="..\..\src\TestSetupActionsTests\TestSetupActionsTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestTeardownActionsTests\TestTeardownActionsTests.cpp">
+    <ClCompile Include="..\..\src\TestTeardownActionsTests\TestTeardownActionsTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestTeardownActionsTests\DirectoriesTeardownActionTests.cpp">
+    <ClCompile Include="..\..\src\TestTeardownActionsTests\DirectoriesTeardownActionTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.cpp">
+    <ClCompile Include="..\..\src\TestTeardownActionsTests\FilesTeardownActionTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

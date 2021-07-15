@@ -152,41 +152,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\main.cpp" />
-    <ClCompile Include="..\..\Source\JUnitXMLWriterTests.cpp" />
-    <ClCompile Include="..\..\Source\TestHarnessTests.cpp" />
-    <ClCompile Include="..\..\Source\TestNumberTests.cpp" />
-    <ClCompile Include="..\..\Source\TestTests.cpp" />
-    <ClCompile Include="..\..\Source\TestMacrosTests.cpp" />
-    <ClCompile Include="..\..\Source\TestMacrosFormatterTests.cpp" />
-    <ClCompile Include="..\..\Source\TestSequenceTests.cpp" />
-    <ClCompile Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp" />
-    <ClCompile Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.cpp" />
-    <ClCompile Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp" />
-    <ClCompile Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.cpp" />
-    <ClCompile Include="..\..\Source\TestSetupActionsTests\ProcessActionTests.cpp" />
-    <ClCompile Include="..\..\Source\TestSetupActionsTests\TestSetupActionsTests.cpp" />
-    <ClCompile Include="..\..\Source\TestTeardownActionsTests\TestTeardownActionsTests.cpp" />
-    <ClCompile Include="..\..\Source\TestTeardownActionsTests\DirectoriesTeardownActionTests.cpp" />
-    <ClCompile Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.cpp" />
+    <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\JUnitXMLWriterTests.cpp" />
+    <ClCompile Include="..\..\src\TestHarnessTests.cpp" />
+    <ClCompile Include="..\..\src\TestNumberTests.cpp" />
+    <ClCompile Include="..\..\src\TestTests.cpp" />
+    <ClCompile Include="..\..\src\TestMacrosTests.cpp" />
+    <ClCompile Include="..\..\src\TestMacrosFormatterTests.cpp" />
+    <ClCompile Include="..\..\src\TestSequenceTests.cpp" />
+    <ClCompile Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp" />
+    <ClCompile Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.cpp" />
+    <ClCompile Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp" />
+    <ClCompile Include="..\..\src\TestEnvironmentTests\TestEnvironmentTests.cpp" />
+    <ClCompile Include="..\..\src\TestSetupActionsTests\ProcessActionTests.cpp" />
+    <ClCompile Include="..\..\src\TestSetupActionsTests\TestSetupActionsTests.cpp" />
+    <ClCompile Include="..\..\src\TestTeardownActionsTests\TestTeardownActionsTests.cpp" />
+    <ClCompile Include="..\..\src\TestTeardownActionsTests\DirectoriesTeardownActionTests.cpp" />
+    <ClCompile Include="..\..\src\TestTeardownActionsTests\FilesTeardownActionTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\JUnitXMLWriterTests.h" />
-    <ClInclude Include="..\..\Source\TestHarnessTests.h" />
-    <ClInclude Include="..\..\Source\TestNumberTests.h" />
-    <ClInclude Include="..\..\Source\TestTests.h" />
-    <ClInclude Include="..\..\Source\TestMacrosTests.h" />
-    <ClInclude Include="..\..\Source\TestMacrosFormatterTests.h" />
-    <ClInclude Include="..\..\Source\TestSequenceTests.h" />
-    <ClInclude Include="..\..\Source\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
-    <ClInclude Include="..\..\Source\FileComparisonTestTests\FileComparisonTestTests.h" />
-    <ClInclude Include="..\..\Source\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h" />
-    <ClInclude Include="..\..\Source\TestEnvironmentTests\TestEnvironmentTests.h" />
-    <ClInclude Include="..\..\Source\TestSetupActionsTests\ProcessActionTests.h" />
-    <ClInclude Include="..\..\Source\TestSetupActionsTests\TestSetupActionsTests.h" />
-    <ClInclude Include="..\..\Source\TestTeardownActionsTests\TestTeardownActionsTests.h" />
-    <ClInclude Include="..\..\Source\TestTeardownActionsTests\DirectoriesTeardownActionTests.h" />
-    <ClInclude Include="..\..\Source\TestTeardownActionsTests\FilesTeardownActionTests.h" />
+    <ClInclude Include="..\..\src\JUnitXMLWriterTests.h" />
+    <ClInclude Include="..\..\src\TestHarnessTests.h" />
+    <ClInclude Include="..\..\src\TestNumberTests.h" />
+    <ClInclude Include="..\..\src\TestTests.h" />
+    <ClInclude Include="..\..\src\TestMacrosTests.h" />
+    <ClInclude Include="..\..\src\TestMacrosFormatterTests.h" />
+    <ClInclude Include="..\..\src\TestSequenceTests.h" />
+    <ClInclude Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
+    <ClInclude Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.h" />
+    <ClInclude Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h" />
+    <ClInclude Include="..\..\src\TestEnvironmentTests\TestEnvironmentTests.h" />
+    <ClInclude Include="..\..\src\TestSetupActionsTests\ProcessActionTests.h" />
+    <ClInclude Include="..\..\src\TestSetupActionsTests\TestSetupActionsTests.h" />
+    <ClInclude Include="..\..\src\TestTeardownActionsTests\TestTeardownActionsTests.h" />
+    <ClInclude Include="..\..\src\TestTeardownActionsTests\DirectoriesTeardownActionTests.h" />
+    <ClInclude Include="..\..\src\TestTeardownActionsTests\FilesTeardownActionTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
