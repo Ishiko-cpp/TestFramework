@@ -13,6 +13,6 @@ program PermanentAppTestHelper
 
     sources
     {
-        ../../Source/main.cpp
+        ../../src/main.cpp
     }
 }

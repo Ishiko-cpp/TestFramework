@@ -53,8 +53,8 @@ all: ../../../data/bin/PermanentAppTestHelper
 ../../../data/bin/PermanentAppTestHelper: $(_builddir)PermanentAppTestHelper_main.o
 	$(CXX) -o $@ $(LDFLAGS) $(_builddir)PermanentAppTestHelper_main.o -pthread
 
-$(_builddir)PermanentAppTestHelper_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread ../../Source/main.cpp
+$(_builddir)PermanentAppTestHelper_main.o: ../../src/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread ../../src/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o
