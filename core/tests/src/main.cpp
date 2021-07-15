@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
     TestHarness theTestHarness("IshikoTestFrameworkCore");
 
     theTestHarness.environment().setTestDataDirectory("../../data");
-    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
+    theTestHarness.environment().setTestOutputDirectory("../../output");
     create_directories("../../TestOutput");
     theTestHarness.environment().setReferenceDataDirectory("../../reference");
 
