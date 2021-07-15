@@ -22,7 +22,7 @@ ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestEnvir
 
 void ProcessActionTests::CreationTest1(Test& test)
 {
-    ProcessAction action("../../TestData/Bin/WriteFileTestHelper.exe", ProcessAction::eWaitForExit);
+    ProcessAction action("../../data/bin/WriteFileTestHelper.exe", ProcessAction::eWaitForExit);
     ISHTF_PASS();
 }
 
@@ -44,9 +44,9 @@ void ProcessActionTests::SetupFailureTest1(Test& test)
 void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "Bin/WriteFileTestHelper");
+    path executablePath(test.environment().getTestDataDirectory() / "bin/WriteFileTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "Bin/WriteFileTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "bin/WriteFileTestHelper.exe");
 #endif
     path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
     test.setOutputFilePath(outputPath);
@@ -64,9 +64,9 @@ void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
 void ProcessActionTests::SetupTerminateTest1(Test& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "Bin/PermanentAppTestHelper");
+    path executablePath(test.environment().getTestDataDirectory() / "bin/PermanentAppTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "Bin/PermanentAppTestHelper.exe");
+    path executablePath(test.environment().getTestDataDirectory() / "bin/PermanentAppTestHelper.exe");
 #endif
 
     ProcessAction action(executablePath.string(), ProcessAction::eTerminate);
