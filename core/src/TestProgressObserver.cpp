@@ -113,6 +113,10 @@ std::string TestProgressObserver::formatResult(const TestResult& result)
         formattedResult = "FAILED!!!";
         break;
 
+    case TestResult::skipped:
+        formattedResult = "skipped";
+        break;
+
     default:
         formattedResult = "UNEXPECTED OUTCOME ENUM VALUE";
         break;

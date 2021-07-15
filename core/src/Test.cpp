@@ -188,14 +188,20 @@ bool Test::passed() const
     return (m_result == TestResult::passed);
 }
 
+bool Test::skipped() const
+{
+    return (m_result == TestResult::skipped);
+}
+
 void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
-    size_t& failed, size_t& total) const
+    size_t& failed, size_t& skipped, size_t& total) const
 {
     unknown = 0;
     passed = 0;
     passedButMemoryLeaks = 0;
     exception = 0;
     failed = 0;
+    skipped = 0;
     total = 1;
     switch (m_result)
     {
@@ -217,6 +223,10 @@ void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryL
 
         case TestResult::failed:
             failed = 1;
+            break;
+
+        case TestResult::skipped:
+            skipped = 1;
             break;
     }
 }

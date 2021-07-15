@@ -59,7 +59,7 @@ void TestSequence::setNumber(const TestNumber& number)
 }
 
 void TestSequence::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
-    size_t& failed, size_t& total) const
+    size_t& failed, size_t& skipped, size_t& total) const
 {
     if (m_tests.size() == 0)
     {
@@ -81,13 +81,15 @@ void TestSequence::getPassRate(size_t& unknown, size_t& passed, size_t& passedBu
             size_t pbml = 0;
             size_t e = 0;
             size_t f = 0;
+            size_t s = 0;
             size_t t = 0;
-            m_tests[i]->getPassRate(u, p, pbml, e, f, t);
+            m_tests[i]->getPassRate(u, p, pbml, e, f, s, t);
             unknown += u;
             passed += p;
             passedButMemoryLeaks += pbml;
             exception += e;
             failed += f;
+            skipped += s;
             total += t;
         }
     }
@@ -133,10 +135,13 @@ void TestSequence::doRun()
         else if (result == TestResult::passed)
         {
             // If the current sequence outcome is passed it stays at this state only if the
-            // result we are adding is passed, else it will be 'unknown', 
+            // result we are adding is passed or skipped, else it will be 'unknown', 
             // 'passedButMemoryLeaks', 'exception' or 'failed'.
             // depending on the outcome of the result we are adding.
-            result = newResult;
+            if (newResult != TestResult::skipped)
+            {
+                result = newResult;
+            }
         }
         else if (result == TestResult::passedButMemoryLeaks)
         {
@@ -155,6 +160,10 @@ void TestSequence::doRun()
             {
                 result = newResult;
             }
+        }
+        else if (result == TestResult::skipped)
+        {
+            result = newResult;
         }
     }
 

@@ -33,6 +33,9 @@ TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnviron
     append<HeapAllocationErrorsTest>("getResult test 1", GetResultTest1);
     append<HeapAllocationErrorsTest>("getResult test 2", GetResultTest2);
     append<HeapAllocationErrorsTest>("getResult test 3", GetResultTest3);
+    append<HeapAllocationErrorsTest>("getResult test 4", GetResultTest4);
+    append<HeapAllocationErrorsTest>("getResult test 5", GetResultTest5);
+    append<HeapAllocationErrorsTest>("getResult test 6", GetResultTest6);
 }
 
 void TestSequenceTests::ConstructorTest1(Test& test)
@@ -118,5 +121,61 @@ void TestSequenceTests::GetResultTest3(Test& test)
     seq.run();
 
     ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::failed);
+    ISHTF_PASS();
+}
+
+void TestSequenceTests::GetResultTest4(Test& test)
+{
+    // Creating test sequence
+    TestSequence seq(TestNumber(1), "Sequence");
+
+    // Creating first test (skipped)
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::skipped);
+    seq.append(test1);
+
+    // Run the sequence to update the test result
+    seq.run();
+
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::skipped);
+    ISHTF_PASS();
+}
+
+void TestSequenceTests::GetResultTest5(Test& test)
+{
+    // Creating test sequence
+    TestSequence seq(TestNumber(1), "Sequence");
+
+    // Creating first test (skipped)
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::skipped);
+    seq.append(test1);
+
+    // Creating second test (fails)
+    std::shared_ptr<Test> test2 = std::make_shared<Test>(TestNumber(2), "Test", TestResult::failed);
+    seq.append(test2);
+
+    // Run the sequence to update the test result
+    seq.run();
+
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::failed);
+    ISHTF_PASS();
+}
+
+void TestSequenceTests::GetResultTest6(Test& test)
+{
+    // Creating test sequence
+    TestSequence seq(TestNumber(1), "Sequence");
+
+    // Creating first test (passed)
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::passed);
+    seq.append(test1);
+
+    // Creating second test (skipped)
+    std::shared_ptr<Test> test2 = std::make_shared<Test>(TestNumber(2), "Test", TestResult::skipped);
+    seq.append(test2);
+
+    // Run the sequence to update the test result
+    seq.run();
+
+    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::passed);
     ISHTF_PASS();
 }

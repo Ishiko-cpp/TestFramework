@@ -36,6 +36,10 @@ std::string ToString(TestResult result)
         str = "failed";
         break;
 
+    case TestResult::skipped:
+        str = "skipped";
+        break;
+
     default:
         str = "UNEXPECTED OUTCOME ENUM VALUE";
         break;
