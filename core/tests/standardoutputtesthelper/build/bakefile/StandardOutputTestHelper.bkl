@@ -1,0 +1,18 @@
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/StandardOutputTestHelper.sln;
+vs2015.solutionfile = ../vc14/StandardOutputTestHelper.sln;
+vs2013.solutionfile = ../vc12/StandardOutputTestHelper.sln;
+
+program StandardOutputTestHelper
+{
+    archs = x86 x86_64;
+
+    outputdir = ../../../data/bin;
+
+    sources
+    {
+        ../../src/main.cpp
+    }
+}

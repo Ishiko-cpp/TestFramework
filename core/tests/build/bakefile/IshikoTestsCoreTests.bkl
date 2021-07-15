@@ -19,44 +19,44 @@ program IshikoTestsCoreTests : IshikoTestsCore
 
     headers
     {
-        ../../Source/JUnitXMLWriterTests.h
-        ../../Source/TestHarnessTests.h
-        ../../Source/TestNumberTests.h
-        ../../Source/TestTests.h
-        ../../Source/TestMacrosTests.h
-        ../../Source/TestMacrosFormatterTests.h
-        ../../Source/TestSequenceTests.h
+        ../../src/JUnitXMLWriterTests.h
+        ../../src/TestHarnessTests.h
+        ../../src/TestNumberTests.h
+        ../../src/TestTests.h
+        ../../src/TestMacrosTests.h
+        ../../src/TestMacrosFormatterTests.h
+        ../../src/TestSequenceTests.h
 
-        ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
-        ../../Source/FileComparisonTestTests/FileComparisonTestTests.h
-        ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
-        ../../Source/TestEnvironmentTests/TestEnvironmentTests.h
-        ../../Source/TestSetupActionsTests/ProcessActionTests.h
-        ../../Source/TestSetupActionsTests/TestSetupActionsTests.h
-        ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.h
-        ../../Source/TestTeardownActionsTests/DirectoriesTeardownActionTests.h
-        ../../Source/TestTeardownActionsTests/FilesTeardownActionTests.h
+        ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
+        ../../src/FileComparisonTestTests/FileComparisonTestTests.h
+        ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
+        ../../src/TestEnvironmentTests/TestEnvironmentTests.h
+        ../../src/TestSetupActionsTests/ProcessActionTests.h
+        ../../src/TestSetupActionsTests/TestSetupActionsTests.h
+        ../../src/TestTeardownActionsTests/TestTeardownActionsTests.h
+        ../../src/TestTeardownActionsTests/DirectoriesTeardownActionTests.h
+        ../../src/TestTeardownActionsTests/FilesTeardownActionTests.h
     }
 
     sources
     {
-        ../../Source/main.cpp
-        ../../Source/JUnitXMLWriterTests.cpp
-        ../../Source/TestHarnessTests.cpp
-        ../../Source/TestNumberTests.cpp
-        ../../Source/TestTests.cpp
-        ../../Source/TestMacrosTests.cpp
-        ../../Source/TestMacrosFormatterTests.cpp
-        ../../Source/TestSequenceTests.cpp
+        ../../src/main.cpp
+        ../../src/JUnitXMLWriterTests.cpp
+        ../../src/TestHarnessTests.cpp
+        ../../src/TestNumberTests.cpp
+        ../../src/TestTests.cpp
+        ../../src/TestMacrosTests.cpp
+        ../../src/TestMacrosFormatterTests.cpp
+        ../../src/TestSequenceTests.cpp
 
-        ../../Source/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
-        ../../Source/FileComparisonTestTests/FileComparisonTestTests.cpp
-        ../../Source/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
-        ../../Source/TestEnvironmentTests/TestEnvironmentTests.cpp
-        ../../Source/TestSetupActionsTests/ProcessActionTests.cpp
-        ../../Source/TestSetupActionsTests/TestSetupActionsTests.cpp
-        ../../Source/TestTeardownActionsTests/TestTeardownActionsTests.cpp
-        ../../Source/TestTeardownActionsTests/DirectoriesTeardownActionTests.cpp
-        ../../Source/TestTeardownActionsTests/FilesTeardownActionTests.cpp
+        ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
+        ../../src/FileComparisonTestTests/FileComparisonTestTests.cpp
+        ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
+        ../../src/TestEnvironmentTests/TestEnvironmentTests.cpp
+        ../../src/TestSetupActionsTests/ProcessActionTests.cpp
+        ../../src/TestSetupActionsTests/TestSetupActionsTests.cpp
+        ../../src/TestTeardownActionsTests/TestTeardownActionsTests.cpp
+        ../../src/TestTeardownActionsTests/DirectoriesTeardownActionTests.cpp
+        ../../src/TestTeardownActionsTests/FilesTeardownActionTests.cpp
     }
 }
