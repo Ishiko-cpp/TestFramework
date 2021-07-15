@@ -1,11 +1,11 @@
 /*
     Copyright (c) 2005-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTSEQUENCE_H_
-#define _ISHIKO_TESTFRAMEWORK_CORE_TESTSEQUENCE_H_
+#ifndef _ISHIKO_TESTS_CORE_TESTSEQUENCE_H_
+#define _ISHIKO_TESTS_CORE_TESTSEQUENCE_H_
 
 #include "Test.h"
 #include <vector>
@@ -33,7 +33,7 @@ public:
     void setNumber(const TestNumber& number) override;
     
     void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception, size_t& failed,
-        size_t& total) const override;
+        size_t& skipped, size_t& total) const override;
 
     void traverse(std::function<void(const Test& test)> function) const override;
 

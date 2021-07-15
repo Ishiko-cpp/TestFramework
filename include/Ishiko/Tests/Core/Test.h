@@ -1,11 +1,11 @@
 /*
     Copyright (c) 2005-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/ishiko-cpp/test/blob/main/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_CORE_TEST_H_
-#define _ISHIKO_TESTFRAMEWORK_CORE_TEST_H_
+#ifndef _ISHIKO_TESTS_CORE_TEST_H_
+#define _ISHIKO_TESTS_CORE_TEST_H_
 
 #include "TestNumber.h"
 #include "TestResult.h"
@@ -80,14 +80,16 @@ public:
     TestResult result() const;
     void setResult(TestResult result);
     bool passed() const;
+    bool skipped() const;
     virtual void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
-        size_t& failed, size_t& total) const;
+        size_t& failed, size_t& skipped, size_t& total) const;
     void abort(const char* file, int line);
     void abortIf(bool condition, const char* file, int line);
     void fail(const char* file, int line);
     void fail(const std::string& message, const char* file, int line);
     void failIf(bool condition, const char* file, int line);
     void pass();
+    void skip();
 
     const TestEnvironment& environment() const;
     TestEnvironment& environment();

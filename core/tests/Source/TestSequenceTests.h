@@ -22,6 +22,9 @@ private:
     static void GetResultTest1(Ishiko::Tests::Test& test);
     static void GetResultTest2(Ishiko::Tests::Test& test);
     static void GetResultTest3(Ishiko::Tests::Test& test);
+    static void GetResultTest4(Ishiko::Tests::Test& test);
+    static void GetResultTest5(Ishiko::Tests::Test& test);
+    static void GetResultTest6(Ishiko::Tests::Test& test);
 };
 
 #endif

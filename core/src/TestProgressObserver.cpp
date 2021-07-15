@@ -1,7 +1,7 @@
 /*
     Copyright (c) 2015-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "TestProgressObserver.h"
@@ -93,24 +93,28 @@ std::string TestProgressObserver::formatResult(const TestResult& result)
     std::string formattedResult;
     switch (result)
     {
-    case TestResult::eUnknown:
+    case TestResult::unknown:
         formattedResult = "UNKNOWN!!!";
         break;
 
-    case TestResult::ePassed:
+    case TestResult::passed:
         formattedResult = "passed";
         break;
 
-    case TestResult::ePassedButMemoryLeaks:
+    case TestResult::passedButMemoryLeaks:
         formattedResult = "MEMORY LEAK DETECTED";
         break;
 
-    case TestResult::eException:
+    case TestResult::exception:
         formattedResult = "EXCEPTION!!!";
         break;
 
-    case TestResult::eFailed:
+    case TestResult::failed:
         formattedResult = "FAILED!!!";
+        break;
+
+    case TestResult::skipped:
+        formattedResult = "skipped";
         break;
 
     default:

@@ -1,7 +1,7 @@
 /*
     Copyright (c) 2006-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "Test.h"
@@ -122,13 +122,13 @@ void Test::Observers::removeDeletedObservers()
 }
 
 Test::Test(const TestNumber& number, const std::string& name)
-    : m_number(number), m_name(name), m_result(TestResult::eUnknown),
+    : m_number(number), m_name(name), m_result(TestResult::unknown),
     m_environment(&TestEnvironment::DefaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(&environment),
+    : m_number(number), m_name(name), m_result(TestResult::unknown), m_environment(&environment),
     m_memoryLeakCheck(true), m_runFct(0)
 {
 }
@@ -146,14 +146,14 @@ Test::Test(const TestNumber& number, const std::string& name, TestResult result,
 }
 
 Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct)
-    : m_number(number), m_name(name), m_result(TestResult::eUnknown),
+    : m_number(number), m_name(name), m_result(TestResult::unknown),
     m_environment(&TestEnvironment::DefaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(runFct)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct,
     const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(TestResult::eUnknown), m_environment(&environment),
+    : m_number(number), m_name(name), m_result(TestResult::unknown), m_environment(&environment),
     m_memoryLeakCheck(true), m_runFct(runFct)
 {
 }
@@ -185,38 +185,48 @@ void Test::setResult(TestResult result)
 
 bool Test::passed() const
 {
-    return (m_result == TestResult::ePassed);
+    return (m_result == TestResult::passed);
+}
+
+bool Test::skipped() const
+{
+    return (m_result == TestResult::skipped);
 }
 
 void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
-    size_t& failed, size_t& total) const
+    size_t& failed, size_t& skipped, size_t& total) const
 {
     unknown = 0;
     passed = 0;
     passedButMemoryLeaks = 0;
     exception = 0;
     failed = 0;
+    skipped = 0;
     total = 1;
     switch (m_result)
     {
-        case TestResult::eUnknown:
+        case TestResult::unknown:
             unknown = 1;
             break;
 
-        case TestResult::ePassed:
+        case TestResult::passed:
             passed = 1;
             break;
 
-        case TestResult::ePassedButMemoryLeaks:
+        case TestResult::passedButMemoryLeaks:
             passedButMemoryLeaks = 1;
             break;
 
-        case TestResult::eException:
+        case TestResult::exception:
             exception = 1;
             break;
 
-        case TestResult::eFailed:
+        case TestResult::failed:
             failed = 1;
+            break;
+
+        case TestResult::skipped:
+            skipped = 1;
             break;
     }
 }
@@ -243,7 +253,7 @@ void Test::fail(const char* file, int line)
 
 void Test::fail(const std::string& message, const char* file, int line)
 {
-    m_result = TestResult::eFailed;
+    m_result = TestResult::failed;
     m_observers.notifyCheckFailed(*this, message, file, line);
 }
 
@@ -257,10 +267,19 @@ void Test::failIf(bool condition, const char* file, int line)
 
 void Test::pass()
 {
-    if (m_result == TestResult::eUnknown)
+    if (m_result == TestResult::unknown)
     {
-        m_result = TestResult::ePassed;
+        m_result = TestResult::passed;
     }
+}
+
+void Test::skip()
+{
+    if (m_result == TestResult::unknown)
+    {
+        m_result = TestResult::skipped;
+    }
+    throw AbortException();
 }
 
 const TestEnvironment& Test::environment() const
@@ -284,7 +303,7 @@ void Test::run()
     try
     {
         doRun();
-        if (m_result == TestResult::eUnknown)
+        if (m_result == TestResult::unknown)
         {
             // The function didn't fail but at no point did it mark the test as passed either so we consider this a
             // failure.
@@ -298,15 +317,15 @@ void Test::run()
     catch (...)
     {
         m_observers.notifyExceptionThrown(*this, std::current_exception());
-        m_result = TestResult::eException;
+        m_result = TestResult::exception;
     }
 
     DebugHeap::HeapState heapStateAfter;
 
     if (m_memoryLeakCheck && (heapStateBefore.allocatedSize() != heapStateAfter.allocatedSize())
-        && (m_result == TestResult::ePassed))
+        && (m_result == TestResult::passed))
     {
-        m_result = TestResult::ePassedButMemoryLeaks;
+        m_result = TestResult::passedButMemoryLeaks;
     }
 
     teardown();

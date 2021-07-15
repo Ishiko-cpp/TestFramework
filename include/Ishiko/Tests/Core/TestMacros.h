@@ -1,11 +1,11 @@
 /*
     Copyright (c) 2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTFRAMEWORK_CORE_TESTMACROS_H_
-#define _ISHIKO_TESTFRAMEWORK_CORE_TESTMACROS_H_
+#ifndef _ISHIKO_TESTS_CORE_TESTMACROS_H_
+#define _ISHIKO_TESTS_CORE_TESTMACROS_H_
 
 #include "TestMacrosFormatter.h"
 
@@ -51,5 +51,7 @@
     }
 
 #define ISHTF_PASS() test.pass()
+
+#define ISHTF_SKIP() test.skip()
 
 #endif

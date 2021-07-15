@@ -1,7 +1,7 @@
 /*
     Copyright (c) 2005-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/Ishiko-cpp/TestFramework/blob/master/LICENSE.txt
+    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "TestSequence.h"
@@ -59,7 +59,7 @@ void TestSequence::setNumber(const TestNumber& number)
 }
 
 void TestSequence::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
-    size_t& failed, size_t& total) const
+    size_t& failed, size_t& skipped, size_t& total) const
 {
     if (m_tests.size() == 0)
     {
@@ -81,13 +81,15 @@ void TestSequence::getPassRate(size_t& unknown, size_t& passed, size_t& passedBu
             size_t pbml = 0;
             size_t e = 0;
             size_t f = 0;
+            size_t s = 0;
             size_t t = 0;
-            m_tests[i]->getPassRate(u, p, pbml, e, f, t);
+            m_tests[i]->getPassRate(u, p, pbml, e, f, s, t);
             unknown += u;
             passed += p;
             passedButMemoryLeaks += pbml;
             exception += e;
             failed += f;
+            skipped += s;
             total += t;
         }
     }
@@ -105,7 +107,7 @@ void TestSequence::traverse(std::function<void(const Test& test)> function) cons
 void TestSequence::doRun()
 {
     // By default the outcome is unknown
-    TestResult result = TestResult::eUnknown;
+    TestResult result = TestResult::unknown;
 
     for (size_t i = 0; i < m_tests.size(); ++i)
     {
@@ -120,41 +122,48 @@ void TestSequence::doRun()
             // The first test determines the initial value of the result
             result = newResult;
         }
-        else if (result == TestResult::eUnknown)
+        else if (result == TestResult::unknown)
         {
             // If the current sequence outcome is unknown it can only get worse and be set
             // to exception or failed (if the outcome we are adding is exception or 
             // failed)
-            if ((newResult == TestResult::eFailed) || (newResult == TestResult::eException))
+            if ((newResult == TestResult::failed) || (newResult == TestResult::exception))
             {
                 result = newResult;
             }
         }
-        else if (result == TestResult::ePassed)
+        else if (result == TestResult::passed)
         {
             // If the current sequence outcome is passed it stays at this state only if the
-            // result we are adding is passed, else it will be 'unknown', 
+            // result we are adding is passed or skipped, else it will be 'unknown', 
             // 'passedButMemoryLeaks', 'exception' or 'failed'.
             // depending on the outcome of the result we are adding.
-            result = newResult;
+            if (newResult != TestResult::skipped)
+            {
+                result = newResult;
+            }
         }
-        else if (result == TestResult::ePassedButMemoryLeaks)
+        else if (result == TestResult::passedButMemoryLeaks)
         {
             // It can only stay at this state if the test is passed or ePassedButMemoryLeaks.
-            if ((newResult == TestResult::eFailed) ||
-                (newResult == TestResult::eException) ||
-                (newResult == TestResult::eUnknown))
+            if ((newResult == TestResult::failed) ||
+                (newResult == TestResult::exception) ||
+                (newResult == TestResult::unknown))
             {
                 result = newResult;
             }
         }
-        else if (result == TestResult::eException)
+        else if (result == TestResult::exception)
         {
             // It can only get worse. This happens only if the outcome is 'failed'
-            if (newResult == TestResult::eFailed)
+            if (newResult == TestResult::failed)
             {
                 result = newResult;
             }
+        }
+        else if (result == TestResult::skipped)
+        {
+            result = newResult;
         }
     }
 
