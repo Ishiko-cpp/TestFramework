@@ -44,6 +44,7 @@ private:
     static void AbortIfStrEqMacroTest2(Ishiko::Tests::Test& test);
     static void AbortIfStrNeqMacroTest1(Ishiko::Tests::Test& test);
     static void AbortIfStrNeqMacroTest2(Ishiko::Tests::Test& test);
+    static void SkipMacroTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

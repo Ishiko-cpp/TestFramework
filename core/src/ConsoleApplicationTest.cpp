@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
@@ -40,7 +40,7 @@ void ConsoleApplicationTest::setStandardOutputReferenceFilePath(const boost::fil
 
 void ConsoleApplicationTest::doRun()
 {
-    TestResult result = TestResult::eFailed;
+    TestResult result = TestResult::failed;
 
     ChildProcessBuilder processCreator(m_commandLine);
     if (!m_standardOutputTest.getOutputFilePath().empty())
@@ -84,7 +84,7 @@ void ConsoleApplicationTest::doRun()
 
         if (exitCodeTestPassed && standardOutputTestPassed)
         {
-            result = TestResult::ePassed;
+            result = TestResult::passed;
         }
     }
     

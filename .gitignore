@@ -10,6 +10,9 @@ Debug/
 Release/
 /Lib/*
 !/Lib/README.md
+/core/tests/data/bin/*
+!/core/tests/data/bin/README.md
+core/tests/TestOutput
 Documentation/Doxygen/html
 Documentation/Doxygen/latex
 Tests/Core/TestData/Bin/*

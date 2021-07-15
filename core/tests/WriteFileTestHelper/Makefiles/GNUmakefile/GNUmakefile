@@ -48,9 +48,9 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
-all: ../../../TestData/Bin/WriteFileTestHelper
+all: ../../../data/bin/WriteFileTestHelper
 
-../../../TestData/Bin/WriteFileTestHelper: $(_builddir)WriteFileTestHelper_main.o
+../../../data/bin/WriteFileTestHelper: $(_builddir)WriteFileTestHelper_main.o
 	$(CXX) -o $@ $(LDFLAGS) $(_builddir)WriteFileTestHelper_main.o -pthread
 
 $(_builddir)WriteFileTestHelper_main.o: ../../Source/main.cpp
@@ -59,7 +59,7 @@ $(_builddir)WriteFileTestHelper_main.o: ../../Source/main.cpp
 clean:
 	rm -f $(_builddir)*.o
 	rm -f $(_builddir)*.d
-	rm -f ../../../TestData/Bin/WriteFileTestHelper
+	rm -f ../../../data/bin/WriteFileTestHelper
 
 .PHONY: all clean
 

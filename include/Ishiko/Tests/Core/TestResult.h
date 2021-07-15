@@ -16,11 +16,12 @@ namespace Tests
 
 enum class TestResult
 {
-    eUnknown,
-    ePassed,
-    ePassedButMemoryLeaks,
-    eException,
-    eFailed
+    unknown,
+    passed,
+    passedButMemoryLeaks,
+    exception,
+    failed,
+    skipped
 };
 
 std::string ToString(TestResult result);

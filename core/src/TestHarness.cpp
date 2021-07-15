@@ -77,7 +77,7 @@ int TestHarness::runTests()
         printDetailedResults();
         printSummary();
 
-        if (!m_topSequence.passed())
+        if (!m_topSequence.passed() && !m_topSequence.skipped())
         {
             return eTestFailure;
         }
@@ -117,9 +117,10 @@ void TestHarness::printSummary()
     size_t passedButMemoryLeaks = 0;
     size_t exception = 0;
     size_t failed = 0;
+    size_t skipped = 0;
     size_t total = 0;
-    m_topSequence.getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, total);
-    if (!m_topSequence.passed())
+    m_topSequence.getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, skipped, total);
+    if (!m_topSequence.passed() && !m_topSequence.skipped())
     {
         std::cout << "Pass rate: " << std::fixed << std::setprecision(2) << (100 * (double)passed / (double)total)
             << "% (" << unknown << " unknown, "
@@ -127,6 +128,7 @@ void TestHarness::printSummary()
             << passedButMemoryLeaks << " passed but with memory leaks, "
             << exception << " threw exceptions, "
             << failed << " failed, "
+            << skipped << " skipped, "
             << total << " total)" << std::endl;
         std::cout << std::endl;
         std::cout << "Test Suite FAILED!!!" << std::endl;
@@ -139,8 +141,8 @@ void TestHarness::printSummary()
             << passedButMemoryLeaks << " passed but with memory leaks, "
             << exception << " threw exceptions, "
             << failed << " failed, "
+            << skipped << " skipped, "
             << total << " total)" << std::endl;
-
         std::cout << std::endl;
         std::cout << "Test Suite passed" << std::endl;
     }

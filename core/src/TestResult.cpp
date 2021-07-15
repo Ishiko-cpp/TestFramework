@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019 Xavier Leclercq
+    Copyright (c) 2019-2021 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
@@ -16,24 +16,28 @@ std::string ToString(TestResult result)
     std::string str;
     switch (result)
     {
-    case TestResult::eUnknown:
+    case TestResult::unknown:
         str = "unknown";
         break;
 
-    case TestResult::ePassed:
+    case TestResult::passed:
         str = "passed";
         break;
 
-    case TestResult::ePassedButMemoryLeaks:
+    case TestResult::passedButMemoryLeaks:
         str = "memory leak detected";
         break;
 
-    case TestResult::eException:
+    case TestResult::exception:
         str = "exception";
         break;
 
-    case TestResult::eFailed:
+    case TestResult::failed:
         str = "failed";
+        break;
+
+    case TestResult::skipped:
+        str = "skipped";
         break;
 
     default:
