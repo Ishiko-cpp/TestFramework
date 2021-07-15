@@ -1,0 +1,18 @@
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/WriteFileTestHelper.sln;
+vs2015.solutionfile = ../vc14/WriteFileTestHelper.sln;
+vs2013.solutionfile = ../vc12/WriteFileTestHelper.sln;
+
+program WriteFileTestHelper
+{
+    archs = x86 x86_64;
+
+    outputdir = ../../../data/bin;
+
+    sources
+    {
+        ../../src/main.cpp
+    }
+}

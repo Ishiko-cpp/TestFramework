@@ -12,7 +12,7 @@ Release/
 !/Lib/README.md
 /core/tests/data/bin/*
 !/core/tests/data/bin/README.md
-core/tests/TestOutput
+core/tests/output
 Documentation/Doxygen/html
 Documentation/Doxygen/latex
 Tests/Core/TestData/Bin/*
