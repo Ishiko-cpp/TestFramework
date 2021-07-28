@@ -22,7 +22,8 @@ DirectoriesTeardownActionTests::DirectoriesTeardownActionTests(const TestNumber&
 void DirectoriesTeardownActionTests::CreationTest1(Test& test)
 {
     DirectoriesTeardownAction action;
-    ISHTF_PASS();
+
+    ISHIKO_PASS();
 }
 
 void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
@@ -40,7 +41,7 @@ void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 
     if (create_directories(directoryPath))
     {
-        ISHTF_PASS();
+        ISHIKO_PASS();
     }
 }
 
@@ -53,7 +54,7 @@ void DirectoriesTeardownActionTests::TeardownTest1(Test& test)
         DirectoriesTeardownActionTeardownTest1Helper, test.environment());
     functionTest.run();
 
-    ISHTF_FAIL_IF(exists(directoryPath));
-    ISHTF_FAIL_IF_NOT(functionTest.passed());
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF(exists(directoryPath));
+    ISHIKO_FAIL_IF_NOT(functionTest.passed());
+    ISHIKO_PASS();
 }

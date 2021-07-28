@@ -19,5 +19,5 @@ void JUnitXMLWriterTests::ConstructorTest1(Test& test)
 {
     JUnitXMLWriter junitXMLFile;
 
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }

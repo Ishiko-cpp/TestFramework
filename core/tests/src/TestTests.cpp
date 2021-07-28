@@ -35,8 +35,8 @@ void TestTests::ConstructorTest1(Test& test)
 {
     Test myTest(TestNumber(1), "TestConstructorTest1");
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
+    ISHIKO_PASS();
 }
 
 void TestTests::ConstructorTest2(Test& test)
