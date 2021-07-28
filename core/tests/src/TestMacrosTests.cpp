@@ -139,6 +139,7 @@ void TestMacrosTests::FailIfNotMacroTest1(Test& test)
 
         ISHIKO_PASS();
     });
+
     myTest.run();
 
     ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
@@ -158,9 +159,18 @@ void TestMacrosTests::FailIfNotMacroTest2(Test& test)
 
         ISHIKO_PASS();
     });
+
+    std::stringstream progressOutput;
+    std::shared_ptr<TestProgressObserver> observer = std::make_shared<TestProgressObserver>(progressOutput);
+    myTest.observers().add(observer);
+
     myTest.run();
 
+    std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
+
     ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_ABORT_IF_NEQ(progressOutputLines.size(), 3);
+    ISHIKO_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "ISHIKO_FAIL_IF_NOT(false) failed with actual value (false)");
     ISHIKO_FAIL_IF_NOT(canary);
     ISHIKO_PASS();
 }
@@ -196,9 +206,18 @@ void TestMacrosTests::FailIfEqMacroTest2(Test& test)
 
         ISHIKO_PASS();
     });
+    
+    std::stringstream progressOutput;
+    std::shared_ptr<TestProgressObserver> observer = std::make_shared<TestProgressObserver>(progressOutput);
+    myTest.observers().add(observer);
+
     myTest.run();
 
+    std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
+
     ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_ABORT_IF_NEQ(progressOutputLines.size(), 3);
+    ISHIKO_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "ISHIKO_FAIL_IF_EQ(0, 0) failed with actual values (0, 0)");
     ISHIKO_FAIL_IF_NOT(canary);
     ISHIKO_PASS();
 }
@@ -234,9 +253,18 @@ void TestMacrosTests::FailIfNeqMacroTest2(Test& test)
 
         ISHIKO_PASS();
     });
+
+    std::stringstream progressOutput;
+    std::shared_ptr<TestProgressObserver> observer = std::make_shared<TestProgressObserver>(progressOutput);
+    myTest.observers().add(observer);
+
     myTest.run();
 
+    std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
+
     ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_ABORT_IF_NEQ(progressOutputLines.size(), 3);
+    ISHIKO_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "ISHIKO_FAIL_IF_NEQ(0, 1) failed with actual values (0, 1)");
     ISHIKO_FAIL_IF_NOT(canary);
     ISHIKO_PASS();
 }

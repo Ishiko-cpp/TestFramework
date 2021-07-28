@@ -28,8 +28,21 @@
         test.fail(message, __FILE__, __LINE__);                                                  \
     }
 
-#define ISHIKO_FAIL_IF_NOT(condition) test.failIf(!(condition), __FILE__, __LINE__)
-#define ISHIKO_FAIL_IF_EQ(value1, value2) ISHIKO_FAIL_IF((value1) == (value2))
+#define ISHIKO_FAIL_IF_NOT(condition)                                                                \
+    if (!(condition))                                                                                \
+    {                                                                                                \
+        std::string message =                                                                        \
+            Ishiko::Tests::TestMacrosFormatter::Format("ISHIKO_FAIL_IF_NOT", #condition, condition); \
+        test.fail(message, __FILE__, __LINE__);                                                      \
+    }
+
+#define ISHIKO_FAIL_IF_EQ(value, reference)                                                                        \
+    if ((value) == (reference))                                                                                    \
+    {                                                                                                              \
+        std::string message =                                                                                      \
+            Ishiko::Tests::TestMacrosFormatter::Format("ISHIKO_FAIL_IF_EQ", #value, #reference, value, reference); \
+        test.fail(message, __FILE__, __LINE__);                                                                    \
+    }
 
 #define ISHIKO_FAIL_IF_NEQ(value, reference)                                                                        \
     if ((value) != (reference))                                                                                     \
