@@ -53,12 +53,12 @@ void TestMacrosTests::PassMacroTest1(Test& test)
     Test myTest(TestNumber(), "PassMacroTest1",
         [](Test& test)
         {
-            ISHTF_PASS();
+            ISHIKO_PASS();
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailMacroTest1(Test& test)
