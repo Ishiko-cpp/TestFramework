@@ -122,7 +122,7 @@ void TestMacrosTests::FailIfMacroTest2(Test& test)
 
     ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHIKO_ABORT_IF_NEQ(progressOutputLines.size(), 3);
-    ISHIKO_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "ISHTF_FAIL_IF(true) failed with actual value (true)");
+    ISHIKO_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "ISHIKO_FAIL_IF(true) failed with actual value (true)");
     ISHIKO_FAIL_IF_NOT(canary);
     ISHIKO_PASS();
 }
@@ -152,17 +152,17 @@ void TestMacrosTests::FailIfNotMacroTest2(Test& test)
     Test myTest(TestNumber(), "FailIfNotMacroTest2",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_NOT(false);
+        ISHIKO_FAIL_IF_NOT(false);
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfEqMacroTest1(Test& test)
@@ -171,17 +171,17 @@ void TestMacrosTests::FailIfEqMacroTest1(Test& test)
     Test myTest(TestNumber(), "FailIfEqMacroTest1",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_EQ(0, 1);
+        ISHIKO_FAIL_IF_EQ(0, 1);
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfEqMacroTest2(Test& test)
@@ -190,17 +190,17 @@ void TestMacrosTests::FailIfEqMacroTest2(Test& test)
     Test myTest(TestNumber(), "FailIfEqMacroTest2",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_EQ(0, 0);
+        ISHIKO_FAIL_IF_EQ(0, 0);
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfNeqMacroTest1(Test& test)
@@ -209,17 +209,17 @@ void TestMacrosTests::FailIfNeqMacroTest1(Test& test)
     Test myTest(TestNumber(), "FailIfNeqMacroTest1",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_NEQ(0, 0);
+        ISHIKO_FAIL_IF_NEQ(0, 0);
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfNeqMacroTest2(Test& test)
@@ -228,17 +228,17 @@ void TestMacrosTests::FailIfNeqMacroTest2(Test& test)
     Test myTest(TestNumber(), "FailIfNeqMacroTest2",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_NEQ(0, 1);
+        ISHIKO_FAIL_IF_NEQ(0, 1);
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfStrEqMacroTest1(Test& test)
@@ -247,17 +247,17 @@ void TestMacrosTests::FailIfStrEqMacroTest1(Test& test)
     Test myTest(TestNumber(), "FailIfStrEqMacroTest1",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_STR_EQ("a", "b");
+        ISHIKO_FAIL_IF_STR_EQ("a", "b");
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfStrEqMacroTest2(Test& test)
@@ -266,17 +266,17 @@ void TestMacrosTests::FailIfStrEqMacroTest2(Test& test)
     Test myTest(TestNumber(), "FailIfStrEqMacroTest2",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_STR_EQ("a", "a");
+        ISHIKO_FAIL_IF_STR_EQ("a", "a");
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfStrNeqMacroTest1(Test& test)
@@ -285,17 +285,17 @@ void TestMacrosTests::FailIfStrNeqMacroTest1(Test& test)
     Test myTest(TestNumber(), "FailIfStrNeqMacroTest1",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_STR_NEQ("a", "a");
+        ISHIKO_FAIL_IF_STR_NEQ("a", "a");
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfStrNeqMacroTest2(Test& test)
@@ -304,17 +304,17 @@ void TestMacrosTests::FailIfStrNeqMacroTest2(Test& test)
     Test myTest(TestNumber(), "FailIfStrNeqMacroTest2",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_STR_NEQ("a", "b");
+        ISHIKO_FAIL_IF_STR_NEQ("a", "b");
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfNotContainMacroTest1(Test& test)
@@ -323,17 +323,17 @@ void TestMacrosTests::FailIfNotContainMacroTest1(Test& test)
     Test myTest(TestNumber(), "FailIfNotContainMacroTest1",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_NOT_CONTAIN("abc", "b");
+        ISHIKO_FAIL_IF_NOT_CONTAIN("abc", "b");
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::FailIfNotContainMacroTest2(Test& test)
@@ -342,17 +342,17 @@ void TestMacrosTests::FailIfNotContainMacroTest2(Test& test)
     Test myTest(TestNumber(), "FailIfNotContainMacroTest2",
         [&canary](Test& test)
     {
-        ISHTF_FAIL_IF_NOT_CONTAIN("abc", "d");
+        ISHIKO_FAIL_IF_NOT_CONTAIN("abc", "d");
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::AbortMacroTest1(Test& test)
@@ -361,17 +361,17 @@ void TestMacrosTests::AbortMacroTest1(Test& test)
     Test myTest(TestNumber(), "AbortMacroTest1",
         [&canary](Test& test)
         {
-            ISHTF_ABORT();
+            ISHIKO_ABORT();
 
             canary = true;
 
-            ISHTF_PASS();
+            ISHIKO_PASS();
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::AbortIfMacroTest1(Test& test)
@@ -380,17 +380,17 @@ void TestMacrosTests::AbortIfMacroTest1(Test& test)
     Test myTest(TestNumber(), "AbortIfMacroTest1",
         [&canary](Test& test)
         {
-            ISHTF_ABORT_IF(false);
+            ISHIKO_ABORT_IF(false);
 
             canary = true;
 
-            ISHTF_PASS();
+            ISHIKO_PASS();
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::AbortIfMacroTest2(Test& test)
@@ -399,17 +399,17 @@ void TestMacrosTests::AbortIfMacroTest2(Test& test)
     Test myTest(TestNumber(), "AbortIfMacroTest2",
         [&canary](Test& test)
         {
-            ISHTF_ABORT_IF(true);
+            ISHIKO_ABORT_IF(true);
 
             canary = true;
 
-            ISHTF_PASS();
+            ISHIKO_PASS();
         });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::AbortIfNotMacroTest1(Test& test)
@@ -418,17 +418,17 @@ void TestMacrosTests::AbortIfNotMacroTest1(Test& test)
     Test myTest(TestNumber(), "AbortIfNotMacroTest1",
         [&canary](Test& test)
     {
-        ISHTF_ABORT_IF_NOT(true);
+        ISHIKO_ABORT_IF_NOT(true);
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHTF_FAIL_IF_NOT(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_FAIL_IF_NOT(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::AbortIfNotMacroTest2(Test& test)
@@ -437,17 +437,17 @@ void TestMacrosTests::AbortIfNotMacroTest2(Test& test)
     Test myTest(TestNumber(), "AbortIfNotMacroTest2",
         [&canary](Test& test)
     {
-        ISHTF_ABORT_IF_NOT(false);
+        ISHIKO_ABORT_IF_NOT(false);
 
         canary = true;
 
-        ISHTF_PASS();
+        ISHIKO_PASS();
     });
     myTest.run();
 
-    ISHTF_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHTF_FAIL_IF(canary);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_FAIL_IF(canary);
+    ISHIKO_PASS();
 }
 
 void TestMacrosTests::AbortIfEqMacroTest1(Test& test)

@@ -26,7 +26,7 @@ void TestSequenceTests::ConstructorTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
 
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::AppendTest1(Test& test)
@@ -41,10 +41,10 @@ void TestSequenceTests::AppendTest1(Test& test)
     seq.append(simpleTest);
 
     // Check the test sequence
-    ISHTF_FAIL_IF_NEQ(seq.size(), 1);
-    ISHTF_FAIL_IF_NEQ(seq[0].name(), "Test");
-    ISHTF_FAIL_IF_NEQ(simpleTest->number(), TestNumber(1, 1));
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.size(), 1);
+    ISHIKO_FAIL_IF_NEQ(seq[0].name(), "Test");
+    ISHIKO_FAIL_IF_NEQ(simpleTest->number(), TestNumber(1, 1));
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::AppendTest2(Test& test)
@@ -56,18 +56,18 @@ void TestSequenceTests::AppendTest2(Test& test)
     seq.append<Test>("Test", TestResult::passed);
 
     // Check the test sequence
-    ISHTF_FAIL_IF_NEQ(seq.size(), 1);
-    ISHTF_FAIL_IF_NEQ(seq[0].name(), "Test");
-    ISHTF_FAIL_IF_NEQ(seq[0].number(), TestNumber(1, 1));
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.size(), 1);
+    ISHIKO_FAIL_IF_NEQ(seq[0].name(), "Test");
+    ISHIKO_FAIL_IF_NEQ(seq[0].number(), TestNumber(1, 1));
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::GetResultTest1(Test& test)
 {
     TestSequence seq(TestNumber(1), "Sequence");
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::unknown);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.result(), TestResult::unknown);
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::GetResultTest2(Test& test)
@@ -84,8 +84,8 @@ void TestSequenceTests::GetResultTest2(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::passed);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.result(), TestResult::passed);
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::GetResultTest3(Test& test)
@@ -104,8 +104,8 @@ void TestSequenceTests::GetResultTest3(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::failed);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.result(), TestResult::failed);
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::GetResultTest4(Test& test)
@@ -120,8 +120,8 @@ void TestSequenceTests::GetResultTest4(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::skipped);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.result(), TestResult::skipped);
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::GetResultTest5(Test& test)
@@ -140,8 +140,8 @@ void TestSequenceTests::GetResultTest5(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::failed);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.result(), TestResult::failed);
+    ISHIKO_PASS();
 }
 
 void TestSequenceTests::GetResultTest6(Test& test)
@@ -160,6 +160,6 @@ void TestSequenceTests::GetResultTest6(Test& test)
     // Run the sequence to update the test result
     seq.run();
 
-    ISHTF_FAIL_IF_NEQ(seq.result(), TestResult::passed);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(seq.result(), TestResult::passed);
+    ISHIKO_PASS();
 }
