@@ -18,21 +18,23 @@ FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const
 
 void FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
 {
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }
 
 void FileComparisonTestTests::CreationTest1(Test& test)
 {
     FileComparisonTest comparisonTest(TestNumber(), "FileComparisonTestCreationTest1",
         FileComparisonTestCreationTest1Helper);
-    ISHTF_PASS();
+
+    ISHIKO_PASS();
 }
 
 void FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
 {
     test.setOutputFilePath("../../data/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../data/ComparisonTestFiles/Hello2.txt");
-    ISHTF_PASS();
+
+    ISHIKO_PASS();
 }
 
 void FileComparisonTestTests::RunSuccessTest1(Test& test)
@@ -42,8 +44,8 @@ void FileComparisonTestTests::RunSuccessTest1(Test& test)
     
     comparisonTest.run();
     
-    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::passed);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(comparisonTest.result(), TestResult::passed);
+    ISHIKO_PASS();
 }
 
 void FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
@@ -51,7 +53,7 @@ void FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
     test.setOutputFilePath("../../data/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../data/ComparisonTestFiles/NotHello.txt");
 
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }
 
 void FileComparisonTestTests::RunFailureTest1(Test& test)
@@ -61,6 +63,6 @@ void FileComparisonTestTests::RunFailureTest1(Test& test)
 
     comparisonTest.run();
     
-    ISHTF_FAIL_IF_NEQ(comparisonTest.result(), TestResult::failed);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(comparisonTest.result(), TestResult::failed);
+    ISHIKO_PASS();
 }

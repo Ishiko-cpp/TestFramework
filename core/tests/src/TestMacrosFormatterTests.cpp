@@ -25,8 +25,8 @@ void TestMacrosFormatterTests::FormatTest1(Test& test)
     std::string value = "value";
     std::string output = TestMacrosFormatter::Format("ISHTF_FAIL_IF", "value", value);
 
-    ISHTF_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF(value) failed with actual value (value)");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF(value) failed with actual value (value)");
+    ISHIKO_PASS();
 }
 
 
@@ -36,8 +36,8 @@ void TestMacrosFormatterTests::FormatTest2(Test& test)
     std::string reference = "reference";
     std::string output = TestMacrosFormatter::Format("ISHTF_FAIL_IF_EQ", "value", "reference", value, reference);
 
-    ISHTF_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (value, reference)");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (value, reference)");
+    ISHIKO_PASS();
 }
 
 void TestMacrosFormatterTests::FormatTest3(Test& test)
@@ -46,8 +46,8 @@ void TestMacrosFormatterTests::FormatTest3(Test& test)
     const char reference[] = "reference";
     std::string output = TestMacrosFormatter::Format("ISHTF_FAIL_IF_EQ", "value", "reference", value, reference);
 
-    ISHTF_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (value, reference)");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (value, reference)");
+    ISHIKO_PASS();
 }
 
 void TestMacrosFormatterTests::FormatTest4(Test& test)
@@ -56,8 +56,8 @@ void TestMacrosFormatterTests::FormatTest4(Test& test)
     bool reference = true;
     std::string output = TestMacrosFormatter::Format("ISHTF_FAIL_IF_EQ", "value", "reference", value, reference);
 
-    ISHTF_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (false, true)");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (false, true)");
+    ISHIKO_PASS();
 }
 
 void TestMacrosFormatterTests::FormatTest5(Test& test)
@@ -66,8 +66,8 @@ void TestMacrosFormatterTests::FormatTest5(Test& test)
     int reference = 7;
     std::string output = TestMacrosFormatter::Format("ISHTF_FAIL_IF_EQ", "value", "reference", value, reference);
 
-    ISHTF_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (5, 7)");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (5, 7)");
+    ISHIKO_PASS();
 }
 
 enum FormatComparisonTest6Helper
@@ -82,6 +82,6 @@ void TestMacrosFormatterTests::FormatTest6(Test& test)
     FormatComparisonTest6Helper reference = FormatComparisonTest6Helper::value2;
     std::string output = TestMacrosFormatter::Format("ISHTF_FAIL_IF_EQ", "value", "reference", value, reference);
 
-    ISHTF_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (1, 5)");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(output, "ISHTF_FAIL_IF_EQ(value, reference) failed with actual values (1, 5)");
+    ISHIKO_PASS();
 }

@@ -37,10 +37,10 @@ void TestEnvironmentTests::ConstructorTest1(Test& test)
 {
     TestEnvironment environment;
 
-    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "");
-    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "");
-    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(environment.getTestDataDirectory(), "");
+    ISHIKO_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "");
+    ISHIKO_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::ConstructorTest2(Test& test)
@@ -48,10 +48,10 @@ void TestEnvironmentTests::ConstructorTest2(Test& test)
     TestEnvironment parentEnvironment;
     TestEnvironment environment(&parentEnvironment);
 
-    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "");
-    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "");
-    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(environment.getTestDataDirectory(), "");
+    ISHIKO_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "");
+    ISHIKO_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::ConstructorTest3(Test& test)
@@ -63,10 +63,10 @@ void TestEnvironmentTests::ConstructorTest3(Test& test)
 
     TestEnvironment environment(&parentEnvironment);
 
-    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "data");
-    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "referenceData");
-    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "output");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(environment.getTestDataDirectory(), "data");
+    ISHIKO_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "referenceData");
+    ISHIKO_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "output");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetTestDataDirectoryTest1(Test& test)
@@ -75,8 +75,8 @@ void TestEnvironmentTests::GetTestDataDirectoryTest1(Test& test)
 
     boost::filesystem::path directory = environment.getTestDataDirectory();
 
-    ISHTF_FAIL_IF_NEQ(directory, "");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(directory, "");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetTestDataDirectoryTest2(Test& test)
@@ -88,8 +88,8 @@ void TestEnvironmentTests::GetTestDataDirectoryTest2(Test& test)
 
     boost::filesystem::path directory = environment.getTestDataDirectory();
 
-    ISHTF_FAIL_IF_NEQ(directory, "data");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(directory, "data");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
@@ -101,7 +101,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest3(Test& test)
     }
     catch (const TestException&)
     {
-        ISHTF_PASS();
+        ISHIKO_PASS();
     }
 }
 
@@ -111,7 +111,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest4(Test& test)
     environment.setTestDataDirectory("id1", "path1");
     if (environment.getTestDataDirectory("id1") == "path1")
     {
-        return ISHTF_PASS();
+        return ISHIKO_PASS();
     }
 }
 
@@ -123,7 +123,7 @@ void TestEnvironmentTests::GetTestDataDirectoryTest5(Test& test)
     environment.setTestDataDirectory("id1", "$(TestEnvironmentGetTestDataDirectoryTest3)/path1");
     if (environment.getTestDataDirectory("id1") == "dummy/path1")
     {
-        ISHTF_PASS();
+        ISHIKO_PASS();
     }
 }
 
@@ -134,8 +134,8 @@ void TestEnvironmentTests::GetTestDataPathTest1(Test& test)
 
     boost::filesystem::path dataPath = environment.getTestDataPath("file");
 
-    ISHTF_FAIL_IF_NEQ(dataPath, "data/file");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(dataPath, "data/file");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::SetTestDataDirectoryTest1(Test& test)
@@ -146,9 +146,9 @@ void TestEnvironmentTests::SetTestDataDirectoryTest1(Test& test)
     TestEnvironment environment(&parentEnvironment);
     environment.setTestDataDirectory("testData");
 
-    ISHTF_FAIL_IF_NEQ(parentEnvironment.getTestDataDirectory(), "parent");
-    ISHTF_FAIL_IF_NEQ(environment.getTestDataDirectory(), "parent/testData");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(parentEnvironment.getTestDataDirectory(), "parent");
+    ISHIKO_FAIL_IF_NEQ(environment.getTestDataDirectory(), "parent/testData");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetReferenceDataDirectoryTest1(Test& test)
@@ -157,8 +157,8 @@ void TestEnvironmentTests::GetReferenceDataDirectoryTest1(Test& test)
 
     boost::filesystem::path directory = environment.getReferenceDataDirectory();
     
-    ISHTF_FAIL_IF_NEQ(directory, "");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(directory, "");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetReferenceDataDirectoryTest2(Test& test)
@@ -170,8 +170,8 @@ void TestEnvironmentTests::GetReferenceDataDirectoryTest2(Test& test)
 
     boost::filesystem::path directory = environment.getReferenceDataDirectory();
 
-    ISHTF_FAIL_IF_NEQ(directory, "reference");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(directory, "reference");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetReferenceDataPathTest1(Test& test)
@@ -181,8 +181,8 @@ void TestEnvironmentTests::GetReferenceDataPathTest1(Test& test)
 
     boost::filesystem::path referencePath = environment.getReferenceDataPath("file");
 
-    ISHTF_FAIL_IF_NEQ(referencePath, "reference/file");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(referencePath, "reference/file");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)
@@ -193,9 +193,9 @@ void TestEnvironmentTests::SetReferenceDataDirectoryTest1(Test& test)
     TestEnvironment environment(&parentEnvironment);
     environment.setReferenceDataDirectory("referenceData");
 
-    ISHTF_FAIL_IF_NEQ(parentEnvironment.getReferenceDataDirectory(), "parent");
-    ISHTF_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "parent/referenceData");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(parentEnvironment.getReferenceDataDirectory(), "parent");
+    ISHIKO_FAIL_IF_NEQ(environment.getReferenceDataDirectory(), "parent/referenceData");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetTestOutputDirectoryTest1(Test& test)
@@ -204,8 +204,8 @@ void TestEnvironmentTests::GetTestOutputDirectoryTest1(Test& test)
 
     boost::filesystem::path directory = environment.getTestOutputDirectory();
 
-    ISHTF_FAIL_IF_NEQ(directory, "");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(directory, "");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetTestOutputDirectoryTest2(Test& test)
@@ -217,8 +217,8 @@ void TestEnvironmentTests::GetTestOutputDirectoryTest2(Test& test)
 
     boost::filesystem::path directory = environment.getTestOutputDirectory();
 
-    ISHTF_FAIL_IF_NEQ(directory, "output");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(directory, "output");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::GetTestOutputPathTest1(Test& test)
@@ -228,8 +228,8 @@ void TestEnvironmentTests::GetTestOutputPathTest1(Test& test)
 
     boost::filesystem::path outputPath = environment.getTestOutputPath("file");
 
-    ISHTF_FAIL_IF_NEQ(outputPath, "output/file");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(outputPath, "output/file");
+    ISHIKO_PASS();
 }
 
 void TestEnvironmentTests::SetTestOutputDirectoryTest1(Test& test)
@@ -240,7 +240,7 @@ void TestEnvironmentTests::SetTestOutputDirectoryTest1(Test& test)
     TestEnvironment environment(&parentEnvironment);
     environment.setTestOutputDirectory("output");
 
-    ISHTF_FAIL_IF_NEQ(parentEnvironment.getTestOutputDirectory(), "parent");
-    ISHTF_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "parent/output");
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(parentEnvironment.getTestOutputDirectory(), "parent");
+    ISHIKO_FAIL_IF_NEQ(environment.getTestOutputDirectory(), "parent/output");
+    ISHIKO_PASS();
 }
