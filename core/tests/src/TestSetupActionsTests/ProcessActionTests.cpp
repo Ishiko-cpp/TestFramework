@@ -23,7 +23,7 @@ ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestEnvir
 void ProcessActionTests::CreationTest1(Test& test)
 {
     ProcessAction action("../../data/bin/WriteFileTestHelper.exe", ProcessAction::eWaitForExit);
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }
 
 void ProcessActionTests::SetupFailureTest1(Test& test)
@@ -37,7 +37,7 @@ void ProcessActionTests::SetupFailureTest1(Test& test)
     }
     catch (...)
     {
-        ISHTF_PASS();
+        ISHIKO_PASS();
     }
 }
 
@@ -58,7 +58,7 @@ void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
     action.setup();
     action.teardown();
 
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }
 
 void ProcessActionTests::SetupTerminateTest1(Test& test)
@@ -73,5 +73,5 @@ void ProcessActionTests::SetupTerminateTest1(Test& test)
     action.setup();
     action.teardown();
 
-    ISHTF_PASS();
+    ISHIKO_PASS();
 }
