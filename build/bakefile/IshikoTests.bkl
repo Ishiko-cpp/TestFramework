@@ -3,9 +3,10 @@ import $(ishikopath)/diff/include/Ishiko/Diff.bkl;
 import $(ishikopath)/process/include/Ishiko/Process.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 
-toolsets = gnu vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/IshikoTests.sln;
 vs2017.solutionfile = ../vc15/IshikoTests.sln;
 vs2015.solutionfile = ../vc14/IshikoTests.sln;
 vs2013.solutionfile = ../vc12/IshikoTests.sln;
