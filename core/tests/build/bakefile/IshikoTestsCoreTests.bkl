@@ -1,8 +1,9 @@
 import ../../../../include/Ishiko/Tests/Core.bkl;
 
-toolsets = gnu vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/IshikoTestsCoreTests.sln;
 vs2017.solutionfile = ../vc15/IshikoTestsCoreTests.sln;
 vs2015.solutionfile = ../vc14/IshikoTestsCoreTests.sln;
 vs2013.solutionfile = ../vc12/IshikoTestsCoreTests.sln;

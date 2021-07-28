@@ -21,7 +21,8 @@ TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestEnvironme
 void TestHarnessTests::CreationTest1(Test& test)
 {
     TestHarness theTestHarness("TestHarnessTests_CreationTest1");
-    ISHTF_PASS();
+
+    ISHIKO_PASS();
 }
 
 void TestHarnessTests::RunTest1(Test& test)
@@ -29,8 +30,8 @@ void TestHarnessTests::RunTest1(Test& test)
     TestHarness theTestHarness("TestHarnessTests_RunTest1");
     int returnCode = theTestHarness.run();
 
-    ISHTF_FAIL_IF_NEQ(returnCode, eTestFailure);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(returnCode, eTestFailure);
+    ISHIKO_PASS();
 }
 
 void TestHarnessTests::RunTest2(Test& test)
@@ -42,8 +43,8 @@ void TestHarnessTests::RunTest2(Test& test)
 
     int returnCode = theTestHarness.run();
 
-    ISHTF_FAIL_IF_NEQ(returnCode, eOK);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(returnCode, eOK);
+    ISHIKO_PASS();
 }
 
 void TestHarnessTests::RunTest3(Test& test)
@@ -55,6 +56,6 @@ void TestHarnessTests::RunTest3(Test& test)
 
     int returnCode = theTestHarness.run();
 
-    ISHTF_FAIL_IF_NEQ(returnCode, eOK);
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NEQ(returnCode, eOK);
+    ISHIKO_PASS();
 }
