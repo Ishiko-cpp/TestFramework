@@ -21,7 +21,8 @@ FilesTeardownActionTests::FilesTeardownActionTests(const TestNumber& number, con
 void FilesTeardownActionTests::CreationTest1(Test& test)
 {
     FilesTeardownAction action;
-    ISHTF_PASS();
+
+    ISHIKO_PASS();
 }
 
 void FilesTeardownActionTeardownTest1Helper(Test& test)
@@ -40,8 +41,8 @@ void FilesTeardownActionTeardownTest1Helper(Test& test)
     std::ofstream file(filePath.string());
     file.close();
 
-    ISHTF_FAIL_IF_NOT(exists(filePath));
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF_NOT(exists(filePath));
+    ISHIKO_PASS();
 }
 
 void FilesTeardownActionTests::TeardownTest1(Test& test)
@@ -53,7 +54,7 @@ void FilesTeardownActionTests::TeardownTest1(Test& test)
         test.environment());
     teardownTest.run();
 
-    ISHTF_FAIL_IF(exists(filePath));
-    ISHTF_FAIL_IF_NOT(teardownTest.passed());
-    ISHTF_PASS();
+    ISHIKO_FAIL_IF(exists(filePath));
+    ISHIKO_FAIL_IF_NOT(teardownTest.passed());
+    ISHIKO_PASS();
 }

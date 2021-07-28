@@ -21,33 +21,33 @@
 
 // The double negation is needed to cope with classes that have an explicit operator bool
 #define ISHIKO_FAIL_IF(condition)                                                                \
-    if (!!(condition))                                                                          \
-    {                                                                                           \
-        std::string message =                                                                   \
-            Ishiko::Tests::TestMacrosFormatter::Format("ISHTF_FAIL_IF", #condition, condition); \
-        test.fail(message, __FILE__, __LINE__);                                                 \
+    if (!!(condition))                                                                           \
+    {                                                                                            \
+        std::string message =                                                                    \
+            Ishiko::Tests::TestMacrosFormatter::Format("ISHIKO_FAIL_IF", #condition, condition); \
+        test.fail(message, __FILE__, __LINE__);                                                  \
     }
 
 #define ISHIKO_FAIL_IF_NOT(condition) test.failIf(!(condition), __FILE__, __LINE__)
 #define ISHIKO_FAIL_IF_EQ(value1, value2) ISHTF_FAIL_IF((value1) == (value2))
 
 #define ISHIKO_FAIL_IF_NEQ(value, reference)                                                                        \
-    if ((value) != (reference))                                                                                    \
-    {                                                                                                              \
-        std::string message =                                                                                      \
-            Ishiko::Tests::TestMacrosFormatter::Format("ISHTF_FAIL_IF_NEQ", #value, #reference, value, reference); \
-        test.fail(message, __FILE__, __LINE__);                                                                    \
+    if ((value) != (reference))                                                                                     \
+    {                                                                                                               \
+        std::string message =                                                                                       \
+            Ishiko::Tests::TestMacrosFormatter::Format("ISHIKO_FAIL_IF_NEQ", #value, #reference, value, reference); \
+        test.fail(message, __FILE__, __LINE__);                                                                     \
     }
 
 #define ISHIKO_FAIL_IF_STR_EQ(value1, value2) ISHTF_FAIL_IF(strcmp(value1, value2) == 0)
 #define ISHIKO_FAIL_IF_STR_NEQ(value1, value2) ISHTF_FAIL_IF(strcmp(value1, value2) != 0)
 
 #define ISHIKO_FAIL_IF_NOT_CONTAIN(output, str)                                                                   \
-    if (std::string(output).find(str) == std::string::npos)                                                      \
-    {                                                                                                            \
-        std::string message =                                                                                    \
-            Ishiko::Tests::TestMacrosFormatter::Format("ISHTF_FAIL_IF_NOT_CONTAIN", #output, #str, output, str); \
-        test.fail(message, __FILE__, __LINE__);                                                                  \
+    if (std::string(output).find(str) == std::string::npos)                                                       \
+    {                                                                                                             \
+        std::string message =                                                                                     \
+            Ishiko::Tests::TestMacrosFormatter::Format("ISHIKO_FAIL_IF_NOT_CONTAIN", #output, #str, output, str); \
+        test.fail(message, __FILE__, __LINE__);                                                                   \
     }
 
 #define ISHIKO_PASS() test.pass()
