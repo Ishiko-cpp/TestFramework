@@ -7,7 +7,7 @@
 #include "FileComparisonTest.h"
 #include "DebugHeap.h"
 #include <Ishiko/Diff.h>
-#include <Ishiko/Platform/Compilers.h>
+#include <Ishiko/BasePlatform.h>
 
 using namespace Ishiko::Diff;
 
