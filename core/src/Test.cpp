@@ -8,6 +8,7 @@
 #include "TestSequence.h"
 #include "DebugHeap.h"
 #include <boost/filesystem/operations.hpp>
+#include <boost/range/algorithm.hpp>
 
 namespace Ishiko
 {
@@ -28,7 +29,7 @@ void Test::Observer::onExceptionThrown(const Test& source, std::exception_ptr ex
 
 void Test::Observers::add(std::shared_ptr<Observer> observer)
 {
-    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+    auto it = boost::range::find_if(m_observers,
         [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
     {
         return (o.first.lock() == observer);
@@ -46,7 +47,7 @@ void Test::Observers::add(std::shared_ptr<Observer> observer)
 
 void Test::Observers::remove(std::shared_ptr<Observer> observer)
 {
-    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+    auto it = boost::range::find_if(m_observers,
         [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
     {
         return (o.first.lock() == observer);
