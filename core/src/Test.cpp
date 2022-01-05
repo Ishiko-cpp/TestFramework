@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2006-2021 Xavier Leclercq
+    Copyright (c) 2006-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "Test.h"
-#include "TestSequence.h"
+#include "TestSequence.hpp"
 #include "DebugHeap.h"
 #include <boost/filesystem/operations.hpp>
 #include <boost/range/algorithm.hpp>

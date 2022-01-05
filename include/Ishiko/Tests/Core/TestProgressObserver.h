@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2021 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
@@ -9,7 +9,7 @@
 
 #include "Test.h"
 #include "TestNumber.h"
-#include "TestResult.h"
+#include "TestResult.hpp"
 #include <string>
 
 namespace Ishiko
@@ -32,7 +32,7 @@ protected:
 
 private:
     std::ostream& m_output;
-    std::string m_nesting;
+    size_t m_nestingLevel;
 };
 
 }

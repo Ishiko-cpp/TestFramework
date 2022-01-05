@@ -1,15 +1,15 @@
 /*
-    Copyright (c) 2006-2021 Xavier Leclercq
+    Copyright (c) 2006-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_TESTHARNESS_H_
-#define _ISHIKO_TESTS_CORE_TESTHARNESS_H_
+#ifndef _ISHIKO_TESTS_CORE_TESTHARNESS_HPP_
+#define _ISHIKO_TESTS_CORE_TESTHARNESS_HPP_
 
 #include "TestConfiguration.h"
 #include "TestEnvironment.h"
-#include "TestSequence.h"
+#include "TestSequence.hpp"
 #include "TopTestSequence.h"
 #include "TestApplicationReturnCodes.h"
 #include <string>

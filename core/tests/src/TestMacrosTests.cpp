@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2019-2021 Xavier Leclercq
+    Copyright (c) 2019-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "TestMacrosTests.h"
-#include "Ishiko/Tests/Core/TestMacros.h"
+#include "Ishiko/Tests/Core/TestMacros.hpp"
 #include "Ishiko/Tests/Core/TestProgressObserver.h"
 #include <Ishiko/Text.h>
 #include <sstream>

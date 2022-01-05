@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2000-2021 Xavier Leclercq
+    Copyright (c) 2000-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
@@ -8,7 +8,7 @@
 #define _ISHIKO_TESTS_CORE_HEAPALLOCATIONERRORSTEST_H_
 
 #include "Test.h"
-#include "TestSequence.h"
+#include "TestSequence.hpp"
 
 namespace Ishiko
 {
