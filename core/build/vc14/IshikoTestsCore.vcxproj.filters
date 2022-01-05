@@ -17,7 +17,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core.h">
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ConsoleApplicationTest.h">
@@ -44,7 +44,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ProcessAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\Test.h">
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\Test.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestApplicationReturnCodes.h">
@@ -59,10 +59,10 @@
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestHarness.h">
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestHarness.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacros.h">
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacros.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacrosFormatter.h">
@@ -74,10 +74,10 @@
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestProgressObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestResult.h">
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestResult.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSequence.h">
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSequence.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSetupAction.h">

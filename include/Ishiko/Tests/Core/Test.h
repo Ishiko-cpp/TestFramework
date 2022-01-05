@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2021 Xavier Leclercq
+    Copyright (c) 2005-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
@@ -8,7 +8,7 @@
 #define _ISHIKO_TESTS_CORE_TEST_H_
 
 #include "TestNumber.h"
-#include "TestResult.h"
+#include "TestResult.hpp"
 #include "TestEnvironment.h"
 #include "TestSetupAction.h"
 #include "TestTeardownAction.h"

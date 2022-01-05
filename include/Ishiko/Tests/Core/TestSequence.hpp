@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2005-2021 Xavier Leclercq
+    Copyright (c) 2005-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_TESTSEQUENCE_H_
-#define _ISHIKO_TESTS_CORE_TESTSEQUENCE_H_
+#ifndef _ISHIKO_TESTS_CORE_TESTSEQUENCE_HPP_
+#define _ISHIKO_TESTS_CORE_TESTSEQUENCE_HPP_
 
 #include "Test.h"
 #include <vector>
