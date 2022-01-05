@@ -9,13 +9,28 @@
 #include <iostream>
 #include <sstream>
 
+using namespace std;
+
 namespace Ishiko
 {
 namespace Tests
 {
 
-TestProgressObserver::TestProgressObserver(std::ostream& output)
-    : m_output(output)
+namespace
+{
+
+void WriteNesting(size_t level, ostream& output)
+{
+    for (size_t i = 0; i < level; ++i)
+    {
+        output << "    ";
+    }
+}
+
+}
+
+TestProgressObserver::TestProgressObserver(ostream& output)
+    : m_output(output), m_nestingLevel(0)
 {
 }
 
@@ -24,61 +39,64 @@ void TestProgressObserver::onLifecycleEvent(const Test& source, EEventType type)
     switch (type)
     {
     case eTestStart:
-        m_output << m_nesting << formatNumber(source.number()) << " " << source.name() << " started" << std::endl;
-        m_nesting.append("    ");
+        WriteNesting(m_nestingLevel, m_output);
+        m_output << formatNumber(source.number()) << " " << source.name() << " started" << endl;
+        ++m_nestingLevel;
         break;
 
     case eTestEnd:
-        if (!m_nesting.empty())
+        if (m_nestingLevel > 0)
         {
-            m_nesting.erase(m_nesting.size() - 4);
+            --m_nestingLevel;
         }
 
-        m_output << m_nesting << formatNumber(source.number()) << " " << source.name() << " completed, result is "
-            << formatResult(source.result()) << std::endl;
+        WriteNesting(m_nestingLevel, m_output);
+        m_output << formatNumber(source.number()) << " " << source.name() << " completed, result is "
+            << formatResult(source.result()) << endl;
         break;
     }
 }
 
-void TestProgressObserver::onCheckFailed(const Test& source, const std::string& message, const char* file, int line)
+void TestProgressObserver::onCheckFailed(const Test& source, const string& message, const char* file, int line)
 {
+    WriteNesting(m_nestingLevel, m_output);
     if (message.empty())
     {
-        m_output << m_nesting << "Check failed [file: " << file << ", line: " << line << "]" << std::endl;
+        m_output << "Check failed [file: " << file << ", line: " << line << "]" << endl;
     }
     else
     {
-        m_output << m_nesting << "Check failed: " << message << " [file: " << file << ", line: " << line << "]"
-            << std::endl;
+        m_output << "Check failed: " << message << " [file: " << file << ", line: " << line << "]"  << endl;
     }
 }
 
-void TestProgressObserver::onExceptionThrown(const Test& source, std::exception_ptr exception)
+void TestProgressObserver::onExceptionThrown(const Test& source, exception_ptr exception)
 {
+    WriteNesting(m_nestingLevel, m_output);
     if (exception)
     {
         try
         {
-            std::rethrow_exception(exception);
+            rethrow_exception(exception);
         }
         catch (const std::exception& e)
         {
-            m_output << m_nesting << "Exception thrown: " << e.what() << std::endl;
+            m_output << "Exception thrown: " << e.what() << endl;
         }
-        catch(...)
+        catch (...)
         {
-            m_output << m_nesting << "Exception not derived from std::exception thrown" << std::endl;
+            m_output << "Exception not derived from std::exception thrown" << endl;
         }
     }
     else
     {
-        m_output << m_nesting << "Exception thrown but no exception information available" << std::endl;
+        m_output << "Exception thrown but no exception information available" << endl;
     }
 }
 
-std::string TestProgressObserver::formatNumber(const TestNumber& number)
+string TestProgressObserver::formatNumber(const TestNumber& number)
 {
-    std::stringstream formattedNumber;
+    stringstream formattedNumber;
 
     for (size_t i = 0; i < number.depth(); ++i)
     {
@@ -88,9 +106,9 @@ std::string TestProgressObserver::formatNumber(const TestNumber& number)
     return formattedNumber.str();
 }
 
-std::string TestProgressObserver::formatResult(const TestResult& result)
+string TestProgressObserver::formatResult(const TestResult& result)
 {
-    std::string formattedResult;
+    string formattedResult;
     switch (result)
     {
     case TestResult::unknown:

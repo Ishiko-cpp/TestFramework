@@ -32,7 +32,7 @@ protected:
 
 private:
     std::ostream& m_output;
-    std::string m_nesting;
+    size_t m_nestingLevel;
 };
 
 }
