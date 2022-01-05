@@ -173,7 +173,7 @@
     <ClCompile Include="..\..\src\TopTestSequence.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ConsoleApplicationTest.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\DebugHeap.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\DirectoriesTeardownAction.h" />
@@ -182,18 +182,18 @@
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\HeapAllocationErrorsTest.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\JUnitXMLWriter.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ProcessAction.h" />
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\Test.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\Test.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestApplicationReturnCodes.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestConfiguration.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestEnvironment.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestException.h" />
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestHarness.h" />
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacros.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestHarness.hpp" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacros.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacrosFormatter.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestNumber.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestProgressObserver.h" />
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestResult.h" />
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSequence.h" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestResult.hpp" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSequence.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSetupAction.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestTeardownAction.h" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TopTestSequence.h" />
