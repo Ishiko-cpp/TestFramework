@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2007-2021 Xavier Leclercq
+    Copyright (c) 2007-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "TestHarnessTests.h"
-#include "Ishiko/Tests/Core/TestHarness.h"
+#include "Ishiko/Tests/Core/TestHarness.hpp"
 
 using namespace Ishiko::Tests;
 

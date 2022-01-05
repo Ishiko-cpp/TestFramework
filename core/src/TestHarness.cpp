@@ -1,10 +1,10 @@
 /*
-    Copyright (c) 2005-2021 Xavier Leclercq
+    Copyright (c) 2005-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#include "TestHarness.h"
+#include "TestHarness.hpp"
 #include "TestProgressObserver.h"
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <iostream>
