@@ -30,7 +30,7 @@ void FilesTeardownActionTeardownTest1Helper(Test& test)
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();
 
-    path filePath(test.context().getTestOutputDirectory("TestTeardownActionsTests/FilesTeardownActionTeardownTest1"));
+    path filePath(test.context().getTestOutputPath("TestTeardownActionsTests/FilesTeardownActionTeardownTest1"));
     std::shared_ptr<FilesTeardownAction> action = std::make_shared<FilesTeardownAction>();
     action->add(filePath);
     test.addTeardownAction(action);
