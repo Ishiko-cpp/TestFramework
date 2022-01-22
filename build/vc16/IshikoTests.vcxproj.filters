@@ -56,7 +56,7 @@
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestConfiguration.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestEnvironment.hpp">
+    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestContext.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestException.hpp">
@@ -124,7 +124,7 @@
     <ClCompile Include="..\..\core\src\TestConfiguration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\core\src\TestEnvironment.cpp">
+    <ClCompile Include="..\..\core\src\TestContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\core\src\TestException.cpp">
