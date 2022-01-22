@@ -4,10 +4,10 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_HEAPALLOCATIONERRORSTEST_H_
-#define _ISHIKO_TESTS_CORE_HEAPALLOCATIONERRORSTEST_H_
+#ifndef _ISHIKO_CPP_TESTS_CORE_HEAPALLOCATIONERRORSTEST_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_HEAPALLOCATIONERRORSTEST_HPP_
 
-#include "Test.h"
+#include "Test.hpp"
 #include "TestSequence.hpp"
 
 namespace Ishiko

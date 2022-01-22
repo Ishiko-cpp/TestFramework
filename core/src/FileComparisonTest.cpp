@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2007-2021 Xavier Leclercq
+    Copyright (c) 2007-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#include "FileComparisonTest.h"
-#include "DebugHeap.h"
+#include "FileComparisonTest.hpp"
+#include "DebugHeap.hpp"
 #include <Ishiko/Diff.h>
 #include <Ishiko/BasePlatform.h>
 

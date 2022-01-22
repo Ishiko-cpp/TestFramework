@@ -4,14 +4,14 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_TEST_H_
-#define _ISHIKO_TESTS_CORE_TEST_H_
+#ifndef _ISHIKO_CPP_TESTS_CORE_TEST_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_TEST_HPP_
 
-#include "TestNumber.h"
+#include "TestNumber.hpp"
 #include "TestResult.hpp"
-#include "TestEnvironment.h"
-#include "TestSetupAction.h"
-#include "TestTeardownAction.h"
+#include "TestEnvironment.hpp"
+#include "TestSetupAction.hpp"
+#include "TestTeardownAction.hpp"
 #include <functional>
 #include <string>
 #include <vector>
