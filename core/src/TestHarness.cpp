@@ -5,7 +5,7 @@
 */
 
 #include "TestHarness.hpp"
-#include "TestProgressObserver.h"
+#include "TestProgressObserver.hpp"
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <iostream>
 #include <iomanip>

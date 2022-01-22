@@ -1,14 +1,14 @@
 /*
-    Copyright (c) 2016-2021 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_PROCESSACTION_H_
-#define _ISHIKO_TESTS_CORE_PROCESSACTION_H_
+#ifndef _ISHIKO_CPP_TESTS_CORE_PROCESSACTION_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_PROCESSACTION_HPP_
 
-#include "TestSetupAction.h"
-#include "TestTeardownAction.h"
+#include "TestSetupAction.hpp"
+#include "TestTeardownAction.hpp"
 #include "Ishiko/Process/ChildProcess.h"
 #include <string>
 #include <memory>

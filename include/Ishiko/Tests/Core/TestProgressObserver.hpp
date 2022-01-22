@@ -4,11 +4,11 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_TESTPROGRESSOBSERVER_H_
-#define _ISHIKO_TESTS_CORE_TESTPROGRESSOBSERVER_H_
+#ifndef _ISHIKO_CPP_TESTS_CORE_TESTPROGRESSOBSERVER_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_TESTPROGRESSOBSERVER_HPP_
 
-#include "Test.h"
-#include "TestNumber.h"
+#include "Test.hpp"
+#include "TestNumber.hpp"
 #include "TestResult.hpp"
 #include <string>
 

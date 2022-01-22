@@ -4,9 +4,9 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#include "Test.h"
+#include "Test.hpp"
 #include "TestSequence.hpp"
-#include "DebugHeap.h"
+#include "DebugHeap.hpp"
 #include <boost/filesystem/operations.hpp>
 #include <boost/range/algorithm.hpp>
 

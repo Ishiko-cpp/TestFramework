@@ -4,10 +4,10 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_TESTMACROS_HPP_
-#define _ISHIKO_TESTS_CORE_TESTMACROS_HPP_
+#ifndef _ISHIKO_CPP_TESTS_CORE_TESTMACROS_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_TESTMACROS_HPP_
 
-#include "TestMacrosFormatter.h"
+#include "TestMacrosFormatter.hpp"
 
 #define ISHIKO_ABORT() test.abort(__FILE__, __LINE__)
 // The double negation is needed to cope with classes that have an explicit operator bool

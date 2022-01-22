@@ -1,14 +1,14 @@
 /*
-    Copyright (c) 2016-2021 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_CONSOLEAPPLICATIONTEST_H_
-#define _ISHIKO_TESTS_CORE_CONSOLEAPPLICATIONTEST_H_
+#ifndef _ISHIKO_CPP_TESTS_CORE_CONSOLEAPPLICATIONTEST_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_CONSOLEAPPLICATIONTEST_HPP_
 
-#include "Test.h"
-#include "FileComparisonTest.h"
+#include "Test.hpp"
+#include "FileComparisonTest.hpp"
 #include <string>
 
 namespace Ishiko

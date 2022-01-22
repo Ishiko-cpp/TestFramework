@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#include "ProcessAction.h"
-#include "TestException.h"
+#include "ProcessAction.hpp"
+#include "TestException.hpp"
 #include <Ishiko/Process.h>
 
 using namespace Ishiko::Process;

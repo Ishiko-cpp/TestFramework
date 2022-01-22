@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2005-2021 Xavier Leclercq
+    Copyright (c) 2005-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_TESTENVIRONMENT_H_
-#define _ISHIKO_TESTS_CORE_TESTENVIRONMENT_H_
+#ifndef _ISHIKO_CPP_TESTS_CORE_TESTENVIRONMENT_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_TESTENVIRONMENT_HPP_
 
 #include <boost/filesystem/path.hpp>
 #include <boost/optional.hpp>
