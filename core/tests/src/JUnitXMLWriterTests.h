@@ -12,7 +12,7 @@
 class JUnitXMLWriterTests : public Ishiko::Tests::TestSequence
 {
 public:
-    JUnitXMLWriterTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    JUnitXMLWriterTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void ConstructorTest1(Ishiko::Tests::Test& test);

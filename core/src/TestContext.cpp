@@ -4,7 +4,7 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#include "TestEnvironment.hpp"
+#include "TestContext.hpp"
 #include "TestException.hpp"
 #include <Ishiko/Process/CurrentEnvironment.h>
 
@@ -13,7 +13,7 @@ namespace Ishiko
 namespace Tests
 {
 
-TestEnvironment::TestEnvironment()
+TestContext::TestContext()
     : m_parent(nullptr)
 {
     m_testDataDirectories["(default)"] = boost::filesystem::path();
@@ -21,23 +21,23 @@ TestEnvironment::TestEnvironment()
     m_testOutputDirectories["(default)"] = boost::filesystem::path();
 }
 
-TestEnvironment::TestEnvironment(const TestEnvironment* parent)
+TestContext::TestContext(const TestContext* parent)
     : m_parent(parent)
 {
 }
 
-const TestEnvironment& TestEnvironment::DefaultTestEnvironment()
+const TestContext& TestContext::DefaultTestContext()
 {
-    static TestEnvironment defaultEnvironment;
-    return defaultEnvironment;
+    static TestContext defaultContext;
+    return defaultContext;
 }
 
-boost::filesystem::path TestEnvironment::getTestDataDirectory() const
+boost::filesystem::path TestContext::getTestDataDirectory() const
 {
     return getTestDataDirectory("(default)");
 }
 
-boost::filesystem::path TestEnvironment::getTestDataDirectory(const std::string& id) const
+boost::filesystem::path TestContext::getTestDataDirectory(const std::string& id) const
 {
     boost::filesystem::path result;
     std::map<std::string, boost::filesystem::path>::const_iterator it = m_testDataDirectories.find(id);
@@ -67,17 +67,17 @@ boost::filesystem::path TestEnvironment::getTestDataDirectory(const std::string&
 }
 
 
-boost::filesystem::path TestEnvironment::getTestDataPath(const boost::filesystem::path& path) const
+boost::filesystem::path TestContext::getTestDataPath(const boost::filesystem::path& path) const
 {
     return getTestDataDirectory() / path;
 }
 
-void TestEnvironment::setTestDataDirectory(const boost::filesystem::path& path)
+void TestContext::setTestDataDirectory(const boost::filesystem::path& path)
 {
     setTestDataDirectory("(default)", path);
 }
 
-void TestEnvironment::setTestDataDirectory(const std::string& id,
+void TestContext::setTestDataDirectory(const std::string& id,
     const boost::filesystem::path& path)
 {
     std::string expandedPath = Process::CurrentEnvironment::ExpandVariablesInString(path.string(),
@@ -86,12 +86,12 @@ void TestEnvironment::setTestDataDirectory(const std::string& id,
     m_testDataDirectories[id] = expandedPath;
 }
 
-boost::filesystem::path TestEnvironment::getReferenceDataDirectory() const
+boost::filesystem::path TestContext::getReferenceDataDirectory() const
 {
     return getReferenceDataDirectory("(default)");
 }
 
-boost::filesystem::path TestEnvironment::getReferenceDataDirectory(const std::string& id) const
+boost::filesystem::path TestContext::getReferenceDataDirectory(const std::string& id) const
 {
     boost::filesystem::path result;
     std::map<std::string, boost::filesystem::path>::const_iterator it = m_referenceDataDirectories.find(id);
@@ -120,17 +120,17 @@ boost::filesystem::path TestEnvironment::getReferenceDataDirectory(const std::st
     return result;
 }
 
-boost::filesystem::path TestEnvironment::getReferenceDataPath(const boost::filesystem::path& path) const
+boost::filesystem::path TestContext::getReferenceDataPath(const boost::filesystem::path& path) const
 {
     return getReferenceDataDirectory() / path;
 }
 
-void TestEnvironment::setReferenceDataDirectory(const boost::filesystem::path& path)
+void TestContext::setReferenceDataDirectory(const boost::filesystem::path& path)
 {
     setReferenceDataDirectory("(default)", path);
 }
 
-void TestEnvironment::setReferenceDataDirectory(const std::string& id, const boost::filesystem::path& path)
+void TestContext::setReferenceDataDirectory(const std::string& id, const boost::filesystem::path& path)
 {
     std::string expandedPath = Process::CurrentEnvironment::ExpandVariablesInString(path.string(),
         Process::CurrentEnvironment::eDollarAndParentheses);
@@ -138,12 +138,12 @@ void TestEnvironment::setReferenceDataDirectory(const std::string& id, const boo
     m_referenceDataDirectories[id] = expandedPath;
 }
 
-boost::filesystem::path TestEnvironment::getTestOutputDirectory() const
+boost::filesystem::path TestContext::getTestOutputDirectory() const
 {
     return getTestOutputDirectory("(default)");
 }
 
-boost::filesystem::path TestEnvironment::getTestOutputDirectory(const std::string& id) const
+boost::filesystem::path TestContext::getTestOutputDirectory(const std::string& id) const
 {
     boost::filesystem::path result;
     std::map<std::string, boost::filesystem::path>::const_iterator it = m_testOutputDirectories.find(id);
@@ -172,17 +172,17 @@ boost::filesystem::path TestEnvironment::getTestOutputDirectory(const std::strin
     return result;
 }
 
-boost::filesystem::path TestEnvironment::getTestOutputPath(const boost::filesystem::path& path) const
+boost::filesystem::path TestContext::getTestOutputPath(const boost::filesystem::path& path) const
 {
     return getTestOutputDirectory() / path;
 }
 
-void TestEnvironment::setTestOutputDirectory(const boost::filesystem::path& path)
+void TestContext::setTestOutputDirectory(const boost::filesystem::path& path)
 {
     setTestOutputDirectory("(default)", path);
 }
 
-void TestEnvironment::setTestOutputDirectory(const std::string& id, const boost::filesystem::path& path)
+void TestContext::setTestOutputDirectory(const std::string& id, const boost::filesystem::path& path)
 {
     std::string expandedPath = Process::CurrentEnvironment::ExpandVariablesInString(path.string(),
         Process::CurrentEnvironment::eDollarAndParentheses);

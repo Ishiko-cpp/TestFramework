@@ -4,8 +4,8 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTS_CORE_TESTENVIRONMENT_HPP_
-#define _ISHIKO_CPP_TESTS_CORE_TESTENVIRONMENT_HPP_
+#ifndef _ISHIKO_CPP_TESTS_CORE_TESTCONTEXT_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_TESTCONTEXT_HPP_
 
 #include <boost/filesystem/path.hpp>
 #include <boost/optional.hpp>
@@ -16,13 +16,13 @@ namespace Ishiko
 namespace Tests
 {
 
-class TestEnvironment
+class TestContext
 {
 public:
-    TestEnvironment();
-    TestEnvironment(const TestEnvironment* parent);
-    ~TestEnvironment() noexcept = default;
-    static const TestEnvironment& DefaultTestEnvironment();
+    TestContext();
+    TestContext(const TestContext* parent);
+    ~TestContext() noexcept = default;
+    static const TestContext& DefaultTestContext();
 
     // This function is equivalent to calling getTestDataDirectory("(default)")
     // and exists to avoid the need to give a name to the test data
@@ -57,7 +57,7 @@ public:
     void setTestOutputDirectory(const std::string& id, const boost::filesystem::path& path);
 
 private:
-    const TestEnvironment* m_parent;
+    const TestContext* m_parent;
     std::map<std::string, boost::filesystem::path> m_testDataDirectories;
     std::map<std::string, boost::filesystem::path> m_referenceDataDirectories;
     std::map<std::string, boost::filesystem::path> m_testOutputDirectories;

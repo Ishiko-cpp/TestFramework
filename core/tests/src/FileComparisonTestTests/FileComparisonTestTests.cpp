@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2021 Xavier Leclercq
+    Copyright (c) 2007-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
@@ -8,8 +8,8 @@
 
 using namespace Ishiko::Tests;
 
-FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "FileComparisonTest tests", environment)
+FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "FileComparisonTest tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("run success test 1", RunSuccessTest1);

@@ -9,8 +9,8 @@
 
 using namespace Ishiko::Tests;
 
-TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "TestHarness tests", environment)
+TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "TestHarness tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);

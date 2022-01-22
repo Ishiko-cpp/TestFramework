@@ -17,8 +17,8 @@ TopTestSequence::TopTestSequence(const std::string& name)
 }
 
 TopTestSequence::TopTestSequence(const std::string& name,
-    const TestEnvironment& environment)
-    : TestSequence(TestNumber(), name, environment)
+    const TestContext& context)
+    : TestSequence(TestNumber(), name, context)
 {
 }
 

@@ -9,8 +9,8 @@
 
 using namespace Ishiko::Tests;
 
-TestMacrosFormatterTests::TestMacrosFormatterTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "TestMacrosFormatter tests", environment)
+TestMacrosFormatterTests::TestMacrosFormatterTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "TestMacrosFormatter tests", context)
 {
     append<HeapAllocationErrorsTest>("Format test 1", FormatTest1);
     append<HeapAllocationErrorsTest>("Format test 2", FormatTest2);

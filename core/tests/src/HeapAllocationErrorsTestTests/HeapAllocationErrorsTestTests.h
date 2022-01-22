@@ -12,8 +12,7 @@
 class HeapAllocationErrorsTestTests : public Ishiko::Tests::TestSequence
 {
 public:
-    HeapAllocationErrorsTestTests(const Ishiko::Tests::TestNumber& number,
-        const Ishiko::Tests::TestEnvironment& environment);
+    HeapAllocationErrorsTestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void CreationTest1(Ishiko::Tests::Test& test);

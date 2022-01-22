@@ -5,7 +5,7 @@
 */
 
 #include "JUnitXMLWriterTests.h"
-#include "TestEnvironmentTests/TestEnvironmentTests.h"
+#include "TestContextTests.hpp"
 #include "TestNumberTests.h"
 #include "TestTests.h"
 #include "TestMacrosFormatterTests.h"
@@ -18,7 +18,6 @@
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
 #include "TestHarnessTests.h"
 #include <Ishiko/Tests/Core.hpp>
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
 using namespace boost::filesystem;
@@ -27,13 +26,12 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("IshikoTestFrameworkCore");
 
-    theTestHarness.environment().setTestDataDirectory("../../data");
-    theTestHarness.environment().setTestOutputDirectory("../../output");
-    create_directories("../../TestOutput");
-    theTestHarness.environment().setReferenceDataDirectory("../../reference");
+    theTestHarness.context().setTestDataDirectory("../../data");
+    theTestHarness.context().setTestOutputDirectory("../../output");
+    theTestHarness.context().setReferenceDataDirectory("../../reference");
 
     TestSequence& theTests = theTestHarness.tests();
-    theTests.append<TestEnvironmentTests>();
+    theTests.append<TestContextTests>();
     theTests.append<TestNumberTests>();
     theTests.append<TestTests>();
     theTests.append<TestMacrosFormatterTests>();

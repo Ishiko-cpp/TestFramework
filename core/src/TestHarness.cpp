@@ -17,7 +17,7 @@ namespace Tests
 {
 
 TestHarness::TestHarness(const std::string& title)
-    : m_environment(TestEnvironment::DefaultTestEnvironment()), m_topSequence(title, m_environment),
+    : m_context(TestContext::DefaultTestContext()), m_topSequence(title, m_context),
     m_timestampOutputDirectory(true)
 {
 }
@@ -26,7 +26,7 @@ int TestHarness::run()
 {
     std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
 
-    if (m_environment.getTestOutputDirectory() != "")
+    if (m_context.getTestOutputDirectory() != "")
     {
         prepareOutputDirectory();
     }
@@ -36,9 +36,9 @@ int TestHarness::run()
     return result;
 }
 
-TestEnvironment& TestHarness::environment()
+TestContext& TestHarness::context()
 {
-    return m_environment;
+    return m_context;
 }
 
 TestSequence& TestHarness::tests()
@@ -58,8 +58,8 @@ void TestHarness::prepareOutputDirectory()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().hours()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().minutes()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().seconds() << "Z";
-        boost::filesystem::path newOutputDirectory = m_environment.getTestOutputDirectory() / currentSecondStr.str();
-        m_environment.setTestOutputDirectory(newOutputDirectory.string());
+        boost::filesystem::path newOutputDirectory = m_context.getTestOutputDirectory() / currentSecondStr.str();
+        m_context.setTestOutputDirectory(newOutputDirectory.string());
     }
 }
 

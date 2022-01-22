@@ -12,7 +12,7 @@
 class TestMacrosTests : public Ishiko::Tests::TestSequence
 {
 public:
-    TestMacrosTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    TestMacrosTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void PassMacroTest1(Ishiko::Tests::Test& test);
