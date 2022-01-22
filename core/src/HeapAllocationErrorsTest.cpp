@@ -22,10 +22,10 @@ HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, con
 }
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-    void (*runFct)(Test& test), const TestEnvironment& environment)
-    : Test(TestNumber(), name, environment), m_innerObserver(std::make_shared<InnerObserver>(*this))
+    void (*runFct)(Test& test), const TestContext& context)
+    : Test(TestNumber(), name, context), m_innerObserver(std::make_shared<InnerObserver>(*this))
 {
-    m_test = std::make_shared<Test>(TestNumber(), name, runFct, environment);
+    m_test = std::make_shared<Test>(TestNumber(), name, runFct, context);
     // We pass in a special observer to filter out the lifecycle events as m_test is an implementation detail that
     // shouldn't be visible to the outside.
     m_test->observers().add(m_innerObserver);

@@ -11,8 +11,8 @@
 using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ProcessAction tests", environment)
+ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ProcessAction tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("setup (failure) test 1", SetupFailureTest1);
@@ -44,15 +44,15 @@ void ProcessActionTests::SetupFailureTest1(Test& test)
 void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "bin/WriteFileTestHelper");
+    path executablePath(test.context().getTestDataDirectory() / "bin/WriteFileTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "bin/WriteFileTestHelper.exe");
+    path executablePath(test.context().getTestDataDirectory() / "bin/WriteFileTestHelper.exe");
 #endif
-    path outputPath(test.environment().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    path outputPath(test.context().getTestOutputDirectory() / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
     test.setOutputFilePath(outputPath);
-    create_directories(test.environment().getTestOutputDirectory() / "TestSetupActionsTests");
-    test.setReferenceFilePath(test.environment().getReferenceDataDirectory()
-        / "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    create_directories(test.context().getTestOutputDirectory() / "TestSetupActionsTests");
+    test.setReferenceFilePath(
+        test.context().getReferenceDataPath("TestSetupActionsTests/ProcessActionSetupTest1.txt"));
 
     ProcessAction action(executablePath.string() + " " + outputPath.string(), ProcessAction::eWaitForExit);
     action.setup();
@@ -64,9 +64,9 @@ void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
 void ProcessActionTests::SetupTerminateTest1(Test& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "bin/PermanentAppTestHelper");
+    path executablePath(test.context().getTestDataDirectory() / "bin/PermanentAppTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "bin/PermanentAppTestHelper.exe");
+    path executablePath(test.context().getTestDataDirectory() / "bin/PermanentAppTestHelper.exe");
 #endif
 
     ProcessAction action(executablePath.string(), ProcessAction::eTerminate);

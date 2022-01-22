@@ -9,8 +9,8 @@
 
 using namespace Ishiko::Tests;
 
-JUnitXMLWriterTests::JUnitXMLWriterTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "JUnitXMLWriter tests", environment)
+JUnitXMLWriterTests::JUnitXMLWriterTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "JUnitXMLWriter tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
 }

@@ -1,17 +1,17 @@
 /*
-    Copyright (c) 2016-2021 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "ConsoleApplicationTestTests.h"
-#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem.hpp>
 
 using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ConsoleApplicationTest tests", environment)
+ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ConsoleApplicationTest tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("run success test 1", RunSuccessTest1);
@@ -24,9 +24,9 @@ ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& numbe
 void ConsoleApplicationTestTests::CreationTest1(Test& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "bin/WriteFileTestHelper");
+    path executablePath(test.context().getTestDataDirectory() / "bin/WriteFileTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "bin/WriteFileTestHelper.exe");
+    path executablePath(test.context().getTestDataDirectory() / "bin/WriteFileTestHelper.exe");
 #endif
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest1",
@@ -38,9 +38,9 @@ void ConsoleApplicationTestTests::CreationTest1(Test& test)
 void ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "bin/ExitCodeTestHelper");
+    path executablePath(test.context().getTestDataDirectory() / "bin/ExitCodeTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "bin/ExitCodeTestHelper.exe");
+    path executablePath(test.context().getTestDataDirectory() / "bin/ExitCodeTestHelper.exe");
 #endif
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest1",
@@ -54,9 +54,9 @@ void ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
 void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "bin/ExitCodeTestHelper");
+    path executablePath(test.context().getTestDataDirectory() / "bin/ExitCodeTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "bin/ExitCodeTestHelper.exe");
+    path executablePath(test.context().getTestDataDirectory() / "bin/ExitCodeTestHelper.exe");
 #endif
 
     std::string commandLine = executablePath.string() + " 3";
@@ -70,9 +70,9 @@ void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
 void ConsoleApplicationTestTests::RunFailureTest1(Test& test)
 {
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "bin/ExitCodeTestHelper");
+    path executablePath(test.context().getTestDataDirectory() / "bin/ExitCodeTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "bin/ExitCodeTestHelper.exe");
+    path executablePath(test.context().getTestDataDirectory() / "bin/ExitCodeTestHelper.exe");
 #endif
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest1",
@@ -85,17 +85,16 @@ void ConsoleApplicationTestTests::RunFailureTest1(Test& test)
 
 void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
 {
-    create_directories(test.environment().getTestOutputDirectory() / "ConsoleApplicationTestTests");
+    create_directories(test.context().getTestOutputDirectory() / "ConsoleApplicationTestTests");
 
 #ifdef __linux__
-    path executablePath(test.environment().getTestDataDirectory() / "bin/StandardOutputTestHelper");
+    path executablePath(test.context().getTestDataDirectory() / "bin/StandardOutputTestHelper");
 #else
-    path executablePath(test.environment().getTestDataDirectory() / "bin/StandardOutputTestHelper.exe");
+    path executablePath(test.context().getTestDataDirectory() / "bin/StandardOutputTestHelper.exe");
 #endif
-    path outputPath(test.environment().getTestOutputDirectory()
-        / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
-    remove(outputPath);
-    path referencePath(test.environment().getReferenceDataDirectory()
+    path outputPath(
+        test.context().getTestOutputPath("ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt"));
+    path referencePath(test.context().getReferenceDataDirectory()
         / "ConsoleApplicationTestTests/ConsoleApplicationTestRunSuccessTest3.txt");
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest3",
@@ -110,12 +109,11 @@ void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
 
 void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
 {
-    path executablePath(test.environment().getTestDataDirectory() / "bin/StandardOutputTestHelper.exe");
-    path outputPath(test.environment().getTestOutputDirectory()
-        / "ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt");
-    remove(outputPath);
-    path referencePath(test.environment().getReferenceDataDirectory()
-        / "ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt");
+    path executablePath(test.context().getTestDataDirectory() / "bin/StandardOutputTestHelper.exe");
+    path outputPath(
+        test.context().getTestOutputPath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt"));
+    path referencePath(
+        test.context().getReferenceDataPath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt"));
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest2",
         executablePath.string().c_str(), 0);

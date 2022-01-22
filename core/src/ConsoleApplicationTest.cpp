@@ -22,8 +22,8 @@ ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const s
 }
 
 ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const std::string& name,
-    const std::string& commandLine, int expectedExitCode, const TestEnvironment& environment)
-    : Test(number, name, environment), m_commandLine(commandLine), m_checkExitCode(true),
+    const std::string& commandLine, int expectedExitCode, const TestContext& context)
+    : Test(number, name, context), m_commandLine(commandLine), m_checkExitCode(true),
     m_expectedExitCode(expectedExitCode), m_standardOutputTest(TestNumber(), "Standard Output")
 {
 }

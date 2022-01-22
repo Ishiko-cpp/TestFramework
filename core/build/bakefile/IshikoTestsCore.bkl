@@ -48,7 +48,7 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
         ../../../include/Ishiko/Tests/Core/Test.hpp
         ../../../include/Ishiko/Tests/Core/TestApplicationReturnCodes.hpp
         ../../../include/Ishiko/Tests/Core/TestConfiguration.hpp
-        ../../../include/Ishiko/Tests/Core/TestEnvironment.hpp
+        ../../../include/Ishiko/Tests/Core/TestContext.hpp
         ../../../include/Ishiko/Tests/Core/TestException.hpp
         ../../../include/Ishiko/Tests/Core/TestHarness.hpp
         ../../../include/Ishiko/Tests/Core/TestMacros.hpp
@@ -74,7 +74,7 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
         ../../src/ProcessAction.cpp
         ../../src/Test.cpp
         ../../src/TestConfiguration.cpp
-        ../../src/TestEnvironment.cpp
+        ../../src/TestContext.cpp
         ../../src/TestException.cpp
         ../../src/TestHarness.cpp
         ../../src/TestNumber.cpp

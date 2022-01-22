@@ -18,8 +18,7 @@ class TopTestSequence : public TestSequence
 {
 public:
     explicit TopTestSequence(const std::string& name);
-    TopTestSequence(const std::string& name, 
-        const TestEnvironment& environment);
+    TopTestSequence(const std::string& name, const TestContext& context);
 
 protected:
     void notify(Observer::EEventType type) override;

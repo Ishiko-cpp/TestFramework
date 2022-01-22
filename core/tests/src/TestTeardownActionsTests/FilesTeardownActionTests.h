@@ -12,8 +12,7 @@
 class FilesTeardownActionTests : public Ishiko::Tests::TestSequence
 {
 public:
-    FilesTeardownActionTests(const Ishiko::Tests::TestNumber& number,
-        const Ishiko::Tests::TestEnvironment& environment);
+    FilesTeardownActionTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void CreationTest1(Ishiko::Tests::Test& test);

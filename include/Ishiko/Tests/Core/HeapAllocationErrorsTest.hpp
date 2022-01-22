@@ -21,7 +21,7 @@ public:
     HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
         void (*runFct)(Test& test));
     HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
-        void (*runFct)(Test& test), const TestEnvironment& environment);
+        void (*runFct)(Test& test), const TestContext& context);
 
 protected:
     void doRun() override;

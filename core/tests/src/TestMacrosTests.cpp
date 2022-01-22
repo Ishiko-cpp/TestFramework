@@ -13,8 +13,8 @@
 using namespace Ishiko::Tests;
 using namespace Ishiko::Text;
 
-TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Test macros tests", environment)
+TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Test macros tests", context)
 {
     append<HeapAllocationErrorsTest>("ISHIKO_PASS test 1", PassMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_FAIL test 1", FailMacroTest1);

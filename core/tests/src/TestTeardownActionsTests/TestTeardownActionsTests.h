@@ -12,7 +12,7 @@
 class TestTeardownActionsTests : public Ishiko::Tests::TestSequence
 {
 public:
-    TestTeardownActionsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    TestTeardownActionsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 };
 
 #endif

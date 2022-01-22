@@ -124,38 +124,37 @@ void Test::Observers::removeDeletedObservers()
 
 Test::Test(const TestNumber& number, const std::string& name)
     : m_number(number), m_name(name), m_result(TestResult::unknown),
-    m_environment(&TestEnvironment::DefaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(0)
+    m_context(&TestContext::DefaultTestContext()), m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
-Test::Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(TestResult::unknown), m_environment(&environment),
+Test::Test(const TestNumber& number, const std::string& name, const TestContext& context)
+    : m_number(number), m_name(name), m_result(TestResult::unknown), m_context(&context),
     m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, TestResult result)
-    : m_number(number), m_name(name), m_result(result), m_environment(&TestEnvironment::DefaultTestEnvironment()),
+    : m_number(number), m_name(name), m_result(result), m_context(&TestContext::DefaultTestContext()),
     m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
-Test::Test(const TestNumber& number, const std::string& name, TestResult result, const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(result), m_environment(&environment), m_memoryLeakCheck(true),
-    m_runFct(0)
+Test::Test(const TestNumber& number, const std::string& name, TestResult result, const TestContext& context)
+    : m_number(number), m_name(name), m_result(result), m_context(&context), m_memoryLeakCheck(true), m_runFct(0)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct)
     : m_number(number), m_name(name), m_result(TestResult::unknown),
-    m_environment(&TestEnvironment::DefaultTestEnvironment()), m_memoryLeakCheck(true), m_runFct(runFct)
+    m_context(&TestContext::DefaultTestContext()), m_memoryLeakCheck(true), m_runFct(runFct)
 {
 }
 
 Test::Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct,
-    const TestEnvironment& environment)
-    : m_number(number), m_name(name), m_result(TestResult::unknown), m_environment(&environment),
-    m_memoryLeakCheck(true), m_runFct(runFct)
+    const TestContext& context)
+    : m_number(number), m_name(name), m_result(TestResult::unknown), m_context(&context), m_memoryLeakCheck(true),
+    m_runFct(runFct)
 {
 }
 
@@ -283,14 +282,14 @@ void Test::skip()
     throw AbortException();
 }
 
-const TestEnvironment& Test::environment() const
+const TestContext& Test::context() const
 {
-    return m_environment;
+    return m_context;
 }
 
-TestEnvironment& Test::environment()
+TestContext& Test::context()
 {
-    return m_environment;
+    return m_context;
 }
 
 void Test::run()
@@ -356,7 +355,7 @@ Test::Observers& Test::observers()
 
 void Test::setup()
 {
-    boost::filesystem::path outputDirectory = m_environment.getTestOutputDirectory();
+    boost::filesystem::path outputDirectory = m_context.getTestOutputDirectory();
     if (outputDirectory != "")
     {
         boost::filesystem::create_directories(outputDirectory);

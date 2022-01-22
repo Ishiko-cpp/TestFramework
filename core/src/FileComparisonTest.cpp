@@ -21,9 +21,8 @@ FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::stri
 {
 }
 
-FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name,
-    const TestEnvironment& environment)
-    : Test(number, name, environment), m_runFct(0)
+FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name, const TestContext& context)
+    : Test(number, name, context), m_runFct(0)
 {
 }
 
@@ -34,8 +33,8 @@ FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::stri
 }
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name,
-    void (*runFct)(FileComparisonTest& test), const TestEnvironment& environment)
-    : Test(number, name, environment), m_runFct(runFct)
+    void (*runFct)(FileComparisonTest& test), const TestContext& context)
+    : Test(number, name, context), m_runFct(runFct)
 {
 }
 

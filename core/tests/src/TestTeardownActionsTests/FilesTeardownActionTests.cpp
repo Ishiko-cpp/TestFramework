@@ -11,8 +11,8 @@
 using namespace Ishiko::Tests;
 using namespace boost::filesystem;
 
-FilesTeardownActionTests::FilesTeardownActionTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "FilesTeardownAction tests", environment)
+FilesTeardownActionTests::FilesTeardownActionTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "FilesTeardownAction tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("teardown() test 1", TeardownTest1);
@@ -30,8 +30,7 @@ void FilesTeardownActionTeardownTest1Helper(Test& test)
     DebugHeap::TrackingState tracking;
     tracking.disableTracking();
 
-    path filePath(test.environment().getTestOutputDirectory()
-        / "TestTeardownActionsTests/FilesTeardownActionTeardownTest1");
+    path filePath(test.context().getTestOutputDirectory("TestTeardownActionsTests/FilesTeardownActionTeardownTest1"));
     std::shared_ptr<FilesTeardownAction> action = std::make_shared<FilesTeardownAction>();
     action->add(filePath);
     test.addTeardownAction(action);
@@ -47,11 +46,10 @@ void FilesTeardownActionTeardownTest1Helper(Test& test)
 
 void FilesTeardownActionTests::TeardownTest1(Test& test)
 {
-    path filePath(test.environment().getTestOutputDirectory()
-        / "TestTeardownActionsTests/FilesTeardownActionTeardownTest1");
+    path filePath(test.context().getTestOutputPath("TestTeardownActionsTests/FilesTeardownActionTeardownTest1"));
 
     Test teardownTest(TestNumber(), "FilesTeardownActionTeardownTest1", FilesTeardownActionTeardownTest1Helper,
-        test.environment());
+        test.context());
     teardownTest.run();
 
     ISHIKO_FAIL_IF(exists(filePath));
