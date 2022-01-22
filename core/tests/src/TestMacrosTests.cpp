@@ -7,7 +7,7 @@
 #include "TestMacrosTests.h"
 #include "Ishiko/Tests/Core/TestMacros.hpp"
 #include "Ishiko/Tests/Core/TestProgressObserver.h"
-#include <Ishiko/Text.h>
+#include <Ishiko/Text.hpp>
 #include <sstream>
 
 using namespace Ishiko::Tests;
