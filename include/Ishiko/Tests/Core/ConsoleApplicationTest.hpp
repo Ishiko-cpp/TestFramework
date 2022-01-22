@@ -22,7 +22,7 @@ public:
     ConsoleApplicationTest(const TestNumber& number, const std::string& name, const std::string& commandLine,
         int expectedExitCode);
     ConsoleApplicationTest(const TestNumber& number, const std::string& name, const std::string& commandLine,
-        int expectedExitCode, const TestEnvironment& environment);
+        int expectedExitCode, const TestContext& context);
     
     void setStandardOutputFilePath(const boost::filesystem::path& path);
     void setStandardOutputReferenceFilePath(const boost::filesystem::path& path);

@@ -12,8 +12,7 @@
 class FileComparisonTestTests : public Ishiko::Tests::TestSequence
 {
 public:
-    FileComparisonTestTests(const Ishiko::Tests::TestNumber& number,
-        const Ishiko::Tests::TestEnvironment& environment);
+    FileComparisonTestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void CreationTest1(Ishiko::Tests::Test& test);

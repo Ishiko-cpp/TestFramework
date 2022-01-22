@@ -8,7 +8,7 @@
 #define _ISHIKO_CPP_TESTS_CORE_TESTHARNESS_HPP_
 
 #include "TestConfiguration.hpp"
-#include "TestEnvironment.hpp"
+#include "TestContext.hpp"
 #include "TestSequence.hpp"
 #include "TopTestSequence.hpp"
 #include "TestApplicationReturnCodes.hpp"
@@ -27,7 +27,7 @@ public:
 
 	int run();
 
-	TestEnvironment& environment();
+    TestContext& context();
 
 	TestSequence& tests();
 
@@ -38,7 +38,7 @@ private:
     void printSummary();
 
 private:
-	TestEnvironment m_environment;
+    TestContext m_context;
     TopTestSequence m_topSequence;
     bool m_timestampOutputDirectory;
 };

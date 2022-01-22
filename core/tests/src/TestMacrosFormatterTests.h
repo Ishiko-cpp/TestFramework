@@ -12,8 +12,7 @@
 class TestMacrosFormatterTests : public Ishiko::Tests::TestSequence
 {
 public:
-    TestMacrosFormatterTests(const Ishiko::Tests::TestNumber& number,
-        const Ishiko::Tests::TestEnvironment& environment);
+    TestMacrosFormatterTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void FormatTest1(Ishiko::Tests::Test& test);

@@ -160,7 +160,7 @@
     <ClCompile Include="..\..\core\src\ProcessAction.cpp" />
     <ClCompile Include="..\..\core\src\Test.cpp" />
     <ClCompile Include="..\..\core\src\TestConfiguration.cpp" />
-    <ClCompile Include="..\..\core\src\TestEnvironment.cpp" />
+    <ClCompile Include="..\..\core\src\TestContext.cpp" />
     <ClCompile Include="..\..\core\src\TestException.cpp" />
     <ClCompile Include="..\..\core\src\TestHarness.cpp" />
     <ClCompile Include="..\..\core\src\TestNumber.cpp" />
@@ -186,7 +186,7 @@
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\Test.hpp" />
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestApplicationReturnCodes.hpp" />
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestConfiguration.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestEnvironment.hpp" />
+    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestContext.hpp" />
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestException.hpp" />
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestHarness.hpp" />
     <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestMacros.hpp" />

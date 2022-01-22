@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2021 Xavier Leclercq
+    Copyright (c) 2007-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
@@ -8,8 +8,8 @@
 
 using namespace Ishiko::Tests;
 
-TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "TestSequence tests", environment)
+TestSequenceTests::TestSequenceTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "TestSequence tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("append test 1", AppendTest1);

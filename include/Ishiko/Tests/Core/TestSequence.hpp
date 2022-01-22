@@ -19,7 +19,7 @@ class TestSequence : public Test
 {
 public:
     TestSequence(const TestNumber& number, const std::string& name);
-    TestSequence(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
+    TestSequence(const TestNumber& number, const std::string& name, const TestContext& context);
 
     const Test& operator[](size_t pos) const;
 
@@ -62,7 +62,8 @@ template <class TestClass, typename... Args>
 TestClass& TestSequence::append(Args&&... args)
 {
     // The test number is a dummy that will be replaced immediately by the append function
-    std::shared_ptr<TestClass> newTest = std::make_shared<TestClass>(TestNumber(1), std::forward<Args>(args)..., environment());
+    std::shared_ptr<TestClass> newTest =
+        std::make_shared<TestClass>(TestNumber(1), std::forward<Args>(args)..., context());
     append(newTest);
     return *newTest;
 }

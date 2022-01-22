@@ -4,16 +4,15 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_TESTS_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
-#define _ISHIKO_TESTS_TESTS_CORE_TESTENVIRONMENTTESTS_TESTENVIRONMENTTESTS_H_
+#ifndef _ISHIKO_CPP_TESTS_CORE_TESTS_TESTCONTEXTTESTS_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_TESTS_TESTCONTEXTTESTS_HPP_
 
 #include <Ishiko/Tests/Core.hpp>
 
-class TestEnvironmentTests : public Ishiko::Tests::TestSequence
+class TestContextTests : public Ishiko::Tests::TestSequence
 {
 public:
-    TestEnvironmentTests(const Ishiko::Tests::TestNumber& number,
-        const Ishiko::Tests::TestEnvironment& environment);
+    TestContextTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void ConstructorTest1(Ishiko::Tests::Test& test);

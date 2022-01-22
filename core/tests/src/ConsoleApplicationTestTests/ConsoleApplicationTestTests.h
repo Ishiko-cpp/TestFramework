@@ -12,8 +12,7 @@
 class ConsoleApplicationTestTests : public Ishiko::Tests::TestSequence
 {
 public:
-    ConsoleApplicationTestTests(const Ishiko::Tests::TestNumber& number,
-        const Ishiko::Tests::TestEnvironment& environment);
+    ConsoleApplicationTestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
 
 private:
     static void CreationTest1(Ishiko::Tests::Test& test);

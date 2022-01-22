@@ -7,9 +7,9 @@
 #ifndef _ISHIKO_CPP_TESTS_CORE_TEST_HPP_
 #define _ISHIKO_CPP_TESTS_CORE_TEST_HPP_
 
+#include "TestContext.hpp"
 #include "TestNumber.hpp"
 #include "TestResult.hpp"
-#include "TestEnvironment.hpp"
 #include "TestSetupAction.hpp"
 #include "TestTeardownAction.hpp"
 #include <functional>
@@ -65,12 +65,12 @@ public:
     /// @param number The number of the test.
     /// @param name The name of the test.
     Test(const TestNumber& number, const std::string& name);
-    Test(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
+    Test(const TestNumber& number, const std::string& name, const TestContext& context);
     Test(const TestNumber& number, const std::string& name, TestResult result);
-    Test(const TestNumber& number, const std::string& name, TestResult result, const TestEnvironment& environment);
+    Test(const TestNumber& number, const std::string& name, TestResult result, const TestContext&  context);
     Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct);
     Test(const TestNumber& number, const std::string& name, std::function<void(Test& test)> runFct,
-        const TestEnvironment& environment);
+        const TestContext& context);
     virtual ~Test() noexcept = default;
 
     const TestNumber& number() const;
@@ -91,8 +91,8 @@ public:
     void pass();
     void skip();
 
-    const TestEnvironment& environment() const;
-    TestEnvironment& environment();
+    const TestContext& context() const;
+    TestContext& context();
 
     virtual void run();
 
@@ -117,7 +117,7 @@ private:
     TestNumber m_number;
     std::string m_name;
     TestResult m_result;
-    TestEnvironment m_environment;
+    TestContext m_context;
     bool m_memoryLeakCheck;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;

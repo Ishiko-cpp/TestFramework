@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\JUnitXMLWriterTests.cpp" />
+    <ClCompile Include="..\..\src\TestContextTests.cpp" />
     <ClCompile Include="..\..\src\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\src\TestNumberTests.cpp" />
     <ClCompile Include="..\..\src\TestTests.cpp" />
@@ -163,7 +164,6 @@
     <ClCompile Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp" />
     <ClCompile Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.cpp" />
     <ClCompile Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp" />
-    <ClCompile Include="..\..\src\TestEnvironmentTests\TestEnvironmentTests.cpp" />
     <ClCompile Include="..\..\src\TestSetupActionsTests\ProcessActionTests.cpp" />
     <ClCompile Include="..\..\src\TestSetupActionsTests\TestSetupActionsTests.cpp" />
     <ClCompile Include="..\..\src\TestTeardownActionsTests\TestTeardownActionsTests.cpp" />
@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\JUnitXMLWriterTests.h" />
+    <ClInclude Include="..\..\src\TestContextTests.hpp" />
     <ClInclude Include="..\..\src\TestHarnessTests.h" />
     <ClInclude Include="..\..\src\TestNumberTests.h" />
     <ClInclude Include="..\..\src\TestTests.h" />
@@ -181,7 +182,6 @@
     <ClInclude Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
     <ClInclude Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.h" />
     <ClInclude Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h" />
-    <ClInclude Include="..\..\src\TestEnvironmentTests\TestEnvironmentTests.h" />
     <ClInclude Include="..\..\src\TestSetupActionsTests\ProcessActionTests.h" />
     <ClInclude Include="..\..\src\TestSetupActionsTests\TestSetupActionsTests.h" />
     <ClInclude Include="..\..\src\TestTeardownActionsTests\TestTeardownActionsTests.h" />

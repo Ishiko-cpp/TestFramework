@@ -8,8 +8,8 @@
 
 using namespace Ishiko::Tests;
 
-TestTests::TestTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Test tests", environment)
+TestTests::TestTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Test tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);

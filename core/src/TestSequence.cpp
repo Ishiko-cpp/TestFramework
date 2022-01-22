@@ -16,8 +16,8 @@ TestSequence::TestSequence(const TestNumber& number, const std::string& name)
 {
 }
 
-TestSequence::TestSequence(const TestNumber& number, const std::string& name, const TestEnvironment& environment)
-    : Test(number, name, environment), m_itemsObserver(std::make_shared<ItemsObserver>(*this))
+TestSequence::TestSequence(const TestNumber& number, const std::string& name, const TestContext& context)
+    : Test(number, name, context), m_itemsObserver(std::make_shared<ItemsObserver>(*this))
 {
 }
 

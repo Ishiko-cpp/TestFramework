@@ -19,11 +19,11 @@ class FileComparisonTest : public Test
 {
 public:
     FileComparisonTest(const TestNumber& number, const std::string& name);
-    FileComparisonTest(const TestNumber& number, const std::string& name, const TestEnvironment& environment);
+    FileComparisonTest(const TestNumber& number, const std::string& name, const TestContext& context);
     FileComparisonTest(const TestNumber& number, const std::string& name,
         void (*runFct)(FileComparisonTest& test));
     FileComparisonTest(const TestNumber& number, const std::string& name,
-        void (*runFct)(FileComparisonTest& test), const TestEnvironment& environment);
+        void (*runFct)(FileComparisonTest& test), const TestContext& context);
 
     const boost::filesystem::path& getOutputFilePath() const;
     void setOutputFilePath(const boost::filesystem::path& path);

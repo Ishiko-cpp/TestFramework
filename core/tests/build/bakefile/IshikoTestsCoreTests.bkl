@@ -21,6 +21,7 @@ program IshikoTestsCoreTests : IshikoTestsCore
     headers
     {
         ../../src/JUnitXMLWriterTests.h
+        ../../src/TestContextTests.hpp
         ../../src/TestHarnessTests.h
         ../../src/TestNumberTests.h
         ../../src/TestTests.h
@@ -31,7 +32,6 @@ program IshikoTestsCoreTests : IshikoTestsCore
         ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
         ../../src/FileComparisonTestTests/FileComparisonTestTests.h
         ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
-        ../../src/TestEnvironmentTests/TestEnvironmentTests.h
         ../../src/TestSetupActionsTests/ProcessActionTests.h
         ../../src/TestSetupActionsTests/TestSetupActionsTests.h
         ../../src/TestTeardownActionsTests/TestTeardownActionsTests.h
@@ -43,6 +43,7 @@ program IshikoTestsCoreTests : IshikoTestsCore
     {
         ../../src/main.cpp
         ../../src/JUnitXMLWriterTests.cpp
+        ../../src/TestContextTests.cpp
         ../../src/TestHarnessTests.cpp
         ../../src/TestNumberTests.cpp
         ../../src/TestTests.cpp
@@ -53,7 +54,6 @@ program IshikoTestsCoreTests : IshikoTestsCore
         ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
         ../../src/FileComparisonTestTests/FileComparisonTestTests.cpp
         ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
-        ../../src/TestEnvironmentTests/TestEnvironmentTests.cpp
         ../../src/TestSetupActionsTests/ProcessActionTests.cpp
         ../../src/TestSetupActionsTests/TestSetupActionsTests.cpp
         ../../src/TestTeardownActionsTests/TestTeardownActionsTests.cpp
