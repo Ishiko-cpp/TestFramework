@@ -4,8 +4,8 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#include "TestProgressObserver.h"
-#include "Test.h"
+#include "TestProgressObserver.hpp"
+#include "Test.hpp"
 #include <iostream>
 #include <sstream>
 

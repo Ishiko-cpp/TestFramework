@@ -4,8 +4,8 @@
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_TESTS_CORE_HPP_
-#define _ISHIKO_TESTS_CORE_HPP_
+#ifndef _ISHIKO_CPP_TESTS_CORE_HPP_
+#define _ISHIKO_CPP_TESTS_CORE_HPP_
 
 #include "Core/ConsoleApplicationTest.h"
 #include "Core/HeapAllocationErrorsTest.h"

@@ -1,10 +1,10 @@
 /*
-    Copyright (c) 2005-2019 Xavier Leclercq
+    Copyright (c) 2005-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
-#include "DebugHeap.h"
+#include "DebugHeap.hpp"
 #if (defined(_WIN32) && defined(_DEBUG))
 #include <crtdbg.h>
 #endif
