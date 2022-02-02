@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;..\..\include\Ishiko\Tests\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include;..\..\include\Ishiko\Tests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;..\..\include\Ishiko\Tests\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include;..\..\include\Ishiko\Tests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;..\..\include\Ishiko\Tests\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include;..\..\include\Ishiko\Tests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;..\..\include\Ishiko\Tests\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP)/base-platform\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include;..\..\include\Ishiko\Tests;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -150,54 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\core\src\ConsoleApplicationTest.cpp" />
-    <ClCompile Include="..\..\core\src\DebugHeap.cpp" />
-    <ClCompile Include="..\..\core\src\DirectoriesTeardownAction.cpp" />
-    <ClCompile Include="..\..\core\src\FileComparisonTest.cpp" />
-    <ClCompile Include="..\..\core\src\FilesTeardownAction.cpp" />
-    <ClCompile Include="..\..\core\src\HeapAllocationErrorsTest.cpp" />
-    <ClCompile Include="..\..\core\src\JUnitXMLWriter.cpp" />
-    <ClCompile Include="..\..\core\src\ProcessAction.cpp" />
-    <ClCompile Include="..\..\core\src\Test.cpp" />
-    <ClCompile Include="..\..\core\src\TestConfiguration.cpp" />
-    <ClCompile Include="..\..\core\src\TestContext.cpp" />
-    <ClCompile Include="..\..\core\src\TestException.cpp" />
-    <ClCompile Include="..\..\core\src\TestHarness.cpp" />
-    <ClCompile Include="..\..\core\src\TestNumber.cpp" />
-    <ClCompile Include="..\..\core\src\TestMacrosFormatter.cpp" />
-    <ClCompile Include="..\..\core\src\TestProgressObserver.cpp" />
-    <ClCompile Include="..\..\core\src\TestResult.cpp" />
-    <ClCompile Include="..\..\core\src\TestSequence.cpp" />
-    <ClCompile Include="..\..\core\src\TestSetupAction.cpp" />
-    <ClCompile Include="..\..\core\src\TestTeardownAction.cpp" />
-    <ClCompile Include="..\..\core\src\TopTestSequence.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\include\Ishiko\Tests.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\ConsoleApplicationTest.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\DebugHeap.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\DirectoriesTeardownAction.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\FileComparisonTest.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\FilesTeardownAction.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\HeapAllocationErrorsTest.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\JUnitXMLWriter.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\ProcessAction.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\Test.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestApplicationReturnCodes.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestConfiguration.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestContext.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestException.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestHarness.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestMacros.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestMacrosFormatter.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestNumber.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestProgressObserver.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestResult.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestSequence.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestSetupAction.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TestTeardownAction.hpp" />
-    <ClInclude Include="..\..\include\Ishiko\Tests\Core\TopTestSequence.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
