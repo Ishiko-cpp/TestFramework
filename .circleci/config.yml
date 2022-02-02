@@ -34,11 +34,8 @@ jobs:
       - checkout:
           path: /projects/ishiko/cpp/tests
       - run:
-          name: Build Tests/Core
+          name: "Build Tests/Core"
           command: cd /projects/ishiko/cpp/tests/core/build/gnumake && make
-      - run:
-          name: Build Tests
-          command: cd /projects/ishiko/cpp/tests/build/gnumake && make
       - run:
           name: Test build
           command: cd /projects/ishiko/cpp/tests/core/tests/build/gnumake && make
@@ -57,6 +54,9 @@ jobs:
       - run:
           name: Run the tests
           command: cd /projects/ishiko/cpp/tests/core/tests/build/gnumake && ./IshikoTestsCoreTests
+      - run:
+          name: "Build Tests"
+          command: cd /projects/ishiko/cpp/tests/build/gnumake && make
 workflows:
   version: 2
   continuous_build:
