@@ -1,8 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/base-platform/include/Ishiko/BasePlatform.bkl;
-import $(ishikopath)/diff/include/Ishiko/Diff.bkl;
-import $(ishikopath)/process/include/Ishiko/Process.bkl;
-import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+import $(ishikopath)/tests/include/Ishiko/Tests/Core.bkl;
 
 setting ISHIKO_CPP_TESTS_ROOT
 {
@@ -10,7 +7,7 @@ setting ISHIKO_CPP_TESTS_ROOT
     default = '$(ISHIKO_CPP)/tests';
 }
 
-template IshikoTests : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
+template IshikoTests : IshikoTestsCore
 {
     includedirs += $(ISHIKO_CPP_TESTS_ROOT)/include;
 
