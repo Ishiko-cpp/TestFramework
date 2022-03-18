@@ -8,13 +8,10 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TestException::TestException(const std::string& message)
     : std::runtime_error(message)
 {
 }
 
-}
 }

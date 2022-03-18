@@ -13,8 +13,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class TestContext
 {
@@ -63,7 +61,6 @@ private:
     std::map<std::string, boost::filesystem::path> m_testOutputDirectories;
 };
 
-}
 }
 
 #endif

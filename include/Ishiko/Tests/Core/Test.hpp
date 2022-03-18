@@ -19,8 +19,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 /// This class represents a test.
 
@@ -125,7 +123,6 @@ private:
     std::function<void(Test& test)> m_runFct;
 };
 
-}
 }
 
 #endif

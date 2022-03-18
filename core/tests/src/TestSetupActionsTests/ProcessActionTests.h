@@ -9,16 +9,16 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class ProcessActionTests : public Ishiko::Tests::TestSequence
+class ProcessActionTests : public Ishiko::TestSequence
 {
 public:
-    ProcessActionTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    ProcessActionTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void SetupFailureTest1(Ishiko::Tests::Test& test);
-    static void SetupWaitForExitTest1(Ishiko::Tests::FileComparisonTest& test);
-    static void SetupTerminateTest1(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Test& test);
+    static void SetupFailureTest1(Ishiko::Test& test);
+    static void SetupWaitForExitTest1(Ishiko::FileComparisonTest& test);
+    static void SetupTerminateTest1(Ishiko::Test& test);
 };
 
 #endif

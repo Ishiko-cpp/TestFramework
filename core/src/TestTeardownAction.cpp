@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TestTeardownAction::TestTeardownAction()
 {
@@ -24,5 +22,4 @@ void TestTeardownAction::teardown()
     // Default implementation does nothing
 }
 
-}
 }

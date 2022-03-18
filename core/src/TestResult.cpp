@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 std::string ToString(TestResult result)
 {
@@ -47,5 +45,4 @@ std::string ToString(TestResult result)
     return str;
 }
 
-}
 }

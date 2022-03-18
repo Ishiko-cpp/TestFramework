@@ -9,10 +9,10 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class TestSetupActionsTests : public Ishiko::Tests::TestSequence
+class TestSetupActionsTests : public Ishiko::TestSequence
 {
 public:
-    TestSetupActionsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    TestSetupActionsTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 };
 
 #endif

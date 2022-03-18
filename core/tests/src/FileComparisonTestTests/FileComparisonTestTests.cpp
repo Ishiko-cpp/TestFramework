@@ -6,7 +6,7 @@
 
 #include "FileComparisonTestTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "FileComparisonTest tests", context)
@@ -18,7 +18,7 @@ FileComparisonTestTests::FileComparisonTestTests(const TestNumber& number, const
 
 void FileComparisonTestCreationTest1Helper(FileComparisonTest& test)
 {
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void FileComparisonTestTests::CreationTest1(Test& test)
@@ -26,7 +26,7 @@ void FileComparisonTestTests::CreationTest1(Test& test)
     FileComparisonTest comparisonTest(TestNumber(), "FileComparisonTestCreationTest1",
         FileComparisonTestCreationTest1Helper);
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
@@ -34,7 +34,7 @@ void FileComparisonTestRunSuccessTest1Helper(FileComparisonTest& test)
     test.setOutputFilePath("../../data/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../data/ComparisonTestFiles/Hello2.txt");
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void FileComparisonTestTests::RunSuccessTest1(Test& test)
@@ -44,8 +44,8 @@ void FileComparisonTestTests::RunSuccessTest1(Test& test)
     
     comparisonTest.run();
     
-    ISHIKO_FAIL_IF_NEQ(comparisonTest.result(), TestResult::passed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(comparisonTest.result(), TestResult::passed);
+    ISHIKO_TEST_PASS();
 }
 
 void FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
@@ -53,7 +53,7 @@ void FileComparisonTestRunFailureTest1Helper(FileComparisonTest& test)
     test.setOutputFilePath("../../data/ComparisonTestFiles/Hello.txt");
     test.setReferenceFilePath("../../data/ComparisonTestFiles/NotHello.txt");
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void FileComparisonTestTests::RunFailureTest1(Test& test)
@@ -63,6 +63,6 @@ void FileComparisonTestTests::RunFailureTest1(Test& test)
 
     comparisonTest.run();
     
-    ISHIKO_FAIL_IF_NEQ(comparisonTest.result(), TestResult::failed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(comparisonTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
 }

@@ -12,8 +12,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class FileComparisonTest : public Test
 {
@@ -40,7 +38,6 @@ private:
     boost::filesystem::path m_referenceFilePath;
 };
 
-}
 }
 
 #endif

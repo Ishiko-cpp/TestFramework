@@ -8,7 +8,7 @@
 #include <boost/filesystem.hpp>
 #include <Ishiko/Tests/Core/DebugHeap.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 using namespace boost::filesystem;
 
 DirectoriesTeardownActionTests::DirectoriesTeardownActionTests(const TestNumber& number, const TestContext& context)
@@ -22,7 +22,7 @@ void DirectoriesTeardownActionTests::CreationTest1(Test& test)
 {
     DirectoriesTeardownAction action;
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
@@ -40,7 +40,7 @@ void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 
     if (create_directories(directoryPath))
     {
-        ISHIKO_PASS();
+        ISHIKO_TEST_PASS();
     }
 }
 
@@ -53,7 +53,7 @@ void DirectoriesTeardownActionTests::TeardownTest1(Test& test)
         DirectoriesTeardownActionTeardownTest1Helper, test.context());
     functionTest.run();
 
-    ISHIKO_FAIL_IF(exists(directoryPath));
-    ISHIKO_FAIL_IF_NOT(functionTest.passed());
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(exists(directoryPath));
+    ISHIKO_TEST_FAIL_IF_NOT(functionTest.passed());
+    ISHIKO_TEST_PASS();
 }

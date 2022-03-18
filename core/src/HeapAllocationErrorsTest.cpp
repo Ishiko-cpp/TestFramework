@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
     void (*runFct)(Test& test))
@@ -54,5 +52,4 @@ void HeapAllocationErrorsTest::InnerObserver::onExceptionThrown(const Test& sour
     m_test.observers().notifyExceptionThrown(source, exception);
 }
 
-}
 }

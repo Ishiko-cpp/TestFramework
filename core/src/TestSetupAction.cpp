@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TestSetupAction::TestSetupAction()
 {
@@ -24,5 +22,4 @@ void TestSetupAction::setup()
     // Default implementation does nothing
 }
 
-}
 }

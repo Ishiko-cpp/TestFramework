@@ -15,8 +15,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class ProcessAction : public TestSetupAction, public TestTeardownAction
 {
@@ -41,7 +39,6 @@ private:
     Process::ChildProcess m_processHandle;
 };
 
-}
 }
 
 #endif

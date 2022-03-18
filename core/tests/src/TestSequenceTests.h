@@ -9,21 +9,21 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class TestSequenceTests : public Ishiko::Tests::TestSequence
+class TestSequenceTests : public Ishiko::TestSequence
 {
 public:
-    TestSequenceTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    TestSequenceTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void ConstructorTest1(Ishiko::Tests::Test& test);
-    static void AppendTest1(Ishiko::Tests::Test& test);
-    static void AppendTest2(Ishiko::Tests::Test& test);
-    static void GetResultTest1(Ishiko::Tests::Test& test);
-    static void GetResultTest2(Ishiko::Tests::Test& test);
-    static void GetResultTest3(Ishiko::Tests::Test& test);
-    static void GetResultTest4(Ishiko::Tests::Test& test);
-    static void GetResultTest5(Ishiko::Tests::Test& test);
-    static void GetResultTest6(Ishiko::Tests::Test& test);
+    static void ConstructorTest1(Ishiko::Test& test);
+    static void AppendTest1(Ishiko::Test& test);
+    static void AppendTest2(Ishiko::Test& test);
+    static void GetResultTest1(Ishiko::Test& test);
+    static void GetResultTest2(Ishiko::Test& test);
+    static void GetResultTest3(Ishiko::Test& test);
+    static void GetResultTest4(Ishiko::Test& test);
+    static void GetResultTest5(Ishiko::Test& test);
+    static void GetResultTest6(Ishiko::Test& test);
 };
 
 #endif

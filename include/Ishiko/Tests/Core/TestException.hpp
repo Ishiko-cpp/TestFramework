@@ -11,8 +11,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class TestException : public std::runtime_error
 {
@@ -20,7 +18,6 @@ public:
     TestException(const std::string& message);
 };
 
-}
 }
 
 #endif

@@ -11,8 +11,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class DebugHeap
 {
@@ -43,7 +41,6 @@ public:
     };
 };
 
-}
 }
 
 #endif

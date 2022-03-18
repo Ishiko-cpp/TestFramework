@@ -4,7 +4,7 @@ import $(ishikopath)/tests/include/Ishiko/Tests/Core.bkl;
 setting ISHIKO_CPP_TESTS_ROOT
 {
     help = "Path to the Ishiko Tests installation";
-    default = '$(ISHIKO_CPP)/tests';
+    default = '$(ISHIKO_CPP)/test-framework';
 }
 
 template IshikoTests : IshikoTestsCore

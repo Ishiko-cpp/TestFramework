@@ -13,8 +13,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class FilesTeardownAction : public TestTeardownAction
 {
@@ -27,7 +25,6 @@ private:
     std::vector<boost::filesystem::path> d_files;
 };
 
-}
 }
 
 #endif

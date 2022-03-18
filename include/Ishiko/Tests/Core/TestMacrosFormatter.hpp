@@ -12,8 +12,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 namespace Internal
 {
@@ -150,7 +148,6 @@ bool Internal::UniversalFormatter<T, typename std::enable_if<!std::is_integral<T
     return true;
 }
 
-}
 }
 
 #endif
