@@ -32,31 +32,31 @@ jobs:
           name: "Install build dependency: Ishiko/C++ Diff"
           command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/diff.git && cd diff/build/gnumake && make
       - checkout:
-          path: /projects/ishiko/cpp/tests
+          path: /projects/ishiko/cpp/test-framework
       - run:
-          name: "Build Tests/Core"
-          command: cd /projects/ishiko/cpp/tests/core/build/gnumake && make
+          name: "Build TestFramework/Core"
+          command: cd /projects/ishiko/cpp/test-framework/core/build/gnumake && make
       - run:
           name: Test build
-          command: cd /projects/ishiko/cpp/tests/core/tests/build/gnumake && make
+          command: cd /projects/ishiko/cpp/test-framework/core/tests/build/gnumake && make
       - run:
           name: Build ExitCodeTestHelper
-          command: cd /projects/ishiko/cpp/tests/core/tests/exitcodetesthelper/build/gnumake && make
+          command: cd /projects/ishiko/cpp/test-framework/core/tests/exitcodetesthelper/build/gnumake && make
       - run:
           name: Build PermanentAppTestHelper
-          command: cd /projects/ishiko/cpp/tests/core/tests/permanentapptesthelper/build/gnumake && make
+          command: cd /projects/ishiko/cpp/test-framework/core/tests/permanentapptesthelper/build/gnumake && make
       - run:
           name: Build StandardOutputTestHelper
-          command: cd /projects/ishiko/cpp/tests/core/tests/standardoutputtesthelper/build/gnumake && make
+          command: cd /projects/ishiko/cpp/test-framework/core/tests/standardoutputtesthelper/build/gnumake && make
       - run:
           name: Build WriteFileTestHelper
-          command: cd /projects/ishiko/cpp/tests/core/tests/writefiletesthelper/build/gnumake && make
+          command: cd /projects/ishiko/cpp/test-framework/core/tests/writefiletesthelper/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /projects/ishiko/cpp/tests/core/tests/build/gnumake && ./IshikoTestsCoreTests
+          command: cd /projects/ishiko/cpp/test-framework/core/tests/build/gnumake && ./IshikoTestsCoreTests
       - run:
           name: "Build Tests"
-          command: cd /projects/ishiko/cpp/tests/build/gnumake && make
+          command: cd /projects/ishiko/cpp/test-framework/build/gnumake && make
 workflows:
   version: 2
   continuous_build:
