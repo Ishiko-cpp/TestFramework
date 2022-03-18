@@ -11,7 +11,6 @@
 #include <sstream>
 
 using namespace Ishiko;
-using namespace Ishiko::Text;
 
 TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "Test macros tests", context)
