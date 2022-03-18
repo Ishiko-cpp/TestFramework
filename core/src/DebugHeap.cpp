@@ -11,8 +11,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 DebugHeap::HeapState::HeapState()
 {
@@ -52,5 +50,4 @@ void DebugHeap::TrackingState::restore()
 #endif
 }
 
-}
 }

@@ -11,8 +11,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 enum class TestResult
 {
@@ -26,7 +24,6 @@ enum class TestResult
 
 std::string ToString(TestResult result);
 
-}
 }
 
 #endif

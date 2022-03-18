@@ -8,7 +8,7 @@
 #include "DirectoriesTeardownActionTests.h"
 #include "FilesTeardownActionTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 TestTeardownActionsTests::TestTeardownActionsTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "TestTeardownAction tests", context)

@@ -12,8 +12,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class HeapAllocationErrorsTest : public Test
 {
@@ -43,7 +41,6 @@ private:
     std::shared_ptr<InnerObserver> m_innerObserver;
 };
 
-}
 }
 
 #endif

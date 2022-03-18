@@ -13,8 +13,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class ConsoleApplicationTest : public Test
 {
@@ -37,7 +35,6 @@ private:
     FileComparisonTest m_standardOutputTest;
 };
 
-}
 }
 
 #endif

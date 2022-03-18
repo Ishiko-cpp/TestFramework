@@ -9,14 +9,14 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class FilesTeardownActionTests : public Ishiko::Tests::TestSequence
+class FilesTeardownActionTests : public Ishiko::TestSequence
 {
 public:
-    FilesTeardownActionTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    FilesTeardownActionTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void TeardownTest1(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Test& test);
+    static void TeardownTest1(Ishiko::Test& test);
 };
 
 #endif

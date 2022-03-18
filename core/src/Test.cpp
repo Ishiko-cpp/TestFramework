@@ -12,8 +12,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 void Test::Observer::onLifecycleEvent(const Test& source, EEventType type)
 {
@@ -388,5 +386,4 @@ void Test::notify(Observer::EEventType type)
     m_observers.notifyLifecycleEvent(*this, type);
 }
 
-}
 }

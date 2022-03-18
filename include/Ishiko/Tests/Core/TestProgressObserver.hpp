@@ -14,8 +14,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class TestProgressObserver : public Test::Observer
 {
@@ -35,7 +33,6 @@ private:
     size_t m_nestingLevel;
 };
 
-}
 }
 
 #endif

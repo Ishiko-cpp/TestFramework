@@ -13,8 +13,6 @@ using namespace std;
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 namespace
 {
@@ -142,5 +140,4 @@ string TestProgressObserver::formatResult(const TestResult& result)
     return formattedResult;
 }
 
-}
 }

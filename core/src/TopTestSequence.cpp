@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TopTestSequence::TopTestSequence(const std::string& name)
     : TestSequence(TestNumber(), name)
@@ -29,5 +27,4 @@ void TopTestSequence::notify(Observer::EEventType type)
     // harness internally only
 }
 
-}
 }

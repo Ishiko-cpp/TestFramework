@@ -10,8 +10,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TestContext::TestContext()
     : m_parent(nullptr)
@@ -190,5 +188,4 @@ void TestContext::setTestOutputDirectory(const std::string& id, const boost::fil
     m_testOutputDirectories[id] = expandedPath;
 }
 
-}
 }

@@ -7,7 +7,7 @@
 #include "ConsoleApplicationTestTests.h"
 #include <boost/filesystem.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 using namespace boost::filesystem;
 
 ConsoleApplicationTestTests::ConsoleApplicationTestTests(const TestNumber& number, const TestContext& context)
@@ -32,7 +32,7 @@ void ConsoleApplicationTestTests::CreationTest1(Test& test)
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestCreationTest1",
         executablePath.string().c_str(), 0);
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
@@ -47,8 +47,8 @@ void ConsoleApplicationTestTests::RunSuccessTest1(Test& test)
         executablePath.string(), 0);
     applicationTest.run();
 
-    ISHIKO_FAIL_IF_NOT(applicationTest.passed());
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(applicationTest.passed());
+    ISHIKO_TEST_PASS();
 }
 
 void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
@@ -63,8 +63,8 @@ void ConsoleApplicationTestTests::RunSuccessTest2(Test& test)
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunSuccessTest2", commandLine, 3);
     applicationTest.run();
 
-    ISHIKO_FAIL_IF_NOT(applicationTest.passed());
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(applicationTest.passed());
+    ISHIKO_TEST_PASS();
 }
 
 void ConsoleApplicationTestTests::RunFailureTest1(Test& test)
@@ -79,8 +79,8 @@ void ConsoleApplicationTestTests::RunFailureTest1(Test& test)
         executablePath.string(), 3);
     applicationTest.run();
 
-    ISHIKO_FAIL_IF(applicationTest.passed());
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(applicationTest.passed());
+    ISHIKO_TEST_PASS();
 }
 
 void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
@@ -103,8 +103,8 @@ void ConsoleApplicationTestTests::RunSuccessTest3(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    ISHIKO_FAIL_IF_NOT(applicationTest.passed());
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(applicationTest.passed());
+    ISHIKO_TEST_PASS();
 }
 
 void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
@@ -121,6 +121,6 @@ void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
     applicationTest.setStandardOutputReferenceFilePath(referencePath);
     applicationTest.run();
 
-    ISHIKO_FAIL_IF(applicationTest.passed());
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(applicationTest.passed());
+    ISHIKO_TEST_PASS();
 }

@@ -9,8 +9,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 enum ETestApplicationReturnCodes
 {
@@ -20,7 +18,6 @@ enum ETestApplicationReturnCodes
     eTestFailure = -4
 };
 
-}
 }
 
 #endif

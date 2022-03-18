@@ -7,7 +7,7 @@
 #include "TestHarnessTests.h"
 #include "Ishiko/Tests/Core/TestHarness.hpp"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "TestHarness tests", context)
@@ -22,7 +22,7 @@ void TestHarnessTests::CreationTest1(Test& test)
 {
     TestHarness theTestHarness("TestHarnessTests_CreationTest1");
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void TestHarnessTests::RunTest1(Test& test)
@@ -30,8 +30,8 @@ void TestHarnessTests::RunTest1(Test& test)
     TestHarness theTestHarness("TestHarnessTests_RunTest1");
     int returnCode = theTestHarness.run();
 
-    ISHIKO_FAIL_IF_NEQ(returnCode, eTestFailure);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, eTestFailure);
+    ISHIKO_TEST_PASS();
 }
 
 void TestHarnessTests::RunTest2(Test& test)
@@ -43,8 +43,8 @@ void TestHarnessTests::RunTest2(Test& test)
 
     int returnCode = theTestHarness.run();
 
-    ISHIKO_FAIL_IF_NEQ(returnCode, eOK);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, eOK);
+    ISHIKO_TEST_PASS();
 }
 
 void TestHarnessTests::RunTest3(Test& test)
@@ -56,6 +56,6 @@ void TestHarnessTests::RunTest3(Test& test)
 
     int returnCode = theTestHarness.run();
 
-    ISHIKO_FAIL_IF_NEQ(returnCode, eOK);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, eOK);
+    ISHIKO_TEST_PASS();
 }

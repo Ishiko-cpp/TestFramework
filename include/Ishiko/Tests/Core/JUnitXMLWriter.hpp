@@ -9,14 +9,11 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class JUnitXMLWriter
 {
 };
 
-}
 }
 
 #endif

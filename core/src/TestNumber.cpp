@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TestNumber::TestNumber()
 {
@@ -72,5 +70,4 @@ TestNumber TestNumber::getDeeperNumber() const
     return result;
 }
 
-}
 }

@@ -9,8 +9,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 /// Base class that represents an action that needs to be performed after the test has been run.
 
@@ -26,7 +24,6 @@ public:
     virtual void teardown();
 };
 
-}
 }
 
 #endif

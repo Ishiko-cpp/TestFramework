@@ -7,7 +7,7 @@
 #include "TestContextTests.hpp"
 #include <Ishiko/Process/CurrentEnvironment.h>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 TestContextTests::TestContextTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "TestContext tests", context)
@@ -36,10 +36,10 @@ void TestContextTests::ConstructorTest1(Test& test)
 {
     TestContext context;
 
-    ISHIKO_FAIL_IF_NEQ(context.getTestDataDirectory(), "");
-    ISHIKO_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "");
-    ISHIKO_FAIL_IF_NEQ(context.getTestOutputDirectory(), "");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestDataDirectory(), "");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestOutputDirectory(), "");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::ConstructorTest2(Test& test)
@@ -47,10 +47,10 @@ void TestContextTests::ConstructorTest2(Test& test)
     TestContext parentContext;
     TestContext context(&parentContext);
 
-    ISHIKO_FAIL_IF_NEQ(context.getTestDataDirectory(), "");
-    ISHIKO_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "");
-    ISHIKO_FAIL_IF_NEQ(context.getTestOutputDirectory(), "");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestDataDirectory(), "");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestOutputDirectory(), "");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::ConstructorTest3(Test& test)
@@ -62,10 +62,10 @@ void TestContextTests::ConstructorTest3(Test& test)
 
     TestContext context(&parentContext);
 
-    ISHIKO_FAIL_IF_NEQ(context.getTestDataDirectory(), "data");
-    ISHIKO_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "referenceData");
-    ISHIKO_FAIL_IF_NEQ(context.getTestOutputDirectory(), "output");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestDataDirectory(), "data");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "referenceData");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestOutputDirectory(), "output");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetTestDataDirectoryTest1(Test& test)
@@ -74,8 +74,8 @@ void TestContextTests::GetTestDataDirectoryTest1(Test& test)
 
     boost::filesystem::path directory = context.getTestDataDirectory();
 
-    ISHIKO_FAIL_IF_NEQ(directory, "");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(directory, "");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetTestDataDirectoryTest2(Test& test)
@@ -87,8 +87,8 @@ void TestContextTests::GetTestDataDirectoryTest2(Test& test)
 
     boost::filesystem::path directory = context.getTestDataDirectory();
 
-    ISHIKO_FAIL_IF_NEQ(directory, "data");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(directory, "data");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetTestDataDirectoryTest3(Test& test)
@@ -100,7 +100,7 @@ void TestContextTests::GetTestDataDirectoryTest3(Test& test)
     }
     catch (const TestException&)
     {
-        ISHIKO_PASS();
+        ISHIKO_TEST_PASS();
     }
 }
 
@@ -110,7 +110,7 @@ void TestContextTests::GetTestDataDirectoryTest4(Test& test)
     context.setTestDataDirectory("id1", "path1");
     if (context.getTestDataDirectory("id1") == "path1")
     {
-        return ISHIKO_PASS();
+        return ISHIKO_TEST_PASS();
     }
 }
 
@@ -122,7 +122,7 @@ void TestContextTests::GetTestDataDirectoryTest5(Test& test)
     context.setTestDataDirectory("id1", "$(TestEnvironmentGetTestDataDirectoryTest3)/path1");
     if (context.getTestDataDirectory("id1") == "dummy/path1")
     {
-        ISHIKO_PASS();
+        ISHIKO_TEST_PASS();
     }
 }
 
@@ -133,8 +133,8 @@ void TestContextTests::GetTestDataPathTest1(Test& test)
 
     boost::filesystem::path dataPath = context.getTestDataPath("file");
 
-    ISHIKO_FAIL_IF_NEQ(dataPath, "data/file");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(dataPath, "data/file");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::SetTestDataDirectoryTest1(Test& test)
@@ -145,9 +145,9 @@ void TestContextTests::SetTestDataDirectoryTest1(Test& test)
     TestContext context(&parentContext);
     context.setTestDataDirectory("testData");
 
-    ISHIKO_FAIL_IF_NEQ(parentContext.getTestDataDirectory(), "parent");
-    ISHIKO_FAIL_IF_NEQ(context.getTestDataDirectory(), "parent/testData");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(parentContext.getTestDataDirectory(), "parent");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestDataDirectory(), "parent/testData");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetReferenceDataDirectoryTest1(Test& test)
@@ -156,8 +156,8 @@ void TestContextTests::GetReferenceDataDirectoryTest1(Test& test)
 
     boost::filesystem::path directory = context.getReferenceDataDirectory();
     
-    ISHIKO_FAIL_IF_NEQ(directory, "");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(directory, "");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetReferenceDataDirectoryTest2(Test& test)
@@ -169,8 +169,8 @@ void TestContextTests::GetReferenceDataDirectoryTest2(Test& test)
 
     boost::filesystem::path directory = context.getReferenceDataDirectory();
 
-    ISHIKO_FAIL_IF_NEQ(directory, "reference");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(directory, "reference");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetReferenceDataPathTest1(Test& test)
@@ -180,8 +180,8 @@ void TestContextTests::GetReferenceDataPathTest1(Test& test)
 
     boost::filesystem::path referencePath = context.getReferenceDataPath("file");
 
-    ISHIKO_FAIL_IF_NEQ(referencePath, "reference/file");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::SetReferenceDataDirectoryTest1(Test& test)
@@ -192,9 +192,9 @@ void TestContextTests::SetReferenceDataDirectoryTest1(Test& test)
     TestContext context(&parentContext);
     context.setReferenceDataDirectory("referenceData");
 
-    ISHIKO_FAIL_IF_NEQ(parentContext.getReferenceDataDirectory(), "parent");
-    ISHIKO_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "parent/referenceData");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(parentContext.getReferenceDataDirectory(), "parent");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getReferenceDataDirectory(), "parent/referenceData");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetTestOutputDirectoryTest1(Test& test)
@@ -203,8 +203,8 @@ void TestContextTests::GetTestOutputDirectoryTest1(Test& test)
 
     boost::filesystem::path directory = context.getTestOutputDirectory();
 
-    ISHIKO_FAIL_IF_NEQ(directory, "");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(directory, "");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetTestOutputDirectoryTest2(Test& test)
@@ -216,8 +216,8 @@ void TestContextTests::GetTestOutputDirectoryTest2(Test& test)
 
     boost::filesystem::path directory = context.getTestOutputDirectory();
 
-    ISHIKO_FAIL_IF_NEQ(directory, "output");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(directory, "output");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::GetTestOutputPathTest1(Test& test)
@@ -227,8 +227,8 @@ void TestContextTests::GetTestOutputPathTest1(Test& test)
 
     boost::filesystem::path outputPath = context.getTestOutputPath("file");
 
-    ISHIKO_FAIL_IF_NEQ(outputPath, "output/file");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(outputPath, "output/file");
+    ISHIKO_TEST_PASS();
 }
 
 void TestContextTests::SetTestOutputDirectoryTest1(Test& test)
@@ -239,7 +239,7 @@ void TestContextTests::SetTestOutputDirectoryTest1(Test& test)
     TestContext context(&parentContext);
     context.setTestOutputDirectory("output");
 
-    ISHIKO_FAIL_IF_NEQ(parentContext.getTestOutputDirectory(), "parent");
-    ISHIKO_FAIL_IF_NEQ(context.getTestOutputDirectory(), "parent/output");
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(parentContext.getTestOutputDirectory(), "parent");
+    ISHIKO_TEST_FAIL_IF_NEQ(context.getTestOutputDirectory(), "parent/output");
+    ISHIKO_TEST_PASS();
 }

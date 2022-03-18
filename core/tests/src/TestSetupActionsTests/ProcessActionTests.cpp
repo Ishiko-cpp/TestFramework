@@ -8,7 +8,7 @@
 #include <Ishiko/Tests/Core/ProcessAction.hpp>
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 using namespace boost::filesystem;
 
 ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestContext& context)
@@ -23,7 +23,7 @@ ProcessActionTests::ProcessActionTests(const TestNumber& number, const TestConte
 void ProcessActionTests::CreationTest1(Test& test)
 {
     ProcessAction action("../../data/bin/WriteFileTestHelper.exe", ProcessAction::eWaitForExit);
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProcessActionTests::SetupFailureTest1(Test& test)
@@ -37,7 +37,7 @@ void ProcessActionTests::SetupFailureTest1(Test& test)
     }
     catch (...)
     {
-        ISHIKO_PASS();
+        ISHIKO_TEST_PASS();
     }
 }
 
@@ -58,7 +58,7 @@ void ProcessActionTests::SetupWaitForExitTest1(FileComparisonTest& test)
     action.setup();
     action.teardown();
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProcessActionTests::SetupTerminateTest1(Test& test)
@@ -73,5 +73,5 @@ void ProcessActionTests::SetupTerminateTest1(Test& test)
     action.setup();
     action.teardown();
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
