@@ -19,7 +19,7 @@
 #include "TestHarnessTests.h"
 #include <Ishiko/Tests/Core.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 using namespace boost::filesystem;
 
 int main(int argc, char* argv[])

@@ -9,18 +9,18 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class ConsoleApplicationTestTests : public Ishiko::Tests::TestSequence
+class ConsoleApplicationTestTests : public Ishiko::TestSequence
 {
 public:
-    ConsoleApplicationTestTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    ConsoleApplicationTestTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void RunSuccessTest1(Ishiko::Tests::Test& test);
-    static void RunSuccessTest2(Ishiko::Tests::Test& test);
-    static void RunFailureTest1(Ishiko::Tests::Test& test);
-    static void RunSuccessTest3(Ishiko::Tests::Test& test);
-    static void RunFailureTest2(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Test& test);
+    static void RunSuccessTest1(Ishiko::Test& test);
+    static void RunSuccessTest2(Ishiko::Test& test);
+    static void RunFailureTest1(Ishiko::Test& test);
+    static void RunSuccessTest3(Ishiko::Test& test);
+    static void RunFailureTest2(Ishiko::Test& test);
 };
 
 #endif

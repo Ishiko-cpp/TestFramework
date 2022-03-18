@@ -11,8 +11,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class TopTestSequence : public TestSequence
 {
@@ -24,7 +22,6 @@ protected:
     void notify(Observer::EEventType type) override;
 };
 
-}
 }
 
 #endif

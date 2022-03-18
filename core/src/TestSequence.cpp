@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TestSequence::TestSequence(const TestNumber& number, const std::string& name)
     : Test(number, name), m_itemsObserver(std::make_shared<ItemsObserver>(*this))
@@ -191,5 +189,4 @@ void TestSequence::ItemsObserver::onExceptionThrown(const Test& source, std::exc
     m_sequence.observers().notifyExceptionThrown(source, exception);
 }
 
-}
 }

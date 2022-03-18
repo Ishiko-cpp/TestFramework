@@ -7,7 +7,7 @@
 #include "TestSetupActionsTests.h"
 #include "ProcessActionTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 TestSetupActionsTests::TestSetupActionsTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "TestSetupAction tests", context)

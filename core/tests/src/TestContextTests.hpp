@@ -9,30 +9,30 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class TestContextTests : public Ishiko::Tests::TestSequence
+class TestContextTests : public Ishiko::TestSequence
 {
 public:
-    TestContextTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    TestContextTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void ConstructorTest1(Ishiko::Tests::Test& test);
-    static void ConstructorTest2(Ishiko::Tests::Test& test);
-    static void ConstructorTest3(Ishiko::Tests::Test& test);
-    static void GetTestDataDirectoryTest1(Ishiko::Tests::Test& test);
-    static void GetTestDataDirectoryTest2(Ishiko::Tests::Test& test);
-    static void GetTestDataDirectoryTest3(Ishiko::Tests::Test& test);
-    static void GetTestDataDirectoryTest4(Ishiko::Tests::Test& test);
-    static void GetTestDataDirectoryTest5(Ishiko::Tests::Test& test);
-    static void GetTestDataPathTest1(Ishiko::Tests::Test& test);
-    static void SetTestDataDirectoryTest1(Ishiko::Tests::Test& test);
-    static void GetReferenceDataDirectoryTest1(Ishiko::Tests::Test& test);
-    static void GetReferenceDataDirectoryTest2(Ishiko::Tests::Test& test);
-    static void GetReferenceDataPathTest1(Ishiko::Tests::Test& test);
-    static void SetReferenceDataDirectoryTest1(Ishiko::Tests::Test& test);
-    static void GetTestOutputDirectoryTest1(Ishiko::Tests::Test& test);
-    static void GetTestOutputDirectoryTest2(Ishiko::Tests::Test& test);
-    static void GetTestOutputPathTest1(Ishiko::Tests::Test& test);
-    static void SetTestOutputDirectoryTest1(Ishiko::Tests::Test& test);
+    static void ConstructorTest1(Ishiko::Test& test);
+    static void ConstructorTest2(Ishiko::Test& test);
+    static void ConstructorTest3(Ishiko::Test& test);
+    static void GetTestDataDirectoryTest1(Ishiko::Test& test);
+    static void GetTestDataDirectoryTest2(Ishiko::Test& test);
+    static void GetTestDataDirectoryTest3(Ishiko::Test& test);
+    static void GetTestDataDirectoryTest4(Ishiko::Test& test);
+    static void GetTestDataDirectoryTest5(Ishiko::Test& test);
+    static void GetTestDataPathTest1(Ishiko::Test& test);
+    static void SetTestDataDirectoryTest1(Ishiko::Test& test);
+    static void GetReferenceDataDirectoryTest1(Ishiko::Test& test);
+    static void GetReferenceDataDirectoryTest2(Ishiko::Test& test);
+    static void GetReferenceDataPathTest1(Ishiko::Test& test);
+    static void SetReferenceDataDirectoryTest1(Ishiko::Test& test);
+    static void GetTestOutputDirectoryTest1(Ishiko::Test& test);
+    static void GetTestOutputDirectoryTest2(Ishiko::Test& test);
+    static void GetTestOutputPathTest1(Ishiko::Test& test);
+    static void SetTestOutputDirectoryTest1(Ishiko::Test& test);
 };
 
 #endif

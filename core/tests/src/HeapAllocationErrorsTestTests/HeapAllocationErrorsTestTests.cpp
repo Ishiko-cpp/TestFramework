@@ -6,7 +6,7 @@
 
 #include "HeapAllocationErrorsTestTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 HeapAllocationErrorsTestTests::HeapAllocationErrorsTestTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "HeapAllocationErrorsTest tests", context)
@@ -24,5 +24,5 @@ void HeapAllocationErrorsTestTests::CreationTest1(Test& test)
     HeapAllocationErrorsTest allocTest(TestNumber(), "HeapAllocationErrorsTestCreationTest1",
         HeapAllocationErrorsTestCreationTest1Helper);
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }

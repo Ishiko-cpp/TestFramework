@@ -13,8 +13,6 @@ using namespace Ishiko::Diff;
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 FileComparisonTest::FileComparisonTest(const TestNumber& number, const std::string& name)
     : Test(number, name), m_runFct(0)
@@ -171,5 +169,4 @@ void FileComparisonTest::doRun()
     }
 }
 
-}
 }

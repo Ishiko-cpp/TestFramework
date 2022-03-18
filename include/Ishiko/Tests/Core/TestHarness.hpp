@@ -16,8 +16,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class TestHarness
 {
@@ -43,7 +41,6 @@ private:
     bool m_timestampOutputDirectory;
 };
 
-}
 }
 
 #endif

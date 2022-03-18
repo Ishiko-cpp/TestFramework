@@ -9,8 +9,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 void DirectoriesTeardownAction::teardown()
 {
@@ -25,5 +23,4 @@ void DirectoriesTeardownAction::add(const boost::filesystem::path& path)
     d_directories.push_back(path);
 }
 
-}
 }

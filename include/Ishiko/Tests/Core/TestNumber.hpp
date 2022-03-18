@@ -12,8 +12,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class TestNumber
 {
@@ -36,7 +34,6 @@ private:
     std::vector<int> m_number;
 };
 
-}
 }
 
 #endif

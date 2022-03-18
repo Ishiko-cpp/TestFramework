@@ -8,7 +8,7 @@
 #include <boost/filesystem.hpp>
 #include <Ishiko/Tests/Core/DebugHeap.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 using namespace boost::filesystem;
 
 FilesTeardownActionTests::FilesTeardownActionTests(const TestNumber& number, const TestContext& context)
@@ -22,7 +22,7 @@ void FilesTeardownActionTests::CreationTest1(Test& test)
 {
     FilesTeardownAction action;
 
-    ISHIKO_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void FilesTeardownActionTeardownTest1Helper(Test& test)
@@ -40,8 +40,8 @@ void FilesTeardownActionTeardownTest1Helper(Test& test)
     std::ofstream file(filePath.string());
     file.close();
 
-    ISHIKO_FAIL_IF_NOT(exists(filePath));
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(exists(filePath));
+    ISHIKO_TEST_PASS();
 }
 
 void FilesTeardownActionTests::TeardownTest1(Test& test)
@@ -52,7 +52,7 @@ void FilesTeardownActionTests::TeardownTest1(Test& test)
         test.context());
     teardownTest.run();
 
-    ISHIKO_FAIL_IF(exists(filePath));
-    ISHIKO_FAIL_IF_NOT(teardownTest.passed());
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF(exists(filePath));
+    ISHIKO_TEST_FAIL_IF_NOT(teardownTest.passed());
+    ISHIKO_TEST_PASS();
 }

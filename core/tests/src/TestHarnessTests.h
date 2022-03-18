@@ -9,16 +9,16 @@
 
 #include <Ishiko/Tests/Core.hpp>
 
-class TestHarnessTests : public Ishiko::Tests::TestSequence
+class TestHarnessTests : public Ishiko::TestSequence
 {
 public:
-    TestHarnessTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestContext& context);
+    TestHarnessTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void RunTest1(Ishiko::Tests::Test& test);
-    static void RunTest2(Ishiko::Tests::Test& test);
-    static void RunTest3(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Test& test);
+    static void RunTest1(Ishiko::Test& test);
+    static void RunTest2(Ishiko::Test& test);
+    static void RunTest3(Ishiko::Test& test);
 };
 
 #endif

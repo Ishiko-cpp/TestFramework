@@ -1,12 +1,12 @@
 /*
-    Copyright (c) 2007-2021 Xavier Leclercq
+    Copyright (c) 2007-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
 */
 
 #include "TestTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 TestTests::TestTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "Test tests", context)
@@ -35,16 +35,16 @@ void TestTests::ConstructorTest1(Test& test)
 {
     Test myTest(TestNumber(1), "TestConstructorTest1");
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::ConstructorTest2(Test& test)
 {
     Test myTest(TestNumber(1), "TestConstructorTest2", TestResult::passed);
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestConstructorTest3Helper(Test& test)
@@ -56,16 +56,16 @@ void TestTests::ConstructorTest3(Test& test)
 {
     Test myTest(TestNumber(), "TestConstructorTest3", TestConstructorTest3Helper);
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::ConstructorTest4(Test& test)
 {
     Test myTest(TestNumber(), "TestConstructorTest4", [](Test& test) {});
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::ConstructorTest5(Test& test)
@@ -73,8 +73,8 @@ void TestTests::ConstructorTest5(Test& test)
     int data = 5;
     Test myTest(TestNumber(), "TestConstructorTest5", [data](Test& test) {});
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::PassTest1(Test& test)
@@ -82,8 +82,8 @@ void TestTests::PassTest1(Test& test)
     Test myTest(TestNumber(1), "PassTest1");
     myTest.pass();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::FailTest1(Test& test)
@@ -91,8 +91,8 @@ void TestTests::FailTest1(Test& test)
     Test myTest(TestNumber(1), "FailTest1");
     myTest.fail(__FILE__, __LINE__);
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::FailTest2(Test& test)
@@ -101,8 +101,8 @@ void TestTests::FailTest2(Test& test)
     myTest.fail(__FILE__, __LINE__);
     myTest.pass();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::FailIfTest1(Test& test)
@@ -111,8 +111,8 @@ void TestTests::FailIfTest1(Test& test)
     myTest.failIf(true, __FILE__, __LINE__);
     myTest.pass();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::FailIfTest2(Test& test)
@@ -121,8 +121,8 @@ void TestTests::FailIfTest2(Test& test)
     myTest.failIf(false, __FILE__, __LINE__);
     myTest.pass();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::FailIfTest3(Test& test)
@@ -130,8 +130,8 @@ void TestTests::FailIfTest3(Test& test)
     Test myTest(TestNumber(1), "FailIfTest3");
     myTest.failIf(false, __FILE__, __LINE__);
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::unknown);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::RunTest1(Test& test)
@@ -139,8 +139,8 @@ void TestTests::RunTest1(Test& test)
     Test myTest(TestNumber(1), "TestRunTest1");
     myTest.run();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::RunTest2(Test& test)
@@ -148,8 +148,8 @@ void TestTests::RunTest2(Test& test)
     Test myTest(TestNumber(1), "TestRunTest2", TestResult::passed);
     myTest.run();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestRunTest3Helper(Test& test)
@@ -165,8 +165,8 @@ void TestTests::RunTest3(Test& test)
     Test myTest(TestNumber(1), "TestRunTest3", TestRunTest3Helper);
     myTest.run();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestRunTest4Helper(Test& test)
@@ -182,8 +182,8 @@ void TestTests::RunTest4(Test& test)
     Test myTest(TestNumber(1), "TestRunTest4", TestRunTest4Helper);
     myTest.run();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
 }
 
 void TestRunTest5Helper(Test& test)
@@ -196,8 +196,8 @@ void TestTests::RunTest5(Test& test)
     Test myTest(TestNumber(1), "TestRunTest5", TestRunTest5Helper);
     myTest.run();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::exception);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::exception);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::AbortTest1(Test& test)
@@ -211,9 +211,9 @@ void TestTests::AbortTest1(Test& test)
         });
     myTest.run();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
-    ISHIKO_FAIL_IF(canary);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_FAIL_IF(canary);
+    ISHIKO_TEST_PASS();
 }
 
 void TestTests::SkipTest1(Test& test)
@@ -227,7 +227,7 @@ void TestTests::SkipTest1(Test& test)
     });
     myTest.run();
 
-    ISHIKO_FAIL_IF_NEQ(myTest.result(), TestResult::skipped);
-    ISHIKO_FAIL_IF(canary);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::skipped);
+    ISHIKO_TEST_FAIL_IF(canary);
+    ISHIKO_TEST_PASS();
 }

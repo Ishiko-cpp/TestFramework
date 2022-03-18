@@ -8,8 +8,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 bool Internal::UniversalFormatter<char*>::Format(const char* value, std::string& output)
 {
@@ -36,5 +34,4 @@ bool Internal::UniversalFormatter<bool>::Format(bool value, std::string& output)
     return true;
 }
 
-}
 }

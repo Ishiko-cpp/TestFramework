@@ -13,8 +13,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 TestHarness::TestHarness(const std::string& title)
     : m_context(TestContext::DefaultTestContext()), m_topSequence(title, m_context),
@@ -148,5 +146,4 @@ void TestHarness::printSummary()
     }
 }
 
-}
 }

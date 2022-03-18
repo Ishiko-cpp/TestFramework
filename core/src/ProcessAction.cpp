@@ -12,8 +12,6 @@ using namespace Ishiko::Process;
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 ProcessAction::ProcessAction(const std::string& commandLine, 
                              EMode mode)
@@ -45,5 +43,4 @@ void ProcessAction::teardown()
     m_processHandle.waitForExit();
 }
 
-}
 }

@@ -6,7 +6,7 @@
 
 #include "TestNumberTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 TestNumberTests::TestNumberTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "TestNumber tests", context)
@@ -20,25 +20,25 @@ void TestNumberTests::ConstructorTest1(Test& test)
 {
     TestNumber number;
 
-    ISHIKO_FAIL_IF_NEQ(number.depth(), 0);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(number.depth(), 0);
+    ISHIKO_TEST_PASS();
 }
 
 void TestNumberTests::ConstructorTest2(Test& test)
 {
     TestNumber number(2);
 
-    ISHIKO_FAIL_IF_NEQ(number.depth(), 1);
-    ISHIKO_FAIL_IF_NEQ(number.part(0), 2);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(number.depth(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(number.part(0), 2);
+    ISHIKO_TEST_PASS();
 }
 
-void TestNumberTests::GetDeeperNumberTest1(Ishiko::Tests::Test& test)
+void TestNumberTests::GetDeeperNumberTest1(Test& test)
 {
     TestNumber number;
     TestNumber deeperNumber = number.getDeeperNumber();
 
-    ISHIKO_FAIL_IF_NEQ(deeperNumber.depth(), 1);
-    ISHIKO_FAIL_IF_NEQ(deeperNumber.part(0), 1);
-    ISHIKO_PASS();
+    ISHIKO_TEST_FAIL_IF_NEQ(deeperNumber.depth(), 1);
+    ISHIKO_TEST_FAIL_IF_NEQ(deeperNumber.part(0), 1);
+    ISHIKO_TEST_PASS();
 }

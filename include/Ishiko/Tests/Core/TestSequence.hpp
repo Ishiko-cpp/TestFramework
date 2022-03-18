@@ -12,8 +12,6 @@
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 class TestSequence : public Test
 {
@@ -68,7 +66,6 @@ TestClass& TestSequence::append(Args&&... args)
     return *newTest;
 }
 
-}
 }
 
 #endif

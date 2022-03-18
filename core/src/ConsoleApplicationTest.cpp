@@ -11,8 +11,6 @@ using namespace Ishiko::Process;
 
 namespace Ishiko
 {
-namespace Tests
-{
 
 ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const std::string& name,
     const std::string& commandLine, int expectedExitCode)
@@ -91,5 +89,4 @@ void ConsoleApplicationTest::doRun()
     setResult(result);
 }
 
-}
 }
