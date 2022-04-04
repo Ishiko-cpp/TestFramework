@@ -17,82 +17,82 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ConsoleApplicationTest.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ConsoleApplicationTest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\DebugHeap.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DebugHeap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\DirectoriesTeardownAction.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\FileComparisonTest.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FileComparisonTest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\FileComparisonTestCheck.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FileComparisonTestCheck.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\FilesTeardownAction.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FilesTeardownAction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\HeapAllocationErrorsTest.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\JUnitXMLWriter.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLWriter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ProcessAction.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\Test.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\Test.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestApplicationReturnCodes.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestCheck.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestCheck.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestConfiguration.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestConfiguration.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestContext.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestContext.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestException.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestHarness.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarness.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacros.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestMacros.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestMacrosFormatter.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestMacrosFormatter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestNumber.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestNumber.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestProgressObserver.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestProgressObserver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestResult.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestResult.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSequence.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestSequence.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestSetupAction.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestSetupAction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestTeardownAction.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestTeardownAction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TopTestSequence.hpp">
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TopTestSequence.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

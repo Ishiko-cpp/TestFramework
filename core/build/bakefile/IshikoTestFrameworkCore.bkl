@@ -36,32 +36,32 @@ library IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, IshikoBasePlatform,
 
     headers
     {
-        ../../../include/Ishiko/Tests/Core.hpp
-        ../../../include/Ishiko/Tests/Core/ConsoleApplicationTest.hpp
-        ../../../include/Ishiko/Tests/Core/DebugHeap.hpp
-        ../../../include/Ishiko/Tests/Core/DirectoriesTeardownAction.hpp
-        ../../../include/Ishiko/Tests/Core/FileComparisonTest.hpp
-        ../../../include/Ishiko/Tests/Core/FileComparisonTestCheck.hpp
-        ../../../include/Ishiko/Tests/Core/FilesTeardownAction.hpp
-        ../../../include/Ishiko/Tests/Core/HeapAllocationErrorsTest.hpp
-        ../../../include/Ishiko/Tests/Core/JUnitXMLWriter.hpp
-        ../../../include/Ishiko/Tests/Core/ProcessAction.hpp
-        ../../../include/Ishiko/Tests/Core/Test.hpp
-        ../../../include/Ishiko/Tests/Core/TestApplicationReturnCodes.hpp
-        ../../../include/Ishiko/Tests/Core/TestCheck.hpp
-        ../../../include/Ishiko/Tests/Core/TestConfiguration.hpp
-        ../../../include/Ishiko/Tests/Core/TestContext.hpp
-        ../../../include/Ishiko/Tests/Core/TestException.hpp
-        ../../../include/Ishiko/Tests/Core/TestHarness.hpp
-        ../../../include/Ishiko/Tests/Core/TestMacros.hpp
-        ../../../include/Ishiko/Tests/Core/TestMacrosFormatter.hpp
-        ../../../include/Ishiko/Tests/Core/TestNumber.hpp
-        ../../../include/Ishiko/Tests/Core/TestProgressObserver.hpp
-        ../../../include/Ishiko/Tests/Core/TestResult.hpp
-        ../../../include/Ishiko/Tests/Core/TestSequence.hpp
-        ../../../include/Ishiko/Tests/Core/TestSetupAction.hpp
-        ../../../include/Ishiko/Tests/Core/TestTeardownAction.hpp
-        ../../../include/Ishiko/Tests/Core/TopTestSequence.hpp
+        ../../../include/Ishiko/TestFramework/Core.hpp
+        ../../../include/Ishiko/TestFramework/Core/ConsoleApplicationTest.hpp
+        ../../../include/Ishiko/TestFramework/Core/DebugHeap.hpp
+        ../../../include/Ishiko/TestFramework/Core/DirectoriesTeardownAction.hpp
+        ../../../include/Ishiko/TestFramework/Core/FileComparisonTest.hpp
+        ../../../include/Ishiko/TestFramework/Core/FileComparisonTestCheck.hpp
+        ../../../include/Ishiko/TestFramework/Core/FilesTeardownAction.hpp
+        ../../../include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.hpp
+        ../../../include/Ishiko/TestFramework/Core/JUnitXMLWriter.hpp
+        ../../../include/Ishiko/TestFramework/Core/ProcessAction.hpp
+        ../../../include/Ishiko/TestFramework/Core/Test.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestApplicationReturnCodes.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestCheck.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestConfiguration.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestContext.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestException.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestHarness.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestMacros.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestMacrosFormatter.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestNumber.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestProgressObserver.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestResult.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestSequence.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestSetupAction.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestTeardownAction.hpp
+        ../../../include/Ishiko/TestFramework/Core/TopTestSequence.hpp
     }
 
     sources
