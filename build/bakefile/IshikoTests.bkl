@@ -13,7 +13,7 @@ library IshikoTests : IshikoTestsCore
 {
     archs = x86 x86_64;
 
-    includedirs += ../../include/Ishiko/Tests;
+    includedirs += ../../include/Ishiko/TestFramework;
     
     if ($(toolset) == gnu)
     {
@@ -33,6 +33,6 @@ library IshikoTests : IshikoTestsCore
 
     headers
     {
-        ../../include/Ishiko/Tests.hpp
+        ../../include/Ishiko/TestFramework.hpp
     }
 }
