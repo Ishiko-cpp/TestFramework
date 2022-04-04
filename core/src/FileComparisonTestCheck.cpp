@@ -20,6 +20,13 @@ FileComparisonTestCheck::FileComparisonTestCheck(path outputFilePath, path refer
 {
 }
 
+FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestContext& context,
+    const path& outputFilePath, const path& referenceFilePath)
+{
+    return FileComparisonTestCheck(context.getTestOutputPath(outputFilePath),
+        context.getReferenceDataPath(referenceFilePath));
+}
+
 TestCheck::Result FileComparisonTestCheck::run()
 {
     // TODO: fix this file comparison code. It's hacked together at the moment
@@ -112,6 +119,17 @@ TestCheck::Result FileComparisonTestCheck::run()
     }
 
     return Result::passed;
+}
+
+
+const path& FileComparisonTestCheck::outputFilePath() const
+{
+    return m_outputFilePath;
+}
+
+const path& FileComparisonTestCheck::referenceFilePath() const
+{
+    return m_referenceFilePath;
 }
 
 }
