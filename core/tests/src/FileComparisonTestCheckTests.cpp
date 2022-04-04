@@ -11,4 +11,12 @@ using namespace Ishiko;
 FileComparisonTestCheckTests::FileComparisonTestCheckTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "FileComparisonTestCheck tests", context)
 {
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+}
+
+void FileComparisonTestCheckTests::ConstructorTest1(Test& test)
+{
+    FileComparisonTestCheck fileComparisonCheck;
+
+    ISHIKO_TEST_PASS();
 }

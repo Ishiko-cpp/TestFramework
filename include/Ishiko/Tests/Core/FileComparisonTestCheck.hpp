@@ -7,4 +7,15 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTESTCHECK_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTESTCHECK_HPP_
 
+#include "TestCheck.hpp"
+
+namespace Ishiko
+{
+
+class FileComparisonTestCheck : public TestCheck
+{
+};
+
+}
+
 #endif
