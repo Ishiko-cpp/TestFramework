@@ -1,11 +1,11 @@
 /*
     Copyright (c) 2007-2022 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
+    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTS_CORE_FILECOMPARISONTEST_HPP_
-#define _ISHIKO_CPP_TESTS_CORE_FILECOMPARISONTEST_HPP_
+#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTEST_HPP_
+#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTEST_HPP_
 
 #include "Test.hpp"
 #include "TestSequence.hpp"

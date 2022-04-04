@@ -1,11 +1,11 @@
 /*
     Copyright (c) 2006-2022 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
+    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTS_CORE_TESTHARNESS_HPP_
-#define _ISHIKO_CPP_TESTS_CORE_TESTHARNESS_HPP_
+#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTHARNESS_HPP_
+#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTHARNESS_HPP_
 
 #include "TestConfiguration.hpp"
 #include "TestContext.hpp"
