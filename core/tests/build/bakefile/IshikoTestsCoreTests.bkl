@@ -1,4 +1,4 @@
-import ../../../../include/Ishiko/Tests/Core.bkl;
+import ../../../../include/Ishiko/TestFramework/Core.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 

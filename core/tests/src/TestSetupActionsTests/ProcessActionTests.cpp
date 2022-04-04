@@ -5,7 +5,7 @@
 */
 
 #include "ProcessActionTests.h"
-#include <Ishiko/Tests/Core/ProcessAction.hpp>
+#include <Ishiko/TestFramework/Core/ProcessAction.hpp>
 #include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko;

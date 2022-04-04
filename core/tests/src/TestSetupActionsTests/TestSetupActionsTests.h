@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTS_TESTS_CORE_TESTSETUPACTIONSTESTS_TESTSETUPACTIONSTESTS_H_
 #define _ISHIKO_TESTS_TESTS_CORE_TESTSETUPACTIONSTESTS_TESTSETUPACTIONSTESTS_H_
 
-#include <Ishiko/Tests/Core.hpp>
+#include <Ishiko/TestFramework/Core.hpp>
 
 class TestSetupActionsTests : public Ishiko::TestSequence
 {
