@@ -90,85 +90,85 @@ ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/process
 
 # ------------
 
-all: ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestsCore-d,IshikoTestsCore).a
+all: ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFrameworkCore-d,IshikoTestFrameworkCore).a
 
-../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestsCore-d,IshikoTestsCore).a: $(_builddir)IshikoTestsCore_ConsoleApplicationTest.o $(_builddir)IshikoTestsCore_DebugHeap.o $(_builddir)IshikoTestsCore_DirectoriesTeardownAction.o $(_builddir)IshikoTestsCore_FileComparisonTest.o $(_builddir)IshikoTestsCore_FileComparisonTestCheck.o $(_builddir)IshikoTestsCore_FilesTeardownAction.o $(_builddir)IshikoTestsCore_HeapAllocationErrorsTest.o $(_builddir)IshikoTestsCore_JUnitXMLWriter.o $(_builddir)IshikoTestsCore_ProcessAction.o $(_builddir)IshikoTestsCore_Test.o $(_builddir)IshikoTestsCore_TestCheck.o $(_builddir)IshikoTestsCore_TestConfiguration.o $(_builddir)IshikoTestsCore_TestContext.o $(_builddir)IshikoTestsCore_TestException.o $(_builddir)IshikoTestsCore_TestHarness.o $(_builddir)IshikoTestsCore_TestNumber.o $(_builddir)IshikoTestsCore_TestMacrosFormatter.o $(_builddir)IshikoTestsCore_TestProgressObserver.o $(_builddir)IshikoTestsCore_TestResult.o $(_builddir)IshikoTestsCore_TestSequence.o $(_builddir)IshikoTestsCore_TestSetupAction.o $(_builddir)IshikoTestsCore_TestTeardownAction.o $(_builddir)IshikoTestsCore_TopTestSequence.o
-	$(AR) rc $@ $(_builddir)IshikoTestsCore_ConsoleApplicationTest.o $(_builddir)IshikoTestsCore_DebugHeap.o $(_builddir)IshikoTestsCore_DirectoriesTeardownAction.o $(_builddir)IshikoTestsCore_FileComparisonTest.o $(_builddir)IshikoTestsCore_FileComparisonTestCheck.o $(_builddir)IshikoTestsCore_FilesTeardownAction.o $(_builddir)IshikoTestsCore_HeapAllocationErrorsTest.o $(_builddir)IshikoTestsCore_JUnitXMLWriter.o $(_builddir)IshikoTestsCore_ProcessAction.o $(_builddir)IshikoTestsCore_Test.o $(_builddir)IshikoTestsCore_TestCheck.o $(_builddir)IshikoTestsCore_TestConfiguration.o $(_builddir)IshikoTestsCore_TestContext.o $(_builddir)IshikoTestsCore_TestException.o $(_builddir)IshikoTestsCore_TestHarness.o $(_builddir)IshikoTestsCore_TestNumber.o $(_builddir)IshikoTestsCore_TestMacrosFormatter.o $(_builddir)IshikoTestsCore_TestProgressObserver.o $(_builddir)IshikoTestsCore_TestResult.o $(_builddir)IshikoTestsCore_TestSequence.o $(_builddir)IshikoTestsCore_TestSetupAction.o $(_builddir)IshikoTestsCore_TestTeardownAction.o $(_builddir)IshikoTestsCore_TopTestSequence.o
+../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFrameworkCore-d,IshikoTestFrameworkCore).a: $(_builddir)IshikoTestFrameworkCore_ConsoleApplicationTest.o $(_builddir)IshikoTestFrameworkCore_DebugHeap.o $(_builddir)IshikoTestFrameworkCore_DirectoriesTeardownAction.o $(_builddir)IshikoTestFrameworkCore_FileComparisonTest.o $(_builddir)IshikoTestFrameworkCore_FileComparisonTestCheck.o $(_builddir)IshikoTestFrameworkCore_FilesTeardownAction.o $(_builddir)IshikoTestFrameworkCore_HeapAllocationErrorsTest.o $(_builddir)IshikoTestFrameworkCore_JUnitXMLWriter.o $(_builddir)IshikoTestFrameworkCore_ProcessAction.o $(_builddir)IshikoTestFrameworkCore_Test.o $(_builddir)IshikoTestFrameworkCore_TestCheck.o $(_builddir)IshikoTestFrameworkCore_TestConfiguration.o $(_builddir)IshikoTestFrameworkCore_TestContext.o $(_builddir)IshikoTestFrameworkCore_TestException.o $(_builddir)IshikoTestFrameworkCore_TestHarness.o $(_builddir)IshikoTestFrameworkCore_TestNumber.o $(_builddir)IshikoTestFrameworkCore_TestMacrosFormatter.o $(_builddir)IshikoTestFrameworkCore_TestProgressObserver.o $(_builddir)IshikoTestFrameworkCore_TestResult.o $(_builddir)IshikoTestFrameworkCore_TestSequence.o $(_builddir)IshikoTestFrameworkCore_TestSetupAction.o $(_builddir)IshikoTestFrameworkCore_TestTeardownAction.o $(_builddir)IshikoTestFrameworkCore_TopTestSequence.o
+	$(AR) rc $@ $(_builddir)IshikoTestFrameworkCore_ConsoleApplicationTest.o $(_builddir)IshikoTestFrameworkCore_DebugHeap.o $(_builddir)IshikoTestFrameworkCore_DirectoriesTeardownAction.o $(_builddir)IshikoTestFrameworkCore_FileComparisonTest.o $(_builddir)IshikoTestFrameworkCore_FileComparisonTestCheck.o $(_builddir)IshikoTestFrameworkCore_FilesTeardownAction.o $(_builddir)IshikoTestFrameworkCore_HeapAllocationErrorsTest.o $(_builddir)IshikoTestFrameworkCore_JUnitXMLWriter.o $(_builddir)IshikoTestFrameworkCore_ProcessAction.o $(_builddir)IshikoTestFrameworkCore_Test.o $(_builddir)IshikoTestFrameworkCore_TestCheck.o $(_builddir)IshikoTestFrameworkCore_TestConfiguration.o $(_builddir)IshikoTestFrameworkCore_TestContext.o $(_builddir)IshikoTestFrameworkCore_TestException.o $(_builddir)IshikoTestFrameworkCore_TestHarness.o $(_builddir)IshikoTestFrameworkCore_TestNumber.o $(_builddir)IshikoTestFrameworkCore_TestMacrosFormatter.o $(_builddir)IshikoTestFrameworkCore_TestProgressObserver.o $(_builddir)IshikoTestFrameworkCore_TestResult.o $(_builddir)IshikoTestFrameworkCore_TestSequence.o $(_builddir)IshikoTestFrameworkCore_TestSetupAction.o $(_builddir)IshikoTestFrameworkCore_TestTeardownAction.o $(_builddir)IshikoTestFrameworkCore_TopTestSequence.o
 	$(RANLIB) $@
 
-$(_builddir)IshikoTestsCore_ConsoleApplicationTest.o: ../../src/ConsoleApplicationTest.cpp
+$(_builddir)IshikoTestFrameworkCore_ConsoleApplicationTest.o: ../../src/ConsoleApplicationTest.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/ConsoleApplicationTest.cpp
 
-$(_builddir)IshikoTestsCore_DebugHeap.o: ../../src/DebugHeap.cpp
+$(_builddir)IshikoTestFrameworkCore_DebugHeap.o: ../../src/DebugHeap.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/DebugHeap.cpp
 
-$(_builddir)IshikoTestsCore_DirectoriesTeardownAction.o: ../../src/DirectoriesTeardownAction.cpp
+$(_builddir)IshikoTestFrameworkCore_DirectoriesTeardownAction.o: ../../src/DirectoriesTeardownAction.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/DirectoriesTeardownAction.cpp
 
-$(_builddir)IshikoTestsCore_FileComparisonTest.o: ../../src/FileComparisonTest.cpp
+$(_builddir)IshikoTestFrameworkCore_FileComparisonTest.o: ../../src/FileComparisonTest.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/FileComparisonTest.cpp
 
-$(_builddir)IshikoTestsCore_FileComparisonTestCheck.o: ../../src/FileComparisonTestCheck.cpp
+$(_builddir)IshikoTestFrameworkCore_FileComparisonTestCheck.o: ../../src/FileComparisonTestCheck.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/FileComparisonTestCheck.cpp
 
-$(_builddir)IshikoTestsCore_FilesTeardownAction.o: ../../src/FilesTeardownAction.cpp
+$(_builddir)IshikoTestFrameworkCore_FilesTeardownAction.o: ../../src/FilesTeardownAction.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/FilesTeardownAction.cpp
 
-$(_builddir)IshikoTestsCore_HeapAllocationErrorsTest.o: ../../src/HeapAllocationErrorsTest.cpp
+$(_builddir)IshikoTestFrameworkCore_HeapAllocationErrorsTest.o: ../../src/HeapAllocationErrorsTest.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/HeapAllocationErrorsTest.cpp
 
-$(_builddir)IshikoTestsCore_JUnitXMLWriter.o: ../../src/JUnitXMLWriter.cpp
+$(_builddir)IshikoTestFrameworkCore_JUnitXMLWriter.o: ../../src/JUnitXMLWriter.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/JUnitXMLWriter.cpp
 
-$(_builddir)IshikoTestsCore_ProcessAction.o: ../../src/ProcessAction.cpp
+$(_builddir)IshikoTestFrameworkCore_ProcessAction.o: ../../src/ProcessAction.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/ProcessAction.cpp
 
-$(_builddir)IshikoTestsCore_Test.o: ../../src/Test.cpp
+$(_builddir)IshikoTestFrameworkCore_Test.o: ../../src/Test.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/Test.cpp
 
-$(_builddir)IshikoTestsCore_TestCheck.o: ../../src/TestCheck.cpp
+$(_builddir)IshikoTestFrameworkCore_TestCheck.o: ../../src/TestCheck.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestCheck.cpp
 
-$(_builddir)IshikoTestsCore_TestConfiguration.o: ../../src/TestConfiguration.cpp
+$(_builddir)IshikoTestFrameworkCore_TestConfiguration.o: ../../src/TestConfiguration.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestConfiguration.cpp
 
-$(_builddir)IshikoTestsCore_TestContext.o: ../../src/TestContext.cpp
+$(_builddir)IshikoTestFrameworkCore_TestContext.o: ../../src/TestContext.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestContext.cpp
 
-$(_builddir)IshikoTestsCore_TestException.o: ../../src/TestException.cpp
+$(_builddir)IshikoTestFrameworkCore_TestException.o: ../../src/TestException.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestException.cpp
 
-$(_builddir)IshikoTestsCore_TestHarness.o: ../../src/TestHarness.cpp
+$(_builddir)IshikoTestFrameworkCore_TestHarness.o: ../../src/TestHarness.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestHarness.cpp
 
-$(_builddir)IshikoTestsCore_TestNumber.o: ../../src/TestNumber.cpp
+$(_builddir)IshikoTestFrameworkCore_TestNumber.o: ../../src/TestNumber.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestNumber.cpp
 
-$(_builddir)IshikoTestsCore_TestMacrosFormatter.o: ../../src/TestMacrosFormatter.cpp
+$(_builddir)IshikoTestFrameworkCore_TestMacrosFormatter.o: ../../src/TestMacrosFormatter.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestMacrosFormatter.cpp
 
-$(_builddir)IshikoTestsCore_TestProgressObserver.o: ../../src/TestProgressObserver.cpp
+$(_builddir)IshikoTestFrameworkCore_TestProgressObserver.o: ../../src/TestProgressObserver.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestProgressObserver.cpp
 
-$(_builddir)IshikoTestsCore_TestResult.o: ../../src/TestResult.cpp
+$(_builddir)IshikoTestFrameworkCore_TestResult.o: ../../src/TestResult.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestResult.cpp
 
-$(_builddir)IshikoTestsCore_TestSequence.o: ../../src/TestSequence.cpp
+$(_builddir)IshikoTestFrameworkCore_TestSequence.o: ../../src/TestSequence.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestSequence.cpp
 
-$(_builddir)IshikoTestsCore_TestSetupAction.o: ../../src/TestSetupAction.cpp
+$(_builddir)IshikoTestFrameworkCore_TestSetupAction.o: ../../src/TestSetupAction.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestSetupAction.cpp
 
-$(_builddir)IshikoTestsCore_TestTeardownAction.o: ../../src/TestTeardownAction.cpp
+$(_builddir)IshikoTestFrameworkCore_TestTeardownAction.o: ../../src/TestTeardownAction.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TestTeardownAction.cpp
 
-$(_builddir)IshikoTestsCore_TopTestSequence.o: ../../src/TopTestSequence.cpp
+$(_builddir)IshikoTestFrameworkCore_TopTestSequence.o: ../../src/TopTestSequence.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I../../../include/Ishiko/TestFramework/Core -std=c++11 ../../src/TopTestSequence.cpp
 
 clean:
 	rm -f $(_builddir)*.o
 	rm -f $(_builddir)*.d
-	rm -f ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestsCore-d,IshikoTestsCore).a
+	rm -f ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFrameworkCore-d,IshikoTestFrameworkCore).a
 
 .PHONY: all clean
 

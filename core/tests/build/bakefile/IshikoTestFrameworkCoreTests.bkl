@@ -3,19 +3,19 @@ import ../../../../include/Ishiko/TestFramework/Core.bkl;
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
-vs2019.solutionfile = ../vc16/IshikoTestsCoreTests.sln;
-vs2017.solutionfile = ../vc15/IshikoTestsCoreTests.sln;
-vs2015.solutionfile = ../vc14/IshikoTestsCoreTests.sln;
-vs2013.solutionfile = ../vc12/IshikoTestsCoreTests.sln;
+vs2019.solutionfile = ../vc16/IshikoTestFrameworkCoreTests.sln;
+vs2017.solutionfile = ../vc15/IshikoTestFrameworkCoreTests.sln;
+vs2015.solutionfile = ../vc14/IshikoTestFrameworkCoreTests.sln;
+vs2013.solutionfile = ../vc12/IshikoTestFrameworkCoreTests.sln;
 
-program IshikoTestsCoreTests : IshikoTestsCore
+program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoTestsCore IshikoDiff IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
+        libs += IshikoTestFrameworkCore IshikoDiff IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
     }
 
     headers
