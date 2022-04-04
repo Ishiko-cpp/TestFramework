@@ -7,12 +7,12 @@ import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
-vs2019.solutionfile = ../vc16/IshikoTestsCore.sln;
-vs2017.solutionfile = ../vc15/IshikoTestsCore.sln;
-vs2015.solutionfile = ../vc14/IshikoTestsCore.sln;
-vs2013.solutionfile = ../vc12/IshikoTestsCore.sln;
+vs2019.solutionfile = ../vc16/IshikoTestFrameworkCore.sln;
+vs2017.solutionfile = ../vc15/IshikoTestFrameworkCore.sln;
+vs2015.solutionfile = ../vc14/IshikoTestFrameworkCore.sln;
+vs2013.solutionfile = ../vc12/IshikoTestFrameworkCore.sln;
 
-library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
+library IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
 {
     archs = x86 x86_64;
 
@@ -31,7 +31,7 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
 
     if ($(config) == Debug)
     {
-        basename = IshikoTestsCore-d;
+        basename = IshikoTestFrameworkCore-d;
     }
 
     headers
