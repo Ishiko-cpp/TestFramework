@@ -10,12 +10,16 @@
 namespace Ishiko
 {
 
-enum ETestApplicationReturnCodes
+class TestApplicationReturnCode
 {
-    eOK = 0,
-    eConfigurationProblem = -1,
-    eException = -3,
-    eTestFailure = -4
+public:
+    enum Value
+    {
+        ok = 0,
+        configurationProblem = -1,
+        exception = -3,
+        testFailure = -4
+    };
 };
 
 }
