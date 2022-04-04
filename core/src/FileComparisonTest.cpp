@@ -6,10 +6,8 @@
 
 #include "FileComparisonTest.hpp"
 #include "DebugHeap.hpp"
-#include <Ishiko/Diff.h>
+#include <Ishiko/Diff.hpp>
 #include <Ishiko/BasePlatform.h>
-
-using namespace Ishiko::Diff;
 
 namespace Ishiko
 {

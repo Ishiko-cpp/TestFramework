@@ -13,6 +13,7 @@
 namespace Ishiko
 {
 
+// TODO: deprecate in favour of FileComparisonTestCheck
 class FileComparisonTest : public Test
 {
 public:

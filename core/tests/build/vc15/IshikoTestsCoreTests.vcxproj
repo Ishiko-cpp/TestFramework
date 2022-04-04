@@ -152,8 +152,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\FileComparisonTestCheckTests.cpp" />
     <ClCompile Include="..\..\src\JUnitXMLWriterTests.cpp" />
+    <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\TestContextTests.cpp" />
     <ClCompile Include="..\..\src\TestHarnessTests.cpp" />
     <ClCompile Include="..\..\src\TestNumberTests.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="..\..\src\TestTeardownActionsTests\FilesTeardownActionTests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\FileComparisonTestCheckTests.hpp" />
     <ClInclude Include="..\..\src\JUnitXMLWriterTests.h" />
     <ClInclude Include="..\..\src\TestContextTests.hpp" />
     <ClInclude Include="..\..\src\TestHarnessTests.h" />
