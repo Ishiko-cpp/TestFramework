@@ -16,7 +16,7 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
 {
     archs = x86 x86_64;
 
-    includedirs += ../../../include/Ishiko/Tests/Core;
+    includedirs += ../../../include/Ishiko/TestFramework/Core;
     
     if ($(toolset) == gnu)
     {
