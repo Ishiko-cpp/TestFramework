@@ -32,6 +32,9 @@
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\FileComparisonTest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\FileComparisonTestCheck.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\FilesTeardownAction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -104,6 +107,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\FileComparisonTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FileComparisonTestCheck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\FilesTeardownAction.cpp">

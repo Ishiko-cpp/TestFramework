@@ -41,6 +41,7 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
         ../../../include/Ishiko/Tests/Core/DebugHeap.hpp
         ../../../include/Ishiko/Tests/Core/DirectoriesTeardownAction.hpp
         ../../../include/Ishiko/Tests/Core/FileComparisonTest.hpp
+        ../../../include/Ishiko/Tests/Core/FileComparisonTestCheck.hpp
         ../../../include/Ishiko/Tests/Core/FilesTeardownAction.hpp
         ../../../include/Ishiko/Tests/Core/HeapAllocationErrorsTest.hpp
         ../../../include/Ishiko/Tests/Core/JUnitXMLWriter.hpp
@@ -69,6 +70,7 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
         ../../src/DebugHeap.cpp
         ../../src/DirectoriesTeardownAction.cpp
         ../../src/FileComparisonTest.cpp
+        ../../src/FileComparisonTestCheck.cpp
         ../../src/FilesTeardownAction.cpp
         ../../src/HeapAllocationErrorsTest.cpp
         ../../src/JUnitXMLWriter.cpp
