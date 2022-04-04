@@ -159,6 +159,7 @@
     <ClCompile Include="..\..\src\JUnitXMLWriter.cpp" />
     <ClCompile Include="..\..\src\ProcessAction.cpp" />
     <ClCompile Include="..\..\src\Test.cpp" />
+    <ClCompile Include="..\..\src\TestCheck.cpp" />
     <ClCompile Include="..\..\src\TestConfiguration.cpp" />
     <ClCompile Include="..\..\src\TestContext.cpp" />
     <ClCompile Include="..\..\src\TestException.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\ProcessAction.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\Test.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestApplicationReturnCodes.hpp" />
+    <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestCheck.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestConfiguration.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestContext.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\Tests\Core\TestException.hpp" />
