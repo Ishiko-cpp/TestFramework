@@ -30,7 +30,7 @@ void TestHarnessTests::RunTest1(Test& test)
     TestHarness theTestHarness("TestHarnessTests_RunTest1");
     int returnCode = theTestHarness.run();
 
-    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, eTestFailure);
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::testFailure);
     ISHIKO_TEST_PASS();
 }
 
@@ -43,7 +43,7 @@ void TestHarnessTests::RunTest2(Test& test)
 
     int returnCode = theTestHarness.run();
 
-    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, eOK);
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::ok);
     ISHIKO_TEST_PASS();
 }
 
@@ -56,6 +56,6 @@ void TestHarnessTests::RunTest3(Test& test)
 
     int returnCode = theTestHarness.run();
 
-    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, eOK);
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::ok);
     ISHIKO_TEST_PASS();
 }
