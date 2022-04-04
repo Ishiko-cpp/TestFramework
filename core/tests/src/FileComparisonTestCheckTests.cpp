@@ -14,6 +14,7 @@ FileComparisonTestCheckTests::FileComparisonTestCheckTests(const TestNumber& num
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
+    append<HeapAllocationErrorsTest>("run test 2", RunTest2);
 }
 
 void FileComparisonTestCheckTests::ConstructorTest1(Test& test)
@@ -28,13 +29,26 @@ void FileComparisonTestCheckTests::ConstructorTest1(Test& test)
 
 void FileComparisonTestCheckTests::RunTest1(Test& test)
 {
-    path outputFilePath = test.context().getTestOutputPath("ComparisonTestFiles/Hello.txt");
-    path referenceFilePath = test.context().getReferenceDataPath("ComparisonTestFiles/NotHello.txt");
+    path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
+    path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/NotHello.txt");
 
     FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
 
     TestCheck::Result result = fileComparisonCheck.run();
 
     ISHIKO_TEST_FAIL_IF_NEQ(result, TestCheck::Result::failed);
+    ISHIKO_TEST_PASS();
+}
+
+void FileComparisonTestCheckTests::RunTest2(Test& test)
+{
+    path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
+    path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello2.txt");
+
+    FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
+
+    TestCheck::Result result = fileComparisonCheck.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(result, TestCheck::Result::passed);
     ISHIKO_TEST_PASS();
 }
