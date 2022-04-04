@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_TESTS_CORE_FILECOMPARISONTESTCHECKTESTS_HPP_
 #define _ISHIKO_TESTFRAMEWORK_TESTS_CORE_FILECOMPARISONTESTCHECKTESTS_HPP_
 
-#include <Ishiko/Tests/Core.hpp>
+#include <Ishiko/TestFramework/Core.hpp>
 
 class FileComparisonTestCheckTests : public Ishiko::TestSequence
 {

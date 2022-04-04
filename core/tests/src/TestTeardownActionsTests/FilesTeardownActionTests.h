@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTS_TESTS_CORE_TESTTEARDOWNACTIONSTESTS_FILESTEARDOWNACTIONTESTS_H_
 #define _ISHIKO_TESTS_TESTS_CORE_TESTTEARDOWNACTIONSTESTS_FILESTEARDOWNACTIONTESTS_H_
 
-#include <Ishiko/Tests/Core.hpp>
+#include <Ishiko/TestFramework/Core.hpp>
 
 class FilesTeardownActionTests : public Ishiko::TestSequence
 {

@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTFRAMEWORK_TESTS_CORE_TESTMACROSTESTS_H_
 #define _ISHIKO_TESTFRAMEWORK_TESTS_CORE_TESTMACROSTESTS_H_
 
-#include <Ishiko/Tests/Core.hpp>
+#include <Ishiko/TestFramework/Core.hpp>
 
 class TestMacrosTests : public Ishiko::TestSequence
 {

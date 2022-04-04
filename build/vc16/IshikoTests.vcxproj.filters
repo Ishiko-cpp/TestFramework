@@ -17,7 +17,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\Ishiko\Tests.hpp">
+    <ClInclude Include="..\..\include\Ishiko\TestFramework.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,7 +6,7 @@
 
 #include "FilesTeardownActionTests.h"
 #include <boost/filesystem.hpp>
-#include <Ishiko/Tests/Core/DebugHeap.hpp>
+#include <Ishiko/TestFramework/Core/DebugHeap.hpp>
 
 using namespace Ishiko;
 using namespace boost::filesystem;

@@ -5,7 +5,7 @@
 */
 
 #include "TestHarnessTests.h"
-#include "Ishiko/Tests/Core/TestHarness.hpp"
+#include "Ishiko/TestFramework/Core/TestHarness.hpp"
 
 using namespace Ishiko;
 
