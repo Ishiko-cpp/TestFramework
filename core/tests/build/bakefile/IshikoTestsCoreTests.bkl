@@ -20,6 +20,7 @@ program IshikoTestsCoreTests : IshikoTestsCore
 
     headers
     {
+        ../../src/FileComparisonTestCheckTests.hpp
         ../../src/JUnitXMLWriterTests.h
         ../../src/TestContextTests.hpp
         ../../src/TestHarnessTests.h
@@ -28,7 +29,6 @@ program IshikoTestsCoreTests : IshikoTestsCore
         ../../src/TestMacrosTests.h
         ../../src/TestMacrosFormatterTests.h
         ../../src/TestSequenceTests.h
-
         ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
         ../../src/FileComparisonTestTests/FileComparisonTestTests.h
         ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
@@ -41,8 +41,9 @@ program IshikoTestsCoreTests : IshikoTestsCore
 
     sources
     {
-        ../../src/main.cpp
+        ../../src/FileComparisonTestCheckTests.cpp
         ../../src/JUnitXMLWriterTests.cpp
+        ../../src/main.cpp
         ../../src/TestContextTests.cpp
         ../../src/TestHarnessTests.cpp
         ../../src/TestNumberTests.cpp
