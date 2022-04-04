@@ -12,6 +12,14 @@ namespace Ishiko
 
 class TestCheck
 {
+public:
+    enum class Result
+    {
+        passed,
+        failed
+    };
+
+    virtual Result run() = 0;
 };
 
 }
