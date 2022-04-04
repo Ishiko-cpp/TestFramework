@@ -1,9 +1,10 @@
 /*
     Copyright (c) 2007-2022 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/ishiko-cpp/tests/blob/main/LICENSE.txt
+    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
+#include "FileComparisonTestCheckTests.hpp"
 #include "JUnitXMLWriterTests.h"
 #include "TestContextTests.hpp"
 #include "TestNumberTests.h"
@@ -34,6 +35,7 @@ int main(int argc, char* argv[])
     theTests.append<TestContextTests>();
     theTests.append<TestNumberTests>();
     theTests.append<TestTests>();
+    theTests.append<FileComparisonTestCheckTests>();
     theTests.append<TestMacrosFormatterTests>();
     theTests.append<TestMacrosTests>();
     theTests.append<TestSequenceTests>();

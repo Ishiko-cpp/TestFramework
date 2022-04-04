@@ -41,12 +41,14 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
         ../../../include/Ishiko/Tests/Core/DebugHeap.hpp
         ../../../include/Ishiko/Tests/Core/DirectoriesTeardownAction.hpp
         ../../../include/Ishiko/Tests/Core/FileComparisonTest.hpp
+        ../../../include/Ishiko/Tests/Core/FileComparisonTestCheck.hpp
         ../../../include/Ishiko/Tests/Core/FilesTeardownAction.hpp
         ../../../include/Ishiko/Tests/Core/HeapAllocationErrorsTest.hpp
         ../../../include/Ishiko/Tests/Core/JUnitXMLWriter.hpp
         ../../../include/Ishiko/Tests/Core/ProcessAction.hpp
         ../../../include/Ishiko/Tests/Core/Test.hpp
         ../../../include/Ishiko/Tests/Core/TestApplicationReturnCodes.hpp
+        ../../../include/Ishiko/Tests/Core/TestCheck.hpp
         ../../../include/Ishiko/Tests/Core/TestConfiguration.hpp
         ../../../include/Ishiko/Tests/Core/TestContext.hpp
         ../../../include/Ishiko/Tests/Core/TestException.hpp
@@ -68,11 +70,13 @@ library IshikoTestsCore : IshikoDiff, IshikoProcess, IshikoBasePlatform, Boost
         ../../src/DebugHeap.cpp
         ../../src/DirectoriesTeardownAction.cpp
         ../../src/FileComparisonTest.cpp
+        ../../src/FileComparisonTestCheck.cpp
         ../../src/FilesTeardownAction.cpp
         ../../src/HeapAllocationErrorsTest.cpp
         ../../src/JUnitXMLWriter.cpp
         ../../src/ProcessAction.cpp
         ../../src/Test.cpp
+        ../../src/TestCheck.cpp
         ../../src/TestConfiguration.cpp
         ../../src/TestContext.cpp
         ../../src/TestException.cpp

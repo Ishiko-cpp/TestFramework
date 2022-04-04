@@ -9,6 +9,8 @@
 
 #include "TestMacrosFormatter.hpp"
 
+// TODO: all macros need to follow the scheme where they print the data
+
 #define ISHIKO_TEST_ABORT() test.abort(__FILE__, __LINE__)
 // The double negation is needed to cope with classes that have an explicit operator bool
 #define ISHIKO_TEST_ABORT_IF(condition) test.abortIf(!!(condition), __FILE__, __LINE__)
@@ -61,6 +63,14 @@
         std::string message =                                                                                   \
             Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_NOT_CONTAIN", #output, #str, output, str); \
         test.fail(message, __FILE__, __LINE__);                                                                 \
+    }
+
+#define ISHIKO_TEST_FAIL_IF_FILES_NEQ(path1, path2)                                                              \
+    {                                                                                                            \
+        std::shared_ptr<FileComparisonTestCheck> check =                                                         \
+            std::make_shared<FileComparisonTestCheck>(FileComparisonTestCheck::CreateFromContext(test.context(), \
+                path1, path2));                                                                                  \
+        test.runCheck(check, __FILE__, __LINE__);                                                                \
     }
 
 #define ISHIKO_TEST_PASS() test.pass()

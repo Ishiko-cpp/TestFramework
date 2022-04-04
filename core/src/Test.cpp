@@ -280,6 +280,15 @@ void Test::skip()
     throw AbortException();
 }
 
+void Test::runCheck(std::shared_ptr<TestCheck> check, const char* file, int line)
+{
+    TestCheck::Result result = check->run();
+    if (result == TestCheck::Result::failed)
+    {
+        fail(file, line);
+    }
+}
+
 const TestContext& Test::context() const
 {
     return m_context;
