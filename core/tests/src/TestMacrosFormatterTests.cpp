@@ -5,7 +5,7 @@
 */
 
 #include "TestMacrosFormatterTests.h"
-#include <Ishiko/Tests/Core/TestMacrosFormatter.hpp>
+#include <Ishiko/TestFramework/Core/TestMacrosFormatter.hpp>
 
 using namespace Ishiko;
 

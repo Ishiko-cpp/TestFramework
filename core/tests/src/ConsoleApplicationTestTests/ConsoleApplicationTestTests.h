@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_TESTS_TESTS_CORE_CONSOLEAPPLICATIONTESTTESTS_CONSOLEAPPLICATIONTESTTESTS_H_
 #define _ISHIKO_TESTS_TESTS_CORE_CONSOLEAPPLICATIONTESTTESTS_CONSOLEAPPLICATIONTESTTESTS_H_
 
-#include <Ishiko/Tests/Core.hpp>
+#include <Ishiko/TestFramework/Core.hpp>
 
 class ConsoleApplicationTestTests : public Ishiko::TestSequence
 {

@@ -5,7 +5,7 @@
 */
 
 #include "JUnitXMLWriterTests.h"
-#include <Ishiko/Tests/Core/JUnitXMLWriter.hpp>
+#include <Ishiko/TestFramework/Core/JUnitXMLWriter.hpp>
 
 using namespace Ishiko;
 
