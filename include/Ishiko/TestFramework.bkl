@@ -1,5 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/test-framework/include/Ishiko/Tests/Core.bkl;
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
 
 setting ISHIKO_CPP_TESTS_ROOT
 {
@@ -7,7 +7,7 @@ setting ISHIKO_CPP_TESTS_ROOT
     default = '$(ISHIKO_CPP)/test-framework';
 }
 
-template IshikoTests : IshikoTestsCore
+template IshikoTestFramework : IshikoTestFrameworkCore
 {
     includedirs += $(ISHIKO_CPP_TESTS_ROOT)/include;
 
