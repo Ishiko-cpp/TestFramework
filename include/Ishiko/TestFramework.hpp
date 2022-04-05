@@ -7,7 +7,7 @@
 #ifndef _ISHIKO_CPP_TESTS_HPP_
 #define _ISHIKO_CPP_TESTS_HPP_
 
-#include "Tests/Core.hpp"
+#include "TestFramework/Core.hpp"
 
 #ifdef _DEBUG
 #pragma comment(lib, "IshikoTests-d.lib")
