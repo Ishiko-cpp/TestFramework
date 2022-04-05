@@ -77,16 +77,16 @@ int TestHarness::runTests()
 
         if (!m_topSequence.passed() && !m_topSequence.skipped())
         {
-            return eTestFailure;
+            return TestApplicationReturnCode::testFailure;
         }
         else
         {
-            return eOK;
+            return TestApplicationReturnCode::ok;
         }
     }
     catch (...)
     {
-        return eException;
+        return TestApplicationReturnCode::exception;
     }
 }
 
