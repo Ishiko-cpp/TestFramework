@@ -84,13 +84,13 @@ ISHIKO_CPP_TESTFRAMEWORK_ROOT ?= $(ISHIKO_CPP)/test-framework
 
 # ------------
 
-all: ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTests-d,IshikoTests).a
+all: ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFramework-d,IshikoTestFramework).a
 
-../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTests-d,IshikoTests).a:
+../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFramework-d,IshikoTestFramework).a:
 	$(AR) rc $@ 
 	$(RANLIB) $@
 
 clean:
-	rm -f ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTests-d,IshikoTests).a
+	rm -f ../bakefile/../../lib/lib$(if $(call _equal,$(config),Debug),IshikoTestFramework-d,IshikoTestFramework).a
 
 .PHONY: all clean

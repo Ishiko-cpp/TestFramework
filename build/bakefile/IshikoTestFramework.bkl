@@ -4,12 +4,12 @@ import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
-vs2019.solutionfile = ../vc16/IshikoTests.sln;
-vs2017.solutionfile = ../vc15/IshikoTests.sln;
-vs2015.solutionfile = ../vc14/IshikoTests.sln;
-vs2013.solutionfile = ../vc12/IshikoTests.sln;
+vs2019.solutionfile = ../vc16/IshikoTestFramework.sln;
+vs2017.solutionfile = ../vc15/IshikoTestFramework.sln;
+vs2015.solutionfile = ../vc14/IshikoTestFramework.sln;
+vs2013.solutionfile = ../vc12/IshikoTestFramework.sln;
 
-library IshikoTests : IshikoTestsCore
+library IshikoTestFramework : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
@@ -28,7 +28,7 @@ library IshikoTests : IshikoTestsCore
 
     if ($(config) == Debug)
     {
-        basename = IshikoTests-d;
+        basename = IshikoTestFramework-d;
     }
 
     headers

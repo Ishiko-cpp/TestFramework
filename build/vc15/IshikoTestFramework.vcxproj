@@ -21,10 +21,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B0F232A7-CC26-5BFB-A6C9-DDC91DE288F4}</ProjectGuid>
+    <ProjectGuid>{1B900B35-B756-5BDA-9436-B1CCBA45CC2E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>IshikoTests</RootNamespace>
-    <ProjectName>IshikoTests</ProjectName>
+    <RootNamespace>IshikoTestFramework</RootNamespace>
+    <ProjectName>IshikoTestFramework</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -68,11 +68,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>IshikoTests-d</TargetName>
+    <TargetName>IshikoTestFramework-d</TargetName>
     <OutDir>..\bakefile\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>IshikoTests-d</TargetName>
+    <TargetName>IshikoTestFramework-d</TargetName>
     <OutDir>..\bakefile\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
