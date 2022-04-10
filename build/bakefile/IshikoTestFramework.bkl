@@ -9,7 +9,7 @@ vs2017.solutionfile = ../vc15/IshikoTests.sln;
 vs2015.solutionfile = ../vc14/IshikoTests.sln;
 vs2013.solutionfile = ../vc12/IshikoTests.sln;
 
-library IshikoTests : IshikoTestsCore
+library IshikoTestFramework : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
@@ -28,7 +28,7 @@ library IshikoTests : IshikoTestsCore
 
     if ($(config) == Debug)
     {
-        basename = IshikoTests-d;
+        basename = IshikoTestFramework-d;
     }
 
     headers
