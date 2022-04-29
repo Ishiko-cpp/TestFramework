@@ -79,7 +79,7 @@ void TestContext::setTestDataDirectory(const std::string& id,
     const boost::filesystem::path& path)
 {
     std::string expandedPath = CurrentEnvironment::ExpandVariablesInString(path.string(),
-        CurrentEnvironment::eDollarAndParentheses);
+        CurrentEnvironment::SubstitutionFormat::DollarAndCurlyBrackets);
 
     m_testDataDirectories[id] = expandedPath;
 }
@@ -131,7 +131,7 @@ void TestContext::setReferenceDataDirectory(const boost::filesystem::path& path)
 void TestContext::setReferenceDataDirectory(const std::string& id, const boost::filesystem::path& path)
 {
     std::string expandedPath = CurrentEnvironment::ExpandVariablesInString(path.string(),
-        CurrentEnvironment::eDollarAndParentheses);
+        CurrentEnvironment::SubstitutionFormat::DollarAndCurlyBrackets);
 
     m_referenceDataDirectories[id] = expandedPath;
 }
@@ -183,7 +183,7 @@ void TestContext::setTestOutputDirectory(const boost::filesystem::path& path)
 void TestContext::setTestOutputDirectory(const std::string& id, const boost::filesystem::path& path)
 {
     std::string expandedPath = CurrentEnvironment::ExpandVariablesInString(path.string(),
-        CurrentEnvironment::eDollarAndParentheses);
+        CurrentEnvironment::SubstitutionFormat::DollarAndCurlyBrackets);
 
     m_testOutputDirectories[id] = expandedPath;
 }

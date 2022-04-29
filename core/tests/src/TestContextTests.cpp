@@ -119,7 +119,7 @@ void TestContextTests::GetTestDataDirectoryTest5(Test& test)
     CurrentEnvironment::Set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
 
     TestContext context;
-    context.setTestDataDirectory("id1", "$(TestEnvironmentGetTestDataDirectoryTest3)/path1");
+    context.setTestDataDirectory("id1", "${TestEnvironmentGetTestDataDirectoryTest3}/path1");
     if (context.getTestDataDirectory("id1") == "dummy/path1")
     {
         ISHIKO_TEST_PASS();
