@@ -6,9 +6,7 @@
 
 #include "ProcessAction.hpp"
 #include "TestException.hpp"
-#include <Ishiko/Process.h>
-
-using namespace Ishiko::Process;
+#include <Ishiko/Process.hpp>
 
 namespace Ishiko
 {

@@ -36,7 +36,7 @@ public:
 private:
     std::string m_commandLine;
     EMode m_mode;
-    Process::ChildProcess m_processHandle;
+    ChildProcess m_processHandle;
 };
 
 }
