@@ -116,7 +116,7 @@ void TestContextTests::GetTestDataDirectoryTest4(Test& test)
 
 void TestContextTests::GetTestDataDirectoryTest5(Test& test)
 {
-    Ishiko::Process::CurrentEnvironment::Set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
+    CurrentEnvironment::Set("TestEnvironmentGetTestDataDirectoryTest3", "dummy");
 
     TestContext context;
     context.setTestDataDirectory("id1", "$(TestEnvironmentGetTestDataDirectoryTest3)/path1");

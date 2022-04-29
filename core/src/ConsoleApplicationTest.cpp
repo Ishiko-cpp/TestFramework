@@ -7,8 +7,6 @@
 #include "ConsoleApplicationTest.hpp"
 #include "Ishiko/Process/ChildProcessBuilder.h"
 
-using namespace Ishiko::Process;
-
 namespace Ishiko
 {
 
