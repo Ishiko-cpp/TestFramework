@@ -184,6 +184,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FilesTeardownAction.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLWriter.hpp" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\linkoptions.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\Test.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestApplicationReturnCodes.hpp" />

@@ -44,6 +44,9 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\JUnitXMLWriter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\linkoptions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ProcessAction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

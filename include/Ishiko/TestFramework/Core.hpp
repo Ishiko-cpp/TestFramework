@@ -12,6 +12,7 @@
 #include "Core/FileComparisonTest.hpp"
 #include "Core/FileComparisonTestCheck.hpp"
 #include "Core/JUnitXMLWriter.hpp"
+#include "Core/linkoptions.hpp"
 #include "Core/Test.hpp"
 #include "Core/TestApplicationReturnCodes.hpp"
 #include "Core/TestCheck.hpp"
@@ -25,11 +26,5 @@
 #include "Core/DirectoriesTeardownAction.hpp"
 #include "Core/FilesTeardownAction.hpp"
 #include "Core/ProcessAction.hpp"
-
-#ifdef _DEBUG
-#pragma comment(lib, "IshikoTestsCore-d.lib")
-#else
-#pragma comment(lib, "IshikoTestsCore.lib")
-#endif
 
 #endif

@@ -45,6 +45,7 @@ library IshikoTestFrameworkCore : IshikoDiff, IshikoProcess, IshikoBasePlatform,
         ../../../include/Ishiko/TestFramework/Core/FilesTeardownAction.hpp
         ../../../include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.hpp
         ../../../include/Ishiko/TestFramework/Core/JUnitXMLWriter.hpp
+        ../../../include/Ishiko/TestFramework/Core/linkoptions.hpp
         ../../../include/Ishiko/TestFramework/Core/ProcessAction.hpp
         ../../../include/Ishiko/TestFramework/Core/Test.hpp
         ../../../include/Ishiko/TestFramework/Core/TestApplicationReturnCodes.hpp
