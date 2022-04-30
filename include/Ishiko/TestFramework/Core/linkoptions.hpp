@@ -7,6 +7,8 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_LINKOPTIONS_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_LINKOPTIONS_HPP_
 
+#include <Ishiko/Process/linkoptions.h>
+
 #ifdef _DEBUG
 #pragma comment(lib, "IshikoTestFrameworkCore-d.lib")
 #else
