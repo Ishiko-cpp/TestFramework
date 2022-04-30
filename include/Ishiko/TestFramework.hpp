@@ -9,10 +9,12 @@
 
 #include "TestFramework/Core.hpp"
 
+#if 0 // TODO
 #ifdef _DEBUG
-#pragma comment(lib, "IshikoTests-d.lib")
+#pragma comment(lib, "IshikoTestFramework-d.lib")
 #else
-#pragma comment(lib, "IshikoTests.lib")
+#pragma comment(lib, "IshikoTestFramework.lib")
+#endif
 #endif
 
 #endif
