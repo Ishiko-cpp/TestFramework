@@ -16,7 +16,15 @@
 #define ISHIKO_TEST_ABORT_IF(condition) test.abortIf(!!(condition), __FILE__, __LINE__)
 #define ISHIKO_TEST_ABORT_IF_NOT(condition) test.abortIf(!(condition), __FILE__, __LINE__)
 #define ISHIKO_TEST_ABORT_IF_EQ(value1, value2) ISHIKO_TEST_ABORT_IF((value1) == (value2))
-#define ISHIKO_TEST_ABORT_IF_NEQ(value1, value2) ISHIKO_TEST_ABORT_IF((value1) != (value2))
+
+#define ISHIKO_TEST_ABORT_IF_NEQ(value, reference)                                                                 \
+    if ((value) != (reference))                                                                                    \
+    {                                                                                                              \
+        std::string message =                                                                                      \
+            Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_ABORT_IF_NEQ", #value, #reference, value, reference); \
+        test.abort(message, __FILE__, __LINE__);                                                                   \
+    }
+
 #define ISHIKO_TEST_ABORT_IF_STR_EQ(value1, value2) ISHIKO_TEST_ABORT_IF(strcmp(value1, value2) == 0)
 #define ISHIKO_TEST_ABORT_IF_STR_NEQ(value1, value2) ISHIKO_TEST_ABORT_IF(strcmp(value1, value2) != 0)
 #define ISHIKO_TEST_FAIL() test.fail(__FILE__, __LINE__)

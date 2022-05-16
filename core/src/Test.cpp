@@ -235,6 +235,12 @@ void Test::abort(const char* file, int line)
     throw AbortException();
 }
 
+void Test::abort(const std::string& message, const char* file, int line)
+{
+    fail(message, file, line);
+    throw AbortException();
+}
+
 void Test::abortIf(bool condition, const char* file, int line)
 {
     if (condition)

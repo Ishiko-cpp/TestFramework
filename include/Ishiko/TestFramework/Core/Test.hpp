@@ -83,6 +83,7 @@ public:
     virtual void getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryLeaks, size_t& exception,
         size_t& failed, size_t& skipped, size_t& total) const;
     void abort(const char* file, int line);
+    void abort(const std::string& message, const char* file, int line);
     void abortIf(bool condition, const char* file, int line);
     void fail(const char* file, int line);
     void fail(const std::string& message, const char* file, int line);
