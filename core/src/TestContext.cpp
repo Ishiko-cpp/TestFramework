@@ -6,7 +6,7 @@
 
 #include "TestContext.hpp"
 #include "TestException.hpp"
-#include <Ishiko/Process/CurrentEnvironment.h>
+#include <Ishiko/Process.hpp>
 
 namespace Ishiko
 {
