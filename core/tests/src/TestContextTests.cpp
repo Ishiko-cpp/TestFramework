@@ -5,7 +5,7 @@
 */
 
 #include "TestContextTests.hpp"
-#include <Ishiko/Process/CurrentEnvironment.h>
+#include <Ishiko/Process.hpp>
 
 using namespace Ishiko;
 
