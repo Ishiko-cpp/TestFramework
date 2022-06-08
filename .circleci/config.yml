@@ -54,6 +54,9 @@ jobs:
       - run:
           name: Run the tests
           command: cd /projects/ishiko/cpp/test-framework/core/tests/build/gnumake && ./IshikoTestFrameworkCoreTests
+      - store_artifacts:
+          path: /projects/ishiko/cpp/test-framework/output/sub/junit.xml
+          destination: test-results.xml
       - store_test_results:
           path: /projects/ishiko/cpp/test-framework/output/sub/junit.xml
       - run:
