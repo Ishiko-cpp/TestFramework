@@ -9,19 +9,16 @@
 #include <Ishiko/Diff.hpp>
 #include <Ishiko/Errors.hpp>
 
-using namespace boost::filesystem;
-using namespace std;
+using namespace Ishiko;
 
-namespace Ishiko
-{
-
-FileComparisonTestCheck::FileComparisonTestCheck(path outputFilePath, path referenceFilePath)
-    : m_outputFilePath(move(outputFilePath)), m_referenceFilePath(move(referenceFilePath))
+FileComparisonTestCheck::FileComparisonTestCheck(boost::filesystem::path outputFilePath,
+    boost::filesystem::path referenceFilePath)
+    : m_outputFilePath(std::move(outputFilePath)), m_referenceFilePath(std::move(referenceFilePath))
 {
 }
 
 FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestContext& context,
-    const path& outputFilePath, const path& referenceFilePath)
+    const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath)
 {
     return FileComparisonTestCheck(context.getTestOutputPath(outputFilePath),
         context.getReferenceDataPath(referenceFilePath));
@@ -122,14 +119,12 @@ TestCheck::Result FileComparisonTestCheck::run()
 }
 
 
-const path& FileComparisonTestCheck::outputFilePath() const
+const boost::filesystem::path& FileComparisonTestCheck::outputFilePath() const
 {
     return m_outputFilePath;
 }
 
-const path& FileComparisonTestCheck::referenceFilePath() const
+const boost::filesystem::path& FileComparisonTestCheck::referenceFilePath() const
 {
     return m_referenceFilePath;
-}
-
 }
