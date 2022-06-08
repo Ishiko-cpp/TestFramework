@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite tests="3">
-    <testcase classname="foo1" name="ASuccessfulTest"/>
-    <testcase classname="foo2" name="AnotherSuccessfulTest"/>
-    <testcase classname="foo3" name="AFailingTest">
-        <failure type="NotEnoughFoo"> details about failure </failure>
-    </testcase>
+<testsuite tests="1">
+    <testcase classname="foo1" name="ASuccessfulTest" file="g.cpp" time="0.02" />
 </testsuite>
