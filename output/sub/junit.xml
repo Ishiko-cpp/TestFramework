@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<testsuite tests="1">
-    <testcase classname="foo1" name="ASuccessfulTest" file="g.cpp" time="0.02" />
-</testsuite>

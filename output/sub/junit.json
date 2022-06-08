@@ -1,0 +1,40 @@
+[
+  {
+    "uri": "features/embed.feature",
+    "id": "a-screenshot-feature",
+    "keyword": "Feature",
+    "name": "A screenshot feature",
+    "line": 1,
+    "description": "",
+    "elements": [
+      {
+        "id": "a-screenshot-feature;",
+        "keyword": "Scenario",
+        "name": "",
+        "line": 3,
+        "description": "",
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I embed a screenshot",
+            "line": 4,
+            "embeddings": [
+              {
+                "mime_type": "image/png",
+                "data": "Zm9v"
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/json_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
