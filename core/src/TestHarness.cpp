@@ -188,4 +188,16 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
 
     JUnitXMLWriter writer;
     writer.create(reportPath, error);
+    writer.writeTestSuitesStart();
+
+    writer.writeTestSuiteStart(m_topSequence.size());
+    for (size_t i = 0; i < m_topSequence.size(); ++i)
+    {
+        writer.writeTestCaseStart("dummy", "dummy");
+        writer.writeTestCaseEnd();
+    }
+
+    writer.writeTestSuitesEnd();
+
+    writer.writeTestSuitesEnd();
 }
