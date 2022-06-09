@@ -193,7 +193,7 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
     writer.writeTestSuiteStart(m_topSequence.size());
     for (size_t i = 0; i < m_topSequence.size(); ++i)
     {
-        writer.writeTestCaseStart("dummy", "hu" + std::to_string(i));
+        writer.writeTestCaseStart("unknown", m_topSequence[i].name());
         writer.writeTestCaseEnd();
     }
 
