@@ -22,6 +22,8 @@ public:
 
     void writeTestSuitesStart();
     void writeTestSuitesEnd();
+    void writeTestSuiteStart(size_t tests);
+    void writeTestSuiteEnd();
 
 private:
     XMLWriter m_xmlWriter;

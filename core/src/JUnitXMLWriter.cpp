@@ -32,3 +32,14 @@ void JUnitXMLWriter::writeTestSuitesEnd()
 {
     m_xmlWriter.writeElementEnd();
 }
+
+void JUnitXMLWriter::writeTestSuiteStart(size_t tests)
+{
+    m_xmlWriter.writeElementStart("testsuite");
+    m_xmlWriter.writeAttribute("tests", std::to_string(tests));
+}
+
+void JUnitXMLWriter::writeTestSuiteEnd()
+{
+    m_xmlWriter.writeElementEnd();
+}
