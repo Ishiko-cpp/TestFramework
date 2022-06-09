@@ -209,6 +209,7 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
             if (!sequence || (sequence->size() == 0))
             {
                 writer.writeTestCaseStart("unknown", test.name());
+                writer.writeTestCaseEnd();
             }
         });
 
