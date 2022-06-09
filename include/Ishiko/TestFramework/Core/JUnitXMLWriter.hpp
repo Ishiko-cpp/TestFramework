@@ -7,11 +7,21 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_JUNITXMLWRITER_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_JUNITXMLWRITER_HPP_
 
+#include <boost/filesystem.hpp>
+#include <Ishiko/XML.hpp>
+
 namespace Ishiko
 {
 
 class JUnitXMLWriter
 {
+public:
+    JUnitXMLWriter();
+    void create(const boost::filesystem::path& path, Error& error);
+    void close();
+
+private:
+    XMLWriter m_xmlWriter;
 };
 
 }
