@@ -10,8 +10,7 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/range/algorithm.hpp>
 
-namespace Ishiko
-{
+using namespace Ishiko;
 
 void Test::Observer::onLifecycleEvent(const Test& source, EEventType type)
 {
@@ -399,6 +398,4 @@ void Test::teardown()
 void Test::notify(Observer::EEventType type)
 {
     m_observers.notifyLifecycleEvent(*this, type);
-}
-
 }
