@@ -5,8 +5,11 @@
 */
 
 #include "TestHarness.hpp"
+#include "JUnitXMLWriter.hpp"
 #include "TestProgressObserver.hpp"
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/filesystem.hpp>
+#include <Ishiko/Errors.hpp>
 #include <iostream>
 #include <iomanip>
 #include <memory>
@@ -40,8 +43,8 @@ TestHarness::TestHarness(const std::string& title)
 }
 
 TestHarness::TestHarness(const std::string& title, const Configuration& configuration)
-    : m_context(TestContext::DefaultTestContext()), m_topSequence(title, m_context),
-    m_timestampOutputDirectory(true)
+    : m_junitXMLTestReport(configuration.junitXMLTestReport()), m_context(TestContext::DefaultTestContext()),
+    m_topSequence(title, m_context), m_timestampOutputDirectory(true)
 {
 }
 
@@ -99,6 +102,10 @@ int TestHarness::runTests()
 
         printDetailedResults();
         printSummary();
+        if (m_junitXMLTestReport)
+        {
+            writeJUnitXMLTestReport(*m_junitXMLTestReport);
+        }
 
         if (!m_topSequence.passed() && !m_topSequence.skipped())
         {
@@ -169,4 +176,16 @@ void TestHarness::printSummary()
         std::cout << std::endl;
         std::cout << "Test Suite passed" << std::endl;
     }
+}
+
+void TestHarness::writeJUnitXMLTestReport(const std::string& path)
+{
+    // TODO: error handling
+    Ishiko::Error error;
+
+    boost::filesystem::path reportPath = path;
+    boost::filesystem::create_directories(reportPath.parent_path());
+
+    JUnitXMLWriter writer;
+    writer.create(reportPath, error);
 }

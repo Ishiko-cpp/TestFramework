@@ -54,8 +54,10 @@ private:
 	int runTests();
     void printDetailedResults();
     void printSummary();
+    void writeJUnitXMLTestReport(const std::string& path);
 
 private:
+    boost::optional<std::string> m_junitXMLTestReport;
     TestContext m_context;
     TopTestSequence m_topSequence;
     bool m_timestampOutputDirectory;
