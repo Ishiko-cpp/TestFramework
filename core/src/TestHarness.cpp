@@ -11,10 +11,35 @@
 #include <iomanip>
 #include <memory>
 
-namespace Ishiko
+using namespace Ishiko;
+
+TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
+    // TODO: need to support option without default value instead of abusing an empty value
+    addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue, "" });
+}
+
+TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
+{
+    const std::string& junitXMLTestReport = configuration.value("junit-xml-test-report").asString();
+    if (!junitXMLTestReport.empty())
+    {
+        m_junitXMLTestReport = junitXMLTestReport;
+    }
+}
+
+const boost::optional<std::string>& TestHarness::Configuration::junitXMLTestReport() const
+{
+    return m_junitXMLTestReport;
+}
 
 TestHarness::TestHarness(const std::string& title)
+    : m_context(TestContext::DefaultTestContext()), m_topSequence(title, m_context),
+    m_timestampOutputDirectory(true)
+{
+}
+
+TestHarness::TestHarness(const std::string& title, const Configuration& configuration)
     : m_context(TestContext::DefaultTestContext()), m_topSequence(title, m_context),
     m_timestampOutputDirectory(true)
 {
@@ -144,6 +169,4 @@ void TestHarness::printSummary()
         std::cout << std::endl;
         std::cout << "Test Suite passed" << std::endl;
     }
-}
-
 }
