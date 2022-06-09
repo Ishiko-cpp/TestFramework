@@ -20,6 +20,9 @@ public:
     void create(const boost::filesystem::path& path, Error& error);
     void close();
 
+    void writeTestSuitesStart();
+    void writeTestSuitesEnd();
+
 private:
     XMLWriter m_xmlWriter;
 };

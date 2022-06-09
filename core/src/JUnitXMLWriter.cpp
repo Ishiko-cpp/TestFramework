@@ -22,3 +22,13 @@ void JUnitXMLWriter::close()
 {
     m_xmlWriter.close();
 }
+
+void JUnitXMLWriter::writeTestSuitesStart()
+{
+    m_xmlWriter.writeElementStart("testsuites");
+}
+
+void JUnitXMLWriter::writeTestSuitesEnd()
+{
+    m_xmlWriter.writeElementEnd();
+}

@@ -14,6 +14,7 @@ JUnitXMLWriterTests::JUnitXMLWriterTests(const TestNumber& number, const TestCon
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("create test 1", CreateTest1);
+    append<HeapAllocationErrorsTest>("writeTestSuitesStart test 1", WriteTestSuitesStartTest1);
 }
 
 void JUnitXMLWriterTests::ConstructorTest1(Test& test)
@@ -37,5 +38,27 @@ void JUnitXMLWriterTests::CreateTest1(Test& test)
     junitXMLWriter.close();
 
     ISHIKO_TEST_FAIL_IF_FILES_NEQ("JUnitXMLWriterTests_CreateTest1.xml", "JUnitXMLWriterTests_CreateTest1.xml");
+    ISHIKO_TEST_PASS();
+}
+
+void JUnitXMLWriterTests::WriteTestSuitesStartTest1(Test& test)
+{
+    boost::filesystem::path outputPath =
+        test.context().getTestOutputPath("JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml");
+
+    JUnitXMLWriter junitXMLWriter;
+
+    Error error;
+    junitXMLWriter.create(outputPath, error);
+
+    ISHIKO_TEST_FAIL_IF(error);
+
+    junitXMLWriter.writeTestSuitesStart();
+    junitXMLWriter.writeTestSuitesEnd();
+
+    junitXMLWriter.close();
+
+    ISHIKO_TEST_FAIL_IF_FILES_NEQ("JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml",
+        "JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml");
     ISHIKO_TEST_PASS();
 }
