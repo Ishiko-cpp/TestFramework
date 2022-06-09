@@ -12,6 +12,7 @@
 #include "TestSequence.hpp"
 #include "TopTestSequence.hpp"
 #include "TestApplicationReturnCodes.hpp"
+#include <Ishiko/Configuration.hpp>
 #include <string>
 
 namespace Ishiko
