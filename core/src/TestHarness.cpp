@@ -186,16 +186,37 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
     boost::filesystem::path reportPath = path;
     boost::filesystem::create_directories(reportPath.parent_path());
 
+    size_t unknown = 0;
+    size_t passed = 0;
+    size_t passedButMemoryLeaks = 0;
+    size_t exception = 0;
+    size_t failed = 0;
+    size_t skipped = 0;
+    size_t total = 0;
+    m_topSequence.getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, skipped, total);
+
     JUnitXMLWriter writer;
     writer.create(reportPath, error);
     writer.writeTestSuitesStart();
+    writer.writeTestSuiteStart(total);
 
-    writer.writeTestSuiteStart(m_topSequence.size());
-    for (size_t i = 0; i < m_topSequence.size(); ++i)
-    {
-        writer.writeTestCaseStart("unknown", m_topSequence[i].name());
-        writer.writeTestCaseEnd();
-    }
+    m_topSequence.traverse(
+        [&writer](const Test& test)
+        {
+            writer.writeTestCaseStart("unknown", test.name());
+            writer.writeTestCaseEnd();
+        /*
+            if (!test.passed())
+            {
+                const TestSequence* sequence = dynamic_cast<const TestSequence*>(&test);
+                // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't
+                // do that this case would go unreported.
+                if (!sequence || (sequence->size() == 0))
+                {
+                    std::cout << test.name() << " " << ToString(test.result()) << std::endl;
+                }
+            }*/
+        });
 
     writer.writeTestSuitesEnd();
     writer.writeTestSuitesEnd();
