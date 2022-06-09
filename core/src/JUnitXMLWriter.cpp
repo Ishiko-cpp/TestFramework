@@ -49,6 +49,7 @@ void JUnitXMLWriter::writeTestCaseStart(const std::string& classname, const std:
     m_xmlWriter.writeElementStart("testcase");
     m_xmlWriter.writeAttribute("classname", classname);
     m_xmlWriter.writeAttribute("name", name);
+    m_xmlWriter.writeAttribute("time", "0");
 }
 
 void JUnitXMLWriter::writeTestCaseEnd()
