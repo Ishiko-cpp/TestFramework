@@ -43,3 +43,15 @@ void JUnitXMLWriter::writeTestSuiteEnd()
 {
     m_xmlWriter.writeElementEnd();
 }
+
+void JUnitXMLWriter::writeTestCaseStart(const std::string& classname, const std::string& name)
+{
+    m_xmlWriter.writeElementStart("testcase");
+    m_xmlWriter.writeAttribute("classname", classname);
+    m_xmlWriter.writeAttribute("name", name);
+}
+
+void JUnitXMLWriter::writeTestCaseEnd()
+{
+    m_xmlWriter.writeElementEnd();
+}

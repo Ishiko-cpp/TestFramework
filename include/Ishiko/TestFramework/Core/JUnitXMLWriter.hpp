@@ -8,7 +8,9 @@
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_JUNITXMLWRITER_HPP_
 
 #include <boost/filesystem.hpp>
+#include <Ishiko/Errors.hpp>
 #include <Ishiko/XML.hpp>
+#include <string>
 
 namespace Ishiko
 {
@@ -24,6 +26,8 @@ public:
     void writeTestSuitesEnd();
     void writeTestSuiteStart(size_t tests);
     void writeTestSuiteEnd();
+    void writeTestCaseStart(const std::string& classname, const std::string& name);
+    void writeTestCaseEnd();
 
 private:
     XMLWriter m_xmlWriter;
