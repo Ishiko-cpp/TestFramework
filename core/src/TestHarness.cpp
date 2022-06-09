@@ -203,19 +203,13 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
     m_topSequence.traverse(
         [&writer](const Test& test)
         {
-            writer.writeTestCaseStart("unknown", test.name());
-            writer.writeTestCaseEnd();
-        /*
-            if (!test.passed())
+            // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't
+            // do that this case would go unreported.
+            const TestSequence* sequence = dynamic_cast<const TestSequence*>(&test);
+            if (!sequence || (sequence->size() == 0))
             {
-                const TestSequence* sequence = dynamic_cast<const TestSequence*>(&test);
-                // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't
-                // do that this case would go unreported.
-                if (!sequence || (sequence->size() == 0))
-                {
-                    std::cout << test.name() << " " << ToString(test.result()) << std::endl;
-                }
-            }*/
+                writer.writeTestCaseStart("unknown", test.name());
+            }
         });
 
     writer.writeTestSuitesEnd();
