@@ -34,6 +34,9 @@ jobs:
       - run:
           name: "Install build dependency: Ishiko/C++ Diff"
           command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/diff.git && cd diff/build/gnumake && make
+      - run:
+          name: "Install build dependency: Ishiko/C++ Configuration"
+          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/configuration.git && cd configuration/build/gnumake && make
       - checkout:
           path: /projects/ishiko/cpp/test-framework
       - run:
@@ -56,7 +59,12 @@ jobs:
           command: cd /projects/ishiko/cpp/test-framework/core/tests/writefiletesthelper/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /projects/ishiko/cpp/test-framework/core/tests/build/gnumake && ./IshikoTestFrameworkCoreTests
+          command: cd /projects/ishiko/cpp/test-framework/core/tests/build/gnumake && ./IshikoTestFrameworkCoreTests --junit-xml-test-report=/build/test-results/IshikoTestFrameworkCore.xml
+      - store_artifacts:
+          path: /build/test-results/IshikoTestFrameworkCore.xml
+          destination: IshikoTestFrameworkCore-test-results.xml
+      - store_test_results:
+          path: /build/test-results/IshikoTestFrameworkCore.xml
       - run:
           name: "Build Tests"
           command: cd /projects/ishiko/cpp/test-framework/build/gnumake && make
