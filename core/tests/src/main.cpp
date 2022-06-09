@@ -18,14 +18,18 @@
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
 #include "TestHarnessTests.h"
+#include <Ishiko/Configuration.hpp>
 #include <Ishiko/TestFramework/Core.hpp>
 
 using namespace Ishiko;
-using namespace boost::filesystem;
 
 int main(int argc, char* argv[])
 {
-    TestHarness theTestHarness("IshikoTestFrameworkCore");
+    TestHarness::CommandLineSpecification commandLineSpec;
+    Configuration configuration = commandLineSpec.createDefaultConfiguration();
+    CommandLineParser::parse(commandLineSpec, argc, argv, configuration);
+
+    TestHarness theTestHarness("IshikoTestFrameworkCore", configuration);
 
     theTestHarness.context().setTestDataDirectory("../../data");
     theTestHarness.context().setTestOutputDirectory("../../output");

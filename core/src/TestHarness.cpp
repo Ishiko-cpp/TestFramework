@@ -5,18 +5,46 @@
 */
 
 #include "TestHarness.hpp"
+#include "JUnitXMLWriter.hpp"
 #include "TestProgressObserver.hpp"
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/filesystem.hpp>
+#include <Ishiko/Errors.hpp>
 #include <iostream>
 #include <iomanip>
 #include <memory>
 
-namespace Ishiko
+using namespace Ishiko;
+
+TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
+    // TODO: need to support option without default value instead of abusing an empty value
+    addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue, "" });
+}
+
+TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
+{
+    const std::string& junitXMLTestReport = configuration.value("junit-xml-test-report").asString();
+    if (!junitXMLTestReport.empty())
+    {
+        m_junitXMLTestReport = junitXMLTestReport;
+    }
+}
+
+const boost::optional<std::string>& TestHarness::Configuration::junitXMLTestReport() const
+{
+    return m_junitXMLTestReport;
+}
 
 TestHarness::TestHarness(const std::string& title)
     : m_context(TestContext::DefaultTestContext()), m_topSequence(title, m_context),
     m_timestampOutputDirectory(true)
+{
+}
+
+TestHarness::TestHarness(const std::string& title, const Configuration& configuration)
+    : m_junitXMLTestReport(configuration.junitXMLTestReport()), m_context(TestContext::DefaultTestContext()),
+    m_topSequence(title, m_context), m_timestampOutputDirectory(true)
 {
 }
 
@@ -74,6 +102,10 @@ int TestHarness::runTests()
 
         printDetailedResults();
         printSummary();
+        if (m_junitXMLTestReport)
+        {
+            writeJUnitXMLTestReport(*m_junitXMLTestReport);
+        }
 
         if (!m_topSequence.passed() && !m_topSequence.skipped())
         {
@@ -146,4 +178,41 @@ void TestHarness::printSummary()
     }
 }
 
+void TestHarness::writeJUnitXMLTestReport(const std::string& path)
+{
+    // TODO: error handling
+    Ishiko::Error error;
+
+    boost::filesystem::path reportPath = path;
+    boost::filesystem::create_directories(reportPath.parent_path());
+
+    size_t unknown = 0;
+    size_t passed = 0;
+    size_t passedButMemoryLeaks = 0;
+    size_t exception = 0;
+    size_t failed = 0;
+    size_t skipped = 0;
+    size_t total = 0;
+    m_topSequence.getPassRate(unknown, passed, passedButMemoryLeaks, exception, failed, skipped, total);
+
+    JUnitXMLWriter writer;
+    writer.create(reportPath, error);
+    writer.writeTestSuitesStart();
+    writer.writeTestSuiteStart(total);
+
+    m_topSequence.traverse(
+        [&writer](const Test& test)
+        {
+            // Special case. If the sequence is empty we consider it to be a single unknown test case. If we didn't
+            // do that this case would go unreported.
+            const TestSequence* sequence = dynamic_cast<const TestSequence*>(&test);
+            if (!sequence || (sequence->size() == 0))
+            {
+                writer.writeTestCaseStart("unknown", test.name());
+                writer.writeTestCaseEnd();
+            }
+        });
+
+    writer.writeTestSuitesEnd();
+    writer.writeTestSuitesEnd();
 }
