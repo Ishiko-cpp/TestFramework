@@ -24,20 +24,20 @@ FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestCon
         context.getReferenceDataPath(referenceFilePath));
 }
 
-TestCheck::Result FileComparisonTestCheck::run()
+void FileComparisonTestCheck::run(Test& test, const char* file, int line)
 {
     // TODO: fix this file comparison code. It's hacked together at the moment
 
     // We first try to open the two files
 #if ISHIKO_COMPILER == ISHIKO_COMPILER_GCC
-    FILE* file = fopen(m_outputFilePath.string().c_str(), "rb");
+    FILE* outputFile = fopen(m_outputFilePath.string().c_str(), "rb");
     FILE* refFile = fopen(m_referenceFilePath.string().c_str(), "rb");
 #elif ISHIKO_COMPILER == ISHIKO_COMPILER_MSVC
-    FILE* file = nullptr;
-    errno_t err = fopen_s(&file, m_outputFilePath.string().c_str(), "rb");
+    FILE* outputFile = nullptr;
+    errno_t err = fopen_s(&outputFile, m_outputFilePath.string().c_str(), "rb");
     if (err != 0)
     {
-        file = nullptr;
+        outputFile = nullptr;
     }
     FILE* refFile = nullptr;
     err = fopen_s(&refFile, m_referenceFilePath.string().c_str(), "rb");
@@ -49,14 +49,14 @@ TestCheck::Result FileComparisonTestCheck::run()
     #error Unsupported or unrecognized compiler
 #endif
 
-    bool isFileOpen = (file != nullptr);
+    bool isFileOpen = (outputFile != nullptr);
     bool isRefFileOpen = (refFile != nullptr);
 
     if (!isFileOpen || !isRefFileOpen)
     {
-        if (file)
+        if (outputFile)
         {
-            fclose(file);
+            fclose(outputFile);
         }
         if (refFile)
         {
@@ -64,7 +64,7 @@ TestCheck::Result FileComparisonTestCheck::run()
         }
 
         // TODO: more info
-        return Result::failed;
+        test.fail(file, line);
     }
 
     // We managed to open both file, let's compare them
@@ -76,7 +76,7 @@ TestCheck::Result FileComparisonTestCheck::run()
     int offset = 0;
     while (1)
     {
-        size_t n1 = fread(&c1, 1, 1, file);
+        size_t n1 = fread(&c1, 1, 1, outputFile);
         size_t n2 = fread(&c2, 1, 1, refFile);
         isFileGood = (n1 == 1);
         isRefFileGood = (n2 == 1);
@@ -88,7 +88,7 @@ TestCheck::Result FileComparisonTestCheck::run()
     }
 
     bool isFileEof = false;
-    if (feof(file) != 0)
+    if (feof(outputFile) != 0)
     {
         isFileEof = true;
     }
@@ -99,25 +99,21 @@ TestCheck::Result FileComparisonTestCheck::run()
     }
 
     // The comparison is finished, close the files
-    fclose(file);
+    fclose(outputFile);
     fclose(refFile);
 
     if (!(isFileEof && isRefFileEof))
     {
-        // TODO: where and how to save that diff info
+        test.fail(file, line);
+
         Error error;
         TextPatch diff = TextDiff::LineDiffFiles(m_referenceFilePath, m_outputFilePath, error);
         if (diff.size() > 0)
         {
-            // TODO
+            test.fail(diff[0].text(), file, line);
         }
-
-        return Result::failed;
     }
-
-    return Result::passed;
 }
-
 
 const boost::filesystem::path& FileComparisonTestCheck::outputFilePath() const
 {

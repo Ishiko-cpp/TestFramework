@@ -78,7 +78,7 @@
         std::shared_ptr<FileComparisonTestCheck> check =                                                         \
             std::make_shared<FileComparisonTestCheck>(FileComparisonTestCheck::CreateFromContext(test.context(), \
                 path1, path2));                                                                                  \
-        test.runCheck(check, __FILE__, __LINE__);                                                                \
+        check->run(test, __FILE__, __LINE__);                                                                \
     }
 
 #define ISHIKO_TEST_PASS() test.pass()
