@@ -62,7 +62,7 @@ void FileComparisonTestCheckTests::RunTest2(Test& test)
 
     Test checkTest(TestNumber(1), "FileComparisonTestCheckTests_RunTest2");
     fileComparisonCheck.run(checkTest, __FILE__, __LINE__);
-    test.pass();
+    checkTest.pass();
 
     ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::passed);
     ISHIKO_TEST_PASS();
