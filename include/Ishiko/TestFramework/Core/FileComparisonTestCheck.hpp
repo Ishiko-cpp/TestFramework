@@ -21,7 +21,7 @@ public:
     static FileComparisonTestCheck CreateFromContext(const TestContext& context,
         const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath);
 
-    Result run() override;
+    void run(Test& test, const char* file, int line) override;
 
     const boost::filesystem::path& outputFilePath() const;
     const boost::filesystem::path& referenceFilePath() const;
