@@ -7,7 +7,6 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP_
 
-#include "TestCheck.hpp"
 #include "TestContext.hpp"
 #include "TestNumber.hpp"
 #include "TestResult.hpp"
@@ -90,7 +89,6 @@ public:
     void failIf(bool condition, const char* file, int line);
     void pass();
     void skip();
-    void runCheck(std::shared_ptr<TestCheck> check, const char* file, int line);
 
     const TestContext& context() const;
     TestContext& context();

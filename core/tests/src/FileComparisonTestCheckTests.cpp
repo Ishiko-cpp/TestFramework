@@ -6,7 +6,6 @@
 
 #include "FileComparisonTestCheckTests.hpp"
 
-using namespace boost::filesystem;
 using namespace Ishiko;
 
 FileComparisonTestCheckTests::FileComparisonTestCheckTests(const TestNumber& number, const TestContext& context)
@@ -42,26 +41,29 @@ void FileComparisonTestCheckTests::CreateFromContextTest1(Test& test)
 
 void FileComparisonTestCheckTests::RunTest1(Test& test)
 {
-    path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
-    path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/NotHello.txt");
+    boost::filesystem::path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
+    boost::filesystem::path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/NotHello.txt");
 
     FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
 
-    TestCheck::Result result = fileComparisonCheck.run();
+    Test checkTest(TestNumber(1), "FileComparisonTestCheckTests_RunTest1");
+    fileComparisonCheck.run(checkTest, __FILE__, __LINE__);
 
-    ISHIKO_TEST_FAIL_IF_NEQ(result, TestCheck::Result::failed);
+    ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::failed);
     ISHIKO_TEST_PASS();
 }
 
 void FileComparisonTestCheckTests::RunTest2(Test& test)
 {
-    path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
-    path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello2.txt");
+    boost::filesystem::path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
+    boost::filesystem::path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello2.txt");
 
     FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
 
-    TestCheck::Result result = fileComparisonCheck.run();
+    Test checkTest(TestNumber(1), "FileComparisonTestCheckTests_RunTest2");
+    fileComparisonCheck.run(checkTest, __FILE__, __LINE__);
+    checkTest.pass();
 
-    ISHIKO_TEST_FAIL_IF_NEQ(result, TestCheck::Result::passed);
+    ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::passed);
     ISHIKO_TEST_PASS();
 }

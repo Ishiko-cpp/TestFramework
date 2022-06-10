@@ -7,19 +7,15 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 
+#include "Test.hpp"
+
 namespace Ishiko
 {
 
 class TestCheck
 {
 public:
-    enum class Result
-    {
-        passed,
-        failed
-    };
-
-    virtual Result run() = 0;
+    virtual void run(Test& test, const char* file, int line) = 0;
 };
 
 }
