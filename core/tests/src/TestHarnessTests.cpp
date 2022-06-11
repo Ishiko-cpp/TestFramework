@@ -100,5 +100,18 @@ void TestHarnessTests::JUnitXMLReportTest2(Test& test)
 
 void TestHarnessTests::JUnitXMLReportTest3(Test& test)
 {
-    ISHIKO_TEST_SKIP();
+    boost::filesystem::path outputPath = test.context().getOutputPath("TestHarnessTests_JUnitXMLReportTest3.xml");
+
+    Configuration configuration = TestHarness::CommandLineSpecification().createDefaultConfiguration();
+    configuration.set("junit-xml-test-report", outputPath.string());
+    TestHarness theTestHarness("TestHarnessTests_JUnitXMLReportTest3", configuration);
+
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::skipped);
+    theTestHarness.tests().append(test1);
+
+    int returnCode = theTestHarness.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::ok);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestHarnessTests_JUnitXMLReportTest3.xml");
+    ISHIKO_TEST_PASS();
 }
