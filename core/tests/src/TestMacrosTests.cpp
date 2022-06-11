@@ -397,7 +397,8 @@ void TestMacrosTests::FailIfFilesNeqMacroTest1(Test& test)
     Test myTest(TestNumber(), "FailIfFilesNeqMacroTest1",
         [&canary](Test& test)
         {
-            ISHIKO_TEST_FAIL_IF_FILES_NEQ("ComparisonTestFiles/Hello.txt", "ComparisonTestFiles/NotHello.txt");
+            ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
+                "ComparisonTestFiles/NotHello.txt");
 
             canary = true;
 
@@ -420,7 +421,8 @@ void TestMacrosTests::FailIfFilesNeqMacroTest2(Test& test)
     Test myTest(TestNumber(), "FailIfFilesNeqMacroTest2",
         [&canary](Test& test)
         {
-            ISHIKO_TEST_FAIL_IF_FILES_NEQ("ComparisonTestFiles/Hello.txt", "ComparisonTestFiles/Hello2.txt");
+            ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
+                "ComparisonTestFiles/Hello2.txt");
 
             canary = true;
 

@@ -55,8 +55,7 @@ void ProcessActionTests::SetupWaitForExitTest1(Test& test)
     action.setup();
     action.teardown();
 
-    ISHIKO_TEST_FAIL_IF_FILES_NEQ("TestSetupActionsTests/ProcessActionSetupTest1.txt",
-        "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestSetupActionsTests/ProcessActionSetupTest1.txt");
     ISHIKO_TEST_PASS();
 }
 

@@ -39,7 +39,7 @@ void JUnitXMLWriterTests::CreateTest1(Test& test)
 
     junitXMLWriter.close();
 
-    ISHIKO_TEST_FAIL_IF_FILES_NEQ("JUnitXMLWriterTests_CreateTest1.xml", "JUnitXMLWriterTests_CreateTest1.xml");
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("JUnitXMLWriterTests_CreateTest1.xml");
     ISHIKO_TEST_PASS();
 }
 
@@ -60,8 +60,7 @@ void JUnitXMLWriterTests::WriteTestSuitesStartTest1(Test& test)
 
     junitXMLWriter.close();
 
-    ISHIKO_TEST_FAIL_IF_FILES_NEQ("JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml",
-        "JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml");
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml");
     ISHIKO_TEST_PASS();
 }
 
@@ -84,8 +83,7 @@ void JUnitXMLWriterTests::WriteTestSuiteStartTest1(Test& test)
 
     junitXMLWriter.close();
 
-    ISHIKO_TEST_FAIL_IF_FILES_NEQ("JUnitXMLWriterTests_WriteTestSuiteStartTest1.xml",
-        "JUnitXMLWriterTests_WriteTestSuiteStartTest1.xml");
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("JUnitXMLWriterTests_WriteTestSuiteStartTest1.xml");
     ISHIKO_TEST_PASS();
 }
 
@@ -110,7 +108,6 @@ void JUnitXMLWriterTests::WriteTestCaseStartTest1(Test& test)
 
     junitXMLWriter.close();
 
-    ISHIKO_TEST_FAIL_IF_FILES_NEQ("JUnitXMLWriterTests_WriteTestCaseStartTest1.xml",
-        "JUnitXMLWriterTests_WriteTestCaseStartTest1.xml");
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("JUnitXMLWriterTests_WriteTestCaseStartTest1.xml");
     ISHIKO_TEST_PASS();
 }

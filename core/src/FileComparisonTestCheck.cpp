@@ -22,6 +22,13 @@ FileComparisonTestCheck::FileComparisonTestCheck(boost::filesystem::path outputF
 }
 
 FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestContext& context,
+    const boost::filesystem::path& outputAndReferenceFilePath)
+{
+    return FileComparisonTestCheck(context.getTestOutputPath(outputAndReferenceFilePath),
+        context.getReferenceDataPath(outputAndReferenceFilePath));
+}
+
+FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestContext& context,
     const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath)
 {
     return FileComparisonTestCheck(context.getTestOutputPath(outputFilePath),
