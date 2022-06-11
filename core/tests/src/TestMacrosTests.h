@@ -31,8 +31,8 @@ private:
     static void FailIfStrNeqMacroTest2(Ishiko::Test& test);
     static void FailIfNotContainMacroTest1(Ishiko::Test& test);
     static void FailIfNotContainMacroTest2(Ishiko::Test& test);
-    static void FailIfFilesNeqMacroTest1(Ishiko::Test& test);
-    static void FailIfFilesNeqMacroTest2(Ishiko::Test& test);
+    static void FailIfOutputAndReferenceFilesNeqMacroTest1(Ishiko::Test& test);
+    static void FailIfOutputAndReferenceFilesNeqMacroTest2(Ishiko::Test& test);
     static void AbortMacroTest1(Ishiko::Test& test);
     static void AbortIfMacroTest1(Ishiko::Test& test);
     static void AbortIfMacroTest2(Ishiko::Test& test);
