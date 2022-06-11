@@ -152,7 +152,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\FileComparisonTestCheckTests.cpp" />
     <ClCompile Include="..\..\src\JUnitXMLWriterTests.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\TestContextTests.cpp" />
@@ -182,7 +181,6 @@
     <ClInclude Include="..\..\src\TestMacrosFormatterTests.h" />
     <ClInclude Include="..\..\src\TestSequenceTests.h" />
     <ClInclude Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h" />
-    <ClInclude Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.h" />
     <ClInclude Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h" />
     <ClInclude Include="..\..\src\TestSetupActionsTests\ProcessActionTests.h" />
     <ClInclude Include="..\..\src\TestSetupActionsTests\TestSetupActionsTests.h" />

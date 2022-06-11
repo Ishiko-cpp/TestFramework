@@ -30,7 +30,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
         ../../src/TestMacrosFormatterTests.h
         ../../src/TestSequenceTests.h
         ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
-        ../../src/FileComparisonTestTests/FileComparisonTestTests.h
         ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
         ../../src/TestSetupActionsTests/ProcessActionTests.h
         ../../src/TestSetupActionsTests/TestSetupActionsTests.h
@@ -41,7 +40,6 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     sources
     {
-        ../../src/FileComparisonTestCheckTests.cpp
         ../../src/JUnitXMLWriterTests.cpp
         ../../src/main.cpp
         ../../src/TestContextTests.cpp
