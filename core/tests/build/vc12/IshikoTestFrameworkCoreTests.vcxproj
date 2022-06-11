@@ -172,11 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\FileComparisonTestCheckTests.hpp" />
-    <ClInclude Include="..\..\src\JUnitXMLWriterTests.h" />
+    <ClInclude Include="..\..\src\JUnitXMLWriterTests.hpp" />
     <ClInclude Include="..\..\src\TestContextTests.hpp" />
-    <ClInclude Include="..\..\src\TestHarnessTests.h" />
-    <ClInclude Include="..\..\src\TestNumberTests.h" />
-    <ClInclude Include="..\..\src\TestTests.h" />
+    <ClInclude Include="..\..\src\TestHarnessTests.hpp" />
+    <ClInclude Include="..\..\src\TestNumberTests.hpp" />
+    <ClInclude Include="..\..\src\TestTests.hpp" />
     <ClInclude Include="..\..\src\TestMacrosTests.h" />
     <ClInclude Include="..\..\src\TestMacrosFormatterTests.h" />
     <ClInclude Include="..\..\src\TestSequenceTests.h" />

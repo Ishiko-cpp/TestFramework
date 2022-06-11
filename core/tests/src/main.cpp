@@ -5,10 +5,11 @@
 */
 
 #include "FileComparisonTestCheckTests.hpp"
-#include "JUnitXMLWriterTests.h"
+#include "JUnitXMLWriterTests.hpp"
 #include "TestContextTests.hpp"
-#include "TestNumberTests.h"
-#include "TestTests.h"
+#include "TestHarnessTests.hpp"
+#include "TestNumberTests.hpp"
+#include "TestTests.hpp"
 #include "TestMacrosFormatterTests.h"
 #include "TestMacrosTests.h"
 #include "TestSequenceTests.h"
@@ -16,7 +17,6 @@
 #include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
 #include "TestTeardownActionsTests/TestTeardownActionsTests.h"
-#include "TestHarnessTests.h"
 #include <Ishiko/Configuration.hpp>
 #include <Ishiko/TestFramework/Core.hpp>
 
