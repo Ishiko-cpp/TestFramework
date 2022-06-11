@@ -21,6 +21,8 @@ public:
     HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
         void (*runFct)(Test& test), const TestContext& context);
 
+    void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const;
+
 protected:
     void doRun() override;
 
