@@ -161,4 +161,5 @@ void FileComparisonTestCheck::addToJUnitXMLTestReport(JUnitXMLWriter& writer) co
     writer.writeText(" and reference ");
     writer.writeText(m_referenceFilePath.string());
     writer.writeText(" failed.");
+    writer.writeText(m_firstDifferentLine);
 }
