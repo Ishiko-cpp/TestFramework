@@ -11,6 +11,10 @@
 
 using namespace Ishiko;
 
+FileComparisonTestCheck::FileComparisonTestCheck()
+{
+}
+
 FileComparisonTestCheck::FileComparisonTestCheck(boost::filesystem::path outputFilePath,
     boost::filesystem::path referenceFilePath)
     : m_outputFilePath(std::move(outputFilePath)), m_referenceFilePath(std::move(referenceFilePath))
@@ -120,7 +124,17 @@ const boost::filesystem::path& FileComparisonTestCheck::outputFilePath() const
     return m_outputFilePath;
 }
 
+void FileComparisonTestCheck::setOutputFilePath(const boost::filesystem::path& path)
+{
+    m_outputFilePath = path;
+}
+
 const boost::filesystem::path& FileComparisonTestCheck::referenceFilePath() const
 {
     return m_referenceFilePath;
+}
+
+void FileComparisonTestCheck::setReferenceFilePath(const boost::filesystem::path& path)
+{
+    m_referenceFilePath = path;
 }

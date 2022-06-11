@@ -7,8 +7,9 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_CONSOLEAPPLICATIONTEST_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_CONSOLEAPPLICATIONTEST_HPP_
 
+#include "FileComparisonTestCheck.hpp"
 #include "Test.hpp"
-#include "FileComparisonTest.hpp"
+#include <boost/filesystem.hpp>
 #include <string>
 
 namespace Ishiko
@@ -32,7 +33,7 @@ private:
     std::string m_commandLine;
     bool m_checkExitCode;
     int m_expectedExitCode;
-    FileComparisonTest m_standardOutputTest;
+    FileComparisonTestCheck m_standardOutputTest;
 };
 
 }

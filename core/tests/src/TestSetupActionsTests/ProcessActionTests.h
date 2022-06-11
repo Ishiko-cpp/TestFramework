@@ -17,7 +17,7 @@ public:
 private:
     static void CreationTest1(Ishiko::Test& test);
     static void SetupFailureTest1(Ishiko::Test& test);
-    static void SetupWaitForExitTest1(Ishiko::FileComparisonTest& test);
+    static void SetupWaitForExitTest1(Ishiko::Test& test);
     static void SetupTerminateTest1(Ishiko::Test& test);
 };
 
