@@ -112,8 +112,8 @@ void TestSequence::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
         writer.writeTestCaseStart("unknown", name());
         if (!passed())
         {
-            writer.writeTestFailureStart();
-            writer.writeTestFailureEnd();
+            writer.writeFailureStart();
+            writer.writeFailureEnd();
         }
         writer.writeTestCaseEnd();
     }

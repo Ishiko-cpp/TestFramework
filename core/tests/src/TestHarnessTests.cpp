@@ -20,6 +20,7 @@ TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& 
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
     append<HeapAllocationErrorsTest>("JUnit XML test report test 1", JUnitXMLReportTest1);
     append<HeapAllocationErrorsTest>("JUnit XML test report test 2", JUnitXMLReportTest2);
+    append<HeapAllocationErrorsTest>("JUnit XML test report test 3", JUnitXMLReportTest3);
 }
 
 void TestHarnessTests::CreationTest1(Test& test)
@@ -95,4 +96,9 @@ void TestHarnessTests::JUnitXMLReportTest2(Test& test)
     ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::ok);
     ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestHarnessTests_JUnitXMLReportTest2.xml");
     ISHIKO_TEST_PASS();
+}
+
+void TestHarnessTests::JUnitXMLReportTest3(Test& test)
+{
+    ISHIKO_TEST_SKIP();
 }

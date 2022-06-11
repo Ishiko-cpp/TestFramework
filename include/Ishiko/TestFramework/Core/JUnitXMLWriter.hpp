@@ -28,8 +28,10 @@ public:
     void writeTestSuiteEnd();
     void writeTestCaseStart(const std::string& classname, const std::string& name);
     void writeTestCaseEnd();
-    void writeTestFailureStart();
-    void writeTestFailureEnd();
+    void writeFailureStart();
+    void writeFailureEnd();
+    void writeSkippedStart();
+    void writeSkippedEnd();
 
 private:
     XMLWriter m_xmlWriter;

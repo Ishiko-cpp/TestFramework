@@ -359,10 +359,20 @@ Test::Observers& Test::observers()
 void Test::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
 {
     writer.writeTestCaseStart("unknown", m_name);
-    if (!passed())
+    switch (m_result)
     {
-        writer.writeTestFailureStart();
-        writer.writeTestFailureEnd();
+    case TestResult::passed:
+        // Do nothing
+        break;
+
+    case TestResult::skipped:
+        writer.writeSkippedStart();
+        writer.writeSkippedEnd();
+        break;
+
+    default:
+        writer.writeFailureStart();
+        writer.writeFailureEnd();
     }
     writer.writeTestCaseEnd();
 }
