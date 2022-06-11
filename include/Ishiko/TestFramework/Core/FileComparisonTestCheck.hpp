@@ -10,6 +10,7 @@
 #include "TestCheck.hpp"
 #include "TestContext.hpp"
 #include <boost/filesystem.hpp>
+#include <string>
 
 namespace Ishiko
 {
@@ -36,6 +37,8 @@ public:
 private:
     boost::filesystem::path m_outputFilePath;
     boost::filesystem::path m_referenceFilePath;
+    // We store this because we want to have the option of displaying it in test reports
+    std::string m_firstDifferentLine;
 };
 
 }

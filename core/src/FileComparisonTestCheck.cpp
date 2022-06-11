@@ -124,7 +124,8 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
         TextPatch diff = TextDiff::LineDiffFiles(m_referenceFilePath, m_outputFilePath, error);
         if (diff.size() > 0)
         {
-            test.fail(diff[0].text(), file, line);
+            m_firstDifferentLine = diff[0].text();
+            test.fail(m_firstDifferentLine, file, line);   
         }
     }
     else
