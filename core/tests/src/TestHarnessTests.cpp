@@ -18,9 +18,11 @@ TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& 
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
+    append<HeapAllocationErrorsTest>("run test 4", RunTest4);
     append<HeapAllocationErrorsTest>("JUnit XML test report test 1", JUnitXMLReportTest1);
     append<HeapAllocationErrorsTest>("JUnit XML test report test 2", JUnitXMLReportTest2);
     append<HeapAllocationErrorsTest>("JUnit XML test report test 3", JUnitXMLReportTest3);
+    append<HeapAllocationErrorsTest>("JUnit XML test report test 4", JUnitXMLReportTest4);
 }
 
 void TestHarnessTests::CreationTest1(Test& test)
@@ -62,6 +64,21 @@ void TestHarnessTests::RunTest3(Test& test)
     int returnCode = theTestHarness.run();
 
     ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::ok);
+    ISHIKO_TEST_PASS();
+}
+
+void TestHarnessTests::RunTest4(Test& test)
+{
+    TestHarness theTestHarness("TestHarnessTests_RunTest2");
+
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::passed);
+    theTestHarness.tests().append(test1);
+    std::shared_ptr<Test> test2 = std::make_shared<Test>(TestNumber(2), "Test", TestResult::failed);
+    theTestHarness.tests().append(test2);
+
+    int returnCode = theTestHarness.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::testFailure);
     ISHIKO_TEST_PASS();
 }
 
@@ -113,5 +130,25 @@ void TestHarnessTests::JUnitXMLReportTest3(Test& test)
 
     ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::ok);
     ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestHarnessTests_JUnitXMLReportTest3.xml");
+    ISHIKO_TEST_PASS();
+}
+
+void TestHarnessTests::JUnitXMLReportTest4(Test& test)
+{
+    boost::filesystem::path outputPath = test.context().getOutputPath("TestHarnessTests_JUnitXMLReportTest4.xml");
+
+    Configuration configuration = TestHarness::CommandLineSpecification().createDefaultConfiguration();
+    configuration.set("junit-xml-test-report", outputPath.string());
+    TestHarness theTestHarness("TestHarnessTests_JUnitXMLReportTest4", configuration);
+
+    std::shared_ptr<Test> test1 = std::make_shared<Test>(TestNumber(1), "Test", TestResult::passed);
+    theTestHarness.tests().append(test1);
+    std::shared_ptr<Test> test2 = std::make_shared<Test>(TestNumber(2), "Test", TestResult::failed);
+    theTestHarness.tests().append(test2);
+
+    int returnCode = theTestHarness.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::testFailure);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestHarnessTests_JUnitXMLReportTest4.xml");
     ISHIKO_TEST_PASS();
 }
