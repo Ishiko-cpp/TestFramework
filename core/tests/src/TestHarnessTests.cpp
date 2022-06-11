@@ -6,6 +6,8 @@
 
 #include "TestHarnessTests.hpp"
 #include "Ishiko/TestFramework/Core/TestHarness.hpp"
+#include <boost/filesystem.hpp>
+#include <Ishiko/Configuration.hpp>
 
 using namespace Ishiko;
 
@@ -16,6 +18,7 @@ TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& 
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
+    append<HeapAllocationErrorsTest>("JUnit XML report test 1", JUnitXMLReportTest1);
 }
 
 void TestHarnessTests::CreationTest1(Test& test)
@@ -57,5 +60,20 @@ void TestHarnessTests::RunTest3(Test& test)
     int returnCode = theTestHarness.run();
 
     ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::ok);
+    ISHIKO_TEST_PASS();
+}
+
+void TestHarnessTests::JUnitXMLReportTest1(Test& test)
+{
+    boost::filesystem::path outputPath = test.context().getOutputPath("TestHarnessTests_JUnitXMLReportTest1.xml");
+
+    Configuration configuration = TestHarness::CommandLineSpecification().createDefaultConfiguration();
+    configuration.set("junit-xml-test-report", outputPath.string());
+    TestHarness theTestHarness("TestHarnessTests_JUnitXMLReportTest1", configuration);
+ 
+    int returnCode = theTestHarness.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(returnCode, TestApplicationReturnCode::testFailure);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestHarnessTests_JUnitXMLReportTest1.xml");
     ISHIKO_TEST_PASS();
 }

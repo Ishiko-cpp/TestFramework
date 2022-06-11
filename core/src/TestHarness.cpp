@@ -208,8 +208,7 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
             const TestSequence* sequence = dynamic_cast<const TestSequence*>(&test);
             if (!sequence || (sequence->size() == 0))
             {
-                writer.writeTestCaseStart("unknown", test.name());
-                writer.writeTestCaseEnd();
+                test.addToJUnitXMLTestReport(writer);
             }
         });
 

@@ -356,6 +356,17 @@ Test::Observers& Test::observers()
     return m_observers;
 }
 
+void Test::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
+{
+    writer.writeTestCaseStart("unknown", m_name);
+    if (!passed())
+    {
+        writer.writeTestFailureStart();
+        writer.writeTestFailureEnd();
+    }
+    writer.writeTestCaseEnd();
+}
+
 void Test::setup()
 {
     boost::filesystem::path outputDirectory = m_context.getOutputDirectory();

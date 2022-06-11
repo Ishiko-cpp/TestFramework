@@ -7,6 +7,7 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP_
 
+#include "JUnitXMLWriter.hpp"
 #include "TestContext.hpp"
 #include "TestNumber.hpp"
 #include "TestResult.hpp"
@@ -101,6 +102,8 @@ public:
     virtual void traverse(std::function<void(const Test& test)> function) const;
 
     Observers& observers();
+
+    void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const;
 
 protected:
     virtual void setup();

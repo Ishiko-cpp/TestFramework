@@ -55,3 +55,13 @@ void JUnitXMLWriter::writeTestCaseEnd()
 {
     m_xmlWriter.writeElementEnd();
 }
+
+void JUnitXMLWriter::writeTestFailureStart()
+{
+    m_xmlWriter.writeElementStart("failure");
+}
+
+void JUnitXMLWriter::writeTestFailureEnd()
+{
+    m_xmlWriter.writeElementEnd();
+}
