@@ -24,15 +24,14 @@ FileComparisonTestCheck::FileComparisonTestCheck(boost::filesystem::path outputF
 FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestContext& context,
     const boost::filesystem::path& outputAndReferenceFilePath)
 {
-    return FileComparisonTestCheck(context.getTestOutputPath(outputAndReferenceFilePath),
-        context.getReferenceDataPath(outputAndReferenceFilePath));
+    return FileComparisonTestCheck(context.getOutputPath(outputAndReferenceFilePath),
+        context.getReferencePath(outputAndReferenceFilePath));
 }
 
 FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestContext& context,
     const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath)
 {
-    return FileComparisonTestCheck(context.getTestOutputPath(outputFilePath),
-        context.getReferenceDataPath(referenceFilePath));
+    return FileComparisonTestCheck(context.getOutputPath(outputFilePath), context.getReferencePath(referenceFilePath));
 }
 
 void FileComparisonTestCheck::run(Test& test, const char* file, int line)

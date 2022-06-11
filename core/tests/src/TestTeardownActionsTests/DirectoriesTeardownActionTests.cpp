@@ -31,7 +31,7 @@ void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
     tracking.disableTracking();
 
     path directoryPath(
-        test.context().getTestOutputPath("TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1"));
+        test.context().getOutputPath("TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1"));
     std::shared_ptr<DirectoriesTeardownAction> action = std::make_shared<DirectoriesTeardownAction>();
     action->add(directoryPath);
     test.addTeardownAction(action);
@@ -47,7 +47,7 @@ void DirectoriesTeardownActionTeardownTest1Helper(Test& test)
 void DirectoriesTeardownActionTests::TeardownTest1(Test& test)
 {
     path directoryPath(
-        test.context().getTestOutputPath("TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1"));
+        test.context().getOutputPath("TestTeardownActionsTests/DirectoriesTeardownActionTeardownTest1"));
 
     Test functionTest(TestNumber(), "DirectoriesTeardownActionTeardownTest1",
         DirectoriesTeardownActionTeardownTest1Helper, test.context());

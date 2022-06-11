@@ -358,7 +358,7 @@ Test::Observers& Test::observers()
 
 void Test::setup()
 {
-    boost::filesystem::path outputDirectory = m_context.getTestOutputDirectory();
+    boost::filesystem::path outputDirectory = m_context.getOutputDirectory();
     if (outputDirectory != "")
     {
         boost::filesystem::create_directories(outputDirectory);

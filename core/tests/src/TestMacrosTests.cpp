@@ -392,8 +392,8 @@ void TestMacrosTests::FailIfFilesNeqMacroTest1(Test& test)
 {
     bool canary = false;
     TestContext myTestContext;
-    myTestContext.setTestOutputDirectory(test.context().getTestDataDirectory());
-    myTestContext.setReferenceDataDirectory(test.context().getTestDataDirectory());
+    myTestContext.setOutputDirectory(test.context().getDataDirectory());
+    myTestContext.setReferenceDirectory(test.context().getDataDirectory());
     Test myTest(TestNumber(), "FailIfFilesNeqMacroTest1",
         [&canary](Test& test)
         {
@@ -416,8 +416,8 @@ void TestMacrosTests::FailIfFilesNeqMacroTest2(Test& test)
 {
     bool canary = false;
     TestContext myTestContext;
-    myTestContext.setTestOutputDirectory(test.context().getTestDataDirectory());
-    myTestContext.setReferenceDataDirectory(test.context().getTestDataDirectory());
+    myTestContext.setOutputDirectory(test.context().getDataDirectory());
+    myTestContext.setReferenceDirectory(test.context().getDataDirectory());
     Test myTest(TestNumber(), "FailIfFilesNeqMacroTest2",
         [&canary](Test& test)
         {

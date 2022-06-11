@@ -28,7 +28,7 @@ void JUnitXMLWriterTests::ConstructorTest1(Test& test)
 
 void JUnitXMLWriterTests::CreateTest1(Test& test)
 {
-    boost::filesystem::path outputPath = test.context().getTestOutputPath("JUnitXMLWriterTests_CreateTest1.xml");
+    boost::filesystem::path outputPath = test.context().getOutputPath("JUnitXMLWriterTests_CreateTest1.xml");
 
     JUnitXMLWriter junitXMLWriter;
 
@@ -46,7 +46,7 @@ void JUnitXMLWriterTests::CreateTest1(Test& test)
 void JUnitXMLWriterTests::WriteTestSuitesStartTest1(Test& test)
 {
     boost::filesystem::path outputPath =
-        test.context().getTestOutputPath("JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml");
+        test.context().getOutputPath("JUnitXMLWriterTests_WriteTestSuitesStartTest1.xml");
 
     JUnitXMLWriter junitXMLWriter;
 
@@ -67,7 +67,7 @@ void JUnitXMLWriterTests::WriteTestSuitesStartTest1(Test& test)
 void JUnitXMLWriterTests::WriteTestSuiteStartTest1(Test& test)
 {
     boost::filesystem::path outputPath =
-        test.context().getTestOutputPath("JUnitXMLWriterTests_WriteTestSuiteStartTest1.xml");
+        test.context().getOutputPath("JUnitXMLWriterTests_WriteTestSuiteStartTest1.xml");
 
     JUnitXMLWriter junitXMLWriter;
 
@@ -90,7 +90,7 @@ void JUnitXMLWriterTests::WriteTestSuiteStartTest1(Test& test)
 void JUnitXMLWriterTests::WriteTestCaseStartTest1(Test& test)
 {
     boost::filesystem::path outputPath =
-        test.context().getTestOutputPath("JUnitXMLWriterTests_WriteTestCaseStartTest1.xml");
+        test.context().getOutputPath("JUnitXMLWriterTests_WriteTestCaseStartTest1.xml");
 
     JUnitXMLWriter junitXMLWriter;
 
