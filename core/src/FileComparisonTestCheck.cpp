@@ -75,6 +75,7 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
 
         // TODO: more info
         test.fail(file, line);
+        return;
     }
 
     // We managed to open both file, let's compare them

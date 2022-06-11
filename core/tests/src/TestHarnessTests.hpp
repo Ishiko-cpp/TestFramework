@@ -19,6 +19,11 @@ private:
     static void RunTest1(Ishiko::Test& test);
     static void RunTest2(Ishiko::Test& test);
     static void RunTest3(Ishiko::Test& test);
+    static void RunTest4(Ishiko::Test& test);
+    static void JUnitXMLReportTest1(Ishiko::Test& test);
+    static void JUnitXMLReportTest2(Ishiko::Test& test);
+    static void JUnitXMLReportTest3(Ishiko::Test& test);
+    static void JUnitXMLReportTest4(Ishiko::Test& test);
 };
 
 #endif
