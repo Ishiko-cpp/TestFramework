@@ -29,8 +29,8 @@ void FileComparisonTestCheckTests::ConstructorTest1(Test& test)
 void FileComparisonTestCheckTests::CreateFromContextTest1(Test& test)
 {
     TestContext context;
-    context.setTestOutputDirectory("output");
-    context.setReferenceDataDirectory("reference");
+    context.setOutputDirectory("output");
+    context.setReferenceDirectory("reference");
     FileComparisonTestCheck fileComparisonCheck =
         FileComparisonTestCheck::CreateFromContext(context, "outputFilePath", "referenceFilePath");
 
@@ -41,8 +41,8 @@ void FileComparisonTestCheckTests::CreateFromContextTest1(Test& test)
 
 void FileComparisonTestCheckTests::RunTest1(Test& test)
 {
-    boost::filesystem::path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
-    boost::filesystem::path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/NotHello.txt");
+    boost::filesystem::path outputFilePath = test.context().getDataPath("ComparisonTestFiles/Hello.txt");
+    boost::filesystem::path referenceFilePath = test.context().getDataPath("ComparisonTestFiles/NotHello.txt");
 
     FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
 
@@ -55,8 +55,8 @@ void FileComparisonTestCheckTests::RunTest1(Test& test)
 
 void FileComparisonTestCheckTests::RunTest2(Test& test)
 {
-    boost::filesystem::path outputFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello.txt");
-    boost::filesystem::path referenceFilePath = test.context().getTestDataPath("ComparisonTestFiles/Hello2.txt");
+    boost::filesystem::path outputFilePath = test.context().getDataPath("ComparisonTestFiles/Hello.txt");
+    boost::filesystem::path referenceFilePath = test.context().getDataPath("ComparisonTestFiles/Hello2.txt");
 
     FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
 

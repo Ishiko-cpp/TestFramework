@@ -25,40 +25,40 @@ public:
     // This function is equivalent to calling getTestDataDirectory("(default)")
     // and exists to avoid the need to give a name to the test data
     // directory unnecessarily.
-    boost::filesystem::path getTestDataDirectory() const;
-    boost::filesystem::path getTestDataDirectory(const std::string& id) const;
-    boost::filesystem::path getTestDataPath(const boost::filesystem::path& path) const;
+    boost::filesystem::path getDataDirectory() const;
+    boost::filesystem::path getDataDirectory(const std::string& id) const;
+    boost::filesystem::path getDataPath(const boost::filesystem::path& path) const;
     // Sets the default test data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     // This is equivalent to calling setTestDataDirectory("(default)", path)
     // and exists to avoid the need to give a name to the test data
     // directory unnecessarily.
-    void setTestDataDirectory(const boost::filesystem::path& path);
+    void setDataDirectory(const boost::filesystem::path& path);
     // Adds or updates a path in the list of test data directories. The path argument
     // can contain environment variables by using the $(...) notation.
-    void setTestDataDirectory(const std::string& id, const boost::filesystem::path& path);
+    void setDataDirectory(const std::string& id, const boost::filesystem::path& path);
 
-    boost::filesystem::path getReferenceDataDirectory() const;
-    boost::filesystem::path getReferenceDataDirectory(const std::string& id) const;
-    boost::filesystem::path getReferenceDataPath(const boost::filesystem::path& path) const;
+    boost::filesystem::path getReferenceDirectory() const;
+    boost::filesystem::path getReferenceDirectory(const std::string& id) const;
+    boost::filesystem::path getReferencePath(const boost::filesystem::path& path) const;
     // Sets the default reference data directory. The path argument
     // can contain environment variables by using the $(...) notation.
-    void setReferenceDataDirectory(const boost::filesystem::path& path);
-    void setReferenceDataDirectory(const std::string& id, const boost::filesystem::path& path);
+    void setReferenceDirectory(const boost::filesystem::path& path);
+    void setReferenceDirectory(const std::string& id, const boost::filesystem::path& path);
 
-    boost::filesystem::path getTestOutputDirectory() const;
-    boost::filesystem::path getTestOutputDirectory(const std::string& id) const;
-    boost::filesystem::path getTestOutputPath(const boost::filesystem::path& path) const;
+    boost::filesystem::path getOutputDirectory() const;
+    boost::filesystem::path getOutputDirectory(const std::string& id) const;
+    boost::filesystem::path getOutputPath(const boost::filesystem::path& path) const;
     // Sets the default test output directory. The path argument
     // can contain environment variables by using the $(...) notation.
-    void setTestOutputDirectory(const boost::filesystem::path& path);
-    void setTestOutputDirectory(const std::string& id, const boost::filesystem::path& path);
+    void setOutputDirectory(const boost::filesystem::path& path);
+    void setOutputDirectory(const std::string& id, const boost::filesystem::path& path);
 
 private:
     const TestContext* m_parent;
-    std::map<std::string, boost::filesystem::path> m_testDataDirectories;
-    std::map<std::string, boost::filesystem::path> m_referenceDataDirectories;
-    std::map<std::string, boost::filesystem::path> m_testOutputDirectories;
+    std::map<std::string, boost::filesystem::path> m_dataDirectories;
+    std::map<std::string, boost::filesystem::path> m_referenceDirectories;
+    std::map<std::string, boost::filesystem::path> m_outputDirectories;
 };
 
 }

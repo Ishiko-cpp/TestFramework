@@ -31,8 +31,10 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestContext& co
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_STR_NEQ test 2", FailIfStrNeqMacroTest2);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_NOT_CONTAIN test 1", FailIfNotContainMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_NOT_CONTAIN test 2", FailIfNotContainMacroTest2);
-    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_FILES_NEQ test 1", FailIfFilesNeqMacroTest1);
-    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_FILES_NEQ test 2", FailIfFilesNeqMacroTest2);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 1",
+        FailIfOutputAndReferenceFilesNeqMacroTest1);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 2",
+        FailIfOutputAndReferenceFilesNeqMacroTest2);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_ABORT test 1", AbortMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_ABORT_IF test 1", AbortIfMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_ABORT_IF test 2", AbortIfMacroTest2);
@@ -388,16 +390,17 @@ void TestMacrosTests::FailIfNotContainMacroTest2(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void TestMacrosTests::FailIfFilesNeqMacroTest1(Test& test)
+void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest1(Test& test)
 {
     bool canary = false;
     TestContext myTestContext;
-    myTestContext.setTestOutputDirectory(test.context().getTestDataDirectory());
-    myTestContext.setReferenceDataDirectory(test.context().getTestDataDirectory());
+    myTestContext.setOutputDirectory(test.context().getDataDirectory());
+    myTestContext.setReferenceDirectory(test.context().getDataDirectory());
     Test myTest(TestNumber(), "FailIfFilesNeqMacroTest1",
         [&canary](Test& test)
         {
-            ISHIKO_TEST_FAIL_IF_FILES_NEQ("ComparisonTestFiles/Hello.txt", "ComparisonTestFiles/NotHello.txt");
+            ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
+                "ComparisonTestFiles/NotHello.txt");
 
             canary = true;
 
@@ -411,16 +414,17 @@ void TestMacrosTests::FailIfFilesNeqMacroTest1(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void TestMacrosTests::FailIfFilesNeqMacroTest2(Test& test)
+void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest2(Test& test)
 {
     bool canary = false;
     TestContext myTestContext;
-    myTestContext.setTestOutputDirectory(test.context().getTestDataDirectory());
-    myTestContext.setReferenceDataDirectory(test.context().getTestDataDirectory());
+    myTestContext.setOutputDirectory(test.context().getDataDirectory());
+    myTestContext.setReferenceDirectory(test.context().getDataDirectory());
     Test myTest(TestNumber(), "FailIfFilesNeqMacroTest2",
         [&canary](Test& test)
         {
-            ISHIKO_TEST_FAIL_IF_FILES_NEQ("ComparisonTestFiles/Hello.txt", "ComparisonTestFiles/Hello2.txt");
+            ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
+                "ComparisonTestFiles/Hello2.txt");
 
             canary = true;
 

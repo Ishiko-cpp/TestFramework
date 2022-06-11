@@ -20,6 +20,8 @@ public:
     FileComparisonTestCheck();
     FileComparisonTestCheck(boost::filesystem::path outputFilePath, boost::filesystem::path referenceFilePath);
     static FileComparisonTestCheck CreateFromContext(const TestContext& context,
+        const boost::filesystem::path& outputAndReferenceFilePath);
+    static FileComparisonTestCheck CreateFromContext(const TestContext& context,
         const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath);
 
     void run(Test& test, const char* file, int line) override;
