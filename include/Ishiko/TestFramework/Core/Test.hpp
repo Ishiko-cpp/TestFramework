@@ -103,7 +103,7 @@ public:
 
     Observers& observers();
 
-    void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const;
+    virtual void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const;
 
 protected:
     virtual void setup();

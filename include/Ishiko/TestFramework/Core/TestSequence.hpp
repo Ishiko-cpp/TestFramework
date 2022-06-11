@@ -35,6 +35,8 @@ public:
 
     void traverse(std::function<void(const Test& test)> function) const override;
 
+    void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const override;
+
 protected:
     void doRun() override;
 

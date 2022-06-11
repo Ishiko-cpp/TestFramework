@@ -102,6 +102,23 @@ void TestSequence::traverse(std::function<void(const Test& test)> function) cons
     }
 }
 
+void TestSequence::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
+{
+    // We don't usually print sequence test results as the report is supposed to be a flat list of all tests but if the
+    // sequence is empty we print it else it would go unnoticed. By design empty test sequences do not really make
+    //  sense and should not be present in test suites.
+    if (m_tests.empty())
+    {
+        writer.writeTestCaseStart("unknown", name());
+        if (!passed())
+        {
+            writer.writeTestFailureStart();
+            writer.writeTestFailureEnd();
+        }
+        writer.writeTestCaseEnd();
+    }
+}
+
 void TestSequence::doRun()
 {
     // By default the outcome is unknown
