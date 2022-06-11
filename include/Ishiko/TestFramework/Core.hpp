@@ -9,7 +9,6 @@
 
 #include "Core/ConsoleApplicationTest.hpp"
 #include "Core/HeapAllocationErrorsTest.hpp"
-#include "Core/FileComparisonTest.hpp"
 #include "Core/FileComparisonTestCheck.hpp"
 #include "Core/JUnitXMLWriter.hpp"
 #include "Core/linkoptions.hpp"
