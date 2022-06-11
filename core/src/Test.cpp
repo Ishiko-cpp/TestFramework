@@ -285,6 +285,11 @@ void Test::skip()
     throw AbortException();
 }
 
+void Test::appendCheck(std::shared_ptr<TestCheck> check)
+{
+    m_checks.push_back(check);
+}
+
 const TestContext& Test::context() const
 {
     return m_context;

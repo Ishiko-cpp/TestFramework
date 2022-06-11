@@ -5,6 +5,7 @@
 */
 
 #include "FileComparisonTestCheck.hpp"
+#include "Test.hpp"
 #include <Ishiko/BasePlatform.h>
 #include <Ishiko/Diff.hpp>
 #include <Ishiko/Errors.hpp>

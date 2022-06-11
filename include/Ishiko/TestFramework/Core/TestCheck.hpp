@@ -7,10 +7,10 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 
-#include "Test.hpp"
-
 namespace Ishiko
 {
+
+class Test;
 
 class TestCheck
 {
