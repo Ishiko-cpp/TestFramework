@@ -75,3 +75,8 @@ void JUnitXMLWriter::writeSkippedEnd()
 {
     m_xmlWriter.writeElementEnd();
 }
+
+void JUnitXMLWriter::writeText(const std::string& text)
+{
+    m_xmlWriter.writeText(text);
+}

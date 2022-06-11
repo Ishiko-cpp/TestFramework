@@ -7,6 +7,8 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 
+#include "JUnitXMLWriter.hpp"
+
 namespace Ishiko
 {
 
@@ -27,6 +29,8 @@ public:
     virtual void run(Test& test, const char* file, int line) = 0;
 
     Result result() const noexcept;
+
+    virtual void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const;
 
 protected:
     Result m_result;

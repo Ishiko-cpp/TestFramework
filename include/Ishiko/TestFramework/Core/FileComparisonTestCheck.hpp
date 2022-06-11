@@ -31,6 +31,8 @@ public:
     const boost::filesystem::path& referenceFilePath() const;
     void setReferenceFilePath(const boost::filesystem::path& path);
 
+    void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const override;
+
 private:
     boost::filesystem::path m_outputFilePath;
     boost::filesystem::path m_referenceFilePath;

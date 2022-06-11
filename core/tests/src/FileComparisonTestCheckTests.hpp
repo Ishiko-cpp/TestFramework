@@ -19,6 +19,7 @@ private:
     static void CreateFromContextTest1(Ishiko::Test& test);
     static void RunTest1(Ishiko::Test& test);
     static void RunTest2(Ishiko::Test& test);
+    static void AddToJUnitXMLTestReportTest1(Ishiko::Test& test);
 };
 
 #endif

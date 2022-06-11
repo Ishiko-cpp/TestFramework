@@ -17,3 +17,7 @@ TestCheck::Result TestCheck::result() const noexcept
 {
     return m_result;
 }
+
+void TestCheck::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
+{
+}

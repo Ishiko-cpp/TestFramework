@@ -152,3 +152,12 @@ void FileComparisonTestCheck::setReferenceFilePath(const boost::filesystem::path
 {
     m_referenceFilePath = path;
 }
+
+void FileComparisonTestCheck::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
+{
+    writer.writeText("File comparison between output ");
+    writer.writeText(m_outputFilePath.string());
+    writer.writeText(" and reference ");
+    writer.writeText(m_referenceFilePath.string());
+    writer.writeText(" failed.");
+}
