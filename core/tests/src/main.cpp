@@ -12,7 +12,6 @@
 #include "TestMacrosFormatterTests.h"
 #include "TestMacrosTests.h"
 #include "TestSequenceTests.h"
-#include "FileComparisonTestTests/FileComparisonTestTests.h"
 #include "ConsoleApplicationTestTests/ConsoleApplicationTestTests.h"
 #include "HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h"
 #include "TestSetupActionsTests/TestSetupActionsTests.h"
@@ -43,7 +42,6 @@ int main(int argc, char* argv[])
     theTests.append<TestMacrosFormatterTests>();
     theTests.append<TestMacrosTests>();
     theTests.append<TestSequenceTests>();
-    theTests.append<FileComparisonTestTests>();
     theTests.append<ConsoleApplicationTestTests>();
     theTests.append<HeapAllocationErrorsTestTests>();
     theTests.append<TestSetupActionsTests>();

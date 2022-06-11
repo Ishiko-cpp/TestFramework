@@ -47,9 +47,6 @@
     <ClInclude Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -101,9 +98,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\ConsoleApplicationTestTests\ConsoleApplicationTestTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\FileComparisonTestTests\FileComparisonTestTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\HeapAllocationErrorsTestTests\HeapAllocationErrorsTestTests.cpp">

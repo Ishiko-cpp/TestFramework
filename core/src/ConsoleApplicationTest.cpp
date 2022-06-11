@@ -5,22 +5,22 @@
 */
 
 #include "ConsoleApplicationTest.hpp"
-#include "Ishiko/Process/ChildProcessBuilder.h"
+#include "TestMacros.hpp"
+#include <Ishiko/Process.hpp>
 
 namespace Ishiko
 {
 
 ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const std::string& name,
     const std::string& commandLine, int expectedExitCode)
-    : Test(number, name), m_commandLine(commandLine), m_checkExitCode(true), m_expectedExitCode(expectedExitCode),
-    m_standardOutputTest(TestNumber(), "Standard Output")
+    : Test(number, name), m_commandLine(commandLine), m_checkExitCode(true), m_expectedExitCode(expectedExitCode)
 {
 }
 
 ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const std::string& name,
     const std::string& commandLine, int expectedExitCode, const TestContext& context)
     : Test(number, name, context), m_commandLine(commandLine), m_checkExitCode(true),
-    m_expectedExitCode(expectedExitCode), m_standardOutputTest(TestNumber(), "Standard Output")
+    m_expectedExitCode(expectedExitCode)
 {
 }
 
@@ -34,57 +34,36 @@ void ConsoleApplicationTest::setStandardOutputReferenceFilePath(const boost::fil
     m_standardOutputTest.setReferenceFilePath(path);
 }
 
+// TODO: this is used the test macros but I probably want custom error messages
 void ConsoleApplicationTest::doRun()
 {
-    TestResult result = TestResult::failed;
+    // The test macros rely a variable called "test" to be defined.
+    Test& test = *this;
 
     ChildProcessBuilder processCreator(m_commandLine);
-    if (!m_standardOutputTest.getOutputFilePath().empty())
+    if (!m_standardOutputTest.outputFilePath().empty())
     {
-        processCreator.redirectStandardOutputToFile(m_standardOutputTest.getOutputFilePath().string());
+        processCreator.redirectStandardOutputToFile(m_standardOutputTest.outputFilePath().string());
     }
 
-    Error error(0);
+    Error error;
     ChildProcess processHandle = processCreator.start(error);
-    if (!error)
-    {
-        processHandle.waitForExit();
 
-        bool exitCodeTestPassed = false;
-        if (m_checkExitCode)
-        {
-            if (processHandle.exitCode() == m_expectedExitCode)
-            {
-                exitCodeTestPassed = true;
-            }
-        }
-        else
-        {
-            exitCodeTestPassed = true;
-        }
-
-        bool standardOutputTestPassed = false;
-        if (!m_standardOutputTest.getOutputFilePath().empty() &&
-            !m_standardOutputTest.getReferenceFilePath().empty())
-        {
-            m_standardOutputTest.run();
-            if (m_standardOutputTest.passed())
-            {
-                standardOutputTestPassed = true;
-            }
-        }
-        else
-        {
-            standardOutputTestPassed = true;
-        }
-
-        if (exitCodeTestPassed && standardOutputTestPassed)
-        {
-            result = TestResult::passed;
-        }
-    }
+    ISHIKO_TEST_ABORT_IF(error);
     
-    setResult(result);
+    processHandle.waitForExit();
+
+    if (m_checkExitCode)
+    {
+        ISHIKO_TEST_FAIL_IF_NEQ(processHandle.exitCode(), m_expectedExitCode);
+    }
+
+    if (!m_standardOutputTest.outputFilePath().empty() && !m_standardOutputTest.referenceFilePath().empty())
+    {
+        m_standardOutputTest.run(test, __FILE__, __LINE__);
+    }
+
+    ISHIKO_TEST_PASS();
 }
 
 }
