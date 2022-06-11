@@ -21,6 +21,7 @@ void FileComparisonTestCheckTests::ConstructorTest1(Test& test)
 {
     FileComparisonTestCheck fileComparisonCheck("outputFilePath", "referenceFilePath");
 
+    ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.result(), TestCheck::Result::failed);
     ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.outputFilePath(), "outputFilePath");
     ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.referenceFilePath(), "referenceFilePath");
     ISHIKO_TEST_PASS();
@@ -34,6 +35,7 @@ void FileComparisonTestCheckTests::CreateFromContextTest1(Test& test)
     FileComparisonTestCheck fileComparisonCheck =
         FileComparisonTestCheck::CreateFromContext(context, "outputFilePath", "referenceFilePath");
 
+    ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.result(), TestCheck::Result::failed);
     ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.outputFilePath(), "output/outputFilePath");
     ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.referenceFilePath(), "reference/referenceFilePath");
     ISHIKO_TEST_PASS();
@@ -49,6 +51,7 @@ void FileComparisonTestCheckTests::RunTest1(Test& test)
     Test checkTest(TestNumber(1), "FileComparisonTestCheckTests_RunTest1");
     fileComparisonCheck.run(checkTest, __FILE__, __LINE__);
 
+    ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.result(), TestCheck::Result::failed);
     ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::failed);
     ISHIKO_TEST_PASS();
 }
@@ -64,6 +67,7 @@ void FileComparisonTestCheckTests::RunTest2(Test& test)
     fileComparisonCheck.run(checkTest, __FILE__, __LINE__);
     checkTest.pass();
 
+    ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.result(), TestCheck::Result::passed);
     ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::passed);
     ISHIKO_TEST_PASS();
 }

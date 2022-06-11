@@ -12,10 +12,24 @@ namespace Ishiko
 
 class Test;
 
+// TODO: make this an inner class?
 class TestCheck
 {
 public:
+    enum class Result
+    {
+        passed,
+        failed
+    };
+
+    TestCheck();
+
     virtual void run(Test& test, const char* file, int line) = 0;
+
+    Result result() const noexcept;
+
+protected:
+    Result m_result;
 };
 
 }

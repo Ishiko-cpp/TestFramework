@@ -39,6 +39,8 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
 {
     // TODO: fix this file comparison code. It's hacked together at the moment
 
+    m_result = Result::failed;
+
     // We first try to open the two files
 #if ISHIKO_COMPILER == ISHIKO_COMPILER_GCC
     FILE* outputFile = fopen(m_outputFilePath.string().c_str(), "rb");
@@ -124,6 +126,10 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
         {
             test.fail(diff[0].text(), file, line);
         }
+    }
+    else
+    {
+        m_result = Result::passed;
     }
 }
 
