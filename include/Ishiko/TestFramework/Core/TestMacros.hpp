@@ -73,12 +73,12 @@
         test.fail(message, __FILE__, __LINE__);                                                                 \
     }
 
-#define ISHIKO_TEST_FAIL_IF_FILES_NEQ(path1, path2)                                                              \
+#define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                                  \
     {                                                                                                            \
         std::shared_ptr<FileComparisonTestCheck> check =                                                         \
             std::make_shared<FileComparisonTestCheck>(FileComparisonTestCheck::CreateFromContext(test.context(), \
-                path1, path2));                                                                                  \
-        check->run(test, __FILE__, __LINE__);                                                                \
+                __VA_ARGS__));                                                                                   \
+        check->run(test, __FILE__, __LINE__);                                                                    \
     }
 
 #define ISHIKO_TEST_PASS() test.pass()

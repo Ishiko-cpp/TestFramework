@@ -43,29 +43,28 @@ void ProcessActionTests::SetupFailureTest1(Test& test)
 void ProcessActionTests::SetupWaitForExitTest1(Test& test)
 {
 #ifdef __linux__
-    boost::filesystem::path executablePath(test.context().getTestDataDirectory() / "bin/WriteFileTestHelper");
+    boost::filesystem::path executablePath(test.context().getDataDirectory() / "bin/WriteFileTestHelper");
 #else
-    boost::filesystem::path executablePath(test.context().getTestDataDirectory() / "bin/WriteFileTestHelper.exe");
+    boost::filesystem::path executablePath(test.context().getDataDirectory() / "bin/WriteFileTestHelper.exe");
 #endif
     boost::filesystem::path outputPath =
-        test.context().getTestOutputPath("TestSetupActionsTests/ProcessActionSetupTest1.txt");
-    create_directories(test.context().getTestOutputDirectory() / "TestSetupActionsTests");
+        test.context().getOutputPath("TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    create_directories(test.context().getOutputDirectory() / "TestSetupActionsTests");
 
     ProcessAction action(executablePath.string() + " " + outputPath.string(), ProcessAction::eWaitForExit);
     action.setup();
     action.teardown();
 
-    ISHIKO_TEST_FAIL_IF_FILES_NEQ("TestSetupActionsTests/ProcessActionSetupTest1.txt",
-        "TestSetupActionsTests/ProcessActionSetupTest1.txt");
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestSetupActionsTests/ProcessActionSetupTest1.txt");
     ISHIKO_TEST_PASS();
 }
 
 void ProcessActionTests::SetupTerminateTest1(Test& test)
 {
 #ifdef __linux__
-    boost::filesystem::path executablePath(test.context().getTestDataDirectory() / "bin/PermanentAppTestHelper");
+    boost::filesystem::path executablePath(test.context().getDataDirectory() / "bin/PermanentAppTestHelper");
 #else
-    boost::filesystem::path executablePath(test.context().getTestDataDirectory() / "bin/PermanentAppTestHelper.exe");
+    boost::filesystem::path executablePath(test.context().getDataDirectory() / "bin/PermanentAppTestHelper.exe");
 #endif
 
     ProcessAction action(executablePath.string(), ProcessAction::eTerminate);

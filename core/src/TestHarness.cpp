@@ -52,7 +52,7 @@ int TestHarness::run()
 {
     std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
 
-    if (m_context.getTestOutputDirectory() != "")
+    if (m_context.getOutputDirectory() != "")
     {
         prepareOutputDirectory();
     }
@@ -84,8 +84,8 @@ void TestHarness::prepareOutputDirectory()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().hours()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().minutes()
             << std::setw(2) << std::setfill('0') << currentSecond.time_of_day().seconds() << "Z";
-        boost::filesystem::path newOutputDirectory = m_context.getTestOutputDirectory() / currentSecondStr.str();
-        m_context.setTestOutputDirectory(newOutputDirectory.string());
+        boost::filesystem::path newOutputDirectory = m_context.getOutputDirectory() / currentSecondStr.str();
+        m_context.setOutputDirectory(newOutputDirectory.string());
     }
 }
 
