@@ -1,4 +1,5 @@
-import ../../../../include/Ishiko/TestFramework/Core.bkl;
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
@@ -21,11 +22,11 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     headers
     {
         ../../src/FileComparisonTestCheckTests.hpp
-        ../../src/JUnitXMLWriterTests.h
+        ../../src/JUnitXMLWriterTests.hpp
         ../../src/TestContextTests.hpp
-        ../../src/TestHarnessTests.h
-        ../../src/TestNumberTests.h
-        ../../src/TestTests.h
+        ../../src/TestHarnessTests.hpp
+        ../../src/TestNumberTests.hpp
+        ../../src/TestTests.hpp
         ../../src/TestMacrosTests.h
         ../../src/TestMacrosFormatterTests.h
         ../../src/TestSequenceTests.h

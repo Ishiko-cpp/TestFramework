@@ -20,19 +20,19 @@
     <ClInclude Include="..\..\src\FileComparisonTestCheckTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\JUnitXMLWriterTests.h">
+    <ClInclude Include="..\..\src\JUnitXMLWriterTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\TestContextTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\TestHarnessTests.h">
+    <ClInclude Include="..\..\src\TestHarnessTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\TestNumberTests.h">
+    <ClInclude Include="..\..\src\TestNumberTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\TestTests.h">
+    <ClInclude Include="..\..\src\TestTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\TestMacrosTests.h">
