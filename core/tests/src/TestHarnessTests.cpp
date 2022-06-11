@@ -18,7 +18,7 @@ TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& 
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
-    append<HeapAllocationErrorsTest>("JUnit XML report test 1", JUnitXMLReportTest1);
+    append<HeapAllocationErrorsTest>("JUnit XML test report test 1", JUnitXMLReportTest1);
 }
 
 void TestHarnessTests::CreationTest1(Test& test)
