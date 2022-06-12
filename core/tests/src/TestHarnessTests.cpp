@@ -14,7 +14,8 @@ using namespace Ishiko;
 TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "TestHarness tests", context)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
@@ -25,10 +26,23 @@ TestHarnessTests::TestHarnessTests(const TestNumber& number, const TestContext& 
     append<HeapAllocationErrorsTest>("JUnit XML test report test 4", JUnitXMLReportTest4);
 }
 
-void TestHarnessTests::CreationTest1(Test& test)
+void TestHarnessTests::ConstructorTest1(Test& test)
 {
-    TestHarness theTestHarness("TestHarnessTests_CreationTest1");
+    TestHarness theTestHarness("TestHarnessTests_ConstructorTest1");
 
+    ISHIKO_TEST_PASS();
+}
+
+void TestHarnessTests::ConstructorTest2(Test& test)
+{
+    // This is not really a persisten storage path, we only need an arbitrary path for testing 
+    boost::filesystem::path outputPath = test.context().getOutputPath("TestHarnessTests_ConstructorTest2.xml");
+
+    Configuration configuration = TestHarness::CommandLineSpecification().createDefaultConfiguration();
+    configuration.set("persistent-storage", outputPath.string());
+    TestHarness theTestHarness("TestHarnessTests_ConstructorTest2", configuration);
+
+    ISHIKO_TEST_FAIL_IF_NEQ(theTestHarness.context().getOutputDirectory("persistent-storage"), outputPath);
     ISHIKO_TEST_PASS();
 }
 

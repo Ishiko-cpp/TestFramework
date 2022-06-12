@@ -6,6 +6,7 @@
 
 #include "TestContext.hpp"
 #include "TestException.hpp"
+#include "TestFrameworkErrorCategory.hpp"
 #include <Ishiko/Process.hpp>
 
 namespace Ishiko
@@ -165,6 +166,35 @@ boost::filesystem::path TestContext::getOutputDirectory(const std::string& id) c
         else
         {
             throw TestException("getOutputDirectory: no directory found with id " + id);
+        }
+    }
+    return result;
+}
+
+boost::filesystem::path TestContext::getOutputDirectory(const std::string& id, Error& error) const
+{
+    boost::filesystem::path result;
+    std::map<std::string, boost::filesystem::path>::const_iterator it = m_outputDirectories.find(id);
+    if (m_parent)
+    {
+        if (it != m_outputDirectories.end())
+        {
+            result = (m_parent->getOutputDirectory(id) / it->second);
+        }
+        else
+        {
+            result = m_parent->getOutputDirectory(id, error);
+        }
+    }
+    else
+    {
+        if (it != m_outputDirectories.end())
+        {
+            return it->second;
+        }
+        else
+        {
+            Fail(error, TestFrameworkErrorCategory::Value::generic);
         }
     }
     return result;

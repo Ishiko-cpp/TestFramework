@@ -62,6 +62,9 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestFrameworkErrorCategory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarness.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -128,6 +131,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\TestException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TestFrameworkErrorCategory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\TestHarness.cpp">
