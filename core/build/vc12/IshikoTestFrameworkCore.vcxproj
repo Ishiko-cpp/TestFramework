@@ -162,6 +162,7 @@
     <ClCompile Include="..\..\src\TestCheck.cpp" />
     <ClCompile Include="..\..\src\TestContext.cpp" />
     <ClCompile Include="..\..\src\TestException.cpp" />
+    <ClCompile Include="..\..\src\TestFrameworkErrorCategory.cpp" />
     <ClCompile Include="..\..\src\TestHarness.cpp" />
     <ClCompile Include="..\..\src\TestNumber.cpp" />
     <ClCompile Include="..\..\src\TestMacrosFormatter.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestCheck.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestContext.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestException.hpp" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestFrameworkErrorCategory.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestHarness.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestMacros.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestMacrosFormatter.hpp" />

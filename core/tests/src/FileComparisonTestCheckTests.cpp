@@ -15,6 +15,7 @@ FileComparisonTestCheckTests::FileComparisonTestCheckTests(const TestNumber& num
     append<HeapAllocationErrorsTest>("CreateFromContext test 1", CreateFromContextTest1);
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
+    append<HeapAllocationErrorsTest>("Persistent storage test 1", PersistentStorageTest1);
     append<HeapAllocationErrorsTest>("addToJUnitXMLTestReport test 1", AddToJUnitXMLTestReportTest1);
 }
 
@@ -70,6 +71,27 @@ void FileComparisonTestCheckTests::RunTest2(Test& test)
 
     ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.result(), TestCheck::Result::passed);
     ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::passed);
+    ISHIKO_TEST_PASS();
+}
+
+void FileComparisonTestCheckTests::PersistentStorageTest1(Test& test)
+{
+    boost::filesystem::path outputFilePath = test.context().getDataPath("ComparisonTestFiles/Hello.txt");
+    boost::filesystem::path referenceFilePath = test.context().getDataPath("ComparisonTestFiles/NotHello.txt");
+    boost::filesystem::path simulatedPersistentStorage = test.context().getOutputDirectory();
+
+    FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
+
+    TestContext checkTestContext;
+    checkTestContext.setOutputDirectory("persistent-storage", simulatedPersistentStorage.string());
+    Test checkTest(TestNumber(1), "FileComparisonTestCheckTests_PersistentStorageTest1", checkTestContext);
+    fileComparisonCheck.run(checkTest, __FILE__, __LINE__);
+
+    ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.result(), TestCheck::Result::failed);
+    ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::failed);
+    // TODO: should be a directory compare
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("FileComparisonTestCheckTests_PersistentStorageTest1/Hello.txt");
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("FileComparisonTestCheckTests_PersistentStorageTest1/NotHello.txt");
     ISHIKO_TEST_PASS();
 }
 

@@ -18,17 +18,41 @@ using namespace Ishiko;
 
 TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
-    // TODO: need to support option without default value instead of abusing an empty value
-    addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue, "" });
+    addNamedOption("persistent-storage", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue });
 }
 
 TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
 {
-    const std::string& junitXMLTestReport = configuration.value("junit-xml-test-report").asString();
-    if (!junitXMLTestReport.empty())
+    const Ishiko::Configuration::Value* persistentStorage = configuration.valueOrNull("persistent-storage");
+    if (persistentStorage)
     {
-        m_junitXMLTestReport = junitXMLTestReport;
+        if (persistentStorage->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_persistentStorage = persistentStorage->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
     }
+    const Ishiko::Configuration::Value* junitXMLTestReport = configuration.valueOrNull("junit-xml-test-report");
+    if (junitXMLTestReport)
+    {
+        if (junitXMLTestReport->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_junitXMLTestReport = junitXMLTestReport->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
+    }
+}
+
+const boost::optional<std::string>& TestHarness::Configuration::persistentStoragePath() const
+{
+    return m_persistentStorage;
 }
 
 const boost::optional<std::string>& TestHarness::Configuration::junitXMLTestReport() const
@@ -46,6 +70,11 @@ TestHarness::TestHarness(const std::string& title, const Configuration& configur
     : m_junitXMLTestReport(configuration.junitXMLTestReport()), m_context(TestContext::DefaultTestContext()),
     m_topSequence(title, m_context), m_timestampOutputDirectory(true)
 {
+    const boost::optional<std::string> persistentStoragePath = configuration.persistentStoragePath();
+    if (persistentStoragePath)
+    {
+        m_context.setOutputDirectory("persistent-storage", *persistentStoragePath);
+    }
 }
 
 int TestHarness::run()
