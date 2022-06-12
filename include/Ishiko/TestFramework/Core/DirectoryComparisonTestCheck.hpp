@@ -15,7 +15,20 @@ namespace Ishiko
 class DirectoryComparisonTestCheck : public TestCheck
 {
 public:
+    DirectoryComparisonTestCheck();
+    DirectoryComparisonTestCheck(boost::filesystem::path outputDirectoryPath,
+        boost::filesystem::path referenceDirectoryPath);
+
     void run(Test& test, const char* file, int line) override;
+
+    const boost::filesystem::path& outputDirectoryPath() const;
+    void setOutputDirectoryPath(const boost::filesystem::path& path);
+    const boost::filesystem::path& referenceDirectoryPath() const;
+    void setReferenceDirectoryPath(const boost::filesystem::path& path);
+
+private:
+    boost::filesystem::path m_outputDirectoryPath;
+    boost::filesystem::path m_referenceDirectoryPath;
 };
 
 }
