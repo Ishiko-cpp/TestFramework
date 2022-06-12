@@ -285,6 +285,11 @@ void Test::skip()
     throw AbortException();
 }
 
+void Test::appendCheck(std::shared_ptr<TestCheck> check)
+{
+    m_checks.push_back(check);
+}
+
 const TestContext& Test::context() const
 {
     return m_context;
@@ -363,6 +368,31 @@ void Test::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
     {
     case TestResult::passed:
         // Do nothing
+        break;
+
+    case TestResult::failed:
+        {
+            // TODO: this assume we enforce consistency between test failure and check->result(). Need to enforce that
+            // in Test::run().
+            bool atLeastOneTestCheckFailed = false;
+            for (const std::shared_ptr<TestCheck>& check : m_checks)
+            {
+                if (check->result() != TestCheck::Result::passed)
+                {
+                    writer.writeFailureStart();
+                    check->addToJUnitXMLTestReport(writer);
+                    writer.writeFailureEnd();
+
+                    atLeastOneTestCheckFailed = true;
+                }
+            }
+            // If the failure is not due to one the checks, we still want to make sure we mark the test as failed.
+            if (!atLeastOneTestCheckFailed)
+            {
+                writer.writeFailureStart();
+                writer.writeFailureEnd();
+            }
+        }
         break;
 
     case TestResult::skipped:

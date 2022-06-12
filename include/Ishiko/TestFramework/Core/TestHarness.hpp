@@ -7,7 +7,6 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTHARNESS_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTHARNESS_HPP_
 
-#include "TestConfiguration.hpp"
 #include "TestContext.hpp"
 #include "TestSequence.hpp"
 #include "TopTestSequence.hpp"

@@ -7,15 +7,33 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCHECK_HPP_
 
-#include "Test.hpp"
+#include "JUnitXMLWriter.hpp"
 
 namespace Ishiko
 {
 
+class Test;
+
+// TODO: make this an inner class?
 class TestCheck
 {
 public:
+    enum class Result
+    {
+        passed,
+        failed
+    };
+
+    TestCheck();
+
     virtual void run(Test& test, const char* file, int line) = 0;
+
+    Result result() const noexcept;
+
+    virtual void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const;
+
+protected:
+    Result m_result;
 };
 
 }

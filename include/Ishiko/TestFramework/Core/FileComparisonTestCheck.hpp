@@ -10,6 +10,7 @@
 #include "TestCheck.hpp"
 #include "TestContext.hpp"
 #include <boost/filesystem.hpp>
+#include <string>
 
 namespace Ishiko
 {
@@ -31,9 +32,13 @@ public:
     const boost::filesystem::path& referenceFilePath() const;
     void setReferenceFilePath(const boost::filesystem::path& path);
 
+    void addToJUnitXMLTestReport(JUnitXMLWriter& writer) const override;
+
 private:
     boost::filesystem::path m_outputFilePath;
     boost::filesystem::path m_referenceFilePath;
+    // We store this because we want to have the option of displaying it in test reports
+    std::string m_firstDifferentLine;
 };
 
 }

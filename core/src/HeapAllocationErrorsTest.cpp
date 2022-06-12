@@ -6,8 +6,7 @@
 
 #include "HeapAllocationErrorsTest.hpp"
 
-namespace Ishiko
-{
+using namespace Ishiko;
 
 HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, const std::string& name,
     void (*runFct)(Test& test))
@@ -27,6 +26,11 @@ HeapAllocationErrorsTest::HeapAllocationErrorsTest(const TestNumber& number, con
     // We pass in a special observer to filter out the lifecycle events as m_test is an implementation detail that
     // shouldn't be visible to the outside.
     m_test->observers().add(m_innerObserver);
+}
+
+void HeapAllocationErrorsTest::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
+{
+    m_test->addToJUnitXMLTestReport(writer);
 }
 
 void HeapAllocationErrorsTest::doRun()
@@ -50,6 +54,4 @@ void HeapAllocationErrorsTest::InnerObserver::onCheckFailed(const Test& source, 
 void HeapAllocationErrorsTest::InnerObserver::onExceptionThrown(const Test& source, std::exception_ptr exception)
 {
     m_test.observers().notifyExceptionThrown(source, exception);
-}
-
 }

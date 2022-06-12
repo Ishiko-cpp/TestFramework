@@ -5,6 +5,7 @@
 */
 
 #include "FileComparisonTestCheck.hpp"
+#include "Test.hpp"
 #include <Ishiko/BasePlatform.h>
 #include <Ishiko/Diff.hpp>
 #include <Ishiko/Errors.hpp>
@@ -37,6 +38,8 @@ FileComparisonTestCheck FileComparisonTestCheck::CreateFromContext(const TestCon
 void FileComparisonTestCheck::run(Test& test, const char* file, int line)
 {
     // TODO: fix this file comparison code. It's hacked together at the moment
+
+    m_result = Result::failed;
 
     // We first try to open the two files
 #if ISHIKO_COMPILER == ISHIKO_COMPILER_GCC
@@ -118,11 +121,16 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
         test.fail(file, line);
 
         Error error;
-        TextPatch diff = TextDiff::LineDiffFiles(m_referenceFilePath, m_outputFilePath, error);
+        TextPatch diff = TextDiff::LineDiffFiles(m_outputFilePath, m_referenceFilePath, error);
         if (diff.size() > 0)
         {
-            test.fail(diff[0].text(), file, line);
+            m_firstDifferentLine = diff[0].text();
+            test.fail(m_firstDifferentLine, file, line);   
         }
+    }
+    else
+    {
+        m_result = Result::passed;
     }
 }
 
@@ -144,4 +152,14 @@ const boost::filesystem::path& FileComparisonTestCheck::referenceFilePath() cons
 void FileComparisonTestCheck::setReferenceFilePath(const boost::filesystem::path& path)
 {
     m_referenceFilePath = path;
+}
+
+void FileComparisonTestCheck::addToJUnitXMLTestReport(JUnitXMLWriter& writer) const
+{
+    writer.writeText("File comparison between output ");
+    writer.writeText(m_outputFilePath.string());
+    writer.writeText(" and reference ");
+    writer.writeText(m_referenceFilePath.string());
+    writer.writeText(" failed.");
+    writer.writeText(m_firstDifferentLine);
 }
