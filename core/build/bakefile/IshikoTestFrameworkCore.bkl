@@ -53,6 +53,7 @@ library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, Is
         ../../../include/Ishiko/TestFramework/Core/TestCheck.hpp
         ../../../include/Ishiko/TestFramework/Core/TestContext.hpp
         ../../../include/Ishiko/TestFramework/Core/TestException.hpp
+        ../../../include/Ishiko/TestFramework/Core/TestFrameworkErrorCategory.hpp
         ../../../include/Ishiko/TestFramework/Core/TestHarness.hpp
         ../../../include/Ishiko/TestFramework/Core/TestMacros.hpp
         ../../../include/Ishiko/TestFramework/Core/TestMacrosFormatter.hpp
@@ -79,6 +80,7 @@ library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, Is
         ../../src/TestCheck.cpp
         ../../src/TestContext.cpp
         ../../src/TestException.cpp
+        ../../src/TestFrameworkErrorCategory.cpp
         ../../src/TestHarness.cpp
         ../../src/TestNumber.cpp
         ../../src/TestMacrosFormatter.cpp
