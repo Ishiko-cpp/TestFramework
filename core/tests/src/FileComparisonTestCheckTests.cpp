@@ -75,8 +75,12 @@ void FileComparisonTestCheckTests::RunTest2(Test& test)
 
 void FileComparisonTestCheckTests::AddToJUnitXMLTestReportTest1(Test& test)
 {
-    boost::filesystem::path outputFilePath = test.context().getDataPath("ComparisonTestFiles/Hello.txt");
-    boost::filesystem::path referenceFilePath = test.context().getDataPath("ComparisonTestFiles/NotHello.txt");
+    // In general we don't care about making the paths portable between Windows and POSIX but here they will end up in
+    // the output and reference file and we want to avoid having to create 2 reference files.
+    boost::filesystem::path outputFilePath =
+        test.context().getDataPath("ComparisonTestFiles/Hello.txt").generic_string();
+    boost::filesystem::path referenceFilePath =
+        test.context().getDataPath("ComparisonTestFiles/NotHello.txt").generic_string();
 
     FileComparisonTestCheck fileComparisonCheck(outputFilePath, referenceFilePath);
 
