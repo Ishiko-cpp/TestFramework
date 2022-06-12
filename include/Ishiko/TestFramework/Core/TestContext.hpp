@@ -9,6 +9,7 @@
 
 #include <boost/filesystem/path.hpp>
 #include <boost/optional.hpp>
+#include <Ishiko/Errors.hpp>
 #include <map>
 
 namespace Ishiko
@@ -48,6 +49,7 @@ public:
 
     boost::filesystem::path getOutputDirectory() const;
     boost::filesystem::path getOutputDirectory(const std::string& id) const;
+    boost::filesystem::path getOutputDirectory(const std::string& id, Error& error) const;
     boost::filesystem::path getOutputPath(const boost::filesystem::path& path) const;
     // Sets the default test output directory. The path argument
     // can contain environment variables by using the $(...) notation.

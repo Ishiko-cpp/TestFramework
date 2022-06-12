@@ -19,12 +19,12 @@ const char* TestFrameworkErrorCategory::name() const noexcept
     return "Ishiko::TestFrameworkErrorCategory";
 }
 
-void Throw(TestFrameworkErrorCategory::Value value, const char* file, int line)
+void Ishiko::Throw(TestFrameworkErrorCategory::Value value, const char* file, int line)
 {
     throw Exception(static_cast<int>(value), TestFrameworkErrorCategory::Get(), file, line);
 }
 
-void Fail(Error& error, TestFrameworkErrorCategory::Value value) noexcept
+void Ishiko::Fail(Error& error, TestFrameworkErrorCategory::Value value) noexcept
 {
     error.fail(static_cast<int>(value), TestFrameworkErrorCategory::Get());
 }
