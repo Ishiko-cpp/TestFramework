@@ -8,6 +8,7 @@
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP_
 
 #include "JUnitXMLWriter.hpp"
+#include "TestCheck.hpp"
 #include "TestContext.hpp"
 #include "TestNumber.hpp"
 #include "TestResult.hpp"
@@ -91,6 +92,8 @@ public:
     void pass();
     void skip();
 
+    void appendCheck(std::shared_ptr<TestCheck> check);
+
     const TestContext& context() const;
     TestContext& context();
 
@@ -120,6 +123,7 @@ private:
     std::string m_name;
     TestResult m_result;
     TestContext m_context;
+    std::vector<std::shared_ptr<TestCheck>> m_checks;
     bool m_memoryLeakCheck;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;

@@ -7,7 +7,10 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP_
 
+#include "DebugHeap.hpp"
+#include "Test.hpp"
 #include "TestMacrosFormatter.hpp"
+#include <string>
 
 // TODO: all macros need to follow the scheme where they print the data
 
@@ -73,11 +76,16 @@
         test.fail(message, __FILE__, __LINE__);                                                                 \
     }
 
+// TODO: can I avoid the tracking state nightmare here?
 #define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                                  \
     {                                                                                                            \
+        DebugHeap::TrackingState trackingState;                                                                  \
+        trackingState.disableTracking();                                                                         \
         std::shared_ptr<FileComparisonTestCheck> check =                                                         \
             std::make_shared<FileComparisonTestCheck>(FileComparisonTestCheck::CreateFromContext(test.context(), \
                 __VA_ARGS__));                                                                                   \
+        test.appendCheck(check);                                                                                 \
+        trackingState.restore();                                                                                 \
         check->run(test, __FILE__, __LINE__);                                                                    \
     }
 

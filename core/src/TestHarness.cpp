@@ -183,8 +183,12 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
     // TODO: error handling
     Ishiko::Error error;
 
+    // TODO: this is hardly correct. We should take the absolute path and create that. Or is this a feature?
     boost::filesystem::path reportPath = path;
-    boost::filesystem::create_directories(reportPath.parent_path());
+    if (reportPath.has_parent_path())
+    {
+        boost::filesystem::create_directories(reportPath.parent_path());
+    }
 
     size_t unknown = 0;
     size_t passed = 0;

@@ -32,6 +32,7 @@ public:
     void writeFailureEnd();
     void writeSkippedStart();
     void writeSkippedEnd();
+    void writeText(const std::string& text);
 
 private:
     XMLWriter m_xmlWriter;

@@ -12,6 +12,7 @@
 namespace Ishiko
 {
 
+// TODO: make this is an inner class?
 enum class TestResult
 {
     unknown,
