@@ -18,22 +18,35 @@ using namespace Ishiko;
 
 TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
-    // TODO: need to support option without default value instead of abusing an empty value
-    addNamedOption("persistent-storage", { Ishiko::CommandLineSpecification::OptionType::singleValue, "" });
-    addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue, "" });
+    addNamedOption("persistent-storage", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue });
 }
 
 TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
 {
-    const std::string& persistentStorage = configuration.value("persistent-storage").asString();
-    if (!persistentStorage.empty())
+    const Ishiko::Configuration::Value* persistentStorage = configuration.valueOrNull("persistent-storage");
+    if (persistentStorage)
     {
-        m_persistentStorage = persistentStorage;
+        if (persistentStorage->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_persistentStorage = persistentStorage->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
     }
-    const std::string& junitXMLTestReport = configuration.value("junit-xml-test-report").asString();
-    if (!junitXMLTestReport.empty())
+    const Ishiko::Configuration::Value* junitXMLTestReport = configuration.valueOrNull("junit-xml-test-report");
+    if (junitXMLTestReport)
     {
-        m_junitXMLTestReport = junitXMLTestReport;
+        if (junitXMLTestReport->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_junitXMLTestReport = junitXMLTestReport->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
     }
 }
 
