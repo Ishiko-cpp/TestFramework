@@ -5,6 +5,7 @@
 */
 
 #include "DirectoryComparisonTestCheck.hpp"
+#include "Test.hpp"
 
 using namespace Ishiko;
 
@@ -21,7 +22,12 @@ DirectoryComparisonTestCheck::DirectoryComparisonTestCheck(boost::filesystem::pa
 
 void DirectoryComparisonTestCheck::run(Test& test, const char* file, int line)
 {
+    m_result = Result::failed;
+
     // TODO
+
+    // TODO: more info
+    test.fail(file, line);
 }
 
 const boost::filesystem::path& DirectoryComparisonTestCheck::outputDirectoryPath() const
