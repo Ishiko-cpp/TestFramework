@@ -7,4 +7,17 @@
 #ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_DIRECTORYCOMPARISONTESTCHECK_HPP_
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_DIRECTORYCOMPARISONTESTCHECK_HPP_
 
+#include "TestCheck.hpp"
+
+namespace Ishiko
+{
+
+class DirectoryComparisonTestCheck : public TestCheck
+{
+public:
+    void run(Test& test, const char* file, int line) override;
+};
+
+}
+
 #endif

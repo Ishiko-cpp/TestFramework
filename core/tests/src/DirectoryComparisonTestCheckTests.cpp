@@ -17,4 +17,7 @@ DirectoryComparisonTestCheckTests::DirectoryComparisonTestCheckTests(const TestN
 
 void DirectoryComparisonTestCheckTests::ConstructorTest1(Test& test)
 {
+    DirectoryComparisonTestCheck directoryComparisonCheck;
+
+    ISHIKO_TEST_PASS();
 }

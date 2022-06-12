@@ -5,3 +5,10 @@
 */
 
 #include "DirectoryComparisonTestCheck.hpp"
+
+using namespace Ishiko;
+
+void DirectoryComparisonTestCheck::run(Test& test, const char* file, int line)
+{
+    // TODO
+}
