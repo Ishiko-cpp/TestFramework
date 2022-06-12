@@ -32,9 +32,11 @@ public:
     public:
         Configuration(const Ishiko::Configuration& configuration);
 
+        const boost::optional<std::string>& persistentStoragePath() const;
         const boost::optional<std::string>& junitXMLTestReport() const;
 
     private:
+        boost::optional<std::string> m_persistentStorage;
         boost::optional<std::string> m_junitXMLTestReport;
     };
 

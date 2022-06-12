@@ -19,16 +19,27 @@ using namespace Ishiko;
 TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
     // TODO: need to support option without default value instead of abusing an empty value
+    addNamedOption("persistent-storage", { Ishiko::CommandLineSpecification::OptionType::singleValue, "" });
     addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue, "" });
 }
 
 TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
 {
+    const std::string& persistentStorage = configuration.value("persistent-storage").asString();
+    if (!persistentStorage.empty())
+    {
+        m_persistentStorage = persistentStorage;
+    }
     const std::string& junitXMLTestReport = configuration.value("junit-xml-test-report").asString();
     if (!junitXMLTestReport.empty())
     {
         m_junitXMLTestReport = junitXMLTestReport;
     }
+}
+
+const boost::optional<std::string>& TestHarness::Configuration::persistentStoragePath() const
+{
+    return m_persistentStorage;
 }
 
 const boost::optional<std::string>& TestHarness::Configuration::junitXMLTestReport() const
