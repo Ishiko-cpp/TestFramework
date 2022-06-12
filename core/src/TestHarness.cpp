@@ -70,6 +70,11 @@ TestHarness::TestHarness(const std::string& title, const Configuration& configur
     : m_junitXMLTestReport(configuration.junitXMLTestReport()), m_context(TestContext::DefaultTestContext()),
     m_topSequence(title, m_context), m_timestampOutputDirectory(true)
 {
+    const boost::optional<std::string> persistentStoragePath = configuration.persistentStoragePath();
+    if (persistentStoragePath)
+    {
+        m_context.setOutputDirectory("persistent-storage", *persistentStoragePath);
+    }
 }
 
 int TestHarness::run()
