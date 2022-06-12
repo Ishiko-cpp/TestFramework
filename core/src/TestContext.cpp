@@ -183,7 +183,7 @@ boost::filesystem::path TestContext::getOutputDirectory(const std::string& id, E
         }
         else
         {
-            result = m_parent->getOutputDirectory(id);
+            result = m_parent->getOutputDirectory(id, error);
         }
     }
     else
