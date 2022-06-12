@@ -16,6 +16,7 @@
 #include "Core/TestApplicationReturnCodes.hpp"
 #include "Core/TestCheck.hpp"
 #include "Core/TestException.hpp"
+#include "Core/TestFrameworkErrorCategory.hpp"
 #include "Core/TestHarness.hpp"
 #include "Core/TestMacros.hpp"
 #include "Core/TestMacrosFormatter.hpp"
