@@ -5,3 +5,26 @@
 */
 
 #include "TestFrameworkErrorCategory.hpp"
+
+using namespace Ishiko;
+
+const TestFrameworkErrorCategory& TestFrameworkErrorCategory::Get() noexcept
+{
+    static TestFrameworkErrorCategory theCategory;
+    return theCategory;
+}
+
+const char* TestFrameworkErrorCategory::name() const noexcept
+{
+    return "Ishiko::TestFrameworkErrorCategory";
+}
+
+void Throw(TestFrameworkErrorCategory::Value value, const char* file, int line)
+{
+    throw Exception(static_cast<int>(value), TestFrameworkErrorCategory::Get(), file, line);
+}
+
+void Fail(Error& error, TestFrameworkErrorCategory::Value value) noexcept
+{
+    error.fail(static_cast<int>(value), TestFrameworkErrorCategory::Get());
+}
