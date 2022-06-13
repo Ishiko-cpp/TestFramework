@@ -14,6 +14,7 @@ DirectoryComparisonTestCheckTests::DirectoryComparisonTestCheckTests(const TestN
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("run test 1", RunTest1);
+    append<HeapAllocationErrorsTest>("run test 2", RunTest2);
 }
 
 void DirectoryComparisonTestCheckTests::ConstructorTest1(Test& test)
@@ -35,5 +36,21 @@ void DirectoryComparisonTestCheckTests::RunTest1(Test& test)
 
     ISHIKO_TEST_FAIL_IF_NEQ(directoryComparisonCheck.result(), TestCheck::Result::failed);
     ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
+}
+
+void DirectoryComparisonTestCheckTests::RunTest2(Test& test)
+{
+    boost::filesystem::path outputDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir1");
+    boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir3");
+
+    DirectoryComparisonTestCheck directoryComparisonCheck(outputDirectoryPath, referenceDirectoryPath);
+
+    Test checkTest(TestNumber(1), "DirectoryComparisonTestCheckTests_RunTest2");
+    directoryComparisonCheck.run(checkTest, __FILE__, __LINE__);
+    checkTest.pass();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(directoryComparisonCheck.result(), TestCheck::Result::passed);
+    ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::passed);
     ISHIKO_TEST_PASS();
 }

@@ -48,11 +48,11 @@ void DirectoryComparisonTestCheck::run(Test& test, const char* file, int line)
 
     bool allCheckPassed = true;
     referenceDirectory.forEachRegularFile(
-        [this, &test, file, line, &allCheckPassed](const std::string& filepath)
+        [this, &test, file, line, &allCheckPassed](const boost::filesystem::path& referenceFilePath)
         {
-            boost::filesystem::path outputFilePath = m_outputDirectoryPath / filepath;
-            boost::filesystem::path referenceFilePath = m_referenceDirectoryPath / filepath;
-            std::shared_ptr<FileComparisonTestCheck> check = std::make_shared<FileComparisonTestCheck>();
+            boost::filesystem::path outputFilePath = m_outputDirectoryPath / referenceFilePath.filename();
+            std::shared_ptr<FileComparisonTestCheck> check = std::make_shared<FileComparisonTestCheck>(outputFilePath,
+                referenceFilePath);
             // TODO: if I add this to the test then I get automatic reporting of each file
             check->run(test, file, line);
             if (check->result() == TestCheck::Result::failed)
