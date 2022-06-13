@@ -4,6 +4,7 @@
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
+#include "DirectoryComparisonTestCheckTests.hpp"
 #include "FileComparisonTestCheckTests.hpp"
 #include "JUnitXMLWriterTests.hpp"
 #include "TestContextTests.hpp"
@@ -39,6 +40,7 @@ int main(int argc, char* argv[])
     theTests.append<TestNumberTests>();
     theTests.append<TestTests>();
     theTests.append<FileComparisonTestCheckTests>();
+    theTests.append<DirectoryComparisonTestCheckTests>();
     theTests.append<TestMacrosFormatterTests>();
     theTests.append<TestMacrosTests>();
     theTests.append<TestSequenceTests>();

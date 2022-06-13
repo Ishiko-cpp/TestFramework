@@ -21,6 +21,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     headers
     {
+        ../../src/DirectoryComparisonTestCheckTests.hpp
         ../../src/FileComparisonTestCheckTests.hpp
         ../../src/JUnitXMLWriterTests.hpp
         ../../src/TestContextTests.hpp
@@ -41,6 +42,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
 
     sources
     {
+        ../../src/DirectoryComparisonTestCheckTests.cpp
         ../../src/FileComparisonTestCheckTests.cpp
         ../../src/JUnitXMLWriterTests.cpp
         ../../src/main.cpp

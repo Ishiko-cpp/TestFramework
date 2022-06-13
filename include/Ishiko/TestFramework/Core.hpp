@@ -8,8 +8,9 @@
 #define _ISHIKO_CPP_TESTFRAMEWORK_CORE_HPP_
 
 #include "Core/ConsoleApplicationTest.hpp"
-#include "Core/HeapAllocationErrorsTest.hpp"
+#include "Core/DirectoryComparisonTestCheck.hpp"
 #include "Core/FileComparisonTestCheck.hpp"
+#include "Core/HeapAllocationErrorsTest.hpp"
 #include "Core/JUnitXMLWriter.hpp"
 #include "Core/linkoptions.hpp"
 #include "Core/Test.hpp"
