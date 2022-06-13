@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\src\ConsoleApplicationTest.cpp" />
     <ClCompile Include="..\..\src\DebugHeap.cpp" />
     <ClCompile Include="..\..\src\DirectoriesTeardownAction.cpp" />
+    <ClCompile Include="..\..\src\DirectoryComparisonTestCheck.cpp" />
     <ClCompile Include="..\..\src\FileComparisonTestCheck.cpp" />
     <ClCompile Include="..\..\src\FilesTeardownAction.cpp" />
     <ClCompile Include="..\..\src\HeapAllocationErrorsTest.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\ConsoleApplicationTest.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DebugHeap.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DirectoriesTeardownAction.hpp" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\DirectoryComparisonTestCheck.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FileComparisonTestCheck.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\FilesTeardownAction.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\HeapAllocationErrorsTest.hpp" />

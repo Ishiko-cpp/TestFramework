@@ -17,6 +17,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\DirectoryComparisonTestCheckTests.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\FileComparisonTestCheckTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -67,6 +70,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\DirectoryComparisonTestCheckTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\FileComparisonTestCheckTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

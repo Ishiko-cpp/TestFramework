@@ -42,6 +42,7 @@ library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, Is
         ../../../include/Ishiko/TestFramework/Core/ConsoleApplicationTest.hpp
         ../../../include/Ishiko/TestFramework/Core/DebugHeap.hpp
         ../../../include/Ishiko/TestFramework/Core/DirectoriesTeardownAction.hpp
+        ../../../include/Ishiko/TestFramework/Core/DirectoryComparisonTestCheck.hpp
         ../../../include/Ishiko/TestFramework/Core/FileComparisonTestCheck.hpp
         ../../../include/Ishiko/TestFramework/Core/FilesTeardownAction.hpp
         ../../../include/Ishiko/TestFramework/Core/HeapAllocationErrorsTest.hpp
@@ -71,6 +72,7 @@ library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, Is
         ../../src/ConsoleApplicationTest.cpp
         ../../src/DebugHeap.cpp
         ../../src/DirectoriesTeardownAction.cpp
+        ../../src/DirectoryComparisonTestCheck.cpp
         ../../src/FileComparisonTestCheck.cpp
         ../../src/FilesTeardownAction.cpp
         ../../src/HeapAllocationErrorsTest.cpp
