@@ -26,7 +26,7 @@ void DirectoryComparisonTestCheckTests::ConstructorTest1(Test& test)
 void DirectoryComparisonTestCheckTests::RunTest1(Test& test)
 {
     boost::filesystem::path outputDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir1");
-    boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir2.txt");
+    boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir2");
 
     DirectoryComparisonTestCheck directoryComparisonCheck(outputDirectoryPath, referenceDirectoryPath);
 
