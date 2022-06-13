@@ -5,7 +5,9 @@
 */
 
 #include "DirectoryComparisonTestCheck.hpp"
+#include "FileComparisonTestCheck.hpp"
 #include "Test.hpp"
+#include <Ishiko/FileSystem.hpp>
 
 using namespace Ishiko;
 
@@ -24,10 +26,46 @@ void DirectoryComparisonTestCheck::run(Test& test, const char* file, int line)
 {
     m_result = Result::failed;
 
-    // TODO
+    Directory outputDirectory(m_outputDirectoryPath);
+    Directory referenceDirectory(m_referenceDirectoryPath);
 
-    // TODO: more info
-    test.fail(file, line);
+    // TODO: this is a qucik working implementation to be done with it but ideally I'd like the following behaviour.
+    // 1. We only iterate through the each directory once.
+    // 2. We first check if there are differences in files and then we consider extra or missing files. I think this is
+    // more informative for the user in general.
+
+    size_t outputFilesCount = outputDirectory.getRegularFilesCount(false);
+    size_t referenceFilesCount = referenceDirectory.getRegularFilesCount(false);
+
+    if (outputFilesCount != referenceFilesCount)
+    {
+        // TODO: more info, check which files are added or missing
+        test.fail(file, line);
+        return;
+    }
+
+    // TODO: limit the number of files
+
+    bool allCheckPassed = true;
+    referenceDirectory.forEachRegularFile(
+        [this, &test, file, line, &allCheckPassed](const std::string& filepath)
+        {
+            boost::filesystem::path outputFilePath = m_outputDirectoryPath / filepath;
+            boost::filesystem::path referenceFilePath = m_referenceDirectoryPath / filepath;
+            std::shared_ptr<FileComparisonTestCheck> check = std::make_shared<FileComparisonTestCheck>();
+            // TODO: if I add this to the test then I get automatic reporting of each file
+            check->run(test, file, line);
+            if (check->result() == TestCheck::Result::failed)
+            {
+                allCheckPassed = false;
+            }
+        },
+        false);
+
+    if (allCheckPassed)
+    {
+        m_result = Result::passed;
+    }
 }
 
 const boost::filesystem::path& DirectoryComparisonTestCheck::outputDirectoryPath() const
