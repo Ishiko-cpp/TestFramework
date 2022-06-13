@@ -17,6 +17,8 @@ DirectoryComparisonTestCheckTests::DirectoryComparisonTestCheckTests(const TestN
     append<HeapAllocationErrorsTest>("run test 2", RunTest2);
     append<HeapAllocationErrorsTest>("run test 3", RunTest3);
     append<HeapAllocationErrorsTest>("run test 4", RunTest4);
+    append<HeapAllocationErrorsTest>("run test 5", RunTest5);
+    append<HeapAllocationErrorsTest>("run test 6", RunTest6);
 }
 
 void DirectoryComparisonTestCheckTests::ConstructorTest1(Test& test)
@@ -60,12 +62,13 @@ void DirectoryComparisonTestCheckTests::RunTest2(Test& test)
 void DirectoryComparisonTestCheckTests::RunTest3(Test& test)
 {
     boost::filesystem::path outputDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir1");
-    boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("DoesNotExist");
+    boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir4");
 
     DirectoryComparisonTestCheck directoryComparisonCheck(outputDirectoryPath, referenceDirectoryPath);
 
     Test checkTest(TestNumber(1), "DirectoryComparisonTestCheckTests_RunTest3");
     directoryComparisonCheck.run(checkTest, __FILE__, __LINE__);
+    checkTest.pass();
 
     ISHIKO_TEST_FAIL_IF_NEQ(directoryComparisonCheck.result(), TestCheck::Result::failed);
     ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::failed);
@@ -74,12 +77,43 @@ void DirectoryComparisonTestCheckTests::RunTest3(Test& test)
 
 void DirectoryComparisonTestCheckTests::RunTest4(Test& test)
 {
-    boost::filesystem::path outputDirectoryPath = test.context().getDataPath("DoesNotExist");
+    boost::filesystem::path outputDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir4");
     boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir1");
 
     DirectoryComparisonTestCheck directoryComparisonCheck(outputDirectoryPath, referenceDirectoryPath);
 
     Test checkTest(TestNumber(1), "DirectoryComparisonTestCheckTests_RunTest4");
+    directoryComparisonCheck.run(checkTest, __FILE__, __LINE__);
+    checkTest.pass();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(directoryComparisonCheck.result(), TestCheck::Result::failed);
+    ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
+}
+
+void DirectoryComparisonTestCheckTests::RunTest5(Test& test)
+{
+    boost::filesystem::path outputDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir1");
+    boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("DoesNotExist");
+
+    DirectoryComparisonTestCheck directoryComparisonCheck(outputDirectoryPath, referenceDirectoryPath);
+
+    Test checkTest(TestNumber(1), "DirectoryComparisonTestCheckTests_RunTest5");
+    directoryComparisonCheck.run(checkTest, __FILE__, __LINE__);
+
+    ISHIKO_TEST_FAIL_IF_NEQ(directoryComparisonCheck.result(), TestCheck::Result::failed);
+    ISHIKO_TEST_FAIL_IF_NEQ(checkTest.result(), TestResult::failed);
+    ISHIKO_TEST_PASS();
+}
+
+void DirectoryComparisonTestCheckTests::RunTest6(Test& test)
+{
+    boost::filesystem::path outputDirectoryPath = test.context().getDataPath("DoesNotExist");
+    boost::filesystem::path referenceDirectoryPath = test.context().getDataPath("ComparisonTestDirectories/Dir1");
+
+    DirectoryComparisonTestCheck directoryComparisonCheck(outputDirectoryPath, referenceDirectoryPath);
+
+    Test checkTest(TestNumber(1), "DirectoryComparisonTestCheckTests_RunTest6");
     directoryComparisonCheck.run(checkTest, __FILE__, __LINE__);
 
     ISHIKO_TEST_FAIL_IF_NEQ(directoryComparisonCheck.result(), TestCheck::Result::failed);
