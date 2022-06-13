@@ -26,6 +26,19 @@ void DirectoryComparisonTestCheck::run(Test& test, const char* file, int line)
 {
     m_result = Result::failed;
 
+    if (!FileSystem::Exists(m_outputDirectoryPath))
+    {
+        // TODO: more info, check which files are added or missing
+        test.fail(file, line);
+        return;
+    }
+    if (!FileSystem::Exists(m_referenceDirectoryPath))
+    {
+        // TODO: more info, check which files are added or missing
+        test.fail(file, line);
+        return;
+    }
+
     Directory outputDirectory(m_outputDirectoryPath);
     Directory referenceDirectory(m_referenceDirectoryPath);
 
