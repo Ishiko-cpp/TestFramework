@@ -302,6 +302,7 @@ TestContext& Test::context()
 
 void Test::run()
 {
+    m_executionStartTime = SystemTime::Now();
     notify(Observer::eTestStart);
 
     setup();
@@ -338,6 +339,7 @@ void Test::run()
 
     teardown();
 
+    m_executionEndTime = SystemTime::Now();
     notify(Observer::eTestEnd);
 }
 
