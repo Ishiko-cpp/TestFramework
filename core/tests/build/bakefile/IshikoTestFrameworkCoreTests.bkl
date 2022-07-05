@@ -17,7 +17,7 @@ program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
     {
         cxx-compiler-options = "-std=c++11";
         libs += IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoProcess IshikoTime IshikoText IshikoErrors;
-        libs += boost_filesystem;
+        libs += fmt boost_filesystem;
     }
 
     headers
