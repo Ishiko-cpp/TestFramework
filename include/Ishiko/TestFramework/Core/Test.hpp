@@ -14,6 +14,7 @@
 #include "TestResult.hpp"
 #include "TestSetupAction.hpp"
 #include "TestTeardownAction.hpp"
+#include <Ishiko/Time.hpp>
 #include <functional>
 #include <string>
 #include <vector>
@@ -125,6 +126,8 @@ private:
     TestContext m_context;
     std::vector<std::shared_ptr<TestCheck>> m_checks;
     bool m_memoryLeakCheck;
+    SystemTime m_executionStartTime;
+    SystemTime m_executionEndTime;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
     Observers m_observers;
