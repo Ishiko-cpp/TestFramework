@@ -4,6 +4,7 @@ import $(ishikopath)/configuration/include/Ishiko/Configuration.bkl;
 import $(ishikopath)/diff/include/Ishiko/Diff.bkl;
 import $(ishikopath)/process/include/Ishiko/Process.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+import $(ishikopath)/time/include/Ishiko/Time.bkl;
 import $(ishikopath)/xml/include/Ishiko/XML.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
@@ -14,7 +15,7 @@ vs2017.solutionfile = ../vc15/IshikoTestFrameworkCore.sln;
 vs2015.solutionfile = ../vc14/IshikoTestFrameworkCore.sln;
 vs2013.solutionfile = ../vc12/IshikoTestFrameworkCore.sln;
 
-library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, IshikoProcess, IshikoBasePlatform, Boost
+library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, IshikoProcess, IshikoTime, IshikoBasePlatform, Boost
 {
     archs = x86 x86_64;
 
