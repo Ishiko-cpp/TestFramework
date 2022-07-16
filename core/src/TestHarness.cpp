@@ -308,6 +308,6 @@ void TestHarness::writeJUnitXMLTestReport(const std::string& path)
             test.addToJUnitXMLTestReport(writer);
         });
 
-    writer.writeTestSuitesEnd();
+    writer.writeTestSuiteEnd();
     writer.writeTestSuitesEnd();
 }
