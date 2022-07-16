@@ -18,16 +18,16 @@ using namespace Ishiko;
 
 TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
-    addNamedOption("context/data", { Ishiko::CommandLineSpecification::OptionType::singleValue });
-    addNamedOption("context/output", { Ishiko::CommandLineSpecification::OptionType::singleValue });
-    addNamedOption("context/reference", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("context.data", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("context.output", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("context.reference", { Ishiko::CommandLineSpecification::OptionType::singleValue });
     addNamedOption("persistent-storage", { Ishiko::CommandLineSpecification::OptionType::singleValue });
     addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue });
 }
 
 TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
 {
-    const Ishiko::Configuration::Value* contextData = configuration.valueOrNull("context/data");
+    const Ishiko::Configuration::Value* contextData = configuration.valueOrNull("context.data");
     if (contextData)
     {
         if (contextData->type() == Ishiko::Configuration::Value::Type::string)
@@ -39,7 +39,7 @@ TestHarness::Configuration::Configuration(const Ishiko::Configuration& configura
             // TODO: error
         }
     }
-    const Ishiko::Configuration::Value* contextOutput = configuration.valueOrNull("context/output");
+    const Ishiko::Configuration::Value* contextOutput = configuration.valueOrNull("context.output");
     if (contextOutput)
     {
         if (contextOutput->type() == Ishiko::Configuration::Value::Type::string)
@@ -51,7 +51,7 @@ TestHarness::Configuration::Configuration(const Ishiko::Configuration& configura
             // TODO: error
         }
     }
-    const Ishiko::Configuration::Value* contextReference = configuration.valueOrNull("context/reference");
+    const Ishiko::Configuration::Value* contextReference = configuration.valueOrNull("context.reference");
     if (contextReference)
     {
         if (contextReference->type() == Ishiko::Configuration::Value::Type::string)
