@@ -9,6 +9,7 @@
 using namespace Ishiko;
 
 JUnitXMLWriter::JUnitXMLWriter()
+    : m_atLeastOneTestSuite(false)
 {
 }
 
@@ -26,15 +27,22 @@ void JUnitXMLWriter::close()
 void JUnitXMLWriter::writeTestSuitesStart()
 {
     m_xmlWriter.writeElementStart("testsuites");
+    m_xmlWriter.increaseIndentation();
 }
 
 void JUnitXMLWriter::writeTestSuitesEnd()
 {
+    m_xmlWriter.decreaseIndentation();
+    if (m_atLeastOneTestSuite)
+    {
+        m_xmlWriter.writeNewlineAndIndentation();
+    }
     m_xmlWriter.writeElementEnd();
 }
 
 void JUnitXMLWriter::writeTestSuiteStart(size_t tests)
 {
+    m_atLeastOneTestSuite = true;
     m_xmlWriter.writeElementStart("testsuite");
     m_xmlWriter.writeAttribute("tests", std::to_string(tests));
 }

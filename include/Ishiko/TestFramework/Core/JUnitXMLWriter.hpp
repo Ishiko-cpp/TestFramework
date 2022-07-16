@@ -36,6 +36,7 @@ public:
 
 private:
     XMLWriter m_xmlWriter;
+    bool m_atLeastOneTestSuite;
 };
 
 }
