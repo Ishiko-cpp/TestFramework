@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite tests="1"><testcase classname="unknown" name="TestHarnessTests_JUnitXMLReportTest1"><failure /></testcase>
+    <testsuite tests="1">
+        <testcase classname="unknown" name="TestHarnessTests_JUnitXMLReportTest1">
+            <failure />
+        </testcase>
     </testsuite>
 </testsuites>

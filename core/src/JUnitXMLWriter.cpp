@@ -64,18 +64,23 @@ void JUnitXMLWriter::writeTestSuiteEnd()
 void JUnitXMLWriter::writeTestCaseStart(const std::string& classname, const std::string& name)
 {
     m_atLeastOneTestCase = true;
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("testcase");
     m_xmlWriter.writeAttribute("classname", classname);
     m_xmlWriter.writeAttribute("name", name);
+    m_xmlWriter.increaseIndentation();
 }
 
 void JUnitXMLWriter::writeTestCaseEnd()
 {
+    m_xmlWriter.decreaseIndentation();
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementEnd();
 }
 
 void JUnitXMLWriter::writeFailureStart()
 {
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("failure");
 }
 
@@ -86,6 +91,7 @@ void JUnitXMLWriter::writeFailureEnd()
 
 void JUnitXMLWriter::writeSkippedStart()
 {
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("skipped");
 }
 
