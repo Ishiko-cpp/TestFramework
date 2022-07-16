@@ -36,6 +36,7 @@ void JUnitXMLWriter::writeTestSuitesEnd()
     if (m_atLeastOneTestSuite)
     {
         m_xmlWriter.writeNewlineAndIndentation();
+        m_atLeastOneTestSuite = false;
     }
     m_xmlWriter.writeElementEnd();
 }
@@ -43,12 +44,16 @@ void JUnitXMLWriter::writeTestSuitesEnd()
 void JUnitXMLWriter::writeTestSuiteStart(size_t tests)
 {
     m_atLeastOneTestSuite = true;
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("testsuite");
     m_xmlWriter.writeAttribute("tests", std::to_string(tests));
+    m_xmlWriter.increaseIndentation();
 }
 
 void JUnitXMLWriter::writeTestSuiteEnd()
 {
+    m_xmlWriter.decreaseIndentation();
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementEnd();
 }
 
