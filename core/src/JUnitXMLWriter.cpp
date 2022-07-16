@@ -9,6 +9,7 @@
 using namespace Ishiko;
 
 JUnitXMLWriter::JUnitXMLWriter()
+    : m_atLeastOneTestSuite(false), m_atLeastOneTestCase(false), m_testCaseHasChild(false)
 {
 }
 
@@ -26,38 +27,65 @@ void JUnitXMLWriter::close()
 void JUnitXMLWriter::writeTestSuitesStart()
 {
     m_xmlWriter.writeElementStart("testsuites");
+    m_xmlWriter.increaseIndentation();
 }
 
 void JUnitXMLWriter::writeTestSuitesEnd()
 {
+    m_xmlWriter.decreaseIndentation();
+    if (m_atLeastOneTestSuite)
+    {
+        m_xmlWriter.writeNewlineAndIndentation();
+        m_atLeastOneTestSuite = false;
+    }
     m_xmlWriter.writeElementEnd();
 }
 
 void JUnitXMLWriter::writeTestSuiteStart(size_t tests)
 {
+    m_atLeastOneTestSuite = true;
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("testsuite");
     m_xmlWriter.writeAttribute("tests", std::to_string(tests));
+    m_xmlWriter.increaseIndentation();
 }
 
 void JUnitXMLWriter::writeTestSuiteEnd()
 {
+    m_xmlWriter.decreaseIndentation();
+    if (m_atLeastOneTestCase)
+    {
+        m_xmlWriter.writeNewlineAndIndentation();
+        m_atLeastOneTestCase = false;
+    }
     m_xmlWriter.writeElementEnd();
 }
 
 void JUnitXMLWriter::writeTestCaseStart(const std::string& classname, const std::string& name)
 {
+    m_atLeastOneTestCase = true;
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("testcase");
     m_xmlWriter.writeAttribute("classname", classname);
     m_xmlWriter.writeAttribute("name", name);
+    m_xmlWriter.increaseIndentation();
 }
 
 void JUnitXMLWriter::writeTestCaseEnd()
 {
+    m_xmlWriter.decreaseIndentation();
+    if (m_testCaseHasChild)
+    {
+        m_xmlWriter.writeNewlineAndIndentation();
+        m_testCaseHasChild = false;
+    }
     m_xmlWriter.writeElementEnd();
 }
 
 void JUnitXMLWriter::writeFailureStart()
 {
+    m_testCaseHasChild = true;
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("failure");
 }
 
@@ -68,6 +96,8 @@ void JUnitXMLWriter::writeFailureEnd()
 
 void JUnitXMLWriter::writeSkippedStart()
 {
+    m_testCaseHasChild = true;
+    m_xmlWriter.writeNewlineAndIndentation();
     m_xmlWriter.writeElementStart("skipped");
 }
 
