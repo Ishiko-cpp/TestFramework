@@ -18,12 +18,51 @@ using namespace Ishiko;
 
 TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
+    addNamedOption("context/data", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("context/output", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("context/reference", { Ishiko::CommandLineSpecification::OptionType::singleValue });
     addNamedOption("persistent-storage", { Ishiko::CommandLineSpecification::OptionType::singleValue });
     addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue });
 }
 
 TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
 {
+    const Ishiko::Configuration::Value* contextData = configuration.valueOrNull("context/data");
+    if (contextData)
+    {
+        if (contextData->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_contextData = contextData->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
+    }
+    const Ishiko::Configuration::Value* contextOutput = configuration.valueOrNull("context/output");
+    if (contextOutput)
+    {
+        if (contextOutput->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_contextOutput = contextOutput->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
+    }
+    const Ishiko::Configuration::Value* contextReference = configuration.valueOrNull("context/reference");
+    if (contextReference)
+    {
+        if (contextReference->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_contextReference = contextReference->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
+    }
     const Ishiko::Configuration::Value* persistentStorage = configuration.valueOrNull("persistent-storage");
     if (persistentStorage)
     {
@@ -50,6 +89,21 @@ TestHarness::Configuration::Configuration(const Ishiko::Configuration& configura
     }
 }
 
+const boost::optional<std::string>& TestHarness::Configuration::contextData() const
+{
+    return m_contextData;
+}
+
+const boost::optional<std::string>& TestHarness::Configuration::contextOutput() const
+{
+    return m_contextOutput;
+}
+
+const boost::optional<std::string>& TestHarness::Configuration::contextReference() const
+{
+    return m_contextReference;
+}
+
 const boost::optional<std::string>& TestHarness::Configuration::persistentStoragePath() const
 {
     return m_persistentStorage;
@@ -70,6 +124,21 @@ TestHarness::TestHarness(const std::string& title, const Configuration& configur
     : m_junitXMLTestReport(configuration.junitXMLTestReport()), m_context(TestContext::DefaultTestContext()),
     m_topSequence(title, m_context), m_timestampOutputDirectory(true)
 {
+    const boost::optional<std::string> contextDataPath = configuration.contextData();
+    if (contextDataPath)
+    {
+        m_context.setDataDirectory(*contextDataPath);
+    }
+    const boost::optional<std::string> contextOutputPath = configuration.contextOutput();
+    if (contextOutputPath)
+    {
+        m_context.setOutputDirectory(*contextOutputPath);
+    }
+    const boost::optional<std::string> contextReferencePath = configuration.contextReference();
+    if (contextReferencePath)
+    {
+        m_context.setReferenceDirectory(*contextReferencePath);
+    }
     const boost::optional<std::string> persistentStoragePath = configuration.persistentStoragePath();
     if (persistentStoragePath)
     {
