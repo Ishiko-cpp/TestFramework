@@ -26,14 +26,14 @@ using namespace Ishiko;
 int main(int argc, char* argv[])
 {
     TestHarness::CommandLineSpecification commandLineSpec;
+    commandLineSpec.setDefaultValue("context/data", "../../data");
+    commandLineSpec.setDefaultValue("context/output", "../../output");
+    commandLineSpec.setDefaultValue("context/reference", "../../reference");
+
     Configuration configuration = commandLineSpec.createDefaultConfiguration();
     CommandLineParser::parse(commandLineSpec, argc, argv, configuration);
 
     TestHarness theTestHarness("IshikoTestFrameworkCore", configuration);
-
-    theTestHarness.context().setDataDirectory("../../data");
-    theTestHarness.context().setOutputDirectory("../../output");
-    theTestHarness.context().setReferenceDirectory("../../reference");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<TestContextTests>();
