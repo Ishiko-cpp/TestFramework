@@ -35,7 +35,7 @@ void TestHarnessTests::ConstructorTest1(Test& test)
 
 void TestHarnessTests::ConstructorTest2(Test& test)
 {
-    // This is not really a persisten storage path, we only need an arbitrary path for testing 
+    // This is not really a persistent storage path, we only need an arbitrary path for testing 
     boost::filesystem::path outputPath = test.context().getOutputPath("TestHarnessTests_ConstructorTest2.xml");
 
     Configuration configuration = TestHarness::CommandLineSpecification().createDefaultConfiguration();
