@@ -23,7 +23,7 @@ ProcessAction::~ProcessAction()
 
 void ProcessAction::setup()
 {
-    Error error(0);
+    Error error;
     m_processHandle = ChildProcess::Spawn(m_commandLine, error);
     if (error)
     {
