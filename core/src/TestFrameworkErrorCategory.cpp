@@ -24,7 +24,7 @@ void Ishiko::Throw(TestFrameworkErrorCategory::Value value, const char* file, in
     throw Exception(static_cast<int>(value), TestFrameworkErrorCategory::Get(), file, line);
 }
 
-void Ishiko::Fail(Error& error, TestFrameworkErrorCategory::Value value) noexcept
+void Ishiko::Fail(TestFrameworkErrorCategory::Value value, Error& error) noexcept
 {
-    error.fail(static_cast<int>(value), TestFrameworkErrorCategory::Get());
+    error.fail(TestFrameworkErrorCategory::Get(), static_cast<int>(value));
 }

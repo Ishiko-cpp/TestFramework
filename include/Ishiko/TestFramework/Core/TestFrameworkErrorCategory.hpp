@@ -4,8 +4,8 @@
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTFRAMEWORKERRORCATEGORY_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTFRAMEWORKERRORCATEGORY_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTFRAMEWORKERRORCATEGORY_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTFRAMEWORKERRORCATEGORY_HPP
 
 #include <Ishiko/Errors.hpp>
 
@@ -29,7 +29,7 @@ private:
 };
 
 void Throw(TestFrameworkErrorCategory::Value value, const char* file, int line);
-void Fail(Error& error, TestFrameworkErrorCategory::Value value) noexcept;
+void Fail(TestFrameworkErrorCategory::Value value, Error& error) noexcept;
 
 }
 

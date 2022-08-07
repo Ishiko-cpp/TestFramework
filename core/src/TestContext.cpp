@@ -194,7 +194,7 @@ boost::filesystem::path TestContext::getOutputDirectory(const std::string& id, E
         }
         else
         {
-            Fail(error, TestFrameworkErrorCategory::Value::generic);
+            Fail(TestFrameworkErrorCategory::Value::generic, error);
         }
     }
     return result;
