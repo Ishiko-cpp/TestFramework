@@ -39,12 +39,19 @@ endif
 #
 #      ISHIKO_CPP_BASEPLATFORM_ROOT   Path to the Ishiko BasePlatform installation
 #      ISHIKO_CPP_ERRORS_ROOT         Path to the Ishiko Errors installation
+#      ISHIKO_CPP_MEMORY_ROOT         Path to the Ishiko/C++ Memory installation
 #      ISHIKO_CPP_BOOST_ROOT          Path to the Boost installation
-#      ISHIKO_CPP_FILESYSTEM_ROOT     Path to the Ishiko FileSystem installation
 #      ISHIKO_CPP_TEXT_ROOT           Path to the Ishiko/Text installation
+#      ISHIKO_CPP_CONFIGURATION_ROOT  Path to the Ishiko Configuration installation
+#      ISHIKO_CPP_IO_ROOT             Path to the Ishiko/C++ IO installation
+#      ISHIKO_CPP_FILESYSTEM_ROOT     Path to the Ishiko FileSystem installation
 #      ISHIKO_CPP_TYPES_ROOT          Path to the Ishiko Types installation
 #      ISHIKO_CPP_DIFF_ROOT           Path to the Ishiko Diff installation
 #      ISHIKO_CPP_PROCESS_ROOT        Path to the Ishiko Process installation
+#      ISHIKO_CPP_FMT_ROOT            Path to the fmt installation
+#      ISHIKO_CPP_TIME_ROOT           Path to the Ishiko Timeinstallation
+#      ISHIKO_CPP_PUGIXML_ROOT        Path to the pugixml installation
+#      ISHIKO_CPP_XML_ROOT            Path to the Ishiko XML installation
 #      ISHIKO_CPP_TESTFRAMEWORK_ROOT  Path to the Ishiko TestFramework installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
@@ -67,18 +74,32 @@ _equal  = $(and $(findstring $(1),$(2)),$(findstring $(2),$(1)))
 ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP)/base-platform
 # Path to the Ishiko Errors installation
 ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/errors
+# Path to the Ishiko/C++ Memory installation
+ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP)/memory
 # Path to the Boost installation
 ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
-# Path to the Ishiko FileSystem installation
-ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP)/filesystem
 # Path to the Ishiko/Text installation
 ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/text
+# Path to the Ishiko Configuration installation
+ISHIKO_CPP_CONFIGURATION_ROOT ?= $(ISHIKO_CPP)/configuration
+# Path to the Ishiko/C++ IO installation
+ISHIKO_CPP_IO_ROOT ?= $(ISHIKO_CPP)/io
+# Path to the Ishiko FileSystem installation
+ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP)/filesystem
 # Path to the Ishiko Types installation
 ISHIKO_CPP_TYPES_ROOT ?= $(ISHIKO_CPP)/types
 # Path to the Ishiko Diff installation
 ISHIKO_CPP_DIFF_ROOT ?= $(ISHIKO_CPP)/diff
 # Path to the Ishiko Process installation
 ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/process
+# Path to the fmt installation
+ISHIKO_CPP_FMT_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_FMT)
+# Path to the Ishiko Timeinstallation
+ISHIKO_CPP_TIME_ROOT ?= $(ISHIKO_CPP)/time
+# Path to the pugixml installation
+ISHIKO_CPP_PUGIXML_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_PUGIXML)
+# Path to the Ishiko XML installation
+ISHIKO_CPP_XML_ROOT ?= $(ISHIKO_CPP)/xml
 # Path to the Ishiko TestFramework installation
 ISHIKO_CPP_TESTFRAMEWORK_ROOT ?= $(ISHIKO_CPP)/test-framework
 
