@@ -132,15 +132,18 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
         // TODO: have a toggle on command line to explicitly enable this?
 
         Error persistenceError;
-        boost::filesystem::path persistentStoragePath = test.context().getOutputDirectory("persistent-storage", persistenceError);
+        boost::filesystem::path persistentStoragePath = test.context().getOutputDirectory("persistent-storage",
+            persistenceError);
         // TODO: ignore error only if the error is not found
         if (!persistenceError)
         {
             boost::filesystem::path targetDirectory = persistentStoragePath / test.name();
             // TODO: CopyFile option to do that
             boost::filesystem::create_directories(targetDirectory);
-            FileSystem::CopyFile(m_outputFilePath, (targetDirectory / m_outputFilePath.filename()), persistenceError);
-            FileSystem::CopyFile(m_referenceFilePath, (targetDirectory / m_referenceFilePath.filename()), persistenceError);
+            FileSystem::CopySingleFile(m_outputFilePath, (targetDirectory / m_outputFilePath.filename()),
+                persistenceError);
+            FileSystem::CopySingleFile(m_referenceFilePath, (targetDirectory / m_referenceFilePath.filename()),
+                persistenceError);
 
             // TODO: what do if we cannot copy the files?
         }
