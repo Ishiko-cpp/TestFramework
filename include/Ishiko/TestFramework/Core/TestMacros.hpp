@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2021-2022 Xavier Leclercq
+    Copyright (c) 2021-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP
 
 #include "DebugHeap.hpp"
 #include "Test.hpp"
@@ -77,16 +77,16 @@
     }
 
 // TODO: can I avoid the tracking state nightmare here?
-#define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                                  \
-    {                                                                                                            \
-        DebugHeap::TrackingState trackingState;                                                                  \
-        trackingState.disableTracking();                                                                         \
-        std::shared_ptr<FileComparisonTestCheck> check =                                                         \
-            std::make_shared<FileComparisonTestCheck>(FileComparisonTestCheck::CreateFromContext(test.context(), \
-                __VA_ARGS__));                                                                                   \
-        test.appendCheck(check);                                                                                 \
-        trackingState.restore();                                                                                 \
-        check->run(test, __FILE__, __LINE__);                                                                    \
+#define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                   \
+    {                                                                                             \
+        Ishiko::DebugHeap::TrackingState trackingState;                                           \
+        trackingState.disableTracking();                                                          \
+        std::shared_ptr<Ishiko::FileComparisonTestCheck> check =                                  \
+            std::make_shared<Ishiko::FileComparisonTestCheck>(                                    \
+                Ishiko::FileComparisonTestCheck::CreateFromContext(test.context(), __VA_ARGS__)); \
+        test.appendCheck(check);                                                                  \
+        trackingState.restore();                                                                  \
+        check->run(test, __FILE__, __LINE__);                                                     \
     }
 
 #define ISHIKO_TEST_PASS() test.pass()
