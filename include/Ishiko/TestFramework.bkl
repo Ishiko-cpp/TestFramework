@@ -1,10 +1,10 @@
-ishikopath = envvar("ISHIKO_CPP");
+ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
 
 setting ISHIKO_CPP_TESTS_ROOT
 {
-    help = "Path to the Ishiko Tests installation";
-    default = '$(ISHIKO_CPP)/test-framework';
+    help = "Path to the Ishiko/C++ TestFramework installation";
+    default = '$(ISHIKO_CPP_ROOT)/test-framework';
 }
 
 template IshikoTestFramework : IshikoTestFrameworkCore
