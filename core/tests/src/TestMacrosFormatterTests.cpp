@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2021-2022 Xavier Leclercq
+    Copyright (c) 2021-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
@@ -25,7 +25,7 @@ void TestMacrosFormatterTests::FormatTest1(Test& test)
     std::string value = "value";
     std::string output = TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF", "value", value);
 
-    ISHIKO_TEST_FAIL_IF_NEQ(output, "ISHIKO_TEST_FAIL_IF(value) failed with actual value (value)");
+    ISHIKO_TEST_FAIL_IF_NEQ(output, "ISHIKO_TEST_FAIL_IF(value) failed with actual value (\"value\"s)");
     ISHIKO_TEST_PASS();
 }
 
@@ -37,7 +37,7 @@ void TestMacrosFormatterTests::FormatTest2(Test& test)
     std::string output = TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_EQ", "value", "reference", value, reference);
 
     ISHIKO_TEST_FAIL_IF_NEQ(output,
-        "ISHIKO_TEST_FAIL_IF_EQ(value, reference) failed with actual values (value, reference)");
+        "ISHIKO_TEST_FAIL_IF_EQ(value, reference) failed with actual values (\"value\"s, \"reference\"s)");
     ISHIKO_TEST_PASS();
 }
 

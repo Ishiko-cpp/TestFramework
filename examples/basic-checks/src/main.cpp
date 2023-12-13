@@ -29,13 +29,24 @@ namespace
         ISHIKO_TEST_PASS();
     }
 
-    void EqualityCheckTest(Ishiko::Test& test)
+    void EqualityCheckTest1(Ishiko::Test& test)
     {
         ISHIKO_TEST_FAIL_IF_EQ(5, 5);
         ISHIKO_TEST_FAIL_IF_EQ(5, 6);
 
         ISHIKO_TEST_FAIL_IF_NEQ(5, 5);
         ISHIKO_TEST_FAIL_IF_NEQ(5, 6);
+
+        ISHIKO_TEST_PASS();
+    }
+
+    void EqualityCheckTest2(Ishiko::Test& test)
+    {
+        ISHIKO_TEST_FAIL_IF_EQ(std::string{"table"}, std::string{"table"});
+        ISHIKO_TEST_FAIL_IF_EQ(std::string{"table"}, std::string{"chair"});
+
+        ISHIKO_TEST_FAIL_IF_NEQ(std::string{"table"}, std::string{"table"});
+        ISHIKO_TEST_FAIL_IF_NEQ(std::string{"table"}, std::string{"chair"});
 
         ISHIKO_TEST_PASS();
     }
@@ -70,7 +81,8 @@ int main(int argc, char* argv[])
         the_tests.append<Ishiko::Test>("AlwaysPassTest", AlwaysPassTest);
         the_tests.append<Ishiko::Test>("AlwaysFailTest", AlwaysFailTest);
         the_tests.append<Ishiko::Test>("ConditionCheckTest", ConditionCheckTest);
-        the_tests.append<Ishiko::Test>("EqualityCheckTest", EqualityCheckTest);
+        the_tests.append<Ishiko::Test>("EqualityCheckTest1", EqualityCheckTest1);
+        the_tests.append<Ishiko::Test>("EqualityCheckTest2", EqualityCheckTest2);
         the_tests.append<Ishiko::Test>("StringEqualityCheckTest", StringEqualityCheckTest);
 
         return the_test_harness.run();

@@ -22,7 +22,10 @@ bool Internal::UniversalFormatter<char*>::Format(const char* value, std::string&
 
 bool Internal::UniversalFormatter<std::string>::Format(const std::string& value, std::string& output)
 {
-    output = value;
+    output.reserve(value.size() + 3);
+    output.push_back('"');
+    output.append(value);
+    output.append("\"s");
     return true;
 }
 
