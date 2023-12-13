@@ -48,7 +48,7 @@ void TestMacrosFormatterTests::FormatTest3(Test& test)
     std::string output = TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_EQ", "value", "reference", value, reference);
 
     ISHIKO_TEST_FAIL_IF_NEQ(output,
-        "ISHIKO_TEST_FAIL_IF_EQ(value, reference) failed with actual values (value, reference)");
+        "ISHIKO_TEST_FAIL_IF_EQ(value, reference) failed with actual values (\"value\", \"reference\")");
     ISHIKO_TEST_PASS();
 }
 

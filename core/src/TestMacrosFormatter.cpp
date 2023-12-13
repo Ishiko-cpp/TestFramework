@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2021-2022 Xavier Leclercq
+    Copyright (c) 2021-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
@@ -11,7 +11,11 @@ namespace Ishiko
 
 bool Internal::UniversalFormatter<char*>::Format(const char* value, std::string& output)
 {
-    output = value;
+    size_t value_length = strlen(value);
+    output.reserve(value_length + 2);
+    output.push_back('"');
+    output.append(value, value_length);
+    output.push_back('"');
     return true;
 }
 
