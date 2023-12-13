@@ -20,6 +20,34 @@ namespace
         ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestFile1.txt");
         ISHIKO_TEST_PASS();
     }
+
+    void MissingOutputFileTest(Ishiko::Test& test)
+    {
+        ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestFile2.txt");
+        ISHIKO_TEST_PASS();
+    }
+
+    void MissingReferenceFileTest(Ishiko::Test& test)
+    {
+        boost::filesystem::path output_path = test.context().getOutputPath("TestFile3.txt");
+        std::ofstream output_file{output_path.string()};
+        output_file << "Hello World!" << std::endl;
+        output_file.close();
+
+        ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestFile3.txt");
+        ISHIKO_TEST_PASS();
+    }
+
+    void DifferentFilesTest(Ishiko::Test& test)
+    {
+        boost::filesystem::path output_path = test.context().getOutputPath("TestFile4.txt");
+        std::ofstream output_file{ output_path.string() };
+        output_file << "Bye World!" << std::endl;
+        output_file.close();
+
+        ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestFile4.txt");
+        ISHIKO_TEST_PASS();
+    }
 }
 
 int main(int argc, char* argv[])
@@ -38,6 +66,9 @@ int main(int argc, char* argv[])
 
         Ishiko::TestSequence& the_tests = the_test_harness.tests();
         the_tests.append<Ishiko::Test>("IdenticalFilesTest", IdenticalFilesTest);
+        the_tests.append<Ishiko::Test>("MissingOutputFileTest", MissingOutputFileTest);
+        the_tests.append<Ishiko::Test>("MissingReferenceFileTest", MissingReferenceFileTest);
+        the_tests.append<Ishiko::Test>("DifferentFilesTest", DifferentFilesTest);
 
         return the_test_harness.run();
     }
