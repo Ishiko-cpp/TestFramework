@@ -39,6 +39,17 @@ namespace
 
         ISHIKO_TEST_PASS();
     }
+
+    void StringEqualityCheckTest(Ishiko::Test& test)
+    {
+        ISHIKO_TEST_FAIL_IF_STR_EQ("table", "table");
+        ISHIKO_TEST_FAIL_IF_STR_EQ("table", "chair");
+
+        ISHIKO_TEST_FAIL_IF_STR_NEQ("table", "table");
+        ISHIKO_TEST_FAIL_IF_STR_NEQ("table", "chair");
+
+        ISHIKO_TEST_PASS();
+    }
 }
 
 int main(int argc, char* argv[])
@@ -60,6 +71,7 @@ int main(int argc, char* argv[])
         the_tests.append<Ishiko::Test>("AlwaysFailTest", AlwaysFailTest);
         the_tests.append<Ishiko::Test>("ConditionCheckTest", ConditionCheckTest);
         the_tests.append<Ishiko::Test>("EqualityCheckTest", EqualityCheckTest);
+        the_tests.append<Ishiko::Test>("StringEqualityCheckTest", StringEqualityCheckTest);
 
         return the_test_harness.run();
     }
