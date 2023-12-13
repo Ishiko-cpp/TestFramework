@@ -5,6 +5,7 @@
 */
 
 #include "TestMacrosFormatter.hpp"
+#include <cstring>
 
 namespace Ishiko
 {
