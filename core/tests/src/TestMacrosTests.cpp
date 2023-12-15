@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2019-2022 Xavier Leclercq
+    Copyright (c) 2019-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
@@ -35,6 +35,10 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestContext& co
         FailIfOutputAndReferenceFilesNeqMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 2",
         FailIfOutputAndReferenceFilesNeqMacroTest2);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 3",
+        FailIfOutputAndReferenceFilesNeqMacroTest3);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 4",
+        FailIfOutputAndReferenceFilesNeqMacroTest4);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_ABORT test 1", AbortMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_ABORT_IF test 1", AbortIfMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_ABORT_IF test 2", AbortIfMacroTest2);
@@ -398,6 +402,30 @@ void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest1(Test& test)
     myTestContext.setReferenceDirectory(test.context().getDataDirectory());
     Test myTest(TestNumber(), "FailIfOutputAndReferenceFilesNeqMacroTest1",
         [&canary](Test& test)
+    {
+        ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
+            "ComparisonTestFiles/Hello2.txt");
+
+        canary = true;
+
+        ISHIKO_TEST_PASS();
+    },
+        myTestContext);
+    myTest.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_FAIL_IF_NOT(canary);
+    ISHIKO_TEST_PASS();
+}
+
+void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest2(Test& test)
+{
+    bool canary = false;
+    TestContext myTestContext;
+    myTestContext.setOutputDirectory(test.context().getDataDirectory());
+    myTestContext.setReferenceDirectory(test.context().getDataDirectory());
+    Test myTest(TestNumber(), "FailIfOutputAndReferenceFilesNeqMacroTest2",
+        [&canary](Test& test)
         {
             ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
                 "ComparisonTestFiles/NotHello.txt");
@@ -418,36 +446,77 @@ void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest1(Test& test)
 
     ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHIKO_TEST_ABORT_IF_NEQ(progressOutputLines.size(), 4);
-    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[0],
-        " FailIfOutputAndReferenceFilesNeqMacroTest1 started");
-    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[1],
-        "    Check failed ");
-    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[2],
-        "    Check failed: Hello ");
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[0], " FailIfOutputAndReferenceFilesNeqMacroTest2 started");
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "    Check failed ");
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[2], "    Check failed: Hello ");
     ISHIKO_TEST_FAIL_IF_NOT(canary);
     ISHIKO_TEST_PASS();
 }
 
-void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest2(Test& test)
+void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest3(Test& test)
 {
     bool canary = false;
     TestContext myTestContext;
     myTestContext.setOutputDirectory(test.context().getDataDirectory());
     myTestContext.setReferenceDirectory(test.context().getDataDirectory());
-    Test myTest(TestNumber(), "FailIfOutputAndReferenceFilesNeqMacroTest2",
+    Test myTest(TestNumber(), "FailIfOutputAndReferenceFilesNeqMacroTest3",
         [&canary](Test& test)
-        {
-            ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
-                "ComparisonTestFiles/Hello2.txt");
+    {
+        ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/NotExist",
+            "ComparisonTestFiles/NotHello.txt");
 
-            canary = true;
+        canary = true;
 
-            ISHIKO_TEST_PASS();
-        },
+        ISHIKO_TEST_PASS();
+    },
         myTestContext);
+
+    std::stringstream progressOutput;
+    std::shared_ptr<TestProgressObserver> observer = std::make_shared<TestProgressObserver>(progressOutput);
+    myTest.observers().add(observer);
+
     myTest.run();
 
-    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
+
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_ABORT_IF_NEQ(progressOutputLines.size(), 3);
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[0], " FailIfOutputAndReferenceFilesNeqMacroTest3 started");
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "    Check failed: failed to open output file: ");
+    ISHIKO_TEST_FAIL_IF_NOT(canary);
+    ISHIKO_TEST_PASS();
+}
+
+void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest4(Test& test)
+{
+    bool canary = false;
+    TestContext myTestContext;
+    myTestContext.setOutputDirectory(test.context().getDataDirectory());
+    myTestContext.setReferenceDirectory(test.context().getDataDirectory());
+    Test myTest(TestNumber(), "FailIfOutputAndReferenceFilesNeqMacroTest4",
+        [&canary](Test& test)
+    {
+        ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
+            "ComparisonTestFiles/NotExist");
+
+        canary = true;
+
+        ISHIKO_TEST_PASS();
+    },
+        myTestContext);
+
+    std::stringstream progressOutput;
+    std::shared_ptr<TestProgressObserver> observer = std::make_shared<TestProgressObserver>(progressOutput);
+    myTest.observers().add(observer);
+
+    myTest.run();
+
+    std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
+
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_ABORT_IF_NEQ(progressOutputLines.size(), 3);
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[0], " FailIfOutputAndReferenceFilesNeqMacroTest4 started");
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[1], "    Check failed: failed to open reference file: ");
     ISHIKO_TEST_FAIL_IF_NOT(canary);
     ISHIKO_TEST_PASS();
 }
