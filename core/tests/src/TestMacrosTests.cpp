@@ -396,7 +396,7 @@ void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest1(Test& test)
     TestContext myTestContext;
     myTestContext.setOutputDirectory(test.context().getDataDirectory());
     myTestContext.setReferenceDirectory(test.context().getDataDirectory());
-    Test myTest(TestNumber(), "FailIfFilesNeqMacroTest1",
+    Test myTest(TestNumber(), "FailIfOutputAndReferenceFilesNeqMacroTest1",
         [&canary](Test& test)
         {
             ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
@@ -407,9 +407,23 @@ void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest1(Test& test)
             ISHIKO_TEST_PASS();
         },
         myTestContext);
+
+    std::stringstream progressOutput;
+    std::shared_ptr<TestProgressObserver> observer = std::make_shared<TestProgressObserver>(progressOutput);
+    myTest.observers().add(observer);
+
     myTest.run();
 
+    std::vector<std::string> progressOutputLines = ASCII::GetLines(progressOutput.str());
+
     ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_ABORT_IF_NEQ(progressOutputLines.size(), 4);
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[0],
+        " FailIfOutputAndReferenceFilesNeqMacroTest1 started");
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[1],
+        "    Check failed ");
+    ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(progressOutputLines[2],
+        "    Check failed: Hello ");
     ISHIKO_TEST_FAIL_IF_NOT(canary);
     ISHIKO_TEST_PASS();
 }
@@ -420,7 +434,7 @@ void TestMacrosTests::FailIfOutputAndReferenceFilesNeqMacroTest2(Test& test)
     TestContext myTestContext;
     myTestContext.setOutputDirectory(test.context().getDataDirectory());
     myTestContext.setReferenceDirectory(test.context().getDataDirectory());
-    Test myTest(TestNumber(), "FailIfFilesNeqMacroTest2",
+    Test myTest(TestNumber(), "FailIfOutputAndReferenceFilesNeqMacroTest2",
         [&canary](Test& test)
         {
             ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("ComparisonTestFiles/Hello.txt",
