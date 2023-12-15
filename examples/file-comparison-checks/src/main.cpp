@@ -41,7 +41,7 @@ namespace
     void DifferentFilesTest(Ishiko::Test& test)
     {
         boost::filesystem::path output_path = test.context().getOutputPath("TestFile4.txt");
-        std::ofstream output_file{ output_path.string() };
+        std::ofstream output_file{output_path.string()};
         output_file << "Bye World!" << std::endl;
         output_file.close();
 
