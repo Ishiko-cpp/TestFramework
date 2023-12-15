@@ -30,7 +30,12 @@
 
 #define ISHIKO_TEST_ABORT_IF_STR_EQ(value1, value2) ISHIKO_TEST_ABORT_IF(strcmp(value1, value2) == 0)
 #define ISHIKO_TEST_ABORT_IF_STR_NEQ(value1, value2) ISHIKO_TEST_ABORT_IF(strcmp(value1, value2) != 0)
-#define ISHIKO_TEST_FAIL() test.fail(__FILE__, __LINE__)
+
+#define ISHIKO_TEST_FAIL()                                 \
+    {                                                      \
+        std::string message = "ISHIKO_TEST_FAIL() failed"; \
+        test.fail(message, __FILE__, __LINE__);            \
+    }
 
 // The double negation is needed to cope with classes that have an explicit operator bool
 #define ISHIKO_TEST_FAIL_IF(condition)                                                         \
@@ -65,8 +70,21 @@
         test.fail(message, __FILE__, __LINE__);                                                                   \
     }
 
-#define ISHIKO_TEST_FAIL_IF_STR_EQ(value1, value2) ISHIKO_TEST_FAIL_IF(strcmp(value1, value2) == 0)
-#define ISHIKO_TEST_FAIL_IF_STR_NEQ(value1, value2) ISHIKO_TEST_FAIL_IF(strcmp(value1, value2) != 0)
+#define ISHIKO_TEST_FAIL_IF_STR_EQ(value, reference)                                                                 \
+    if (strcmp(value, reference) == 0)                                                                               \
+    {                                                                                                                \
+        std::string message =                                                                                        \
+            Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_STR_EQ", #value, #reference, value, reference); \
+        test.fail(message, __FILE__, __LINE__);                                                                      \
+    }
+
+#define ISHIKO_TEST_FAIL_IF_STR_NEQ(value, reference)                                                                 \
+    if (strcmp(value, reference) != 0)                                                                                \
+    {                                                                                                                 \
+        std::string message =                                                                                         \
+            Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_STR_NEQ", #value, #reference, value, reference); \
+        test.fail(message, __FILE__, __LINE__);                                                                       \
+    }
 
 #define ISHIKO_TEST_FAIL_IF_NOT_CONTAIN(output, str)                                                            \
     if (std::string(output).find(str) == std::string::npos)                                                     \

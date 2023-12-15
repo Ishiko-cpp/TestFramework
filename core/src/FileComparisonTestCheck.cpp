@@ -63,24 +63,27 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
     #error Unsupported or unrecognized compiler
 #endif
 
-    bool isFileOpen = (outputFile != nullptr);
-    bool isRefFileOpen = (refFile != nullptr);
-
-    if (!isFileOpen || !isRefFileOpen)
+    if (outputFile == nullptr)
+    {
+        if (refFile)
+        {
+            fclose(refFile);
+        }
+        std::string message = "failed to open output file: " + m_outputFilePath.string();
+        test.fail(message, file, line);
+        return;
+    }
+    if (refFile == nullptr)
     {
         if (outputFile)
         {
             fclose(outputFile);
         }
-        if (refFile)
-        {
-            fclose(refFile);
-        }
-
-        // TODO: more info
-        test.fail(file, line);
+        std::string message = "failed to open reference file: " + m_referenceFilePath.string();
+        test.fail(message, file, line);
         return;
     }
+
 
     // We managed to open both file, let's compare them
 
