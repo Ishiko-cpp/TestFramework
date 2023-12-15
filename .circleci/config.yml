@@ -75,8 +75,14 @@ jobs:
       - store_test_results:
           path: /build/test-results/IshikoTestFrameworkCore.xml
       - run:
-          name: "Build Tests"
+          name: "Build tests"
           command: cd /projects/ishiko/cpp/test-framework/build/gnumake && make
+      - run:
+          name: "Build IshikoTestFrameworkBasicChecks example"
+          command: cd /projects/ishiko/cpp/test-framework/examples/basic-checks/build/gnumake && make
+      - run:
+          name: "Build IshikoTestFrameworkFileComparisonChecks example"
+          command: cd /projects/ishiko/cpp/test-framework/examples/file-comparison-checks/build/gnumake && make
 workflows:
   version: 2
   continuous_build:
