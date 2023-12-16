@@ -95,16 +95,16 @@
     }
 
 // TODO: can I avoid the tracking state nightmare here?
-#define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                   \
-    {                                                                                             \
-        Ishiko::DebugHeap::TrackingState trackingState;                                           \
-        trackingState.disableTracking();                                                          \
-        std::shared_ptr<Ishiko::FileComparisonTestCheck> check =                                  \
-            std::make_shared<Ishiko::FileComparisonTestCheck>(                                    \
-                Ishiko::FileComparisonTestCheck::CreateFromContext(test.context(), __VA_ARGS__)); \
-        test.appendCheck(check);                                                                  \
-        trackingState.restore();                                                                  \
-        check->run(test, __FILE__, __LINE__);                                                     \
+#define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                         \
+    {                                                                                                   \
+        Ishiko::DebugHeap::TrackingState trackingState;                                                 \
+        trackingState.disableTracking();                                                                \
+        std::shared_ptr<Ishiko::FileComparisonTestCheck> check =                                        \
+            std::make_shared<Ishiko::FileComparisonTestCheck>(                                          \
+                Ishiko::FileComparisonTestCheck::CreateFromContext(test.context(), __VA_ARGS__, true)); \
+        test.appendCheck(check);                                                                        \
+        trackingState.restore();                                                                        \
+        check->run(test, __FILE__, __LINE__);                                                           \
     }
 
 #define ISHIKO_TEST_PASS() test.pass()

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2007-2022 Xavier Leclercq
+    Copyright (c) 2007-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
@@ -178,7 +178,7 @@ void TestContextTests::GetReferenceDataPathTest1(Test& test)
     TestContext context;
     context.setReferenceDirectory("reference");
 
-    boost::filesystem::path referencePath = context.getReferencePath("file");
+    boost::filesystem::path referencePath = context.getReferencePath("file", false);
 
     ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file");
     ISHIKO_TEST_PASS();

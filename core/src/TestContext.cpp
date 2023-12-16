@@ -76,8 +76,7 @@ void TestContext::setDataDirectory(const boost::filesystem::path& path)
     setDataDirectory("(default)", path);
 }
 
-void TestContext::setDataDirectory(const std::string& id,
-    const boost::filesystem::path& path)
+void TestContext::setDataDirectory(const std::string& id, const boost::filesystem::path& path)
 {
     std::string expandedPath = CurrentEnvironment::ExpandVariablesInString(path.string(),
         CurrentEnvironment::SubstitutionFormat::DollarAndCurlyBrackets);
@@ -119,7 +118,8 @@ boost::filesystem::path TestContext::getReferenceDirectory(const std::string& id
     return result;
 }
 
-boost::filesystem::path TestContext::getReferencePath(const boost::filesystem::path& path) const
+boost::filesystem::path TestContext::getReferencePath(const boost::filesystem::path& path,
+    bool platform_specific_lookup) const
 {
     return getReferenceDirectory() / path;
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2022 Xavier Leclercq
+    Copyright (c) 2016-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
@@ -113,7 +113,7 @@ void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
     path outputPath(
         test.context().getOutputPath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt"));
     path referencePath(
-        test.context().getReferencePath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt"));
+        test.context().getReferencePath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt", false));
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest2",
         executablePath.string().c_str(), 0);
