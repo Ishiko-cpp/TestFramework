@@ -21,10 +21,10 @@ public:
     FileComparisonTestCheck();
     FileComparisonTestCheck(boost::filesystem::path outputFilePath, boost::filesystem::path referenceFilePath);
     static FileComparisonTestCheck CreateFromContext(const TestContext& context,
-        const boost::filesystem::path& outputAndReferenceFilePath, bool platform_specific_lookup);
+        const boost::filesystem::path& outputAndReferenceFilePath, TestContext::PathResolution path_resolution);
     static FileComparisonTestCheck CreateFromContext(const TestContext& context,
         const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath,
-        bool platform_specific_lookup);
+        TestContext::PathResolution path_resolution);
 
     void run(Test& test, const char* file, int line) override;
 

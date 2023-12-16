@@ -18,6 +18,12 @@ namespace Ishiko
 class TestContext
 {
 public:
+    enum class PathResolution
+    {
+        none,
+        platform_specific
+    };
+
     TestContext();
     TestContext(const TestContext* parent);
     ~TestContext() noexcept = default;
@@ -41,7 +47,8 @@ public:
 
     boost::filesystem::path getReferenceDirectory() const;
     boost::filesystem::path getReferenceDirectory(const std::string& id) const;
-    boost::filesystem::path getReferencePath(const boost::filesystem::path& path, bool platform_specific_lookup) const;
+    boost::filesystem::path getReferencePath(const boost::filesystem::path& path,
+        PathResolution path_resolution = PathResolution::none) const;
     // Sets the default reference data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     void setReferenceDirectory(const boost::filesystem::path& path);

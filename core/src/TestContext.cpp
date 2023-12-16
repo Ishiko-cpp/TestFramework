@@ -119,7 +119,7 @@ boost::filesystem::path TestContext::getReferenceDirectory(const std::string& id
 }
 
 boost::filesystem::path TestContext::getReferencePath(const boost::filesystem::path& path,
-    bool platform_specific_lookup) const
+    PathResolution path_resolution) const
 {
     return getReferenceDirectory() / path;
 }

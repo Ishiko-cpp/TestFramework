@@ -178,7 +178,7 @@ void TestContextTests::GetReferenceDataPathTest1(Test& test)
     TestContext context;
     context.setReferenceDirectory("reference");
 
-    boost::filesystem::path referencePath = context.getReferencePath("file", false);
+    boost::filesystem::path referencePath = context.getReferencePath("file");
 
     ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file");
     ISHIKO_TEST_PASS();
