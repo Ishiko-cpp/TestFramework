@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2005-2022 Xavier Leclercq
+    Copyright (c) 2005-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCONTEXT_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCONTEXT_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCONTEXT_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTCONTEXT_HPP
 
 #include <boost/filesystem/path.hpp>
 #include <boost/optional.hpp>
@@ -41,7 +41,7 @@ public:
 
     boost::filesystem::path getReferenceDirectory() const;
     boost::filesystem::path getReferenceDirectory(const std::string& id) const;
-    boost::filesystem::path getReferencePath(const boost::filesystem::path& path) const;
+    boost::filesystem::path getReferencePath(const boost::filesystem::path& path, bool platform_specific_lookup) const;
     // Sets the default reference data directory. The path argument
     // can contain environment variables by using the $(...) notation.
     void setReferenceDirectory(const boost::filesystem::path& path);

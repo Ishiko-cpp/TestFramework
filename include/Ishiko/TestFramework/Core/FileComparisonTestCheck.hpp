@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2022 Xavier Leclercq
+    Copyright (c) 2022-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTESTCHECK_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTESTCHECK_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTESTCHECK_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_FILECOMPARISONTESTCHECK_HPP
 
 #include "TestCheck.hpp"
 #include "TestContext.hpp"
@@ -21,9 +21,10 @@ public:
     FileComparisonTestCheck();
     FileComparisonTestCheck(boost::filesystem::path outputFilePath, boost::filesystem::path referenceFilePath);
     static FileComparisonTestCheck CreateFromContext(const TestContext& context,
-        const boost::filesystem::path& outputAndReferenceFilePath);
+        const boost::filesystem::path& outputAndReferenceFilePath, bool platform_specific_lookup);
     static FileComparisonTestCheck CreateFromContext(const TestContext& context,
-        const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath);
+        const boost::filesystem::path& outputFilePath, const boost::filesystem::path& referenceFilePath,
+        bool platform_specific_lookup);
 
     void run(Test& test, const char* file, int line) override;
 
