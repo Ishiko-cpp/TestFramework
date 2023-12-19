@@ -25,6 +25,7 @@ TestContextTests::TestContextTests(const TestNumber& number, const TestContext& 
     append<HeapAllocationErrorsTest>("getReferenceDataDirectory test 1", GetReferenceDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getReferenceDataDirectory test 2", GetReferenceDataDirectoryTest2);
     append<HeapAllocationErrorsTest>("getReferenceDataPath test 1", GetReferenceDataPathTest1);
+    append<HeapAllocationErrorsTest>("getReferenceDataPath test 2", GetReferenceDataPathTest2);
     append<HeapAllocationErrorsTest>("setReferenceDataDirectory test 1", SetReferenceDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestOutputDirectory test 1", GetTestOutputDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestOutputDirectory test 2", GetTestOutputDirectoryTest2);
@@ -181,6 +182,18 @@ void TestContextTests::GetReferenceDataPathTest1(Test& test)
     boost::filesystem::path referencePath = context.getReferencePath("file");
 
     ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file");
+    ISHIKO_TEST_PASS();
+}
+
+void TestContextTests::GetReferenceDataPathTest2(Test& test)
+{
+    TestContext context;
+    context.setReferenceDirectory("reference");
+
+    boost::filesystem::path referencePath =
+        context.getReferencePath("file", TestContext::PathResolution::platform_specific);
+
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file.windows");
     ISHIKO_TEST_PASS();
 }
 
