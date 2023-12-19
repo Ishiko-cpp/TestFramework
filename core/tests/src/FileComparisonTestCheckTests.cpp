@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2022 Xavier Leclercq
+    Copyright (c) 2022-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
@@ -35,7 +35,8 @@ void FileComparisonTestCheckTests::CreateFromContextTest1(Test& test)
     context.setOutputDirectory("output");
     context.setReferenceDirectory("reference");
     FileComparisonTestCheck fileComparisonCheck =
-        FileComparisonTestCheck::CreateFromContext(context, "outputFilePath", "referenceFilePath");
+        FileComparisonTestCheck::CreateFromContext(context, "outputFilePath", "referenceFilePath",
+            TestContext::PathResolution::none);
 
     ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.result(), TestCheck::Result::failed);
     ISHIKO_TEST_FAIL_IF_NEQ(fileComparisonCheck.outputFilePath(), "output/outputFilePath");
