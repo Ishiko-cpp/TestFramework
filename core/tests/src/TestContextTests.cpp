@@ -181,11 +181,11 @@ void TestContextTests::GetReferenceDataPathTest1(Test& test)
 
     // We set this to "data" and not "reference" because we may check for existence of the file and these files will be
     // put in the test data directory.
-    context.setReferenceDirectory("reference");
+    context.setReferenceDirectory(test.context().getDataDirectory());
 
     boost::filesystem::path referencePath = context.getReferencePath("file");
 
-    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file");
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file");
     ISHIKO_TEST_PASS();
 }
 
@@ -195,17 +195,17 @@ void TestContextTests::GetReferenceDataPathTest2(Test& test)
 
     // We set this to "data" and not "reference" because we may check for existence of the file and these files will be
     // put in the test data directory.
-    context.setReferenceDirectory("data");
+    context.setReferenceDirectory(test.context().getDataDirectory());
 
     boost::filesystem::path referencePath =
         context.getReferencePath("file", TestContext::PathResolution::platform_specific);
 
 #if ISHIKO_OS == ISHIKO_OS_LINUX
-    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "data/file.linux");
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.linux");
 #elif ISHIKO_OS == ISHIKO_OS_WINDOWS
-    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "data/file.windows");
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.windows");
 #elif ISHIKO_OS ISHIKO_OS_CYGWIN
-    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "data/file.cygwin");
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.cygwin");
 #else
     #error Unsupported or unrecognized OS
 #endif
@@ -218,17 +218,17 @@ void TestContextTests::GetReferenceDataPathTest3(Test& test)
 
     // We set this to "data" and not "reference" because we may check for existence of the file and these files will be
     // put in the test data directory.
-    context.setReferenceDirectory("data");
+    context.setReferenceDirectory(test.context().getDataDirectory());
 
     boost::filesystem::path referencePath =
         context.getReferencePath("file.txt", TestContext::PathResolution::platform_specific);
 
 #if ISHIKO_OS == ISHIKO_OS_LINUX
-    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "data/file.linux.txt");
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.linux.txt");
 #elif ISHIKO_OS == ISHIKO_OS_WINDOWS
-    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "data/file.windows.txt");
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.windows.txt");
 #elif ISHIKO_OS ISHIKO_OS_CYGWIN
-    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "data/file.cygwin.txt");
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.cygwin.txt");
 #else
     #error Unsupported or unrecognized OS
 #endif
