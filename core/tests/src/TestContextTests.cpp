@@ -27,6 +27,8 @@ TestContextTests::TestContextTests(const TestNumber& number, const TestContext& 
     append<HeapAllocationErrorsTest>("getReferenceDataPath test 1", GetReferenceDataPathTest1);
     append<HeapAllocationErrorsTest>("getReferenceDataPath test 2", GetReferenceDataPathTest2);
     append<HeapAllocationErrorsTest>("getReferenceDataPath test 3", GetReferenceDataPathTest3);
+    append<HeapAllocationErrorsTest>("getReferenceDataPath test 4", GetReferenceDataPathTest4);
+    append<HeapAllocationErrorsTest>("getReferenceDataPath test 5", GetReferenceDataPathTest5);
     append<HeapAllocationErrorsTest>("setReferenceDataDirectory test 1", SetReferenceDataDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestOutputDirectory test 1", GetTestOutputDirectoryTest1);
     append<HeapAllocationErrorsTest>("getTestOutputDirectory test 2", GetTestOutputDirectoryTest2);
@@ -229,6 +231,44 @@ void TestContextTests::GetReferenceDataPathTest3(Test& test)
     ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.windows.txt");
 #elif ISHIKO_OS ISHIKO_OS_CYGWIN
     ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file.cygwin.txt");
+#else
+    #error Unsupported or unrecognized OS
+#endif
+    ISHIKO_TEST_PASS();
+}
+
+void TestContextTests::GetReferenceDataPathTest4(Test& test)
+{
+    TestContext context;
+
+    // We set this to "data" and not "reference" because we may check for existence of the file and these files will be
+    // put in the test data directory.
+    context.setReferenceDirectory(test.context().getDataDirectory());
+
+    boost::filesystem::path referencePath =
+        context.getReferencePath("generic_file", TestContext::PathResolution::platform_specific);
+
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/generic_file");
+    ISHIKO_TEST_PASS();
+}
+
+void TestContextTests::GetReferenceDataPathTest5(Test& test)
+{
+    TestContext context;
+
+    // We set this to "data" and not "reference" because we may check for existence of the file and these files will be
+    // put in the test data directory.
+    context.setReferenceDirectory(test.context().getDataDirectory());
+
+    boost::filesystem::path referencePath =
+        context.getReferencePath("file2.txt", TestContext::PathResolution::platform_specific);
+
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file2.unix.txt");
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file2.windows.txt");
+#elif ISHIKO_OS ISHIKO_OS_CYGWIN
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "../../data/file2.unix.txt");
 #else
     #error Unsupported or unrecognized OS
 #endif

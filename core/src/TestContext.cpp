@@ -129,19 +129,41 @@ boost::filesystem::path TestContext::getReferencePath(const boost::filesystem::p
     }
     else
     {
+        const std::string& os_family = OS::Family();
         boost::filesystem::path platform_specific_path = path;
         if (platform_specific_path.has_extension())
         {
-            platform_specific_path.replace_extension(OS::Family() + platform_specific_path.extension().string());
+            platform_specific_path.replace_extension(os_family + platform_specific_path.extension().string());
         }
         else
         {
-            platform_specific_path.replace_extension(OS::Family());
+            platform_specific_path.replace_extension(os_family);
         }
         boost::filesystem::path proposed_reference_path = getReferenceDirectory() / platform_specific_path;
         if (!FileSystem::Exists(proposed_reference_path))
         {
-            proposed_reference_path = getReferenceDirectory() / path;
+            // TODO: make this more generic
+            if ((os_family == "linux") || (os_family == "cygwin"))
+            {
+                boost::filesystem::path platform_specific_path = path;
+                if (platform_specific_path.has_extension())
+                {
+                    platform_specific_path.replace_extension("unix" + platform_specific_path.extension().string());
+                }
+                else
+                {
+                    platform_specific_path.replace_extension("unix");
+                }
+                proposed_reference_path = getReferenceDirectory() / platform_specific_path;
+                if (!FileSystem::Exists(proposed_reference_path))
+                {
+                    proposed_reference_path = getReferenceDirectory() / path;
+                }
+            }
+            else
+            {
+                proposed_reference_path = getReferenceDirectory() / path;
+            }
         }
         return proposed_reference_path;
     }
