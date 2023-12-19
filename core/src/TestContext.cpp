@@ -8,6 +8,7 @@
 #include "TestException.hpp"
 #include "TestFrameworkErrorCategory.hpp"
 #include <Ishiko/BasePlatform.hpp>
+#include <Ishiko/FileSystem.hpp>
 #include <Ishiko/Process.hpp>
 
 namespace Ishiko
@@ -131,13 +132,18 @@ boost::filesystem::path TestContext::getReferencePath(const boost::filesystem::p
         boost::filesystem::path platform_specific_path = path;
         if (platform_specific_path.has_extension())
         {
-            platform_specific_path.replace_extension(OS::Family() + "." + platform_specific_path.extension().string());
+            platform_specific_path.replace_extension(OS::Family() + platform_specific_path.extension().string());
         }
         else
         {
             platform_specific_path.replace_extension(OS::Family());
         }
-        return getReferenceDirectory() / platform_specific_path;
+        boost::filesystem::path proposed_reference_path = getReferenceDirectory() / platform_specific_path;
+        if (!FileSystem::Exists(proposed_reference_path))
+        {
+            proposed_reference_path = getReferenceDirectory() / path;
+        }
+        return proposed_reference_path;
     }
 }
 
