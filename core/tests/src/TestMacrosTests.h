@@ -36,6 +36,7 @@ private:
     static void FailIfOutputAndReferenceFilesNeqMacroTest3(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest4(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest5(Ishiko::Test& test);
+    static void FailIfOutputAndReferenceFilesNeqMacroTest6(Ishiko::Test& test);
     static void AbortMacroTest1(Ishiko::Test& test);
     static void AbortIfMacroTest1(Ishiko::Test& test);
     static void AbortIfMacroTest2(Ishiko::Test& test);
