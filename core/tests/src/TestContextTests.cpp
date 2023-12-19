@@ -193,7 +193,15 @@ void TestContextTests::GetReferenceDataPathTest2(Test& test)
     boost::filesystem::path referencePath =
         context.getReferencePath("file", TestContext::PathResolution::platform_specific);
 
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file.linux");
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
     ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file.windows");
+#elif ISHIKO_OS ISHIKO_OS_CYGWIN
+    ISHIKO_TEST_FAIL_IF_NEQ(referencePath, "reference/file.cygwin");
+#else
+    #error Unsupported or unrecognized OS
+#endif
     ISHIKO_TEST_PASS();
 }
 
