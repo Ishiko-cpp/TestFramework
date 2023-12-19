@@ -113,7 +113,7 @@ void ConsoleApplicationTestTests::RunFailureTest2(Test& test)
     path outputPath(
         test.context().getOutputPath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt"));
     path referencePath(
-        test.context().getReferencePath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt", false));
+        test.context().getReferencePath("ConsoleApplicationTestTests/ConsoleApplicationTestRunFailureTest2.txt"));
 
     ConsoleApplicationTest applicationTest(TestNumber(), "ConsoleApplicationTestRunFailureTest2",
         executablePath.string().c_str(), 0);

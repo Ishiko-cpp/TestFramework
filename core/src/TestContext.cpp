@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2005-2022 Xavier Leclercq
+    Copyright (c) 2005-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
@@ -7,6 +7,8 @@
 #include "TestContext.hpp"
 #include "TestException.hpp"
 #include "TestFrameworkErrorCategory.hpp"
+#include <Ishiko/BasePlatform.hpp>
+#include <Ishiko/FileSystem.hpp>
 #include <Ishiko/Process.hpp>
 
 namespace Ishiko
@@ -119,9 +121,52 @@ boost::filesystem::path TestContext::getReferenceDirectory(const std::string& id
 }
 
 boost::filesystem::path TestContext::getReferencePath(const boost::filesystem::path& path,
-    bool platform_specific_lookup) const
+    PathResolution path_resolution) const
 {
-    return getReferenceDirectory() / path;
+    if (path_resolution == PathResolution::none)
+    {
+        return getReferenceDirectory() / path;
+    }
+    else
+    {
+        const std::string& os_family = OS::Family();
+        boost::filesystem::path platform_specific_path = path;
+        if (platform_specific_path.has_extension())
+        {
+            platform_specific_path.replace_extension(os_family + platform_specific_path.extension().string());
+        }
+        else
+        {
+            platform_specific_path.replace_extension(os_family);
+        }
+        boost::filesystem::path proposed_reference_path = getReferenceDirectory() / platform_specific_path;
+        if (!FileSystem::Exists(proposed_reference_path))
+        {
+            // TODO: make this more generic
+            if ((os_family == "linux") || (os_family == "cygwin"))
+            {
+                boost::filesystem::path platform_specific_path = path;
+                if (platform_specific_path.has_extension())
+                {
+                    platform_specific_path.replace_extension("unix" + platform_specific_path.extension().string());
+                }
+                else
+                {
+                    platform_specific_path.replace_extension("unix");
+                }
+                proposed_reference_path = getReferenceDirectory() / platform_specific_path;
+                if (!FileSystem::Exists(proposed_reference_path))
+                {
+                    proposed_reference_path = getReferenceDirectory() / path;
+                }
+            }
+            else
+            {
+                proposed_reference_path = getReferenceDirectory() / path;
+            }
+        }
+        return proposed_reference_path;
+    }
 }
 
 void TestContext::setReferenceDirectory(const boost::filesystem::path& path)

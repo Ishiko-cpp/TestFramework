@@ -1,11 +1,11 @@
 /*
-    Copyright (c) 2007-2022 Xavier Leclercq
+    Copyright (c) 2007-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
 */
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTS_TESTCONTEXTTESTS_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTS_TESTCONTEXTTESTS_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTS_TESTCONTEXTTESTS_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTS_TESTCONTEXTTESTS_HPP
 
 #include <Ishiko/TestFramework/Core.hpp>
 
@@ -28,6 +28,10 @@ private:
     static void GetReferenceDataDirectoryTest1(Ishiko::Test& test);
     static void GetReferenceDataDirectoryTest2(Ishiko::Test& test);
     static void GetReferenceDataPathTest1(Ishiko::Test& test);
+    static void GetReferenceDataPathTest2(Ishiko::Test& test);
+    static void GetReferenceDataPathTest3(Ishiko::Test& test);
+    static void GetReferenceDataPathTest4(Ishiko::Test& test);
+    static void GetReferenceDataPathTest5(Ishiko::Test& test);
     static void SetReferenceDataDirectoryTest1(Ishiko::Test& test);
     static void GetTestOutputDirectoryTest1(Ishiko::Test& test);
     static void GetTestOutputDirectoryTest2(Ishiko::Test& test);
