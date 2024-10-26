@@ -2,73 +2,73 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ishiko/gcc-ishiko-cpp-build-prerequisites:0.3.0
+      - image: ishiko/gcc-ishiko-cpp-build-prerequisites:0.6.0
     steps:
       - run: 
           name: "Set ISHIKO_CPP_ROOT environment variable and create workspace directory"
-          command: mkdir -p /projects/ishiko/cpp && echo 'export ISHIKO_CPP_ROOT="/projects/ishiko/cpp"' >> $BASH_ENV
+          command: mkdir -p /workspace/projects/ishiko/cpp && echo 'export ISHIKO_CPP_ROOT="/workspace/projects/ishiko/cpp"' >> $BASH_ENV
       - run:
           name: "Install build dependency: Ishiko/C++ BasePlatform"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/base-platform.git && cd base-platform/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/base-platform.git && cd base-platform/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Errors"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/errors.git && cd errors/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/errors.git && cd errors/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Memory"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/memory.git && cd memory/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/memory.git && cd memory/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Types"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/types.git && cd types/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/types.git && cd types/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Collections"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/collections.git && cd collections/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/collections.git && cd collections/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Time"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/time.git && cd time/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/time.git && cd time/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Text"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/text.git && cd text/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/text.git && cd text/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Process"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/process.git && cd process/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/process.git && cd process/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ IO"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/io.git && cd io/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/io.git && cd io/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ FileSystem"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/filesystem.git && cd filesystem/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/filesystem.git && cd filesystem/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ XML"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/xml.git && cd xml/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/xml.git && cd xml/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Diff"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/diff.git && cd diff/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/diff.git && cd diff/build/gnumake && make
       - run:
           name: "Install build dependency: Ishiko/C++ Configuration"
-          command: cd /projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/configuration.git && cd configuration/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/configuration.git && cd configuration/build/gnumake && make
       - checkout:
           path: /projects/ishiko/cpp/test-framework
       - run:
           name: "Build TestFramework/Core"
-          command: cd /projects/ishiko/cpp/test-framework/core/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/core/build/gnumake && make
       - run:
           name: Test build
-          command: cd /projects/ishiko/cpp/test-framework/core/tests/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/core/tests/build/gnumake && make
       - run:
           name: Build ExitCodeTestHelper
-          command: cd /projects/ishiko/cpp/test-framework/core/tests/exitcodetesthelper/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/core/tests/exitcodetesthelper/build/gnumake && make
       - run:
           name: Build PermanentAppTestHelper
-          command: cd /projects/ishiko/cpp/test-framework/core/tests/permanentapptesthelper/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/core/tests/permanentapptesthelper/build/gnumake && make
       - run:
           name: Build StandardOutputTestHelper
-          command: cd /projects/ishiko/cpp/test-framework/core/tests/standardoutputtesthelper/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/core/tests/standardoutputtesthelper/build/gnumake && make
       - run:
           name: Build WriteFileTestHelper
-          command: cd /projects/ishiko/cpp/test-framework/core/tests/writefiletesthelper/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/core/tests/writefiletesthelper/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /projects/ishiko/cpp/test-framework/core/tests/build/gnumake && ./IshikoTestFrameworkCoreTests --junit-xml-test-report=/build/test-results/IshikoTestFrameworkCore.xml
+          command: cd /workspace/projects/ishiko/cpp/test-framework/core/tests/build/gnumake && ./IshikoTestFrameworkCoreTests --junit-xml-test-report=/build/test-results/IshikoTestFrameworkCore.xml
       - store_artifacts:
           path: /build/test-results/IshikoTestFrameworkCore.xml
           destination: IshikoTestFrameworkCore-test-results.xml
@@ -76,13 +76,13 @@ jobs:
           path: /build/test-results/IshikoTestFrameworkCore.xml
       - run:
           name: "Build tests"
-          command: cd /projects/ishiko/cpp/test-framework/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/build/gnumake && make
       - run:
           name: "Build IshikoTestFrameworkBasicChecks example"
-          command: cd /projects/ishiko/cpp/test-framework/examples/basic-checks/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/examples/basic-checks/build/gnumake && make
       - run:
           name: "Build IshikoTestFrameworkFileComparisonChecks example"
-          command: cd /projects/ishiko/cpp/test-framework/examples/file-comparison-checks/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/examples/file-comparison-checks/build/gnumake && make
 workflows:
   version: 2
   continuous_build:
