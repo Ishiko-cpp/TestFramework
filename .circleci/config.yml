@@ -76,7 +76,7 @@ jobs:
           path: /build/test-results/IshikoTestFrameworkCore.xml
       - run:
           name: "Build tests"
-          command: cd /workspace/projects/ishiko/cpp/test-framework/build/gnumake && make
+          command: cd /workspace/projects/ishiko/cpp/test-framework/build-files/gnumake && make
       - run:
           name: "Build IshikoTestFrameworkBasicChecks example"
           command: cd /workspace/projects/ishiko/cpp/test-framework/examples/basic-checks/build/gnumake && make
