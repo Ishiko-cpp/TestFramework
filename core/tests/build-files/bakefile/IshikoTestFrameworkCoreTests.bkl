@@ -1,0 +1,66 @@
+ishikopath = envvar("ISHIKO_CPP_ROOT");
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework/Core.bkl;
+
+toolsets = gnu vs2022 vs2019 vs2017 vs2015;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/IshikoTestFrameworkCoreTests.sln;
+vs2019.solutionfile = ../vc16/IshikoTestFrameworkCoreTests.sln;
+vs2017.solutionfile = ../vc15/IshikoTestFrameworkCoreTests.sln;
+vs2015.solutionfile = ../vc14/IshikoTestFrameworkCoreTests.sln;
+
+program IshikoTestFrameworkCoreTests : IshikoTestFrameworkCore
+{
+    archs = x86 x86_64;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
+        libs += fmt boost_filesystem;
+    }
+
+    headers
+    {
+        ../../src/DirectoryComparisonTestCheckTests.hpp
+        ../../src/FileComparisonTestCheckTests.hpp
+        ../../src/JUnitXMLWriterTests.hpp
+        ../../src/TestContextTests.hpp
+        ../../src/TestHarnessTests.hpp
+        ../../src/TestNumberTests.hpp
+        ../../src/TestTests.hpp
+        ../../src/TestMacrosTests.h
+        ../../src/TestMacrosFormatterTests.h
+        ../../src/TestSequenceTests.h
+        ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.h
+        ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.h
+        ../../src/TestSetupActionsTests/ProcessActionTests.h
+        ../../src/TestSetupActionsTests/TestSetupActionsTests.h
+        ../../src/TestTeardownActionsTests/TestTeardownActionsTests.h
+        ../../src/TestTeardownActionsTests/DirectoriesTeardownActionTests.h
+        ../../src/TestTeardownActionsTests/FilesTeardownActionTests.h
+    }
+
+    sources
+    {
+        ../../src/DirectoryComparisonTestCheckTests.cpp
+        ../../src/FileComparisonTestCheckTests.cpp
+        ../../src/JUnitXMLWriterTests.cpp
+        ../../src/main.cpp
+        ../../src/TestContextTests.cpp
+        ../../src/TestHarnessTests.cpp
+        ../../src/TestNumberTests.cpp
+        ../../src/TestTests.cpp
+        ../../src/TestMacrosTests.cpp
+        ../../src/TestMacrosFormatterTests.cpp
+        ../../src/TestSequenceTests.cpp
+
+        ../../src/ConsoleApplicationTestTests/ConsoleApplicationTestTests.cpp
+        ../../src/HeapAllocationErrorsTestTests/HeapAllocationErrorsTestTests.cpp
+        ../../src/TestSetupActionsTests/ProcessActionTests.cpp
+        ../../src/TestSetupActionsTests/TestSetupActionsTests.cpp
+        ../../src/TestTeardownActionsTests/TestTeardownActionsTests.cpp
+        ../../src/TestTeardownActionsTests/DirectoriesTeardownActionTests.cpp
+        ../../src/TestTeardownActionsTests/FilesTeardownActionTests.cpp
+    }
+}
