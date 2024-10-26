@@ -47,7 +47,7 @@ jobs:
           name: "Install build dependency: Ishiko/C++ Configuration"
           command: cd /workspace/projects/ishiko/cpp && git clone https://github.com/ishiko-cpp/configuration.git && cd configuration/build-files/gnumake && make
       - checkout:
-          path: /projects/ishiko/cpp/test-framework
+          path: /workspace/projects/ishiko/cpp/test-framework
       - run:
           name: "Build TestFramework/Core"
           command: cd /workspace/projects/ishiko/cpp/test-framework/core/build/gnumake && make
