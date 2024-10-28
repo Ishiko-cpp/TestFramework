@@ -4,6 +4,7 @@
 #include "TestMacrosTests.h"
 #include "Ishiko/TestFramework/Core/TestMacros.hpp"
 #include <Ishiko/TestFramework/Core/TestProgressObserver.hpp>
+#include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/Text.hpp>
 #include <sstream>
 
@@ -445,6 +446,10 @@ void TestMacrosTests::FailIfHeapAllocationCountNeqTest2(Test& test)
 
 void TestMacrosTests::FailIfHeapAllocationCountNeqTest3(Test& test)
 {
+#if !((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
+    ISHIKO_TEST_SKIP();
+#endif
+
     bool canary = false;
     Test myTest(TestNumber(), "FailIfHeapAllocationCountNeqTest3",
         [&canary](Test& test)
