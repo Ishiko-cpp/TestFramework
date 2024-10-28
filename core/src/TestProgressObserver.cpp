@@ -117,7 +117,7 @@ string TestProgressObserver::formatResult(const TestResult& result)
         formattedResult = "passed";
         break;
 
-    case TestResult::passedButMemoryLeaks:
+    case TestResult::passed_but_memory_leaks:
         formattedResult = "MEMORY LEAK DETECTED";
         break;
 

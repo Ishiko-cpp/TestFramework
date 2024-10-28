@@ -22,7 +22,7 @@ std::string ToString(TestResult result)
         str = "passed";
         break;
 
-    case TestResult::passedButMemoryLeaks:
+    case TestResult::passed_but_memory_leaks:
         str = "memory leak detected";
         break;
 

@@ -158,7 +158,7 @@ void TestSequence::doRun()
                 result = newResult;
             }
         }
-        else if (result == TestResult::passedButMemoryLeaks)
+        else if (result == TestResult::passed_but_memory_leaks)
         {
             // It can only stay at this state if the test is passed or ePassedButMemoryLeaks.
             if ((newResult == TestResult::failed) ||

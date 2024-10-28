@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2006-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "Test.hpp"
 #include "TestSequence.hpp"
@@ -210,7 +207,7 @@ void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryL
             passed = 1;
             break;
 
-        case TestResult::passedButMemoryLeaks:
+        case TestResult::passed_but_memory_leaks:
             passedButMemoryLeaks = 1;
             break;
 
@@ -334,7 +331,7 @@ void Test::run()
     if (m_memoryLeakCheck && (heapStateBefore.allocatedSize() != heapStateAfter.allocatedSize())
         && (m_result == TestResult::passed))
     {
-        m_result = TestResult::passedButMemoryLeaks;
+        m_result = TestResult::passed_but_memory_leaks;
     }
 
     teardown();
