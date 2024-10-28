@@ -7,6 +7,7 @@
 #include "DebugHeap.hpp"
 #include "Test.hpp"
 #include "TestMacrosFormatter.hpp"
+#include <Ishiko/BasePlatform.hpp>
 #include <string>
 
 // TODO: all macros need to follow the scheme where they print the data
@@ -91,6 +92,7 @@
         test.fail(message, __FILE__, __LINE__);                                                                 \
     }
 
+#if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
 #define ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(reference)                                                         \
     if (test.allocationCount() != (reference))                                                                           \
     {                                                                                                                    \
@@ -98,6 +100,9 @@
             Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ", #reference, reference); \
         test.fail(message, __FILE__, __LINE__);                                                                          \
     }
+#else
+#define ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(reference)
+#endif
 
 // TODO: can I avoid the tracking state nightmare here?
 #define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                 \
