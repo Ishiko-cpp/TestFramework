@@ -1,12 +1,10 @@
-/*
-    Copyright (c) 2005-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP
 
+#include "DebugHeap.hpp"
 #include "JUnitXMLWriter.hpp"
 #include "TestCheck.hpp"
 #include "TestContext.hpp"
@@ -32,15 +30,15 @@ public:
     class Observer
     {
     public:
-        enum EEventType
+        enum EventType
         {
-            eTestStart,
-            eTestEnd
+            test_start,
+            test_end
         };
 
         virtual ~Observer() noexcept = default;
 
-        virtual void onLifecycleEvent(const Test& source, EEventType type);
+        virtual void onLifecycleEvent(const Test& source, EventType type);
         virtual void onCheckFailed(const Test& source, const std::string& message, const char* file, int line);
         virtual void onExceptionThrown(const Test& source, std::exception_ptr exception);
     };
@@ -51,7 +49,7 @@ public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
 
-        void notifyLifecycleEvent(const Test& source, Observer::EEventType type);
+        void notifyLifecycleEvent(const Test& source, Observer::EventType type);
         void notifyCheckFailed(const Test& source, const std::string& message, const char* file, int line);
         void notifyExceptionThrown(const Test& source, std::exception_ptr exception);
 
@@ -95,6 +93,8 @@ public:
 
     void appendCheck(std::shared_ptr<TestCheck> check);
 
+    size_t allocationCount() const;
+
     const TestContext& context() const;
     TestContext& context();
 
@@ -113,7 +113,7 @@ protected:
     virtual void setup();
     virtual void doRun();
     virtual void teardown();
-    virtual void notify(Observer::EEventType type);
+    virtual void notify(Observer::EventType type);
     
 private:
     class AbortException
@@ -128,6 +128,7 @@ private:
     bool m_memoryLeakCheck;
     SystemTime m_executionStartTime;
     SystemTime m_executionEndTime;
+    DebugHeap::HeapState m_initial_heap_state;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
     Observers m_observers;

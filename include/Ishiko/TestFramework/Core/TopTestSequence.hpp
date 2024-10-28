@@ -19,7 +19,7 @@ public:
     TopTestSequence(const std::string& name, const TestContext& context);
 
 protected:
-    void notify(Observer::EEventType type) override;
+    void notify(Observer::EventType type) override;
 };
 
 }

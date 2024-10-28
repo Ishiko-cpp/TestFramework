@@ -20,7 +20,7 @@ TopTestSequence::TopTestSequence(const std::string& name,
 {
 }
 
-void TopTestSequence::notify(Observer::EEventType type)
+void TopTestSequence::notify(Observer::EventType type)
 {
     // Do nothing because the top level sequence is a 
     // sequence hidden to the user and used by the test 

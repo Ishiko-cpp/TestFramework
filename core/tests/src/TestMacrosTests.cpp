@@ -1,12 +1,10 @@
-/*
-    Copyright (c) 2019-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "TestMacrosTests.h"
 #include "Ishiko/TestFramework/Core/TestMacros.hpp"
 #include <Ishiko/TestFramework/Core/TestProgressObserver.hpp>
+#include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/Text.hpp>
 #include <sstream>
 
@@ -31,6 +29,12 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestContext& co
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_STR_NEQ test 2", FailIfStrNeqMacroTest2);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_NOT_CONTAIN test 1", FailIfNotContainMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_NOT_CONTAIN test 2", FailIfNotContainMacroTest2);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ test 1",
+        FailIfHeapAllocationCountNeqTest1);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ test 2",
+        FailIfHeapAllocationCountNeqTest2);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ test 3",
+        FailIfHeapAllocationCountNeqTest3);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 1",
         FailIfOutputAndReferenceFilesNeqMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 2",
@@ -391,6 +395,75 @@ void TestMacrosTests::FailIfNotContainMacroTest2(Test& test)
 
         ISHIKO_TEST_PASS();
     });
+    myTest.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
+    ISHIKO_TEST_FAIL_IF_NOT(canary);
+    ISHIKO_TEST_PASS();
+}
+
+void TestMacrosTests::FailIfHeapAllocationCountNeqTest1(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfHeapAllocationCountNeqTest1",
+        [&canary](Test& test)
+        {
+            ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(0);
+
+            canary = true;
+
+            ISHIKO_TEST_PASS();
+        });
+    myTest.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_FAIL_IF_NOT(canary);
+    ISHIKO_TEST_PASS();
+}
+
+void TestMacrosTests::FailIfHeapAllocationCountNeqTest2(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfHeapAllocationCountNeqTest2",
+        [&canary](Test& test)
+        {
+            int* allocation = new int(0);
+
+            ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(1);
+
+            delete allocation;
+
+            canary = true;
+
+            ISHIKO_TEST_PASS();
+        });
+    myTest.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_FAIL_IF_NOT(canary);
+    ISHIKO_TEST_PASS();
+}
+
+void TestMacrosTests::FailIfHeapAllocationCountNeqTest3(Test& test)
+{
+#if !((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
+    ISHIKO_TEST_SKIP();
+#endif
+
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfHeapAllocationCountNeqTest3",
+        [&canary](Test& test)
+        {
+            int* allocation = new int(0);
+
+            ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(0);
+
+            delete allocation;
+
+            canary = true;
+
+            ISHIKO_TEST_PASS();
+        });
     myTest.run();
 
     ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);

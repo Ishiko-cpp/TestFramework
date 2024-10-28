@@ -32,17 +32,17 @@ TestProgressObserver::TestProgressObserver(ostream& output)
 {
 }
 
-void TestProgressObserver::onLifecycleEvent(const Test& source, EEventType type)
+void TestProgressObserver::onLifecycleEvent(const Test& source, EventType type)
 {
     switch (type)
     {
-    case eTestStart:
+    case test_start:
         WriteNesting(m_nestingLevel, m_output);
         m_output << formatNumber(source.number()) << " " << source.name() << " started" << endl;
         ++m_nestingLevel;
         break;
 
-    case eTestEnd:
+    case test_end:
         if (m_nestingLevel > 0)
         {
             --m_nestingLevel;
@@ -117,7 +117,7 @@ string TestProgressObserver::formatResult(const TestResult& result)
         formattedResult = "passed";
         break;
 
-    case TestResult::passedButMemoryLeaks:
+    case TestResult::passed_but_memory_leaks:
         formattedResult = "MEMORY LEAK DETECTED";
         break;
 

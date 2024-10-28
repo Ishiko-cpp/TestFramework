@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2021-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP
 #define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP
@@ -10,6 +7,7 @@
 #include "DebugHeap.hpp"
 #include "Test.hpp"
 #include "TestMacrosFormatter.hpp"
+#include <Ishiko/BasePlatform.hpp>
 #include <string>
 
 // TODO: all macros need to follow the scheme where they print the data
@@ -93,6 +91,18 @@
             Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_NOT_CONTAIN", #output, #str, output, str); \
         test.fail(message, __FILE__, __LINE__);                                                                 \
     }
+
+#if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
+#define ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(reference)                                                         \
+    if (test.allocationCount() != (reference))                                                                           \
+    {                                                                                                                    \
+        std::string message =                                                                                            \
+            Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ", #reference, reference); \
+        test.fail(message, __FILE__, __LINE__);                                                                          \
+    }
+#else
+#define ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(reference)
+#endif
 
 // TODO: can I avoid the tracking state nightmare here?
 #define ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(...)                                 \
