@@ -16,6 +16,7 @@ namespace Ishiko
         {
         public:
             HeapState();
+            HeapState(const HeapState& other) noexcept;
 
             size_t allocationCount() const;
             size_t allocatedSize() const;

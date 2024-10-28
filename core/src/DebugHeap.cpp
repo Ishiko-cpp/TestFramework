@@ -21,6 +21,11 @@ Ishiko::DebugHeap::HeapState::HeapState()
 #endif
 }
 
+Ishiko::DebugHeap::HeapState::HeapState(const HeapState& other) noexcept
+    : m_allocation_count(other.m_allocation_count), m_allocated_size(other.m_allocated_size)
+{
+}
+
 size_t Ishiko::DebugHeap::HeapState::allocationCount() const
 {
     return m_allocation_count;

@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2021-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP
 #define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROS_HPP
@@ -92,6 +89,14 @@
         std::string message =                                                                                   \
             Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_NOT_CONTAIN", #output, #str, output, str); \
         test.fail(message, __FILE__, __LINE__);                                                                 \
+    }
+
+#define ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(reference)                                                         \
+    if (test.allocationCount() != (reference))                                                                           \
+    {                                                                                                                    \
+        std::string message =                                                                                            \
+            Ishiko::TestMacrosFormatter::Format("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ", #reference, reference); \
+        test.fail(message, __FILE__, __LINE__);                                                                          \
     }
 
 // TODO: can I avoid the tracking state nightmare here?

@@ -3,7 +3,6 @@
 
 #include "Test.hpp"
 #include "TestSequence.hpp"
-#include "DebugHeap.hpp"
 #include <boost/filesystem/operations.hpp>
 #include <boost/range/algorithm.hpp>
 
@@ -287,6 +286,11 @@ void Test::appendCheck(std::shared_ptr<TestCheck> check)
     m_checks.push_back(check);
 }
 
+size_t Test::allocationCount() const
+{
+    return (DebugHeap::HeapState().allocationCount() - m_initial_heap_state.allocationCount());
+}
+
 const TestContext& Test::context() const
 {
     return m_context;
@@ -304,7 +308,7 @@ void Test::run()
 
     setup();
 
-    DebugHeap::HeapState heapStateBefore;
+    m_initial_heap_state = DebugHeap::HeapState();
 
     try
     {
@@ -328,7 +332,7 @@ void Test::run()
 
     DebugHeap::HeapState heapStateAfter;
 
-    if (m_memoryLeakCheck && (heapStateBefore.allocatedSize() != heapStateAfter.allocatedSize())
+    if (m_memoryLeakCheck && (m_initial_heap_state.allocatedSize() != heapStateAfter.allocatedSize())
         && (m_result == TestResult::passed))
     {
         m_result = TestResult::passed_but_memory_leaks;

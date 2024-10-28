@@ -1,11 +1,8 @@
-/*
-    Copyright (c) 2021-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROSFORMATTER_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROSFORMATTER_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROSFORMATTER_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTMACROSFORMATTER_HPP
 
 #include <string>
 #include <type_traits>

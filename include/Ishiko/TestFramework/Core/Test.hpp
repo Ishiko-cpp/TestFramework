@@ -4,6 +4,7 @@
 #ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP
 #define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TEST_HPP
 
+#include "DebugHeap.hpp"
 #include "JUnitXMLWriter.hpp"
 #include "TestCheck.hpp"
 #include "TestContext.hpp"
@@ -92,6 +93,8 @@ public:
 
     void appendCheck(std::shared_ptr<TestCheck> check);
 
+    size_t allocationCount() const;
+
     const TestContext& context() const;
     TestContext& context();
 
@@ -125,6 +128,7 @@ private:
     bool m_memoryLeakCheck;
     SystemTime m_executionStartTime;
     SystemTime m_executionEndTime;
+    DebugHeap::HeapState m_initial_heap_state;
     std::vector<std::shared_ptr<TestSetupAction>> m_setupActions;
     std::vector<std::shared_ptr<TestTeardownAction>> m_teardownActions;
     Observers m_observers;
