@@ -32,6 +32,8 @@ TestMacrosTests::TestMacrosTests(const TestNumber& number, const TestContext& co
         FailIfHeapAllocationCountNeqTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ test 2",
         FailIfHeapAllocationCountNeqTest2);
+    append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ test 3",
+        FailIfHeapAllocationCountNeqTest3);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 1",
         FailIfOutputAndReferenceFilesNeqMacroTest1);
     append<HeapAllocationErrorsTest>("ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ test 2",
@@ -437,6 +439,29 @@ void TestMacrosTests::FailIfHeapAllocationCountNeqTest2(Test& test)
     myTest.run();
 
     ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::passed);
+    ISHIKO_TEST_FAIL_IF_NOT(canary);
+    ISHIKO_TEST_PASS();
+}
+
+void TestMacrosTests::FailIfHeapAllocationCountNeqTest3(Test& test)
+{
+    bool canary = false;
+    Test myTest(TestNumber(), "FailIfHeapAllocationCountNeqTest3",
+        [&canary](Test& test)
+        {
+            int* allocation = new int(0);
+
+            ISHIKO_TEST_FAIL_IF_HEAP_ALLOCATION_COUNT_NEQ(0);
+
+            delete allocation;
+
+            canary = true;
+
+            ISHIKO_TEST_PASS();
+        });
+    myTest.run();
+
+    ISHIKO_TEST_FAIL_IF_NEQ(myTest.result(), TestResult::failed);
     ISHIKO_TEST_FAIL_IF_NOT(canary);
     ISHIKO_TEST_PASS();
 }

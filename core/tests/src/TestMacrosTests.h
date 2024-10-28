@@ -30,6 +30,7 @@ private:
     static void FailIfNotContainMacroTest2(Ishiko::Test& test);
     static void FailIfHeapAllocationCountNeqTest1(Ishiko::Test& test);
     static void FailIfHeapAllocationCountNeqTest2(Ishiko::Test& test);
+    static void FailIfHeapAllocationCountNeqTest3(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest1(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest2(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest3(Ishiko::Test& test);
