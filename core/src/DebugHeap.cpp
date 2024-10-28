@@ -13,15 +13,22 @@ Ishiko::DebugHeap::HeapState::HeapState()
 #if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
     _CrtMemState heapState;
     _CrtMemCheckpoint(&heapState);
-    m_allocatedSize = heapState.lSizes[_NORMAL_BLOCK];
+    m_allocation_count = heapState.lCounts[_NORMAL_BLOCK];
+    m_allocated_size = heapState.lSizes[_NORMAL_BLOCK];
 #else
-    m_allocatedSize = 0;
+    m_allocation_count = 0;
+    m_allocated_size = 0;
 #endif
+}
+
+size_t Ishiko::DebugHeap::HeapState::allocationCount() const
+{
+    return m_allocation_count;
 }
 
 size_t Ishiko::DebugHeap::HeapState::allocatedSize() const
 {
-    return m_allocatedSize;
+    return m_allocated_size;
 }
 
 Ishiko::DebugHeap::TrackingState::TrackingState()

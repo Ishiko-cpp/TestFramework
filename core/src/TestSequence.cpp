@@ -190,7 +190,7 @@ TestSequence::ItemsObserver::ItemsObserver(TestSequence& sequence)
 {
 }
 
-void TestSequence::ItemsObserver::onLifecycleEvent(const Test& source, EEventType type)
+void TestSequence::ItemsObserver::onLifecycleEvent(const Test& source, EventType type)
 {
     m_sequence.observers().notifyLifecycleEvent(source, type);
 }

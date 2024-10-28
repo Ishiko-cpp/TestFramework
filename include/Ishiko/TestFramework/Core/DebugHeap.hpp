@@ -17,10 +17,12 @@ namespace Ishiko
         public:
             HeapState();
 
+            size_t allocationCount() const;
             size_t allocatedSize() const;
 
         private:
-            size_t m_allocatedSize;
+            size_t m_allocation_count;
+            size_t m_allocated_size;
         };
 
         class TrackingState

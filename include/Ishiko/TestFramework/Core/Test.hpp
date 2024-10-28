@@ -29,15 +29,15 @@ public:
     class Observer
     {
     public:
-        enum EEventType
+        enum EventType
         {
-            eTestStart,
-            eTestEnd
+            test_start,
+            test_end
         };
 
         virtual ~Observer() noexcept = default;
 
-        virtual void onLifecycleEvent(const Test& source, EEventType type);
+        virtual void onLifecycleEvent(const Test& source, EventType type);
         virtual void onCheckFailed(const Test& source, const std::string& message, const char* file, int line);
         virtual void onExceptionThrown(const Test& source, std::exception_ptr exception);
     };
@@ -48,7 +48,7 @@ public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
 
-        void notifyLifecycleEvent(const Test& source, Observer::EEventType type);
+        void notifyLifecycleEvent(const Test& source, Observer::EventType type);
         void notifyCheckFailed(const Test& source, const std::string& message, const char* file, int line);
         void notifyExceptionThrown(const Test& source, std::exception_ptr exception);
 
@@ -110,7 +110,7 @@ protected:
     virtual void setup();
     virtual void doRun();
     virtual void teardown();
-    virtual void notify(Observer::EEventType type);
+    virtual void notify(Observer::EventType type);
     
 private:
     class AbortException

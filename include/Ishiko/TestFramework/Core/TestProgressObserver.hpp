@@ -20,7 +20,7 @@ class TestProgressObserver : public Test::Observer
 public:
     TestProgressObserver(std::ostream& output);
 
-    void onLifecycleEvent(const Test& source, EEventType type) override;
+    void onLifecycleEvent(const Test& source, EventType type) override;
     void onCheckFailed(const Test& source, const std::string& message, const char* file, int line) override;
     void onExceptionThrown(const Test& source, std::exception_ptr exception) override;
 

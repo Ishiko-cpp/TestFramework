@@ -9,7 +9,7 @@
 
 using namespace Ishiko;
 
-void Test::Observer::onLifecycleEvent(const Test& source, EEventType type)
+void Test::Observer::onLifecycleEvent(const Test& source, EventType type)
 {
 }
 
@@ -57,7 +57,7 @@ void Test::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
-void Test::Observers::notifyLifecycleEvent(const Test& source, Observer::EEventType type)
+void Test::Observers::notifyLifecycleEvent(const Test& source, Observer::EventType type)
 {
     for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
     {
@@ -300,7 +300,7 @@ TestContext& Test::context()
 void Test::run()
 {
     m_executionStartTime = SystemTime::Now();
-    notify(Observer::eTestStart);
+    notify(Observer::test_start);
 
     setup();
 
@@ -337,7 +337,7 @@ void Test::run()
     teardown();
 
     m_executionEndTime = SystemTime::Now();
-    notify(Observer::eTestEnd);
+    notify(Observer::test_end);
 }
 
 void Test::addSetupAction(std::shared_ptr<TestSetupAction> action)
@@ -436,7 +436,7 @@ void Test::teardown()
     }
 }
 
-void Test::notify(Observer::EEventType type)
+void Test::notify(Observer::EventType type)
 {
     m_observers.notifyLifecycleEvent(*this, type);
 }
