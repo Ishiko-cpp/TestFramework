@@ -1,18 +1,14 @@
-/*
-    Copyright (c) 2006-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "Test.hpp"
 #include "TestSequence.hpp"
-#include "DebugHeap.hpp"
 #include <boost/filesystem/operations.hpp>
 #include <boost/range/algorithm.hpp>
 
 using namespace Ishiko;
 
-void Test::Observer::onLifecycleEvent(const Test& source, EEventType type)
+void Test::Observer::onLifecycleEvent(const Test& source, EventType type)
 {
 }
 
@@ -60,7 +56,7 @@ void Test::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
-void Test::Observers::notifyLifecycleEvent(const Test& source, Observer::EEventType type)
+void Test::Observers::notifyLifecycleEvent(const Test& source, Observer::EventType type)
 {
     for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
     {
@@ -210,7 +206,7 @@ void Test::getPassRate(size_t& unknown, size_t& passed, size_t& passedButMemoryL
             passed = 1;
             break;
 
-        case TestResult::passedButMemoryLeaks:
+        case TestResult::passed_but_memory_leaks:
             passedButMemoryLeaks = 1;
             break;
 
@@ -290,6 +286,11 @@ void Test::appendCheck(std::shared_ptr<TestCheck> check)
     m_checks.push_back(check);
 }
 
+size_t Test::allocationCount() const
+{
+    return (DebugHeap::HeapState().allocationCount() - m_initial_heap_state.allocationCount());
+}
+
 const TestContext& Test::context() const
 {
     return m_context;
@@ -303,11 +304,11 @@ TestContext& Test::context()
 void Test::run()
 {
     m_executionStartTime = SystemTime::Now();
-    notify(Observer::eTestStart);
+    notify(Observer::test_start);
 
     setup();
 
-    DebugHeap::HeapState heapStateBefore;
+    m_initial_heap_state = DebugHeap::HeapState();
 
     try
     {
@@ -331,16 +332,16 @@ void Test::run()
 
     DebugHeap::HeapState heapStateAfter;
 
-    if (m_memoryLeakCheck && (heapStateBefore.allocatedSize() != heapStateAfter.allocatedSize())
+    if (m_memoryLeakCheck && (m_initial_heap_state.allocatedSize() != heapStateAfter.allocatedSize())
         && (m_result == TestResult::passed))
     {
-        m_result = TestResult::passedButMemoryLeaks;
+        m_result = TestResult::passed_but_memory_leaks;
     }
 
     teardown();
 
     m_executionEndTime = SystemTime::Now();
-    notify(Observer::eTestEnd);
+    notify(Observer::test_end);
 }
 
 void Test::addSetupAction(std::shared_ptr<TestSetupAction> action)
@@ -439,7 +440,7 @@ void Test::teardown()
     }
 }
 
-void Test::notify(Observer::EEventType type)
+void Test::notify(Observer::EventType type)
 {
     m_observers.notifyLifecycleEvent(*this, type);
 }

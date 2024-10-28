@@ -28,6 +28,6 @@ None.
 
 ## License
 
-Copyright (c) 2005-2024 Xavier Leclercq\
+Copyright (c) 2000-2024 Xavier Leclercq\
 This work is licensed under the Boost Software License 1.0\
 See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
