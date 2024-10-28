@@ -1,20 +1,16 @@
-/*
-    Copyright (c) 2005-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "DebugHeap.hpp"
-#if (defined(_WIN32) && defined(_DEBUG))
+#if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
 #include <crtdbg.h>
 #endif
 
-namespace Ishiko
-{
+using namespace Ishiko;
 
-DebugHeap::HeapState::HeapState()
+Ishiko::DebugHeap::HeapState::HeapState()
 {
-#if (defined(_WIN32) && defined(_DEBUG))
+#if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
     _CrtMemState heapState;
     _CrtMemCheckpoint(&heapState);
     m_allocatedSize = heapState.lSizes[_NORMAL_BLOCK];
@@ -23,31 +19,29 @@ DebugHeap::HeapState::HeapState()
 #endif
 }
 
-size_t DebugHeap::HeapState::allocatedSize() const
+size_t Ishiko::DebugHeap::HeapState::allocatedSize() const
 {
     return m_allocatedSize;
 }
 
-DebugHeap::TrackingState::TrackingState()
+Ishiko::DebugHeap::TrackingState::TrackingState()
 {
-#if (defined(_WIN32) && defined(_DEBUG))
+#if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
     m_flags = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
 #endif
 }
 
-void DebugHeap::TrackingState::disableTracking()
+void Ishiko::DebugHeap::TrackingState::disableTracking()
 {
-#if (defined(_WIN32) && defined(_DEBUG))
+#if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
     int newFlags = (m_flags & ~_CRTDBG_ALLOC_MEM_DF);
     _CrtSetDbgFlag(newFlags);
 #endif
 }
 
-void DebugHeap::TrackingState::restore()
+void Ishiko::DebugHeap::TrackingState::restore()
 {
-#if (defined(_WIN32) && defined(_DEBUG))
+#if ((ISHIKO_RUNTIME == ISHIKO_RUNTIME_MICROSOFT_CRT) && defined(_DEBUG))
     _CrtSetDbgFlag(m_flags);
 #endif
-}
-
 }
