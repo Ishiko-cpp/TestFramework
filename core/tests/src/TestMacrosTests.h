@@ -1,11 +1,8 @@
-/*
-    Copyright (c) 2019-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
-#ifndef _ISHIKO_TESTFRAMEWORK_TESTS_CORE_TESTMACROSTESTS_H_
-#define _ISHIKO_TESTFRAMEWORK_TESTS_CORE_TESTMACROSTESTS_H_
+#ifndef GUARD_ISHIKO_TESTFRAMEWORK_TESTS_CORE_TESTMACROSTESTS_H
+#define GUARD_ISHIKO_TESTFRAMEWORK_TESTS_CORE_TESTMACROSTESTS_H
 
 #include <Ishiko/TestFramework/Core.hpp>
 
@@ -31,6 +28,8 @@ private:
     static void FailIfStrNeqMacroTest2(Ishiko::Test& test);
     static void FailIfNotContainMacroTest1(Ishiko::Test& test);
     static void FailIfNotContainMacroTest2(Ishiko::Test& test);
+    static void FailIfHeapAllocationCountNeqTest1(Ishiko::Test& test);
+    static void FailIfHeapAllocationCountNeqTest2(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest1(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest2(Ishiko::Test& test);
     static void FailIfOutputAndReferenceFilesNeqMacroTest3(Ishiko::Test& test);
