@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2005-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "TestHarness.hpp"
 #include "JUnitXMLWriter.hpp"
@@ -18,11 +15,11 @@ using namespace Ishiko;
 
 TestHarness::CommandLineSpecification::CommandLineSpecification()
 {
-    addNamedOption("context.data", { Ishiko::CommandLineSpecification::OptionType::singleValue });
-    addNamedOption("context.output", { Ishiko::CommandLineSpecification::OptionType::singleValue });
-    addNamedOption("context.reference", { Ishiko::CommandLineSpecification::OptionType::singleValue });
-    addNamedOption("persistent-storage", { Ishiko::CommandLineSpecification::OptionType::singleValue });
-    addNamedOption("junit-xml-test-report", { Ishiko::CommandLineSpecification::OptionType::singleValue });
+    addNamedOption("context.data", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    addNamedOption("context.output", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    addNamedOption("context.reference", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    addNamedOption("persistent-storage", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    addNamedOption("junit-xml-test-report", {Ishiko::CommandLineSpecification::OptionType::single_value});
 }
 
 TestHarness::Configuration::Configuration(const Ishiko::Configuration& configuration)
