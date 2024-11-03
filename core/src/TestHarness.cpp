@@ -154,6 +154,11 @@ TestHarness::TestHarness(const std::string& title, const Configuration& configur
     {
         m_context.setReferenceDirectory(*contextReferencePath);
     }
+    const boost::optional<std::string> contextApplicationPath = configuration.contextApplicatiponPath();
+    if (contextApplicationPath)
+    {
+        m_context.setApplicationPath(*contextApplicationPath);
+    }
     const boost::optional<std::string> persistentStoragePath = configuration.persistentStoragePath();
     if (persistentStoragePath)
     {
