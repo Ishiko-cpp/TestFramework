@@ -67,7 +67,7 @@ namespace Ishiko
         std::map<std::string, boost::filesystem::path> m_dataDirectories;
         std::map<std::string, boost::filesystem::path> m_referenceDirectories;
         std::map<std::string, boost::filesystem::path> m_outputDirectories;
-        boost::filesystem::path m_application_path;
+        boost::optional<boost::filesystem::path> m_application_path;
     };
 }
 
