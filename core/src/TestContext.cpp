@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2005-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "TestContext.hpp"
 #include "TestException.hpp"
@@ -11,8 +8,7 @@
 #include <Ishiko/FileSystem.hpp>
 #include <Ishiko/Process.hpp>
 
-namespace Ishiko
-{
+using namespace Ishiko;
 
 TestContext::TestContext()
     : m_parent(nullptr)
@@ -263,4 +259,28 @@ void TestContext::setOutputDirectory(const std::string& id, const boost::filesys
     m_outputDirectories[id] = expandedPath;
 }
 
+boost::filesystem::path TestContext::getApplicationPath() const
+{
+    boost::filesystem::path result;
+    if (m_application_path)
+    {
+        result = *m_application_path;
+    }
+    else
+    {
+        if (m_parent)
+        {
+            result = m_parent->getApplicationPath();
+        }
+        else
+        {
+            throw TestException("getApplicationPath not set");
+        }
+    }
+    return result;
+}
+
+void TestContext::setApplicationPath(const boost::filesystem::path& path)
+{
+    m_application_path = path;
 }

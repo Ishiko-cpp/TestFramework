@@ -18,6 +18,7 @@ TestHarness::CommandLineSpecification::CommandLineSpecification()
     addNamedOption("context.data", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("context.output", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("context.reference", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    addNamedOption("context.application-path", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("persistent-storage", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("junit-xml-test-report", {Ishiko::CommandLineSpecification::OptionType::single_value});
 }
@@ -54,6 +55,18 @@ TestHarness::Configuration::Configuration(const Ishiko::Configuration& configura
         if (contextReference->type() == Ishiko::Configuration::Value::Type::string)
         {
             m_contextReference = contextReference->asString();
+        }
+        else
+        {
+            // TODO: error
+        }
+    }
+    const Ishiko::Configuration::Value* context_application_path = configuration.valueOrNull("context.application-path");
+    if (context_application_path)
+    {
+        if (context_application_path->type() == Ishiko::Configuration::Value::Type::string)
+        {
+            m_application_path = context_application_path->asString();
         }
         else
         {
@@ -101,6 +114,11 @@ const boost::optional<std::string>& TestHarness::Configuration::contextReference
     return m_contextReference;
 }
 
+const boost::optional<std::string>& TestHarness::Configuration::contextApplicatiponPath() const
+{
+    return m_application_path;
+}
+
 const boost::optional<std::string>& TestHarness::Configuration::persistentStoragePath() const
 {
     return m_persistentStorage;
@@ -136,21 +154,26 @@ TestHarness::TestHarness(const std::string& title, const Configuration& configur
     {
         m_context.setReferenceDirectory(*contextReferencePath);
     }
+    const boost::optional<std::string> contextApplicationPath = configuration.contextApplicatiponPath();
+    if (contextApplicationPath)
+    {
+        m_context.setApplicationPath(*contextApplicationPath);
+    }
     const boost::optional<std::string> persistentStoragePath = configuration.persistentStoragePath();
     if (persistentStoragePath)
     {
         m_context.setOutputDirectory("persistent-storage", *persistentStoragePath);
     }
+    if (m_context.getOutputDirectory() != "")
+    {
+        prepareOutputDirectory();
+    }
+
 }
 
 int TestHarness::run()
 {
     std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
-
-    if (m_context.getOutputDirectory() != "")
-    {
-        prepareOutputDirectory();
-    }
 
     int result = runTests();
 
