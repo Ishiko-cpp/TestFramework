@@ -261,7 +261,12 @@ void TestContext::setOutputDirectory(const std::string& id, const boost::filesys
 
 boost::filesystem::path TestContext::getApplicationPath() const
 {
-    return m_application_path;
+    boost::filesystem::path result = m_application_path;
+    if (result.empty() && m_parent)
+    {
+        result = m_parent->getApplicationPath();
+    }
+    return result;
 }
 
 void TestContext::setApplicationPath(const boost::filesystem::path& path)

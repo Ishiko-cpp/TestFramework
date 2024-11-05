@@ -164,16 +164,16 @@ TestHarness::TestHarness(const std::string& title, const Configuration& configur
     {
         m_context.setOutputDirectory("persistent-storage", *persistentStoragePath);
     }
+    if (m_context.getOutputDirectory() != "")
+    {
+        prepareOutputDirectory();
+    }
+
 }
 
 int TestHarness::run()
 {
     std::cout << "Test Suite: " << m_topSequence.name() << std::endl;
-
-    if (m_context.getOutputDirectory() != "")
-    {
-        prepareOutputDirectory();
-    }
 
     int result = runTests();
 
