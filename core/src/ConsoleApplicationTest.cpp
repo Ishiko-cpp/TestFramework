@@ -1,15 +1,11 @@
-/*
-    Copyright (c) 2016-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "ConsoleApplicationTest.hpp"
 #include "TestMacros.hpp"
 #include <Ishiko/Process.hpp>
 
-namespace Ishiko
-{
+using namespace Ishiko;
 
 ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const std::string& name,
     const std::string& commandLine, int expectedExitCode)
@@ -21,6 +17,13 @@ ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const s
     const std::string& commandLine, int expectedExitCode, const TestContext& context)
     : Test(number, name, context), m_commandLine(commandLine), m_checkExitCode(true),
     m_expectedExitCode(expectedExitCode)
+{
+}
+
+ConsoleApplicationTest::ConsoleApplicationTest(const TestNumber& number, const std::string& name,
+    const std::string& command_line, std::function<void(int exit_code, ConsoleApplicationTest& test)> run_fct,
+    const TestContext& context)
+    : Test(number, name, context), m_commandLine(command_line), m_checkExitCode(false), m_run_fct(run_fct)
 {
 }
 
@@ -63,7 +66,12 @@ void ConsoleApplicationTest::doRun()
         m_standardOutputTest.run(test, __FILE__, __LINE__);
     }
 
-    ISHIKO_TEST_PASS();
-}
-
+    if (m_run_fct)
+    {
+        m_run_fct(processHandle.exitCode(), *this);
+    }
+    else
+    {
+        ISHIKO_TEST_PASS();
+    }
 }
