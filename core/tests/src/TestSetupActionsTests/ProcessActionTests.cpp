@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2016-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "ProcessActionTests.h"
 #include <Ishiko/TestFramework/Core/ProcessAction.hpp>
@@ -31,7 +28,7 @@ void ProcessActionTests::SetupFailureTest1(Test& test)
 
     try
     {
-        action.setup();
+        action.setup(test);
         action.teardown();
     }
     catch (...)
@@ -52,7 +49,7 @@ void ProcessActionTests::SetupWaitForExitTest1(Test& test)
     create_directories(test.context().getOutputDirectory() / "TestSetupActionsTests");
 
     ProcessAction action(executablePath.string() + " " + outputPath.string(), ProcessAction::eWaitForExit);
-    action.setup();
+    action.setup(test);
     action.teardown();
 
     ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ("TestSetupActionsTests/ProcessActionSetupTest1.txt");
@@ -68,7 +65,7 @@ void ProcessActionTests::SetupTerminateTest1(Test& test)
 #endif
 
     ProcessAction action(executablePath.string(), ProcessAction::eTerminate);
-    action.setup();
+    action.setup(test);
     action.teardown();
 
     ISHIKO_TEST_PASS();
