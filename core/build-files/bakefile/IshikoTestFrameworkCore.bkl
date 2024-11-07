@@ -66,6 +66,7 @@ library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, Is
         ../../../include/Ishiko/TestFramework/Core/TestSetupAction.hpp
         ../../../include/Ishiko/TestFramework/Core/TestTeardownAction.hpp
         ../../../include/Ishiko/TestFramework/Core/TopTestSequence.hpp
+        ../../../include/Ishiko/TestFramework/Core/Actions/CopyFilesAction.hpp
     }
 
     sources
@@ -93,5 +94,6 @@ library IshikoTestFrameworkCore : IshikoConfiguration, IshikoDiff, IshikoXML, Is
         ../../src/TestSetupAction.cpp
         ../../src/TestTeardownAction.cpp
         ../../src/TopTestSequence.cpp
+        ../../src/Actions/CopyFilesAction.cpp
     }
 }
