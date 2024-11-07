@@ -420,7 +420,7 @@ void Test::setup()
 
     for (size_t i = 0; i < m_setupActions.size(); ++i)
     {
-        m_setupActions[i]->setup();
+        m_setupActions[i]->setup(*this);
     }
 }
 

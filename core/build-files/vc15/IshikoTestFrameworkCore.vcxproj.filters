@@ -98,6 +98,9 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TopTestSequence.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\Actions\CopyFilesAction.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\ConsoleApplicationTest.cpp">
@@ -167,6 +170,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\TopTestSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Actions\CopyFilesAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -24,5 +24,6 @@
 #include "Core/DirectoriesTeardownAction.hpp"
 #include "Core/FilesTeardownAction.hpp"
 #include "Core/ProcessAction.hpp"
+#include "Core/Actions/CopyFilesAction.hpp"
 
 #endif

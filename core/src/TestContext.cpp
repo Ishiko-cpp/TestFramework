@@ -29,6 +29,23 @@ const TestContext& TestContext::DefaultTestContext()
     return defaultContext;
 }
 
+void TestContext::expand(boost::string_view variable, std::string& result, Error& error) const
+{
+    if (variable == "context.data")
+    {
+        result = getDataDirectory().string();
+    }
+    else if (variable == "context.output")
+    {
+        result = getOutputDirectory().string();
+    }
+    else if (variable == "context.reference")
+    {
+        result = getReferenceDirectory().string();
+    }
+    // TODO: error
+}
+
 boost::filesystem::path TestContext::getDataDirectory() const
 {
     return getDataDirectory("(default)");
@@ -62,7 +79,6 @@ boost::filesystem::path TestContext::getDataDirectory(const std::string& id) con
     }
     return result;
 }
-
 
 boost::filesystem::path TestContext::getDataPath(const boost::filesystem::path& path) const
 {

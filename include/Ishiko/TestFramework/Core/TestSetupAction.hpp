@@ -1,29 +1,26 @@
-/*
-    Copyright (c) 2015-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
-#ifndef _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTSETUPACTION_HPP_
-#define _ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTSETUPACTION_HPP_
+#ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTSETUPACTION_HPP
+#define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_TESTSETUPACTION_HPP
 
 namespace Ishiko
 {
+    class Test;
 
-/// Base class that represents an action that needs to be performed before the test is run.
+    /// Base class that represents an action that needs to be performed before the test is run.
 
-/// This class does nothing. Derived classes can override the run() method to perform
-/// the required action.
-class TestSetupAction
-{
-public:
-    TestSetupAction();
-    virtual ~TestSetupAction();
+    /// This class does nothing. Derived classes can override the run() method to perform
+    /// the required action.
+    class TestSetupAction
+    {
+    public:
+        TestSetupAction();
+        virtual ~TestSetupAction();
 
-    /// This method is called to perform the setup action.
-    virtual void setup();
-};
-
+        /// This method is called to perform the setup action.
+        virtual void setup(const Test& test);
+    };
 }
 
 #endif
