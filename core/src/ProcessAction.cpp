@@ -21,7 +21,7 @@ ProcessAction::~ProcessAction()
 {
 }
 
-void ProcessAction::setup()
+void ProcessAction::setup(const Test& test)
 {
     Error error;
     m_processHandle = ChildProcess::Spawn(m_commandLine, error);

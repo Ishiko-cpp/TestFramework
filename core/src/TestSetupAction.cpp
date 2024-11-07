@@ -1,13 +1,9 @@
-/*
-    Copyright (c) 2015-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "TestSetupAction.hpp"
 
-namespace Ishiko
-{
+using namespace Ishiko;
 
 TestSetupAction::TestSetupAction()
 {
@@ -17,9 +13,7 @@ TestSetupAction::~TestSetupAction()
 {
 }
 
-void TestSetupAction::setup()
+void TestSetupAction::setup(const Test& test)
 {
     // Default implementation does nothing
-}
-
 }
