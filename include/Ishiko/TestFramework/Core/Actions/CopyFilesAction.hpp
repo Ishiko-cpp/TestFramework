@@ -4,8 +4,9 @@
 #ifndef GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_ACTIONS_COPYFILESACTION_HPP
 #define GUARD_ISHIKO_CPP_TESTFRAMEWORK_CORE_ACTIONS_COPYFILESACTION_HPP
 
-#include "TestSetupAction.hpp"
+#include "../TestSetupAction.hpp"
 #include <Ishiko/Text.hpp>
+#include <utility>
 
 namespace Ishiko
 {
@@ -15,6 +16,9 @@ namespace Ishiko
         CopyFilesAction(const InterpolatedString& source, const InterpolatedString& destination);
 
         void setup(const Test& test) override;
+
+    private:
+        std::vector<std::pair<InterpolatedString, InterpolatedString>> m_copy_list;
     };
 }
 
