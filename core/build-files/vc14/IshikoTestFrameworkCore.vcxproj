@@ -173,6 +173,7 @@
     <ClCompile Include="..\..\src\TestSetupAction.cpp" />
     <ClCompile Include="..\..\src\TestTeardownAction.cpp" />
     <ClCompile Include="..\..\src\TopTestSequence.cpp" />
+    <ClCompile Include="..\..\src\Actions\CopyFilesAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core.hpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestSetupAction.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TestTeardownAction.hpp" />
     <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\TopTestSequence.hpp" />
+    <ClInclude Include="..\..\..\include\Ishiko\TestFramework\Core\Actions\CopyFilesAction.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

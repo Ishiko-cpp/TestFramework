@@ -7,11 +7,12 @@
 #include <boost/filesystem/path.hpp>
 #include <boost/optional.hpp>
 #include <Ishiko/Errors.hpp>
+#include <Ishiko/Text.hpp>
 #include <map>
 
 namespace Ishiko
 {
-    class TestContext
+    class TestContext : public InterpolatedString::Callbacks
     {
     public:
         enum class PathResolution
@@ -24,6 +25,8 @@ namespace Ishiko
         TestContext(const TestContext* parent);
         ~TestContext() noexcept = default;
         static const TestContext& DefaultTestContext();
+
+        void expand(boost::string_view variable, std::string& result, Error& error) const override;
 
         // This function is equivalent to calling getTestDataDirectory("(default)")
         // and exists to avoid the need to give a name to the test data

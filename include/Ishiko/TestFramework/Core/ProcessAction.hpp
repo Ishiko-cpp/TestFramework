@@ -30,7 +30,7 @@ public:
     ProcessAction(const std::string& commandLine, EMode mode);
     ~ProcessAction() override;
 
-    void setup() override;
+    void setup(const Test& test) override;
     void teardown() override;
 
 private:
