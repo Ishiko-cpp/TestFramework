@@ -9,7 +9,7 @@
 
 #include "TestSetupAction.hpp"
 #include "TestTeardownAction.hpp"
-#include "Ishiko/Process/ChildProcess.h"
+#include "Ishiko/Process/ChildProcess.hpp"
 #include <string>
 #include <memory>
 
