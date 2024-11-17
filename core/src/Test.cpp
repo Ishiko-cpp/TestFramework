@@ -3,6 +3,7 @@
 
 #include "Test.hpp"
 #include "TestSequence.hpp"
+#include <Ishiko/FileSystem.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/range/algorithm.hpp>
 
@@ -113,6 +114,18 @@ void Test::Observers::removeDeletedObservers()
     }
     );
     m_observers.erase(it, m_observers.end());
+}
+
+Test::Utilities::Utilities(const Test& test)
+    : m_test(test)
+{
+}
+
+void Test::Utilities::copyFile(const InterpolatedString& source, const InterpolatedString& destination)
+{
+    boost::filesystem::path source_path = source.expand(m_test.context());
+    boost::filesystem::path destination_path = destination.expand(m_test.context());
+    FileSystem::CopySingleFile(source_path, destination_path);
 }
 
 Test::Test(const TestNumber& number, const std::string& name)
@@ -279,6 +292,11 @@ void Test::skip()
         m_result = TestResult::skipped;
     }
     throw AbortException();
+}
+
+Test::Utilities Test::utils() const
+{
+    return Utilities(*this);
 }
 
 void Test::appendCheck(std::shared_ptr<TestCheck> check)

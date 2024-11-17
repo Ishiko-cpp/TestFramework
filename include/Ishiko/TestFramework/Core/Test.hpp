@@ -12,6 +12,7 @@
 #include "TestResult.hpp"
 #include "TestSetupAction.hpp"
 #include "TestTeardownAction.hpp"
+#include <Ishiko/Text.hpp>
 #include <Ishiko/Time.hpp>
 #include <functional>
 #include <string>
@@ -60,6 +61,17 @@ public:
         std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
     };
 
+    class Utilities
+    {
+    public:
+        Utilities(const Test& test);
+
+        void copyFile(const InterpolatedString& source, const InterpolatedString& destination);
+
+    private:
+        const Test& m_test;
+    };
+
     /// Constructor.
     /// @param number The number of the test.
     /// @param name The name of the test.
@@ -90,6 +102,8 @@ public:
     void failIf(bool condition, const char* file, int line);
     void pass();
     void skip();
+
+    Utilities utils() const;
 
     void appendCheck(std::shared_ptr<TestCheck> check);
 
