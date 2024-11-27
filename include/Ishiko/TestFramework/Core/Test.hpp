@@ -66,7 +66,7 @@ public:
     public:
         Utilities(const Test& test);
 
-        void copyFile(const InterpolatedString& source, const InterpolatedString& destination);
+        void copy(const InterpolatedString& source, const InterpolatedString& destination);
 
     private:
         const Test& m_test;
