@@ -121,11 +121,12 @@ Test::Utilities::Utilities(const Test& test)
 {
 }
 
-void Test::Utilities::copyFile(const InterpolatedString& source, const InterpolatedString& destination)
+void Test::Utilities::copy(const InterpolatedString& source, const InterpolatedString& destination)
 {
     boost::filesystem::path source_path = source.expand(m_test.context());
     boost::filesystem::path destination_path = destination.expand(m_test.context());
-    FileSystem::CopySingleFile(source_path, destination_path);
+    FileSystem::Copy(source_path, destination_path,
+        FileSystem::CopyOption::create_directories | FileSystem::CopyOption::recursive);
 }
 
 Test::Test(const TestNumber& number, const std::string& name)
