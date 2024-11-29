@@ -117,12 +117,15 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
         // The comparison is finished, close the files
         fclose(output_file);
         fclose(refFile);
+
+        if (!(isFileEof && isRefFileEof))
+        {
+            test.fail(file, line);
+        }
     }
 
     if (!(isFileEof && isRefFileEof))
     {
-        test.fail(file, line);
-
         Error error;
         TextPatch diff = TextDiff::LineDiffFiles(m_outputFilePath, m_referenceFilePath, error);
         if (diff.size() > 0)
