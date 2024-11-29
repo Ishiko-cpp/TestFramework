@@ -43,7 +43,7 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
 
     // We first try to open the two files
 #if ISHIKO_COMPILER == ISHIKO_COMPILER_GCC
-    FILE* outputFile = fopen(m_outputFilePath.string().c_str(), "rb");
+    FILE* output_file = fopen(m_outputFilePath.string().c_str(), "rb");
     FILE* refFile = fopen(m_referenceFilePath.string().c_str(), "rb");
 #elif ISHIKO_COMPILER == ISHIKO_COMPILER_MSVC
     FILE* output_file = nullptr;
