@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2022-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/ishiko-cpp/test-framework/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2000-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "FileComparisonTestCheck.hpp"
 #include "Test.hpp"
@@ -46,14 +43,14 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
 
     // We first try to open the two files
 #if ISHIKO_COMPILER == ISHIKO_COMPILER_GCC
-    FILE* outputFile = fopen(m_outputFilePath.string().c_str(), "rb");
+    FILE* output_file = fopen(m_outputFilePath.string().c_str(), "rb");
     FILE* refFile = fopen(m_referenceFilePath.string().c_str(), "rb");
 #elif ISHIKO_COMPILER == ISHIKO_COMPILER_MSVC
-    FILE* outputFile = nullptr;
-    errno_t err = fopen_s(&outputFile, m_outputFilePath.string().c_str(), "rb");
+    FILE* output_file = nullptr;
+    errno_t err = fopen_s(&output_file, m_outputFilePath.string().c_str(), "rb");
     if (err != 0)
     {
-        outputFile = nullptr;
+        output_file = nullptr;
     }
     FILE* refFile = nullptr;
     err = fopen_s(&refFile, m_referenceFilePath.string().c_str(), "rb");
@@ -65,7 +62,7 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
     #error Unsupported or unrecognized compiler
 #endif
 
-    if (outputFile == nullptr)
+    if (output_file == nullptr)
     {
         if (refFile)
         {
@@ -73,59 +70,62 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
         }
         std::string message = "failed to open output file: " + m_outputFilePath.string();
         test.fail(message, file, line);
-        return;
     }
-    if (refFile == nullptr)
+    else if (refFile == nullptr)
     {
-        if (outputFile)
+        if (output_file)
         {
-            fclose(outputFile);
+            fclose(output_file);
         }
         std::string message = "failed to open reference file: " + m_referenceFilePath.string();
         test.fail(message, file, line);
-        return;
-    }
-
-
-    // We managed to open both file, let's compare them
-
-    bool isFileGood;
-    bool isRefFileGood;
-    char c1;
-    char c2;
-    int offset = 0;
-    while (1)
-    {
-        size_t n1 = fread(&c1, 1, 1, outputFile);
-        size_t n2 = fread(&c2, 1, 1, refFile);
-        isFileGood = (n1 == 1);
-        isRefFileGood = (n2 == 1);
-        if (!isFileGood || !isRefFileGood || (c1 != c2))
-        {
-            break;
-        }
-        offset++;
     }
 
     bool isFileEof = false;
-    if (feof(outputFile) != 0)
-    {
-        isFileEof = true;
-    }
     bool isRefFileEof = false;
-    if (feof(refFile) != 0)
+    if (output_file && refFile)
     {
-        isRefFileEof = true;
-    }
+        // We managed to open both file, let's compare them
 
-    // The comparison is finished, close the files
-    fclose(outputFile);
-    fclose(refFile);
+        bool isFileGood;
+        bool isRefFileGood;
+        char c1;
+        char c2;
+        int offset = 0;
+        while (1)
+        {
+            size_t n1 = fread(&c1, 1, 1, output_file);
+            size_t n2 = fread(&c2, 1, 1, refFile);
+            isFileGood = (n1 == 1);
+            isRefFileGood = (n2 == 1);
+            if (!isFileGood || !isRefFileGood || (c1 != c2))
+            {
+                break;
+            }
+            offset++;
+        }
+
+        if (feof(output_file) != 0)
+        {
+            isFileEof = true;
+        }
+        if (feof(refFile) != 0)
+        {
+            isRefFileEof = true;
+        }
+
+        // The comparison is finished, close the files
+        fclose(output_file);
+        fclose(refFile);
+
+        if (!(isFileEof && isRefFileEof))
+        {
+            test.fail(file, line);
+        }
+    }
 
     if (!(isFileEof && isRefFileEof))
     {
-        test.fail(file, line);
-
         Error error;
         TextPatch diff = TextDiff::LineDiffFiles(m_outputFilePath, m_referenceFilePath, error);
         if (diff.size() > 0)
@@ -145,6 +145,7 @@ void FileComparisonTestCheck::run(Test& test, const char* file, int line)
             boost::filesystem::path targetDirectory = persistentStoragePath / test.name();
             // TODO: CopyFile option to do that
             boost::filesystem::create_directories(targetDirectory);
+            // TODO: we need to keep more than the filename, the entire relative path from output dir needs to be used
             FileSystem::CopySingleFile(m_outputFilePath, (targetDirectory / m_outputFilePath.filename()),
                 persistenceError);
             FileSystem::CopySingleFile(m_referenceFilePath, (targetDirectory / m_referenceFilePath.filename()),
